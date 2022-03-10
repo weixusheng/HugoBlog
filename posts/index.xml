@@ -19,14 +19,14 @@
   <guid>http://example.org/posts/centos-2/</guid>
   <description><![CDATA[<p>curl常用命令</p>]]></description>
 </item><item>
-  <title>crond</title>
+  <title>crond设置定时任务</title>
   <link>http://example.org/posts/docker-9/</link>
   <pubDate>Thu, 03 Mar 2022 23:03:00 &#43;0000</pubDate>
   <author>小辣鸡</author>
   <guid>http://example.org/posts/docker-9/</guid>
   <description><![CDATA[<p>Linux下用来周期性的执行任务</p>]]></description>
 </item><item>
-  <title>构建前后端服务组</title>
+  <title>Docker构建前后端服务组</title>
   <link>http://example.org/posts/docker-8/</link>
   <pubDate>Thu, 03 Mar 2022 23:00:00 &#43;0000</pubDate>
   <author>小辣鸡</author>
@@ -48,10 +48,10 @@
   <description><![CDATA[<p>初识Jenkins</p>]]></description>
 </item><item>
   <title>Selenium4.1新版</title>
-  <link>http://example.org/posts/selenium_update/</link>
+  <link>http://example.org/posts/python-selenium/</link>
   <pubDate>Wed, 02 Mar 2022 18:40:00 &#43;0000</pubDate>
   <author>小辣鸡</author>
-  <guid>http://example.org/posts/selenium_update/</guid>
+  <guid>http://example.org/posts/python-selenium/</guid>
   <description><![CDATA[<p>selenium4.1新版更新</p>]]></description>
 </item><item>
   <title>SQLAlchemy断连</title>

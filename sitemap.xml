@@ -9,10 +9,11 @@
       <loc>http://example.org/tags/</loc><lastmod>2022-03-04T22:30:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/</loc><lastmod>2022-03-04T22:30:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/posts/hugo/</loc><lastmod>2022-03-04T22:30:00&#43;00:00</lastmod></url><url>
+      <loc>http://example.org/tags/Centos/</loc><lastmod>2022-03-03T23:05:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/categories/Centos/</loc><lastmod>2022-03-03T23:05:00&#43;00:00</lastmod></url><url>
-      <loc>http://example.org/tags/Centos-Tools/</loc><lastmod>2022-03-03T23:05:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/posts/centos-2/</loc><lastmod>2022-03-03T23:05:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/posts/docker-9/</loc><lastmod>2022-03-03T23:03:00&#43;00:00</lastmod></url><url>
+      <loc>http://example.org/tags/Docker/</loc><lastmod>2022-03-03T23:03:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/categories/Docker/</loc><lastmod>2022-03-03T23:00:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/tags/Docker%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc><lastmod>2022-03-03T23:00:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/posts/docker-8/</loc><lastmod>2022-03-03T23:00:00&#43;00:00</lastmod></url><url>
@@ -23,7 +24,7 @@
       <loc>http://example.org/posts/jenkins/</loc><lastmod>2022-03-03T20:30:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/categories/Python/</loc><lastmod>2022-03-02T18:40:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/tags/Selenium/</loc><lastmod>2022-03-02T18:40:00&#43;00:00</lastmod></url><url>
-      <loc>http://example.org/posts/selenium_update/</loc><lastmod>2022-03-02T18:40:00&#43;00:00</lastmod></url><url>
+      <loc>http://example.org/posts/python-selenium/</loc><lastmod>2022-03-02T18:40:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/tags/SQLAlchemy/</loc><lastmod>2022-03-01T23:30:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/posts/python_SQL-3/</loc><lastmod>2022-03-01T23:30:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/tags/APScheduler/</loc><lastmod>2022-02-11T23:00:00&#43;00:00</lastmod></url><url>

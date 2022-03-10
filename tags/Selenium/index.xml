@@ -6,10 +6,10 @@
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
       <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Wed, 02 Mar 2022 18:40:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Selenium/" rel="self" type="application/rss+xml" /><item>
   <title>Selenium4.1新版</title>
-  <link>http://example.org/posts/selenium_update/</link>
+  <link>http://example.org/posts/python-selenium/</link>
   <pubDate>Wed, 02 Mar 2022 18:40:00 &#43;0000</pubDate>
   <author>小辣鸡</author>
-  <guid>http://example.org/posts/selenium_update/</guid>
+  <guid>http://example.org/posts/python-selenium/</guid>
   <description><![CDATA[<p>selenium4.1新版更新</p>]]></description>
 </item><item>
   <title>Selenium执行自动化操作</title>

@@ -1,4 +1,4 @@
-# crond
+# crond设置定时任务
 
 
 Linux下用来周期性的执行任务
