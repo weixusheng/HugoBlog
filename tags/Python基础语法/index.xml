@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Python基础语法 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</link>
+    <description>Python基础语法 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Fri, 11 Feb 2022 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+  <title>yield的用法</title>
+  <link>http://example.org/posts/yield/</link>
+  <pubDate>Fri, 11 Feb 2022 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/yield/</guid>
+  <description><![CDATA[<p>Python Generator</p>]]></description>
+</item><item>
+  <title>classmethod修饰符</title>
+  <link>http://example.org/posts/python-classmethod/</link>
+  <pubDate>Mon, 31 Jan 2022 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python-classmethod/</guid>
+  <description><![CDATA[<p>Python的classmethod修饰符使用</p>]]></description>
+</item></channel>
+</rss>

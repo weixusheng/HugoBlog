@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Pyside2开发第一个GUI程序 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="monitor_control" />
+<meta name="keywords" content="Pyside" /><meta itemprop="name" content="Pyside2开发第一个GUI程序">
+<meta itemprop="description" content="monitor_control"><meta itemprop="datePublished" content="2021-02-08T17:40:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-08T17:40:00+00:00" />
+<meta itemprop="wordCount" content="2267"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="Pyside," /><meta property="og:title" content="Pyside2开发第一个GUI程序" />
+<meta property="og:description" content="monitor_control" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/qt-1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-08T17:40:00+00:00" />
+<meta property="article:modified_time" content="2021-02-08T17:40:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Pyside2开发第一个GUI程序"/>
+<meta name="twitter:description" content="monitor_control"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/qt-1/" /><link rel="prev" href="http://example.org/posts/win-9/" /><link rel="next" href="http://example.org/posts/qt-2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Pyside2开发第一个GUI程序",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/qt-1\/"
+    },"genre": "posts","keywords": "Pyside","wordcount":  2267 ,
+    "url": "http:\/\/example.org\/posts\/qt-1\/","datePublished": "2021-02-08T17:40:00+00:00","dateModified": "2021-02-08T17:40:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">Pyside2开发第一个GUI程序</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Qt-Python/"><i class="far fa-folder fa-fw"></i>Qt-Python</a></span></div>
+      <div class="post-meta-line"><span title=2021-02-08&#32;17:40:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-08" >2021-02-08</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2267 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#起源">起源</a></li>
+    <li><a href="#开发环境">开发环境</a>
+      <ul>
+        <li><a href="#依赖库版本">依赖库版本</a></li>
+        <li><a href="#开发工具">开发工具</a></li>
+        <li><a href="#配置pycharm">配置pycharm</a></li>
+      </ul>
+    </li>
+    <li><a href="#界面设计">界面设计</a></li>
+    <li><a href="#程序脚本框架">程序脚本框架</a></li>
+    <li><a href="#import部分">import部分</a></li>
+    <li><a href="#窗口类">窗口类</a>
+      <ul>
+        <li><a href="#引入ui绑定事件">引入ui/绑定事件</a></li>
+        <li><a href="#槽函数定义">槽函数定义</a></li>
+        <li><a href="#画面阻塞处理子线程">画面阻塞处理(子线程)</a></li>
+      </ul>
+    </li>
+    <li><a href="#托盘实现">托盘实现</a>
+      <ul>
+        <li><a href="#构造函数">构造函数</a></li>
+        <li><a href="#创建托盘右键菜单">创建托盘右键菜单</a></li>
+        <li><a href="#定义菜单绑定事件">定义菜单绑定事件</a></li>
+        <li><a href="#隐藏至托盘">隐藏至托盘</a></li>
+        <li><a href="#点击托盘显示窗口退出程序">点击托盘显示窗口/退出程序</a></li>
+        <li><a href="#定义点击托盘图标事件">定义点击托盘图标事件</a></li>
+      </ul>
+    </li>
+    <li><a href="#测试当前窗口">测试当前窗口</a></li>
+    <li><a href="#窗口与运行的分离">窗口与运行的分离</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>monitor_control</p>
+<h1 id="起源">起源</h1>
+<p><strong>Demo灵感来源</strong>
+<a
+  href="https://sspai.com/post/55797"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+><font color="red">『又来瞎鼓捣』外接显示器不能自动调亮度？我花 10 块钱做了个自动光感调节器 - 少数派</font></a></p>
+<p><strong>Demo项目地址</strong>
+<a
+  href="https://github.com/weixusheng/monitor_control_GUI"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+><font color="red">GitHub</font></a></p>
+<blockquote>
+<p>调节外接显示器的亮度以及对比度</p>
+</blockquote>
+<p>当时正在重温Python,正愁没啥代码可写,正好借着这个机会学学GUI开发,岂不美哉!
+然后正好一直很眼馋跨平台开发,发现Qt这个好东西😄!
+最后断断续续用了五天的时间,把这个程序写了出来,并且实现程序打包,可以在非开发(无python)环境下的电脑正常运行&hellip;嚯嚯嚯非常的开心了</p>
+<h1 id="开发环境">开发环境</h1>
+<h2 id="依赖库版本">依赖库版本</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">name</th>
+<th style="text-align:center">version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Python</td>
+<td style="text-align:center">3.8.5</td>
+</tr>
+<tr>
+<td style="text-align:center">pyside2</td>
+<td style="text-align:center">5.15.2</td>
+</tr>
+<tr>
+<td style="text-align:center">monitorcontrol</td>
+<td style="text-align:center">2.3.0</td>
+</tr>
+</tbody>
+</table>
+<p>一开始本来使用pyqt5去做,后来发现pyside2以及现在刚出的pyside6是官方支持的,以后兼容性以及生态会更好,因此这次直接选择用pyside2去搭建这个程序</p>
+<h2 id="开发工具">开发工具</h2>
+<ul>
+<li>pycharm</li>
+<li>qt-designer</li>
+</ul>
+<h2 id="配置pycharm">配置pycharm</h2>
+<p><a
+  href="https://www.cnblogs.com/agent/archive/2019/05/28/10816913.html"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+><font color="red">参考博客</font></a>
+配置成功后,在External tools中会有三个工具,依次为打开designer,ui文件转换为py文件,以及资源转换工具
+在开发的第一个程序中,我们直接使用ui文件并且没有额外的资源调用,因此只会用到designer</p>
+<h1 id="界面设计">界面设计</h1>
+<p>qt-designer步骤</p>
+<ol>
+<li>直接创建widget即可</li>
+<li>然后多选控件,进行布局(套娃)操作</li>
+<li>通过选择工具栏的信号/槽选项,然后拖拽控件,可以实现自带信号/槽函数的响应实现</li>
+<li>保存文件,放入程序的根目录下</li>
+</ol>
+<p>在本程序中,信号/槽函数都在程序的脚本文件中定义,没有在ui文件中指定</p>
+<h1 id="程序脚本框架">程序脚本框架</h1>
+<h1 id="import部分">import部分</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QSystemTrayIcon</span><span class="p">,</span> <span class="n">QMenu</span><span class="p">,</span> <span class="n">QAction</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PySide2.QtUiTools</span> <span class="kn">import</span> <span class="n">QUiLoader</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Qt</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PySide2.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">monitorcontrol</span> <span class="kn">import</span> <span class="n">get_monitors</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于import部分,要使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">...</span> <span class="kn">import</span> <span class="o">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样可以减少程序生成时,所依赖的包,大幅度减少程序打包后的大小</p>
+<h1 id="窗口类">窗口类</h1>
+<p><a
+  href="https://www.bilibili.com/video/BV1cJ411R7bP"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+><font color="red">参考B站视频</font></a>
+在脚本中,可以将一个窗口看作是一个类
+通过类中的构造函数,初始化窗口中的参数以及绑定事件(信号/槽函数)</p>
+<ol>
+<li>引入ui文件</li>
+<li>初始化ui中参数</li>
+<li>绑定ui界面的事件(信号/槽函数)</li>
+<li>槽函数定义</li>
+</ol>
+<h2 id="引入ui绑定事件">引入ui/绑定事件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Stats</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 引入ui文件</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">QUiLoader</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;main_ui.ui&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 获得当前屏幕亮度以及对比度</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">s_contrast</span> <span class="o">=</span> <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_contrast</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="n">s_luminance</span> <span class="o">=</span> <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_luminance</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 初始化划轴位置</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">horizontalSlider</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">s_luminance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">horizontalSlider_2</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">s_contrast</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 初始化显示</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lcdNumber</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">s_luminance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lcdNumber_2</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">s_contrast</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 建立信号量实例(子线程改变主界面,防止画面阻塞)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">global_ms</span> <span class="o">=</span> <span class="n">MySignals</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 绑定事件</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">pushButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minimize_totray</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">horizontalSlider</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_shit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">horizontalSlider_2</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_shit</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">global_ms</span><span class="o">.</span><span class="n">main_signal</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">main_thread</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="槽函数定义">槽函数定义</h2>
+<p>其实就是事件的响应函数,需要注意的是,在信号的绑定中,如果需要传递参数,那么需要添加&quot;lambda&quot;关键字,具体原理还不知道,先暂时这样记吧</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">horizontalSlider_2</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_shit</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>函数完整定义</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">main_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">global</span> <span class="n">last_time</span>
+</span></span><span class="line"><span class="cl">        <span class="n">now_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">global</span> <span class="n">global_monitor</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">now_time</span><span class="o">-</span><span class="n">last_time</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lcdNumber</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">with</span> <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_luminance</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">last_time</span> <span class="o">=</span> <span class="n">now_time</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lcdNumber_2</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">with</span> <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_contrast</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">last_time</span> <span class="o">=</span> <span class="n">now_time</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">pass</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="画面阻塞处理子线程">画面阻塞处理(子线程)</h2>
+<p><a
+  href="http://www.python3.vip/tut/py/gui/qt_08/"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+><font color="red">参考博客</font></a>
+如果在脚本中,需要进行函数操作,之后更新到ui上,但是函数操作需要较长的时间,那么就会出现画面阻塞的情况,即此时画面卡死,去等待函数操作完成,这个情况在gui开发中,会经常出现,最好的解决方式就是调用子线程,而在子线程中更新ui,需要用到python的signal机制</p>
+<ol>
+<li>
+<p>首先需要创建一个signal类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MySignals</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main_signal</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>然后再主窗口类实例化,并绑定</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">global_ms</span> <span class="o">=</span> <span class="n">MySignals</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">global_ms</span><span class="o">.</span><span class="n">main_signal</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">main_thread</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>定义处理函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main_thread</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># command...  </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>将ui上的动作与信号绑定</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">update_shit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shit</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">     <span class="k">def</span> <span class="nf">threadFunc</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">         <span class="k">if</span> <span class="n">shit</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">horizontalSlider</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">             <span class="bp">self</span><span class="o">.</span><span class="n">global_ms</span><span class="o">.</span><span class="n">main_signal</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">horizontalSlider_2</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">             <span class="bp">self</span><span class="o">.</span><span class="n">global_ms</span><span class="o">.</span><span class="n">main_signal</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">new_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">threadFunc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>   
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中emit,就是发送信号值</p>
+</li>
+</ol>
+<p><strong>emit信号发送到&quot;global_ms&quot;实例对象,然后&quot;global_ms&quot;去调用绑定的&quot;main_thread&quot;函数,最后完成了子线程调用主线程函数,从而不会发生主线程等待</strong></p>
+<h1 id="托盘实现">托盘实现</h1>
+<h2 id="构造函数">构造函数</h2>
+<p>如果想将程序隐藏至托盘,那么需要新定义一个托盘类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TrayIcon</span><span class="p">(</span><span class="n">QSystemTrayIcon</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">MainWindow</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">TrayIcon</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">MainWindow</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">createMenu</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>构造函数传参为主窗口类的实例化对象</p>
+<h2 id="创建托盘右键菜单">创建托盘右键菜单</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">createMenu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span> <span class="o">=</span> <span class="n">QMenu</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">showAction1</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&#34;打开&#34;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">show_window</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">showAction2</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&#34;夜晚模式&#34;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">open_night</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">showAction3</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&#34;白天模式&#34;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">open_light</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">quitAction</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="s2">&#34;退出&#34;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">triggered</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quitapp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 托盘增加选项</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showAction1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showAction2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">showAction3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quitAction</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">setContextMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 设置图标</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">setIcon</span><span class="p">(</span><span class="n">QIcon</span><span class="p">(</span><span class="s2">&#34;star.png&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">icon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MessageIcon</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 把鼠标点击图标的信号和槽连接</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">activated</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">onIconClicked</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="定义菜单绑定事件">定义菜单绑定事件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">open_night</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 系统提示弹窗</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="s2">&#34;Message&#34;</span><span class="p">,</span> <span class="s2">&#34;已开启夜晚模式&#34;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">icon</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 实现过程(调节亮度,更新ui界面数值)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">global_monitor</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_contrast</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">global_monitor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_luminance</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">horizontalSlider</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">horizontalSlider_2</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lcdNumber</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lcdNumber_2</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="隐藏至托盘">隐藏至托盘</h2>
+<p>在<strong>主窗口函数</strong>的事件中定义</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">minimize_totray</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">SplashScreen</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">FramelessWindowHint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">showMinimized</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="点击托盘显示窗口退出程序">点击托盘显示窗口/退出程序</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">show_window</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 若是最小化，则先正常显示窗口，再变为活动窗口（暂时显示在最前面）</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">showNormal</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">activateWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Window</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">quitapp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">QApplication</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="定义点击托盘图标事件">定义点击托盘图标事件</h2>
+<p>鼠标点击icon传递的信号会带有一个整形的值</p>
+<ol>
+<li>表示单击右键</li>
+<li>双击</li>
+<li>单击左键</li>
+<li>用鼠标中键点击</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">onIconClicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">reason</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">reason</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># self.showMessage(&#34;Message&#34;, &#34;skr at here&#34;, self.icon)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">isMinimized</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">isVisible</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 若是最小化，则先正常显示窗口，再变为活动窗口（暂时显示在最前面）</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">showNormal</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">activateWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Window</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 若不是最小化，则最小化</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">showMinimized</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">SplashScreen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="测试当前窗口">测试当前窗口</h1>
+<p>适合于测试当前窗口程序,在完成测试之后应该删去或注释</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>  <span class="c1"># 用于当前窗体测试</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">([])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">setWindowIcon</span><span class="p">(</span><span class="n">QIcon</span><span class="p">(</span><span class="s1">&#39;star.png&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#实例化主程序</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stats</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stats</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 实例化托盘程序</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ti</span> <span class="o">=</span> <span class="n">TrayIcon</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">ui</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ti</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="窗口与运行的分离">窗口与运行的分离</h1>
+<p>新创建一个&quot;main_run.py&quot;文件,将所有窗口类在该文件中import
+然后控制窗口调用,而不是将所有窗口写在一个文件中
+(由于Demo只有一个窗口吗,所以看起来没啥区别&hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PySide2.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">main_script</span> <span class="kn">import</span> <span class="n">Stats</span><span class="p">,</span> <span class="n">TrayIcon</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">([])</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">setWindowIcon</span><span class="p">(</span><span class="n">QIcon</span><span class="p">(</span><span class="s1">&#39;star.png&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 实例化主程序</span>
+</span></span><span class="line"><span class="cl"><span class="n">stats</span> <span class="o">=</span> <span class="n">Stats</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">stats</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 实例化托盘程序</span>
+</span></span><span class="line"><span class="cl"><span class="n">ti</span> <span class="o">=</span> <span class="n">TrayIcon</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">ui</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ti</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样第一个Demo就完成啦
+Python太强啦,没想到开发GUI这么简单!!!好快乐</p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2021-02-08&#32;17:40:00>更新于 2021-02-08</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Pyside/">Pyside</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/win-9/" class="prev" rel="prev" title="跨平台同步书签"><i class="fas fa-angle-left fa-fw"></i>跨平台同步书签</a>
+      <a href="/posts/qt-2/" class="next" rel="next" title="Pyside2程序打包">Pyside2程序打包<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>SSM初识 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="SSM初识 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-05-07T10:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-05-07T10:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="SSM初识">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/ssm-1/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">SSM初识</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月7日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>突然准备接一个项目的运维了&hellip;技术栈是SSM<!-- raw HTML omitted -->
+五一这几天一直在搬家,今天开始搞吧<!-- raw HTML omitted -->
+Java学学学</p>
+<h1 id="idea设置">IDEA设置</h1>
+<h2 id="设置ide编码方式">设置IDE编码方式</h2>
+<!-- raw HTML omitted -->
+<h2 id="显示行号和空格">显示行号和空格</h2>
+<!-- raw HTML omitted -->
+<h2 id="设置最大空行数量">设置最大空行数量</h2>
+<!-- raw HTML omitted -->
+<h2 id="添加main函数快捷键">添加main函数快捷键</h2>
+<p>psvm</p>
+<h2 id="调试过程快捷键">调试过程快捷键</h2>
+<p>f7逐条执行,进入方法中的方法内部</p>
+<p>f8逐条执行,跳过方法中方法</p>
+<p>f9直接运行到下一个断点</p>
+<h2 id="idea开启时不打开上一次的项目">IDEA开启时不打开上一次的项目</h2>
+<!-- raw HTML omitted -->
+<h2 id="添加第三方插件">添加第三方插件</h2>
+<p>WEB-INF下增加文件夹lib</p>
+<p>将jar包添加到lib文件夹下</p>
+<!-- raw HTML omitted -->
+<h2 id="配置生效">配置生效</h2>
+<!-- raw HTML omitted -->
+<h2 id="创建servlet">创建Servlet</h2>
+<h3 id="配置idea">配置IDEA</h3>
+<p>点击项目中iml类型的文件</p>
+<p>增加代码</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#000080">&lt;sourceRoots&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000080">&lt;root</span> <span style="color:#008080">url=</span><span style="color:#d14">&#34;file://$MODULE_DIR$/src&#34;</span> <span style="color:#000080">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000080">&lt;root</span> <span style="color:#008080">url=</span><span style="color:#d14">&#34;file://$MODULE_DIR$/src/main/java&#34;</span> <span style="color:#000080">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080">&lt;/sourceRoots&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><!-- raw HTML omitted -->
+<h3 id="新建servlet">新建Servlet</h3>
+<!-- raw HTML omitted -->
+<h3 id="添加tomcat依赖">添加Tomcat依赖</h3>
+<!-- raw HTML omitted -->
+<h3 id="编写返回报文">编写返回报文</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">HelloServlet</span> <span style="color:#000;font-weight:bold">extends</span> HttpServlet <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">protected</span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">doGet</span><span style="color:#000;font-weight:bold">(</span>HttpServletRequest request<span style="color:#000;font-weight:bold">,</span> HttpServletResponse response<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">throws</span> ServletException<span style="color:#000;font-weight:bold">,</span> IOException <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        doPost<span style="color:#000;font-weight:bold">(</span>request<span style="color:#000;font-weight:bold">,</span> response<span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">protected</span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">doPost</span><span style="color:#000;font-weight:bold">(</span>HttpServletRequest request<span style="color:#000;font-weight:bold">,</span> HttpServletResponse response<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">throws</span> ServletException<span style="color:#000;font-weight:bold">,</span> IOException <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        response<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getWriter</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">write</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;hello,tronwei&#34;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="插件运行tomcat">插件运行Tomcat</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#000080">&lt;plugins&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#000080">&lt;plugin&gt;</span>
+</span></span><span style="display:flex;"><span>    	<span style="color:#000080">&lt;groupId&gt;</span>org.apache.tomcat.maven<span style="color:#000080">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080">&lt;artifactId&gt;</span>tomcat7-maven-plugin<span style="color:#000080">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080">&lt;version&gt;</span>2.2<span style="color:#000080">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>        	<span style="color:#000080">&lt;port&gt;</span>9990<span style="color:#000080">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000080">&lt;path&gt;</span>/<span style="color:#000080">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000080">&lt;/configuration&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000080">&lt;/plugin&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000080">&lt;/plugins&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以选择执行命令运行tomcat</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tomcat7:run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="创建聚合工程">创建聚合工程</h2>
+<p>电商系统,其中有<code>聚合后台子模块</code>和<code>聚合前台子模块</code></p>
+<p>前后台系统中都有<code>dao</code>,<code>service</code>,<code>web</code>三层结构</p>
+<h1 id="spring-mvc框架">Spring mvc框架</h1>
+<!-- raw HTML omitted -->
+<p>M是Model（中文名称是数据模型），一般是实体类，可以被多个视图共用；V是View（中文名称是视图），可以是JSP、ASP等动态页面；C是Controller（中文名称是控制器），用于接收视图发起的请求或返回已处理的内容到视图。程序员要使用MVC开发Web应用程序，就必须遵守MVC规定的设计模式。</p>
+<p>视图就是JSP页面，JSP页面发送请求到Controll类，也就是MVC的控制器，Controll类收到视图发出的请求后，会对请求进行分发，并调用相关的业务类对请求进行处理；POJO类（实体类，也就是MVC的数据模型）是业务类要处理的数据对象，处理的数据对象可以由控制器返回到视图。</p>
+<h1 id="ssm框架概念">SSM框架概念</h1>
+<p>SSM是三个开发框架的集成，第一个字母S是指Spring开发框架，第二个字母S是指Spring  MVC开发框架，第三个字母M是指Mybatis数据库开发框架。实际上Spring  MVC是Spring框架的扩展，是属于Spring框架的一部分，因此应该是两个开发框架的集成。SSM现在已经成为主流的Web应用程序开发框架</p>
+<h1 id="spring-boot">Spring Boot</h1>
+<!-- raw HTML omitted -->
+<h1 id="tomcat">Tomcat</h1>
+<h2 id="文件的结构目录">文件的结构目录</h2>
+<!-- raw HTML omitted -->
+<h2 id="应用部署目录">应用部署目录</h2>
+<!-- raw HTML omitted -->
+<h2 id="框架机制">框架机制</h2>
+<!-- raw HTML omitted -->
+<h2 id="原理">原理：</h2>
+<p>Tomcat主要组件</p>
+<ul>
+<li>
+<p>服务器Server</p>
+</li>
+<li>
+<p>服务Service</p>
+</li>
+<li>
+<p>连接器Connector</p>
+</li>
+<li>
+<p>容器Container</p>
+</li>
+</ul>
+<p><strong>连接器Connector和容器Container是Tomcat的核心</strong></p>
+<p>一个Container容器和一个或多个Connector组合在一起，加上其他一些支持的组件共同组成一个Service服务，有了Service服务便可以对外提供能力了，但是Service服务的生存需要一个环境，这个环境便是Server，Server组件为Service服务的正常使用提供了生存环境，Server组件可以同时管理一个或多个Service服务</p>
+<h2 id="两大组件">两大组件：</h2>
+<h3 id="connector">Connector</h3>
+<p>一个Connecter将在某个指定的端口上侦听客户请求，接收浏览器的发过来的 tcp 连接请求，创建一个 Request 和 Response 对象分别用于和请求端交换数据，然后会产生一个线程来处理这个请求并把产生的  Request 和 Response  对象传给处理Engine(Container中的一部分)，从Engine出获得响应并返回客户。 Tomcat中有两个经典的Connector，一个直接侦听来自Browser的HTTP请求，另外一个来自其他的WebServer请求</p>
+<p>HTTP/1.1 Connector在端口8080处侦听来自客户Browser的HTTP请求，AJP/1.3 Connector在端口8009处侦听其他Web  Server（其他的HTTP服务器）的Servlet/JSP请求。</p>
+<p><strong>Connector 最重要的功能就是接收连接请求然后分配线程让  Container 来处理这个请求，所以这必然是多线程的，多线程的处理是 Connector 设计的核心</strong></p>
+<h3 id="container">Container</h3>
+<p>Container是容器的父接口，该容器的设计用的是典型的责任链的设计模式，它由四个自容器组件构成，分别是Engine、Host、Context、Wrapper。这四个组件是负责关系，存在包含关系。通常一个Servlet  class对应一个Wrapper，如果有多个Servlet定义多个Wrapper，如果有多个Wrapper就要定义一个更高的Container，如Context。</p>
+<p>Context 还可以定义在父容器 Host 中，Host 不是必须的，但是要运行 war 程序，就必须要 Host，因为 war 中必有 web.xml  文件，这个文件的解析就需要 Host 了，如果要有多个 Host 就要定义一个 top 容器 Engine 了。而 Engine  没有父容器了，一个 Engine 代表一个完整的 Servlet 引擎。</p>
+<ul>
+<li>Engine 容器 Engine 容器比较简单，它只定义了一些基本的关联关系</li>
+<li>Host 容器 Host 是 Engine 的子容器，一个 Host 在 Engine  中代表一个虚拟主机，这个虚拟主机的作用就是运行多个应用，它负责安装和展开这些应用，并且标识这个应用以便能够区分它们。它的子容器通常是  Context，它除了关联子容器外，还有就是保存一个主机应该有的信息。</li>
+<li>Context 容器 Context 代表  Servlet 的 Context，它具备了 Servlet 运行的基本环境，理论上只要有 Context 就能运行 Servlet 了。简单的 Tomcat 可以没有 Engine 和 Host。Context 最重要的功能就是管理它里面的 Servlet 实例，Servlet 实例在 Context 中是以 Wrapper 出现的，还有一点就是 Context 如何才能找到正确的 Servlet 来执行它呢？ Tomcat5 以前是通过一个 Mapper 类来管理的，Tomcat5 以后这个功能被移到了 request  中，在前面的时序图中就可以发现获取子容器都是通过 request 来分配的。</li>
+<li>Wrapper 容器 Wrapper 代表一个  Servlet，它负责管理一个 Servlet，包括的 Servlet 的装载、初始化、执行以及资源回收。Wrapper  是最底层的容器，它没有子容器了，所以调用它的 addChild 将会报错。 Wrapper 的实现类是  StandardWrapper，StandardWrapper 还实现了拥有一个 Servlet 初始化信息的  ServletConfig，由此看出 StandardWrapper 将直接和 Servlet 的各种信息打交道。</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>Catalina负责管理Server,而server表示整个服务器,server下面有多个服务service,每个服务都包含多个连接器组件conductor和一个容器组件container</p>
+<p>一个连接器组件主要包含着一个connector和多个processor,connector负责监听客户请求,然后交给processor来寻找container处理</p>
+<p>和连接器关联的容器一般指的是Engine,Host,Context,Wrapper也都是容器,这里是层层嵌套的关系,最底层的Wrapper包裹着Servlet,最后请求都会传递到Servlet来执行</p>
+<p>在Tomcat启动的时候,会初始化一个Catalina实例</p>
+<p>Catalina负责的是解析Tomcat的配置文件,以此来创建服务器server组件,并根据命令对其进行管理</p>
+<p>Server服务器表示整个Catalina Servlet容器以及其他组件,负责组装并启动Servlet引擎,Tomcat连接器,server通过实现lifecycle接口,提供了一种优雅的启动和关闭整个系统的方式</p>
+<p>service服务是server内部的组件,一个server包含多个service,他将若干个connector组件绑定在一个Container(Engine)上</p>
+<p>Connector连接器,处理与用户端的通信,他负责接收客户请求,然后转向相关的容器进行处理,然后向客户返回相应的结果,连接器包含四个重要的部分</p>
+<ul>
+<li>
+<p>连接器类HttpConnector</p>
+</li>
+<li>
+<p>支撑类HttpProcessor</p>
+</li>
+<li>
+<p>请求类HttpRequest</p>
+</li>
+<li>
+<p>响应类HttpResponse</p>
+</li>
+</ul>
+<p>Container容器负责处理用户的Servlet请求,并返回对象给Web用户的模块</p>
+<p>Tomcat中定义了四种容器</p>
+<ol>
+<li>Engine表示整个Catalina的servlet引擎,一个引擎包含若干个Host</li>
+<li>Host表示一个虚拟主机,一个主机包含若干个Context</li>
+<li>Context表示一个Web应用,一个上下文包含若干个Wrapper</li>
+<li>Wrapper表示一个独立的servlet,包装器作为容器的最底层,不能包含子容器</li>
+</ol>
+<h1 id="servlet">Servlet</h1>
+<h2 id="基本概念">基本概念</h2>
+<p>处理请求和发送响应的过程是由一种叫做Servlet的程序来完成的，并且Servlet是为了解决实现动态页面而衍生的东西。理解这个的前提是了解一些http协议的东西，并且知道B/S模式(浏览器/服务器)。</p>
+<p>B/S:浏览器/服务器。 浏览器通过网址来访问服务器，比如访问百度，在浏览器中输入www.baidu.com，这个时候浏览器就会显示百度的首页</p>
+<!-- raw HTML omitted -->
+<h2 id="tomcat和servlet的关系">tomcat和servlet的关系</h2>
+<p>Tomcat 是Web应用服务器,是一个Servlet/JSP容器. Tomcat 作为Servlet容器,负责处理客户请求,把请求传送给Servlet,并将Servlet的响应传送回给客户.而Servlet是一种运行在支持Java语言的服务器上的组件. Servlet最常见的用途是扩展Java Web服务器功能,提供非常安全的,可移植的,易于使用的CGI替代品.</p>
+<p>从http协议中的请求和响应可以得知，浏览器发出的请求是一个请求文本，而浏览器接收到的也应该是一个响应文本。但是在上面这个图中，并不知道是如何转变的，只知道浏览器发送过来的请求也就是request，我们响应回去的就用response。忽略了其中的细节，现在就来探究一下。</p>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>Tomcat将http请求文本接收并解析，然后封装成HttpServletRequest类型的request对象，所有的HTTP头数据读可以通过request对象调用对应的方法查询到。</p>
+</li>
+<li>
+<p>Tomcat同时会要响应的信息封装为HttpServletResponse类型的response对象，通过设置response属性就可以控制要输出到浏览器的内容，然后将response交给tomcat，tomcat就会将其变成响应文本的格式发送给浏览器</p>
+</li>
+</ul>
+<p>Java Servlet API  是Servlet容器(tomcat)和servlet之间的接口，它定义了serlvet的各种方法，还定义了Servlet容器传送给Servlet的对象类，其中最重要的就是ServletRequest和ServletResponse。所以说我们在编写servlet时，需要实现Servlet接口，按照其规范进行操作。</p>
+        </div>
+
+        
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/java'>Java</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

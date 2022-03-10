@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>FastAPI服务器部署 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/FastAPI%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/</link>
+    <description>FastAPI服务器部署 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Tue, 08 Feb 2022 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/FastAPI%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" rel="self" type="application/rss+xml" /><item>
+  <title>Centos部署Fastapi</title>
+  <link>http://example.org/posts/fastapi-4/</link>
+  <pubDate>Tue, 08 Feb 2022 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/fastapi-4/</guid>
+  <description><![CDATA[<p>Centos + gunicorn + Supervisor 部署 Fastapi</p>]]></description>
+</item></channel>
+</rss>

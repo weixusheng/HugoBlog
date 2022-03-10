@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>C常用库函数整理 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="史上最全" />
+<meta name="keywords" content="C-语法基础" /><meta itemprop="name" content="C常用库函数整理">
+<meta itemprop="description" content="史上最全"><meta itemprop="datePublished" content="2020-05-15T20:40:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-15T20:40:00+00:00" />
+<meta itemprop="wordCount" content="2822"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="C-语法基础," /><meta property="og:title" content="C常用库函数整理" />
+<meta property="og:description" content="史上最全" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/C-9/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-15T20:40:00+00:00" />
+<meta property="article:modified_time" content="2020-05-15T20:40:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="C常用库函数整理"/>
+<meta name="twitter:description" content="史上最全"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/C-9/" /><link rel="prev" href="http://example.org/posts/C-8/" /><link rel="next" href="http://example.org/posts/leetcode-7/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "C常用库函数整理",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/C-9\/"
+    },"genre": "posts","keywords": "C-语法基础","wordcount":  2822 ,
+    "url": "http:\/\/example.org\/posts\/C-9\/","datePublished": "2020-05-15T20:40:00+00:00","dateModified": "2020-05-15T20:40:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">C常用库函数整理</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/C%E8%AF%AD%E8%A8%80/"><i class="far fa-folder fa-fw"></i>C语言</a></span></div>
+      <div class="post-meta-line"><span title=2020-05-15&#32;20:40:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-15" >2020-05-15</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2822 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#标准库stdlibh">标准库&lt;stdlib.h&gt;</a>
+      <ul>
+        <li><a href="#calloc">calloc</a></li>
+        <li><a href="#free">free</a></li>
+        <li><a href="#malloc">malloc</a></li>
+        <li><a href="#realloc">realloc</a></li>
+        <li><a href="#rand">rand</a></li>
+        <li><a href="#exit">exit</a></li>
+      </ul>
+    </li>
+    <li><a href="#字符串库stringh">字符串库&lt;string.h&gt;</a>
+      <ul>
+        <li><a href="#字符串操作">字符串操作</a>
+          <ul>
+            <li><a href="#strcat">strcat</a></li>
+            <li><a href="#strchr">strchr</a></li>
+            <li><a href="#strcmp">strcmp</a></li>
+            <li><a href="#strcpy">strcpy</a></li>
+            <li><a href="#strlen">strlen</a></li>
+            <li><a href="#strstr">strstr</a></li>
+          </ul>
+        </li>
+        <li><a href="#存储区操作">存储区操作</a>
+          <ul>
+            <li><a href="#memset">memset</a></li>
+            <li><a href="#memcpy">memcpy</a></li>
+            <li><a href="#memcmp">memcmp</a></li>
+            <li><a href="#memmove">memmove</a></li>
+            <li><a href="#memchr">memchr</a></li>
+          </ul>
+        </li>
+        <li><a href="#memcmp与strcmp的区别">memcmp与strcmp的区别</a>
+          <ul>
+            <li><a href="#memcmp原型">memcmp原型</a></li>
+            <li><a href="#区别">区别</a></li>
+          </ul>
+        </li>
+        <li><a href="#strcpy和memcpy的区别">strcpy和memcpy的区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#输入输出函数stdioh">输入输出函数&lt;stdio.h&gt;</a>
+      <ul>
+        <li><a href="#文件操作">文件操作</a>
+          <ul>
+            <li><a href="#fopen">fopen</a></li>
+            <li><a href="#fclose">fclose</a></li>
+            <li><a href="#feof">feof</a></li>
+            <li><a href="#clearer">clearer</a></li>
+            <li><a href="#rename">rename</a></li>
+          </ul>
+        </li>
+        <li><a href="#get">GET</a>
+          <ul>
+            <li><a href="#getc">getc</a></li>
+            <li><a href="#fgetc">fgetc</a></li>
+            <li><a href="#fgets">fgets</a></li>
+            <li><a href="#getchar">getchar</a></li>
+            <li><a href="#gets">gets</a></li>
+          </ul>
+        </li>
+        <li><a href="#put">PUT</a>
+          <ul>
+            <li><a href="#putc">putc</a></li>
+            <li><a href="#fputc">fputc</a></li>
+            <li><a href="#fputs">fputs</a></li>
+            <li><a href="#putchar">putchar</a></li>
+            <li><a href="#puts">puts</a></li>
+          </ul>
+        </li>
+        <li><a href="#输入">输入</a>
+          <ul>
+            <li><a href="#scanf">scanf</a></li>
+            <li><a href="#fscanf">fscanf</a></li>
+          </ul>
+        </li>
+        <li><a href="#输出">输出</a>
+          <ul>
+            <li><a href="#printf">printf</a></li>
+            <li><a href="#fprintf">fprintf</a></li>
+          </ul>
+        </li>
+        <li><a href="#文件读写">文件读写</a>
+          <ul>
+            <li><a href="#fread">fread</a></li>
+            <li><a href="#fwrite">fwrite</a></li>
+          </ul>
+        </li>
+        <li><a href="#文件指针操作">文件指针操作</a>
+          <ul>
+            <li><a href="#fseek">fseek</a></li>
+            <li><a href="#ftell">ftell</a></li>
+            <li><a href="#rewind">rewind</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>史上最全</p>
+<h1 id="标准库stdlibh">标准库&lt;stdlib.h&gt;</h1>
+<h2 id="calloc">calloc</h2>
+<p>void *calloc(unsigned n,unsigned size)</p>
+<ul>
+<li>功能:分配n个数据项的内存空间，每个数据项的大小为size个字节</li>
+<li>返回:分配内存单元的起始地址；如不成功，返回0</li>
+</ul>
+<h2 id="free">free</h2>
+<p>void *free(void *p)</p>
+<ul>
+<li>功能:释放p所指的内存区</li>
+<li>返回:无</li>
+</ul>
+<h2 id="malloc">malloc</h2>
+<p>void *malloc(unsigned size)</p>
+<ul>
+<li>功能:分配size个字节的存储空间</li>
+<li>返回:分配内存空间的地址；如不成功，返回0</li>
+</ul>
+<h2 id="realloc">realloc</h2>
+<p>void *realloc(void *p,unsigned size)</p>
+<ul>
+<li>功能:把p所指内存区的大小改为size个字节</li>
+<li>返回:新分配内存空间的地址；如不成功，返回0</li>
+</ul>
+<h2 id="rand">rand</h2>
+<p>int rand(void)</p>
+<ul>
+<li>功能:产生0～32767的随机整数</li>
+<li>返回:返回一个随机整数</li>
+</ul>
+<h2 id="exit">exit</h2>
+<p>void exit(int state)</p>
+<ul>
+<li>功能:程序终止执行，返回调用过程，state为0正常终止，非0非正常终止</li>
+<li>返回:无</li>
+</ul>
+<h1 id="字符串库stringh">字符串库&lt;string.h&gt;</h1>
+<h2 id="字符串操作">字符串操作</h2>
+<h3 id="strcat">strcat</h3>
+<p>char *strcat(char *s1,char *s2)</p>
+<ul>
+<li>功能:把字符串s2接到s1后面</li>
+<li>返回:s1所指地址</li>
+</ul>
+<h3 id="strchr">strchr</h3>
+<p>char *strchr(char *s,int ch)</p>
+<ul>
+<li>功能:在s所指字符串中，找出第一次出现字符ch的位置</li>
+<li>返回:返回找到的字符的地址，找不到返回NULL</li>
+</ul>
+<h3 id="strcmp">strcmp</h3>
+<p>int strcmp(char *s1,char *s2)</p>
+<ul>
+<li>功能:对s1和s2所指字符串进行比较</li>
+<li>返回:s1小于s2,返回负数；s1相等s2,返回0；s1大于s2,返回正数</li>
+</ul>
+<h3 id="strcpy">strcpy</h3>
+<p>char *strcpy(char *s1,char *s2)</p>
+<ul>
+<li>功能:把s2指向的串复制到s1指向的空间</li>
+<li>返回:s1 所指地址</li>
+</ul>
+<h3 id="strlen">strlen</h3>
+<p>unsigned strlen(char *s)</p>
+<ul>
+<li>功能:求字符串s的长度</li>
+<li>返回:返回串中字符（不计最后的&rsquo;\0&rsquo;）个数</li>
+</ul>
+<h3 id="strstr">strstr</h3>
+<p>char *strstr(char *s1,char *s2)</p>
+<ul>
+<li>功能:在s1所指字符串中，找出字符串s2第一次出现的位置</li>
+<li>返回:返回找到的字符串的地址，找不到返回NULL</li>
+</ul>
+<h2 id="存储区操作">存储区操作</h2>
+<p>参数s的类型是(void *)，cs和ct的类型是(const void *)，n的类型是size_t，c的类型是int（转换为unsigned char）。</p>
+<h3 id="memset">memset</h3>
+<p>void *memset(s,c,n)
+将s的前n个字符设置为c，返回s</p>
+<h3 id="memcpy">memcpy</h3>
+<p>void *memcpy(s,ct,n)
+从ct处复制n个字符到s处，返回s</p>
+<h3 id="memcmp">memcmp</h3>
+<p>int memcmp(cs,ct,n)
+比较由cs和ct开始的n个字符，返回值定义同strcmp</p>
+<h3 id="memmove">memmove</h3>
+<p>void *memmove(s,ct,n)
+从ct处复制n个字符到s处，返回s，这里的两个段允许重叠</p>
+<h3 id="memchr">memchr</h3>
+<p>void *memchr(cs,c,n)
+在n个字符的范围内查寻c在cs中的第一次出现，如果找到，返回该位置的指针值，否则返回NULL</p>
+<h2 id="memcmp与strcmp的区别">memcmp与strcmp的区别</h2>
+<h3 id="memcmp原型">memcmp原型</h3>
+<p>int memcmp(const void *buf1, const void *buf2, unsigned int count);</p>
+<ul>
+<li>功能:比较内存区域buf1和buf2的前count个字节。</li>
+<li>返回值
+<ol>
+<li>当buf1 &lt; buf2时，返回值&lt;0</li>
+<li>当buf1==buf2时，返回值=0</li>
+<li>当buf1 &gt; buf2时，返回值&gt;0</li>
+</ol>
+</li>
+<li>说明
+该函数是按字节比较的。</li>
+<li>举例:
+s1,s2为字符串时候memcmp(s1,s2,1)就是比较s1和s2的第一个字节的ascII码值；
+memcmp(s1,s2,n)就是比较s1和s2的前n个字节的ascII码值；
+如:char *s1=&ldquo;abc&rdquo;;
+char *s2=&ldquo;acd&rdquo;;
+int r=memcmp(s1,s2,3);
+就是比较s1和s2的前3个字节，第一个字节相等，第二个字节比较中大小已经确定，不必继续比较第三字节了。所以r=-1</li>
+</ul>
+<h3 id="区别">区别</h3>
+<ul>
+<li>对于memcmp()，如果两个字符串相同而且count大于字符串长度的话，memcmp不会在\0处停下来，会继续比较\0后面的内存单元，直到_res不为零或者达到count次数。</li>
+<li>对于strncmp()，由于((__res = *cs - *ct++) != 0 || !*cs++)的存在，比较必定会在最短的字符串的末尾停下来，即使count还未为零。</li>
+<li>具体的例子：   <br>
+char a1[]=&ldquo;ABCD&rdquo;;<br>
+char a2[]=&ldquo;ABCD&rdquo;;    <br>
+对于memcmp(a1,a2,10)，memcmp在两个字符串的\0之后继续比较<br>
+对于strncmp(a1,a2,10），strncmp在两个字符串的末尾停下，不再继续比较。    <br>
+所以，如果想<strong>使用memcmp比较字符串，要保证count不能超过最短字符串的长度</strong>，否则结果有可能是错误的。</li>
+</ul>
+<h2 id="strcpy和memcpy的区别">strcpy和memcpy的区别</h2>
+<ol>
+<li>复制的内容不同。strcpy只能复制字符串，而memcpy可以复制任意内容，例如字符数组、整型、结构体、类等。</li>
+<li>复制的方法不同。strcpy不需要指定长度，它遇到被复制字符的串结束符&quot;\0&quot;才结束，所以容易溢出。memcpy则是根据其第3个参数决定复制的长度。</li>
+<li>用途不同。通常在复制字符串时用strcpy，而需要复制其他类型数据时则一般用memcpy</li>
+</ol>
+<h1 id="输入输出函数stdioh">输入输出函数&lt;stdio.h&gt;</h1>
+<h2 id="文件操作">文件操作</h2>
+<h3 id="fopen">fopen</h3>
+<p>FILE *fopen(char *filename,char *mode)</p>
+<ul>
+<li>功能:以mode指定的方式打开名为filename的文件</li>
+<li>返回:成功，返回文件指针（文件信息区的起始地址），否则返回NULL</li>
+</ul>
+<h3 id="fclose">fclose</h3>
+<p>int fclose(FILE *fp)</p>
+<ul>
+<li>功能:关闭fp所指的文件，释放文件缓冲区</li>
+<li>返回:出错返回非0，否则返回0</li>
+</ul>
+<h3 id="feof">feof</h3>
+<p>int feof (FILE *fp)</p>
+<ul>
+<li>功能:检查文件是否结束</li>
+<li>返回:遇文件结束返回非0，否则返回0</li>
+</ul>
+<h3 id="clearer">clearer</h3>
+<p>void clearer(FILE *fp)</p>
+<ul>
+<li>功能:清除与文件指针fp有关的所有出错信息</li>
+<li>返回:无</li>
+</ul>
+<h3 id="rename">rename</h3>
+<p>int rename(char *oldname,char *newname)</p>
+<ul>
+<li>功能:把oldname所指文件名改为newname所指文件名</li>
+<li>返回:成功返回0，出错返回-1</li>
+</ul>
+<h2 id="get">GET</h2>
+<h3 id="getc">getc</h3>
+<p>int getc (FILE *fp)</p>
+<ul>
+<li>功能:从fp所指文件中读取一个字符</li>
+<li>返回:返回所读字符，若出错或文件结束返回EOF</li>
+</ul>
+<h3 id="fgetc">fgetc</h3>
+<p>int fgetc (FILE *fp)</p>
+<ul>
+<li>功能:从fp所指的文件中取得下一个字符</li>
+<li>返回:出错返回EOF，否则返回所读字符</li>
+</ul>
+<h3 id="fgets">fgets</h3>
+<p>char *fgets(char *buff,int n, FILE *fp)</p>
+<ul>
+<li>功能:从fp所指的文件中读取一个长度为n-1的字符串，将其存入buff所指存储区</li>
+<li>返回:返回buf所指地址，若遇文件结束或出错返回NULL</li>
+</ul>
+<h3 id="getchar">getchar</h3>
+<p>int getchar(void)</p>
+<ul>
+<li>功能:从标准输入设备读取下一个字符</li>
+<li>返回:返回所读字符，若出错或文件结束返回-1</li>
+</ul>
+<h3 id="gets">gets</h3>
+<p>char *gets(char *s)</p>
+<ul>
+<li>功能:从标准设备读取一行字符串放入s所指存储区，用’\0’替换读入的换行符</li>
+<li>返回:返回s,出错返回NULL</li>
+</ul>
+<h2 id="put">PUT</h2>
+<h3 id="putc">putc</h3>
+<p>int putc (int ch, FILE *fp)</p>
+<ul>
+<li>功能:同fputc</li>
+<li>返回:同fputc</li>
+</ul>
+<h3 id="fputc">fputc</h3>
+<p>int fputc(char ch, FILE *fp)</p>
+<ul>
+<li>功能:把ch中字符输出到fp指定的文件中</li>
+<li>返回:成功返回该字符，否则返回EOF</li>
+</ul>
+<h3 id="fputs">fputs</h3>
+<p>int fputs(char *str, FILE *fp)</p>
+<ul>
+<li>功能:把str所指字符串输出到fp所指文件</li>
+<li>返回:成功返回非负整数，否则返回-1（EOF）</li>
+</ul>
+<h3 id="putchar">putchar</h3>
+<p>int putchar(char ch)</p>
+<ul>
+<li>功能:把ch输出到标准输出设备</li>
+<li>返回:返回输出的字符，若出错则返回EOF</li>
+</ul>
+<h3 id="puts">puts</h3>
+<p>int puts(char *str)</p>
+<ul>
+<li>功能:把str所指字符串输出到标准设备，将’\0’转成回车换行符</li>
+<li>返回:返回换行符，若出错，返回EOF</li>
+</ul>
+<h2 id="输入">输入</h2>
+<h3 id="scanf">scanf</h3>
+<p>int scanf(char *format,args,…)</p>
+<ul>
+<li>功能:从标准输入设备按format指定的格式把输入数据存入到args,…所指的内存中</li>
+<li>返回:已输入的数据的个数</li>
+</ul>
+<h3 id="fscanf">fscanf</h3>
+<p>int fscanf (FILE *fp, char *format,args,…)</p>
+<ul>
+<li>功能:从fp所指的文件中按format指定的格式把输入数据存入到args,…所指的内存中</li>
+<li>返回:已输入的数据个数，遇文件结束或出错返回0</li>
+</ul>
+<h2 id="输出">输出</h2>
+<h3 id="printf">printf</h3>
+<p>int printf(char *format,args,…)</p>
+<ul>
+<li>功能:把args,…的值以format指定的格式输出到标准输出设备</li>
+<li>返回:输出字符的个数</li>
+</ul>
+<h3 id="fprintf">fprintf</h3>
+<p>int fprintf(FILE *fp, char *format, args,…)</p>
+<ul>
+<li>功能:把args,…的值以format指定的格式输出到fp指定的文件中</li>
+<li>返回:实际输出的字符数</li>
+</ul>
+<h2 id="文件读写">文件读写</h2>
+<h3 id="fread">fread</h3>
+<p>int fread(char *pt,unsigned size,unsigned n, FILE *fp)</p>
+<ul>
+<li>功能:从fp所指文件中读取长度size为n个数据项存到pt所指文件</li>
+<li>返回:读取的数据项个数</li>
+</ul>
+<h3 id="fwrite">fwrite</h3>
+<p>int fwrite(char *pt,unsigned size,unsigned n, FILE *fp)</p>
+<ul>
+<li>功能:把pt所指向的n*size个字节输入到fp所指文件</li>
+<li>返回:输出的数据项个数</li>
+</ul>
+<h2 id="文件指针操作">文件指针操作</h2>
+<h3 id="fseek">fseek</h3>
+<p>int fseek (FILE *fp,long offer,int base)</p>
+<ul>
+<li>功能:移动fp所指文件的位置指针</li>
+<li>返回:成功返回当前位置，否则返回非0</li>
+</ul>
+<h3 id="ftell">ftell</h3>
+<p>long ftell (FILE *fp)</p>
+<ul>
+<li>功能:求出fp所指文件当前的读写位置</li>
+<li>返回:读写位置，出错返回 -1L</li>
+</ul>
+<h3 id="rewind">rewind</h3>
+<p>void rewind(FILE *fp)</p>
+<ul>
+<li>功能:将文件位置指针置于文件开头</li>
+<li>返回:无</li>
+</ul></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-05-15&#32;20:40:00>更新于 2020-05-15</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/C-%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">C-语法基础</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/C-8/" class="prev" rel="prev" title="C语言程序设计 Part-5"><i class="fas fa-angle-left fa-fw"></i>C语言程序设计 Part-5</a>
+      <a href="/posts/leetcode-7/" class="next" rel="next" title="Leetcode Part-7">Leetcode Part-7<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

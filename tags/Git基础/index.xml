@@ -1,0 +1,36 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Git基础 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Git%E5%9F%BA%E7%A1%80/</link>
+    <description>Git基础 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 30 Dec 2021 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Git%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+  <title>推送到Github</title>
+  <link>http://example.org/posts/git-4/</link>
+  <pubDate>Thu, 30 Dec 2021 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/git-4/</guid>
+  <description><![CDATA[<p>讲个笑话,都快2202年了,我还不会推新库&hellip;</p>]]></description>
+</item><item>
+  <title>Git命令-3</title>
+  <link>http://example.org/posts/git-3/</link>
+  <pubDate>Sun, 05 Sep 2021 10:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/git-3/</guid>
+  <description><![CDATA[<p>Git常用命令</p>]]></description>
+</item><item>
+  <title>Git命令-2</title>
+  <link>http://example.org/posts/git-2/</link>
+  <pubDate>Sat, 10 Apr 2021 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/git-2/</guid>
+  <description><![CDATA[<p>Mosh/Git</p>]]></description>
+</item><item>
+  <title>Git命令</title>
+  <link>http://example.org/posts/git-1/</link>
+  <pubDate>Tue, 06 Apr 2021 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/git-1/</guid>
+  <description><![CDATA[<p>Mosh/Git</p>]]></description>
+</item></channel>
+</rss>

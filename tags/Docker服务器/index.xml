@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Docker服务器 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Docker%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+    <description>Docker服务器 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 03 Mar 2022 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Docker%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="self" type="application/rss+xml" /><item>
+  <title>构建前后端服务组</title>
+  <link>http://example.org/posts/docker-8/</link>
+  <pubDate>Thu, 03 Mar 2022 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/docker-8/</guid>
+  <description><![CDATA[<p>构建前后端服务组</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>NEXT Part-2 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="NEXT Part-2 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-06-21T22:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-06-21T22:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="NEXT Part-2">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/hexo-3/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">NEXT Part-2</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月21日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>今天大部分时间在搞数学,所以更的有点少(哭&hellip;)</p>
+<h1 id="404页面">404页面</h1>
+<p>看了很多帖子,最后都不好使,结果在官方文档上找到了&hellip;
+直接将404.html文件放在&quot;next/source&quot;下就行啦</p>
+<h1 id="移动端背景图片模糊">移动端背景图片模糊</h1>
+<p>因为<a href="https://www.w3school.com.cn/cssref/pr_background-attachment.asp">background-attachment</a>属性在移动端上并不好使,所以移动端上的背景图片就糊成了一片
+最后找到了一种妥协的方法,就是将图片进行repeat拼接
+另外还有个知识点<a href="https://www.w3school.com.cn/cssref/selector_before.asp">before标签</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#000080">body</span>:<span style="color:#3c5d5d;font-weight:bold">before</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">top</span>: <span style="color:#099">1</span><span style="color:#458;font-weight:bold">rem</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">left</span>: <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">bottom</span>: <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">right</span>: <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">z-index</span>: <span style="color:#099">-1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000080">body</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">background</span>: <span style="color:#0086b3">url</span>(<span style="color:#d14">https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/Blog_sourse/images/bg-common.jpg</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">background-size</span>: <span style="color:#000;font-weight:bold">cover</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">background-repeat</span>: <span style="color:#000;font-weight:bold">repeat</span>;    <span style="color:#a61717;background-color:#e3d2d2">//拼接</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">background-position</span>: <span style="color:#099">50</span><span style="color:#458;font-weight:bold">%</span> <span style="color:#099">50</span><span style="color:#458;font-weight:bold">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="增加对数学公式的支持">增加对数学公式的支持</h1>
+<h2 id="更换hexo的markdown渲染引擎">更换Hexo的markdown渲染引擎</h2>
+<p>hexo-renderer-kramed引擎是在默认的渲染引擎，hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm uninstall hexo-renderer-marked --save
+</span></span><span style="display:flex;"><span>npm install hexo-renderer-kramed --save
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="修改文件">修改文件</h2>
+<p>为了解决语义冲突,找到文件</p>
+<pre tabindex="0"><code>node_modules\kramed\lib\rules\inline.js
+</code></pre><p>修改如下两处</p>
+<pre tabindex="0"><code>  //escape: /^\\([\\`*{}\[\]()#$+\-.!_&gt;])/,
+  escape: /^\\([`*\[\]()#$+\-.!_&gt;])/,
+
+  //em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+  em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+</code></pre><h2 id="开启mathjax">开启mathJax</h2>
+<p>在next主题中开启mathJax开关</p>
+<pre tabindex="0"><code># Math Formulas Render Support
+math:
+  per_page: true
+  engine: mathjax   
+  mathjax:
+    enable: true    # 这个改为true
+    mhchem: true    # 这个改为true
+</code></pre><h2 id="文章中添加头标签">文章中添加头标签</h2>
+<pre tabindex="0"><code>---
+---title:  Using-Machine-Learning-for-Data-Center-Cooling-Infrastructure-Efficiency-Prediction
+date: 2019-11-28 22:53:32
+tags: [datacenter, machinelearning]
+category: DataCenter
+mathjax: true
+---
+</code></pre><h1 id="fancybox">fancybox</h1>
+<p>进入next主题目录下执行</p>
+<pre tabindex="0"><code>git clone https://github.com/theme-next/theme-next-fancybox3 source/lib/fancybox
+</code></pre><p>然后在主题配置的_config.yml中</p>
+<pre tabindex="0"><code>fancybox: true
+</code></pre>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/hexo-2/">NEXT Part-1</a></li>
+        
+        <li><a href="/post/hexo-1/">腾讯云COS加速静态资源</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/hexo'>HEXO</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

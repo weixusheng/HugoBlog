@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>数据库原理及应用 PART-3 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="数据库原理及应用 PART-3 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-04-20T23:10:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-04-20T23:10:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="数据库原理及应用 PART-3">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/db-3/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">数据库原理及应用 PART-3</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月20日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>Trigger,数据库安全性</p>
+<h2 id="trigger">Trigger</h2>
+<h3 id="定义">定义</h3>
+<ul>
+<li>触发器(trigger)是由数据库更新操作引起的被系统自动执行的语句</li>
+<li>设计触发器必须:
+<ul>
+<li>指明触发器被执行的条件</li>
+<li>指明触发器执行时所做的具体操作
+即可以将触发器看作是函数,在触发条件下被调用</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">trigger</span><span style="color:#bbb"> </span>timeslot_check1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">after</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">insert</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>section<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">referencing</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">new</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">row</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>nrow<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">for</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">each</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">row</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">when</span><span style="color:#bbb"> </span>(<span style="color:#bbb"> </span>nrow.time_slot_id<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">not</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">in</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>(<span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>time_slot_id<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>time_slot<span style="color:#bbb"> </span>))<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">/* time_slot 中不存在该time_slot_id */</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">begin</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">rollback</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span>;<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="触发事件">触发事件</h3>
+<p>包括insert, delete和update</p>
+<ul>
+<li>针对update的触发器可以指定具体修改的属性
+create trigger takes_trigger after update of takes on grade</li>
+<li>更新前后的属性值可通过下列方法被引用</li>
+<li>referencing old row as orow:对删除和修改有效</li>
+<li>referencing new row as nrow:对插入和修改有效</li>
+</ul>
+<h3 id="for-each-statement">for each statement</h3>
+<p>针对受到一个事务影响的所有行只执行一次操作
+for each statement || for each row
+也可以用referencing old table 或 referencing new table 来引用包含受影响的行的临时表</p>
+<h3 id="外部动作">外部动作</h3>
+<p>触发器不能直接实现外部动作, 但是触发器可以在某个表中记录将采取的行动, 而让另一个外部进程不断扫描该表并执行相应的外部动作</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">trigger</span><span style="color:#bbb"> </span>reorder_trigger<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">after</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">update</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">of</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">level</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>inventory<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">referencing</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">old</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">row</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>orow<span style="color:#bbb"> </span>,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">new</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">row</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>nrow<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">for</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">each</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">row</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">when</span><span style="color:#bbb"> </span>nrow.<span style="color:#000;font-weight:bold">level</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>(<span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">level</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>minlevel<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>minlevel.item<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>nrow.item<span style="color:#bbb"> </span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span>orow.<span style="color:#000;font-weight:bold">level</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>(<span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">level</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>minlevel<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>minlevel.item<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>orow.item<span style="color:#bbb"> </span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">begin</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">insert</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">into</span><span style="color:#bbb"> </span>orders<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>(<span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>item<span style="color:#bbb"> </span>,<span style="color:#bbb"> </span>amount<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>reorder<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>reorder.item<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>orow.item<span style="color:#bbb"> </span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>判断数值条件超过临界值 oldrow小于等于临界值 newrow大于临界值</p>
+<h2 id="数据库安全性">数据库安全性</h2>
+<h3 id="授权">授权</h3>
+<ul>
+<li>读权限 – 允许读,但不允许更新数据</li>
+<li>插入权限 – 允许插入新数据, 但不允许更新现有数据</li>
+<li>修改权限 – 允许修改, 但不允许删除数据</li>
+<li>删除权限 – 允许删除数据</li>
+</ul>
+<p><strong>对修改数据库模式的授权包括:</strong></p>
+<ul>
+<li>索引权限 – 允许创建和删除索引</li>
+<li>资源权限 – 允许创建新关系</li>
+<li>修改权限 – 允许增加或删除关系的属性</li>
+<li>删除权限 – 允许删除关系</li>
+</ul>
+<h3 id="视图的巧妙使用-权限管理">视图的巧妙使用-权限管理</h3>
+<ul>
+<li>用户可被授予关于视图的权限, 而不被授予关于该视图定义中涉及的关系的权限</li>
+<li>视图隐藏数据的能力既能简化系统的使用又能增强安全性(只允许用户存取他们工作中需要的数据)</li>
+<li>关系级安全性与视图级安全性的结合使用可精确地将用户存取限制在他所需要的数据上</li>
+</ul>
+<p>例如一个工作人员只需要知道一个给定系(比如Geology系)里所有员工的工资,但无权看到其他系中员工的相关信息</p>
+<ul>
+<li>方法:不允许对 instructor 关系的直接访问,但授予对视图
+geo_instructor 的访问权限,该视图仅由属于Geology系的那些instructor元组构成</li>
+<li>视图 geo_instructor 用SQL定义如下:</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">view</span><span style="color:#bbb"> </span>geo_instructor<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>(<span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>instructor<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>dept_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;Geology&#39;</span>);<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="角色">角色</h3>
+<ul>
+<li>通过创建角色可以一次性对<strong>一类用户</strong>指定其共同的权限</li>
+<li>像对用户一样, 可以对角色授予或收回权限</li>
+<li>角色可被赋予给用户, 甚至给其他角色</li>
+</ul>
+<h4 id="授权-grant">授权 grant</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">role</span><span style="color:#bbb"> </span>instructor<span style="color:#bbb"> </span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">grant</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>takes<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">to</span><span style="color:#bbb"> </span>instructor<span style="color:#bbb"> </span>;<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="收回权限-revoke">收回权限 revoke</h4>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">REVOKE</span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#bbb"> </span>privilege<span style="color:#bbb"> </span>list<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ON</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#bbb"> </span>relation<span style="color:#bbb"> </span>name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">or</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">view</span><span style="color:#bbb"> </span>name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">FROM</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">user</span><span style="color:#bbb"> </span>list<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#bbb"> </span>[<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">restrict</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">|</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">cascade</span><span style="color:#bbb"> </span>]<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">/*例如*/</span><span style="color:#000;font-weight:bold">revoke</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>instructor<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>U<span style="color:#bbb"> </span><span style="color:#099">1</span><span style="color:#bbb"> </span>,U<span style="color:#bbb"> </span><span style="color:#099">2</span><span style="color:#bbb"> </span>,U<span style="color:#bbb"> </span><span style="color:#099">3</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">cascade</span><span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>级联回收: cascade<br>
+阻止级联收回: restrict</p>
+<h2 id="odbc">ODBC</h2>
+<h3 id="定义-1">定义</h3>
+<p>简单来说ODBC就是高级语言用户连接数据库的一个中间件,快捷方便调用数据的程序</p>
+<ul>
+<li>ODBC程序会先分配一个SQL的环境变量,然后是一个数据库连接句柄</li>
+<li>ODBC程序随后会利用SQLConnect打开和数据库的连接,这个调用有几个参数包括:
+<ol>
+<li>数据库的连接句柄</li>
+<li>要连接的服务器</li>
+<li>用户的身份</li>
+<li>密码</li>
+</ol>
+</li>
+</ul>
+<p>因为之前一直搞web开发,接触了很多次ODBC,这里就不过多记录了</p>
+<h2 id="数据库设计">数据库设计</h2>
+<h3 id="定义-2">定义</h3>
+<p>数据库可被建模为:</p>
+<ul>
+<li>实体集合(实体集)</li>
+<li>实体间联系(联系集)
+这部分也很常识&hellip;只写干货啦</li>
+</ul>
+<h3 id="联系集的度">联系集的度</h3>
+<ul>
+<li>参加联系的实体集的个数</li>
+<li>涉及两个实体集的联系集称为二元的(二元联系)</li>
+<li>联系集可以涉及多于两个的实体集
+例如假设一个student在每个项目上最多只能有一位导师,包含三个实体集 instructor 、 student 和 project (三元联系:项目导师学生,丁字形关系)</li>
+<li>多于两个实体集之间的联系较少见,数据库系统中的联系集一般多为二元的</li>
+</ul>
+<h3 id="映射基数">映射基数</h3>
+<ul>
+<li>表达可与一个实体通过联系集进行关联的其他实体的个数</li>
+<li>二元联系集的映射基数有以下几种情况:
+<ul>
+<li>一对一,如:就任总统(总统,国家)</li>
+<li>一对多,如:分班情况(班级,学生)</li>
+<li>多对一,如:就医(病人,医生)</li>
+<li>多对多,如:选课(学生,课程)</li>
+</ul>
+</li>
+</ul>
+<h3 id="实体集中的键和码">实体集中的键和码</h3>
+<ul>
+<li>实体集的超码是能够唯一标识每个实体的一个或多个属性</li>
+<li>候选码是实体集的最小超码</li>
+<li>候选码可能存在多个,我们只会选择一个候选码作为主码或主键
+例, instructor ( ID , name , dept_name , salary )
+<ul>
+<li>候选码: ID</li>
+<li>超码:{ ID },{ ID , name },{ ID ,&hellip;}</li>
+</ul>
+</li>
+</ul>
+<p><strong>明天更ER图,数据库马上就学完啦!</strong></p>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/db-2/">数据库原理及应用 PART-2</a></li>
+        
+        <li><a href="/post/db-1/">数据库原理及应用 PART-1</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93'>数据库</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

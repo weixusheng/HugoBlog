@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>计算机组成原理 Part-4 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="存储器
+汉明码" />
+<meta name="keywords" content="计组-课程" /><meta itemprop="name" content="计算机组成原理 Part-4">
+<meta itemprop="description" content="存储器
+汉明码"><meta itemprop="datePublished" content="2020-06-06T23:40:00+00:00" />
+<meta itemprop="dateModified" content="2020-06-06T23:40:00+00:00" />
+<meta itemprop="wordCount" content="1795"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="计组-课程," /><meta property="og:title" content="计算机组成原理 Part-4" />
+<meta property="og:description" content="存储器
+汉明码" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/CO-4/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-06-06T23:40:00+00:00" />
+<meta property="article:modified_time" content="2020-06-06T23:40:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="计算机组成原理 Part-4"/>
+<meta name="twitter:description" content="存储器
+汉明码"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/CO-4/" /><link rel="prev" href="http://example.org/posts/CN-1/" /><link rel="next" href="http://example.org/posts/hexo-1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "计算机组成原理 Part-4",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/CO-4\/"
+    },"genre": "posts","keywords": "计组-课程","wordcount":  1795 ,
+    "url": "http:\/\/example.org\/posts\/CO-4\/","datePublished": "2020-06-06T23:40:00+00:00","dateModified": "2020-06-06T23:40:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">计算机组成原理 Part-4</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"><i class="far fa-folder fa-fw"></i>计算机组成原理</a></span></div>
+      <div class="post-meta-line"><span title=2020-06-06&#32;23:40:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-06" >2020-06-06</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1795 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#只读存储器rom">只读存储器(ROM)</a></li>
+    <li><a href="#存储器与-cpu-的连接">存储器与 CPU 的连接</a>
+      <ul>
+        <li><a href="#存储器容量的扩展">存储器容量的扩展</a>
+          <ul>
+            <li><a href="#位扩展-增加存储字长">位扩展 (增加存储字长)</a></li>
+            <li><a href="#字扩展">字扩展</a></li>
+            <li><a href="#字位扩展">字、位扩展</a></li>
+          </ul>
+        </li>
+        <li><a href="#存储器与-cpu-的连接-1">存储器与 CPU 的连接</a>
+          <ul>
+            <li><a href="#例题">例题</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#存储器的校验">存储器的校验</a>
+      <ul>
+        <li><a href="#合法代码集合">合法代码集合</a></li>
+        <li><a href="#编码的最小距离">编码的最小距离</a></li>
+      </ul>
+    </li>
+    <li><a href="#汉明码">汉明码</a>
+      <ul>
+        <li><a href="#基本思想">基本思想</a></li>
+        <li><a href="#校验码的位置">校验码的位置</a></li>
+        <li><a href="#数据分组">数据分组</a></li>
+        <li><a href="#检验汉明码">检验汉明码</a></li>
+        <li><a href="#例题-1">例题</a></li>
+      </ul>
+    </li>
+    <li><a href="#提高访存速度的措施">提高访存速度的措施</a>
+      <ul>
+        <li><a href="#单体多字系统">单体多字系统</a></li>
+        <li><a href="#多体并行系统">多体并行系统</a>
+          <ul>
+            <li><a href="#高位交叉-顺序编址">高位交叉-顺序编址</a></li>
+            <li><a href="#高位交叉-各个体并行工作">高位交叉-各个体并行工作</a></li>
+            <li><a href="#低位交叉-各个体轮流编址">低位交叉-各个体轮流编址</a></li>
+            <li><a href="#低位交叉的特点">低位交叉的特点</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#高性能存储芯片">高性能存储芯片</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>存储器<br>
+汉明码</p>
+<h1 id="只读存储器rom">只读存储器(ROM)</h1>
+<ol>
+<li>
+<p>掩模 ROM ( MROM )
+行列选择线交叉处有 MOS 管为“1”
+行列选择线交叉处无 MOS 管为“0”</p>
+</li>
+<li>
+<p>PROM (一次性编程)
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/1.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/1.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/1.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/1.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/1.png"
+    title="img" /></p>
+</li>
+<li>
+<p>EPROM (多次性编程 )
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/2.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/2.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/2.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/2.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/2.png"
+    title="img" />
+通过紫外线来去除其中产生的浮动栅,以此来进行数据重置</p>
+</li>
+<li>
+<p>EEPROM (多次性编程 )</p>
+</li>
+</ol>
+<ul>
+<li>电可擦写</li>
+<li>局部擦写</li>
+<li>全部擦写</li>
+</ul>
+<ol start="5">
+<li>Flash Memory (闪速型存储器)
+EPROM: 价格便宜 集成度高
+EEPROM: 电可擦洗重写
+Flash 比 EEPROM快 具备 RAM 功能</li>
+</ol>
+<h1 id="存储器与-cpu-的连接">存储器与 CPU 的连接</h1>
+<h2 id="存储器容量的扩展">存储器容量的扩展</h2>
+<h3 id="位扩展-增加存储字长">位扩展 (增加存储字长)</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/3.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/3.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/3.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/3.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/3.png"
+    title="img" /></p>
+<h3 id="字扩展">字扩展</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/4.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/4.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/4.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/4.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/4.png"
+    title="img" />
+在0-9位存在第一个存储器块中,当数据达到第10位时,需要第二个存储块来进行拓展空间
+此时10号地址线通过信号处理器产生对第二个存储块的信号</p>
+<h3 id="字位扩展">字、位扩展</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/5.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/5.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/5.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/5.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/5.png"
+    title="img" />
+10,11号线为拓展信号线,通过片选译码器来判断此时应该拓展到第几个存储块</p>
+<h2 id="存储器与-cpu-的连接-1">存储器与 CPU 的连接</h2>
+<ul>
+<li>地址线的连接</li>
+<li>数据线的连接</li>
+<li>读/写命令线的连接</li>
+<li>片选线的连接</li>
+<li>合理选择存储芯片</li>
+</ul>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/6.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/6.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/6.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/6.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/6.png"
+    title="img" /></p>
+<h3 id="例题">例题</h3>
+<p>要求最小4K为系统程序区,相邻8K为用户程序区</p>
+<ol>
+<li>写出对应的二进制地址码</li>
+<li>确定芯片的数量及类型</li>
+<li>分配地址线</li>
+<li>确定片选信号</li>
+<li>确定片选逻辑</li>
+</ol>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/7.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/7.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/7.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/7.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/7.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/8.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/8.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/8.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/8.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/8.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/9.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/9.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/9.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/9.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/9.png"
+    title="img" /></p>
+<p>由ABC三个位,来确定数据存储的位置</p>
+<h1 id="存储器的校验">存储器的校验</h1>
+<h2 id="合法代码集合">合法代码集合</h2>
+<ol>
+<li>{000,001,010,011,100,101,110,111} 检0位错、纠0位错</li>
+<li>{000, 011,101,110} 检1位错,纠0位错</li>
+<li>{000,111} 检1位错,纠1位错</li>
+<li>{0000,1111} 检2位错,纠1位错</li>
+<li>{00000,11111} 检2位错,纠2位错</li>
+</ol>
+<h2 id="编码的最小距离">编码的最小距离</h2>
+<p>任意两组合法代码之间 二进制位数 的 最少差异
+编码的纠错 、检错能力与编码的最小距离有关
+L - 1 = D + C ( D &gt;= C )</p>
+<ul>
+<li>L: 编码的最小距离 L = 3</li>
+<li>D: 检测错误的位数 具有 一位 纠错能力</li>
+<li>C: 纠正错误的位数</li>
+</ul>
+<p>汉明码是具有一位纠错能力的编码</p>
+<h1 id="汉明码">汉明码</h1>
+<h2 id="基本思想">基本思想</h2>
+<ul>
+<li>汉明码采用奇偶检验</li>
+<li>汉明码采用分组校验</li>
+</ul>
+<p>For Example：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">我们想传输10010这串码，那么在传输的时候，就传010010，其中在开头的0就是校验位
+</span></span><span class="line"><span class="cl">我们想传输10000这串码，那么在传输的时候，就传110000，其中在开头的1就是校验位
+</span></span><span class="line"><span class="cl">两个例子的1的个数都是**偶数**(凑奇数或偶数)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>汉明码默认一串数据只错一位</strong>
+假设想传这一列数据1234567，先把他分个组
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/10.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/10.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/10.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/10.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/10.png"
+    title="img" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">P1组：1,2,3,4
+</span></span><span class="line"><span class="cl">P2组：2,4,5,7
+</span></span><span class="line"><span class="cl">P3组：3,4,6,7
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接收方接到数据,对其中的分组数据进行奇偶判定,就可以得到出错的位,并进行纠错
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/11.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/11.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/11.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/11.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/11.png"
+    title="img" /></p>
+<p>汉明码的组成需增添?位检测位
+2<sup>k</sup> &gt;= n + k + 1
+检测位的位置
+2<sup>i</sup> ( i = 0 , 1 , 2 , 3 , &hellip; )</p>
+<h2 id="校验码的位置">校验码的位置</h2>
+<p>汉明码的一串数据中，校验码放在2<sup>i</sup>的位置上，</p>
+<h2 id="数据分组">数据分组</h2>
+<p>把表示位置的这个数，转化成二进制数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">第1个位置，变成第0001个位置；
+</span></span><span class="line"><span class="cl">第2个位置，变成第0010个位置；
+</span></span><span class="line"><span class="cl">第3个位置，变成第0011个位置；
+</span></span><span class="line"><span class="cl">第4个位置，变成第0100个位置；
+</span></span><span class="line"><span class="cl">第5个位置，变成第0101个位置；
+</span></span><span class="line"><span class="cl">第6个位置，变成第0110个位置；
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>位置符合这种形式的，XXX1，归到P1；
+位置符合这种形式的，XX1X，归到P2；
+位置符合这种形式的，X1XX，归到P3；
+位置符合这种形式的，1XXX，归到P4；</p>
+<p><strong>例如</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">我们想传这一组码：XX1X101X011
+</span></span><span class="line"><span class="cl">一共11位。
+</span></span><span class="line"><span class="cl">标X的是校验码的位置，我们暂时不知道它的值是多少。
+</span></span><span class="line"><span class="cl">位置在1,3,5,7,9,11的数据进到P1组。
+</span></span><span class="line"><span class="cl">位置在2,3,6,7,10,11的数据进到P2组。（位置符合XX1X）
+</span></span><span class="line"><span class="cl">位置在4,5,6,7的数据进到P3组。（位置符合X1XX）
+</span></span><span class="line"><span class="cl">位置在8,9,10,11的数据进到P4组。（位置符合1XXX）
+</span></span><span class="line"><span class="cl">那么确定了分组，校验码的值也就顺便确定下来了。
+</span></span><span class="line"><span class="cl">这样整个串的码就确定下来了。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="检验汉明码">检验汉明码</h2>
+<ol>
+<li>分组，分好P1，P2，P3……</li>
+<li>分别对每个组校验，没有错的给它0，有错的给0.
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/14.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/14.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/14.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/14.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/14.png"
+    title="img" />
+<strong>把P从大到小排列起来，得到一串1010</strong>
+For Example:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">组别：   P5   P4   P3   P2   P1
+</span></span><span class="line"><span class="cl">标志：   1    0    1    0    1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从大到小排列起来，标志排成了一串一零串。这个数就是出错的数据的位置。
+本例中，10101位置上的位错了，换成十进制是第21个位置上的数错了。</p>
+<h2 id="例题-1">例题</h2>
+<ol>
+<li>
+<p>求 0101 按 “偶校验” 配置的汉明码
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/12.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/12.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/12.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/12.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/12.png"
+    title="img" /></p>
+</li>
+<li>
+<p>已知接收到的汉明码为 0100111
+(按配偶原则配置)试问要求传送的信息是什么?
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/13.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/13.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/13.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/13.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/13.png"
+    title="img" /></p>
+</li>
+</ol>
+<h1 id="提高访存速度的措施">提高访存速度的措施</h1>
+<ul>
+<li>采用高速器件</li>
+<li>采用层次结构 Cache –主存</li>
+<li>调整主存结构</li>
+</ul>
+<h2 id="单体多字系统">单体多字系统</h2>
+<p>增加存储器的带宽
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/15.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/15.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/15.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/15.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/15.png"
+    title="img" /></p>
+<h2 id="多体并行系统">多体并行系统</h2>
+<h3 id="高位交叉-顺序编址">高位交叉-顺序编址</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/16.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/16.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/16.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/16.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/16.png"
+    title="img" /></p>
+<h3 id="高位交叉-各个体并行工作">高位交叉-各个体并行工作</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/17.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/17.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/17.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/17.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/17.png"
+    title="img" /></p>
+<h3 id="低位交叉-各个体轮流编址">低位交叉-各个体轮流编址</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/18.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/18.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/18.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/18.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/18.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/19.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/19.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/19.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/19.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/19.png"
+    title="img" /></p>
+<h3 id="低位交叉的特点">低位交叉的特点</h3>
+<p>在不改变存取周期的前提下,增加存储器的带宽
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/21.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/21.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/21.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/21.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/21.png"
+    title="img" /></p>
+<p>设四体低位交叉存储器,存取周期为T,总线传输周期
+为 τ ,为实现流水线方式存取,应满足 T = 4 τ
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/22.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/22.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/22.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/22.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/22.png"
+    title="img" /></p>
+<h1 id="高性能存储芯片">高性能存储芯片</h1>
+<ol>
+<li>SDRAM (同步 DRAM)
+在系统时钟的控制下进行读出和写入
+CPU无须等待</li>
+<li>RDRAM
+由Rambus开发,主要解决存储器带宽问题</li>
+<li>带 Cache 的 DRAM
+在DRAM的芯片内集成了一个由 SRAM 组成的
+Cache ,有利于猝发式读取</li>
+</ol></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-06-06&#32;23:40:00>更新于 2020-06-06</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E8%AE%A1%E7%BB%84-%E8%AF%BE%E7%A8%8B/">计组-课程</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/CN-1/" class="prev" rel="prev" title="计算机网络 Part-1"><i class="fas fa-angle-left fa-fw"></i>计算机网络 Part-1</a>
+      <a href="/posts/hexo-1/" class="next" rel="next" title="腾讯云COS加速静态资源">腾讯云COS加速静态资源<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

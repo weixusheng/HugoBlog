@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>Python多线程 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="Python多线程 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-12-18T21:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-12-18T21:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Python多线程">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/python-9/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Python多线程</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年12月18日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>多线程 / 线程池</p>
+<h1 id="pyhton多线程">pyhton多线程</h1>
+<h2 id="python多线程的默认情况">Python多线程的默认情况</h2>
+<p>当一个进程启动之后，会默认产生一个主线程，因为线程是程序执行流的最小单元，当设置多线程时，主线程会创建多个子线程，在python中，默认情况下（其实就是setDaemon(False)），主线程执行完自己的任务以后，就退出了，此时子线程会继续执行自己的任务，直到自己的任务结束。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">threading</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">run</span>():
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(<span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;当前线程的名字是: </span><span style="color:#d14">%s</span><span style="color:#d14"> -&#34;</span> <span style="color:#000;font-weight:bold">%</span>threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name)
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(<span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> __name__ <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#000;font-weight:bold">=</span> time<span style="color:#000;font-weight:bold">.</span>time()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;这是主线程：&#39;</span>, threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name)
+</span></span><span style="display:flex;"><span>    thread_list <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">5</span>):
+</span></span><span style="display:flex;"><span>        t <span style="color:#000;font-weight:bold">=</span> threading<span style="color:#000;font-weight:bold">.</span>Thread(target<span style="color:#000;font-weight:bold">=</span>run)
+</span></span><span style="display:flex;"><span>        thread_list<span style="color:#000;font-weight:bold">.</span>append(t)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> t <span style="color:#000;font-weight:bold">in</span> thread_list:
+</span></span><span style="display:flex;"><span>        t<span style="color:#000;font-weight:bold">.</span>start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;主线程结束！&#39;</span> , threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;一共用时：&#39;</span>, time<span style="color:#000;font-weight:bold">.</span>time()<span style="color:#000;font-weight:bold">-</span>start_time)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34; output:
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">这是主线程： MainThread
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">主线程结束！ MainThread
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">一共用时： 0.0020024776458740234
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是: Thread-49 -
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是: Thread-53 -
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是: Thread-52 -
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是: Thread-51 -
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是: Thread-50 -
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>我们的计时是对主线程计时，主线程结束，计时随之结束，打印出主线程的用时。</li>
+<li>主线程的任务完成之后，主线程随之结束，子线程继续执行自己的任务，直到全部的子线程的任务全部结束，程序结束</li>
+</ol>
+<h2 id="设置守护线程">设置守护线程</h2>
+<p>当我们使用setDaemon(True)方法，设置子线程为守护线程时，主线程一旦执行结束，则全部线程全部被终止执行，可能出现的情况就是，子线程的任务还没有完全执行结束，就被迫停止。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">threading</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">run</span>():
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(<span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;当前线程的名字是： &#39;</span>, threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name)
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(<span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> __name__ <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#000;font-weight:bold">=</span> time<span style="color:#000;font-weight:bold">.</span>time()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;这是主线程：&#39;</span>, threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name)
+</span></span><span style="display:flex;"><span>    thread_list <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">5</span>):
+</span></span><span style="display:flex;"><span>        t <span style="color:#000;font-weight:bold">=</span> threading<span style="color:#000;font-weight:bold">.</span>Thread(target<span style="color:#000;font-weight:bold">=</span>run)
+</span></span><span style="display:flex;"><span>        thread_list<span style="color:#000;font-weight:bold">.</span>append(t)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> t <span style="color:#000;font-weight:bold">in</span> thread_list:
+</span></span><span style="display:flex;"><span>        t<span style="color:#000;font-weight:bold">.</span>setDaemon(<span style="color:#000;font-weight:bold">True</span>)
+</span></span><span style="display:flex;"><span>        t<span style="color:#000;font-weight:bold">.</span>start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;主线程结束了！&#39;</span> , threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;一共用时：&#39;</span>, time<span style="color:#000;font-weight:bold">.</span>time()<span style="color:#000;font-weight:bold">-</span>start_time)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34; output
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">这是主线程： MainThread
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">主线程结束了！ MainThread
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">一共用时： 0.0020020008087158203
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>主线程结束以后，子线程还没有来得及执行，整个程序就退出了</p>
+<h2 id="join的用法">join的用法</h2>
+<p>此时join的作用就凸显出来了，join所完成的工作就是线程同步，即主线程任务结束之后，进入阻塞状态，一直等待其他的子线程执行结束之后，主线程在终止。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">threading</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">run</span>():
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(<span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;当前线程的名字是： &#39;</span>, threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name)
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(<span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> __name__ <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#000;font-weight:bold">=</span> time<span style="color:#000;font-weight:bold">.</span>time()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;这是主线程：&#39;</span>, threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name)
+</span></span><span style="display:flex;"><span>    thread_list <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">5</span>):
+</span></span><span style="display:flex;"><span>        t <span style="color:#000;font-weight:bold">=</span> threading<span style="color:#000;font-weight:bold">.</span>Thread(target<span style="color:#000;font-weight:bold">=</span>run)
+</span></span><span style="display:flex;"><span>        thread_list<span style="color:#000;font-weight:bold">.</span>append(t)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> t <span style="color:#000;font-weight:bold">in</span> thread_list:
+</span></span><span style="display:flex;"><span>        t<span style="color:#000;font-weight:bold">.</span>setDaemon(<span style="color:#000;font-weight:bold">True</span>)
+</span></span><span style="display:flex;"><span>        t<span style="color:#000;font-weight:bold">.</span>start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> t <span style="color:#000;font-weight:bold">in</span> thread_list:
+</span></span><span style="display:flex;"><span>        t<span style="color:#000;font-weight:bold">.</span>join()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;主线程结束了！&#39;</span> , threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;一共用时：&#39;</span>, time<span style="color:#000;font-weight:bold">.</span>time()<span style="color:#000;font-weight:bold">-</span>start_time)
+</span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">这是主线程： MainThread
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是：  Thread-85
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是：  Thread-84
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是：  Thread-86
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是：  Thread-88
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">当前线程的名字是：  Thread-87
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">主线程结束了！ MainThread
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">一共用时： 4.0279927253723145
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>主线程一直等待全部的子线程结束之后，主线程自身才结束，程序退出</p>
+<h2 id="实践">实践</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">threading</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>threads <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> k, record <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">enumerate</span>(data[<span style="color:#d14">&#39;supplyname&#39;</span>]):
+</span></span><span style="display:flex;"><span>	<span style="color:#998;font-style:italic"># get_list # get_page</span>
+</span></span><span style="display:flex;"><span>	thread_spider <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">if</span> method <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;get_list&#39;</span>:
+</span></span><span style="display:flex;"><span>		thread_spider <span style="color:#000;font-weight:bold">=</span> threading<span style="color:#000;font-weight:bold">.</span>Thread(target<span style="color:#000;font-weight:bold">=</span>get_list, args<span style="color:#000;font-weight:bold">=</span>[url, ws_data, record, json_list])
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">elif</span> method <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;get_page&#39;</span>:
+</span></span><span style="display:flex;"><span>		thread_spider <span style="color:#000;font-weight:bold">=</span> threading<span style="color:#000;font-weight:bold">.</span>Thread(target<span style="color:#000;font-weight:bold">=</span>get_page, args<span style="color:#000;font-weight:bold">=</span>[url, ws_data, record, json_list])
+</span></span><span style="display:flex;"><span>	thread_spider<span style="color:#000;font-weight:bold">.</span>start()
+</span></span><span style="display:flex;"><span>	threads<span style="color:#000;font-weight:bold">.</span>append(thread_spider)
+</span></span><span style="display:flex;"><span>	<span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;当前进度: </span><span style="color:#d14">%s</span><span style="color:#d14"> / </span><span style="color:#d14">%s</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> (k <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>, <span style="color:#0086b3">str</span>(data_num)))
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> t <span style="color:#000;font-weight:bold">in</span> threads:
+</span></span><span style="display:flex;"><span>	t<span style="color:#000;font-weight:bold">.</span>join()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="线程池">线程池</h1>
+<h2 id="创建线程池">创建线程池</h2>
+<p>之前用信号量,感觉不太好用&hellip;发现多线程自带一个线程池功能</p>
+<p><code>concurrent.futures</code>模块，它提供了<code>ThreadPoolExecutor</code>和<code>ProcessPoolExecutor</code>两个类，实现了对<code>threading</code>和<code>multiprocessing</code>的进一步抽象（这里主要关注线程池），不仅可以帮我们*<strong>自动调度线程*</strong>，还可以做到：</p>
+<ol>
+<li>
+<p>主线程可以获取某一个线程（或者任务的）的状态，以及返回值。</p>
+</li>
+<li>
+<p>当一个线程完成的时候，主线程能够立即知道。</p>
+</li>
+<li>
+<p>让多线程和多进程的编码接口一致。</p>
+</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">concurrent.futures</span> <span style="color:#000;font-weight:bold">import</span> ThreadPoolExecutor
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 参数times用来模拟网络请求的时间</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">get_html</span>(times):
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(times)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;get page </span><span style="color:#d14">{}</span><span style="color:#d14">s finished&#34;</span><span style="color:#000;font-weight:bold">.</span>format(times))
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> times
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>executor <span style="color:#000;font-weight:bold">=</span> ThreadPoolExecutor(max_workers<span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 通过submit函数提交执行的函数到线程池中，submit函数立即返回，不阻塞</span>
+</span></span><span style="display:flex;"><span>task1 <span style="color:#000;font-weight:bold">=</span> executor<span style="color:#000;font-weight:bold">.</span>submit(get_html, (<span style="color:#099">3</span>))
+</span></span><span style="display:flex;"><span>task2 <span style="color:#000;font-weight:bold">=</span> executor<span style="color:#000;font-weight:bold">.</span>submit(get_html, (<span style="color:#099">2</span>))
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># done方法用于判定某个任务是否完成</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(task1<span style="color:#000;font-weight:bold">.</span>done())
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># cancel方法用于取消某个任务,该任务没有放入线程池中才能取消成功</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(task2<span style="color:#000;font-weight:bold">.</span>cancel())
+</span></span><span style="display:flex;"><span>time<span style="color:#000;font-weight:bold">.</span>sleep(<span style="color:#099">4</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(task1<span style="color:#000;font-weight:bold">.</span>done())
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># result方法可以获取task的执行结果</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(task1<span style="color:#000;font-weight:bold">.</span>result())
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="利用as_completed取出所有结果">利用as_completed取出所有结果</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">concurrent.futures</span> <span style="color:#000;font-weight:bold">import</span> ThreadPoolExecutor, as_completed
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 参数times用来模拟网络请求的时间</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">get_html</span>(times):
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(times)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;get page </span><span style="color:#d14">{}</span><span style="color:#d14">s finished&#34;</span><span style="color:#000;font-weight:bold">.</span>format(times))
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> times
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>executor <span style="color:#000;font-weight:bold">=</span> ThreadPoolExecutor(max_workers<span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>urls <span style="color:#000;font-weight:bold">=</span> [<span style="color:#099">3</span>, <span style="color:#099">2</span>, <span style="color:#099">4</span>] <span style="color:#998;font-style:italic"># 并不是真的url</span>
+</span></span><span style="display:flex;"><span>all_task <span style="color:#000;font-weight:bold">=</span> [executor<span style="color:#000;font-weight:bold">.</span>submit(get_html, (url)) <span style="color:#000;font-weight:bold">for</span> url <span style="color:#000;font-weight:bold">in</span> urls]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> future <span style="color:#000;font-weight:bold">in</span> as_completed(all_task):
+</span></span><span style="display:flex;"><span>    data <span style="color:#000;font-weight:bold">=</span> future<span style="color:#000;font-weight:bold">.</span>result()
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;in main: get page </span><span style="color:#d14">{}</span><span style="color:#d14">s success&#34;</span><span style="color:#000;font-weight:bold">.</span>format(data))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>as_completed()</code>方法是一个生成器，在没有任务完成的时候，会阻塞，在有某个任务完成的时候，会<code>yield</code>这个任务，就能执行for循环下面的语句，然后继续阻塞住，循环到所有的任务结束。从结果也可以看出，<strong>先完成的任务会先通知主线程</strong></p>
+<h2 id="通过map提交任务">通过map提交任务</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">concurrent.futures</span> <span style="color:#000;font-weight:bold">import</span> ThreadPoolExecutor
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 参数times用来模拟网络请求的时间</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">get_html</span>(times):
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(times)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;get page </span><span style="color:#d14">{}</span><span style="color:#d14">s finished&#34;</span><span style="color:#000;font-weight:bold">.</span>format(times))
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> times
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>executor <span style="color:#000;font-weight:bold">=</span> ThreadPoolExecutor(max_workers<span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>urls <span style="color:#000;font-weight:bold">=</span> [<span style="color:#099">3</span>, <span style="color:#099">2</span>, <span style="color:#099">4</span>] <span style="color:#998;font-style:italic"># 并不是真的url</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> data <span style="color:#000;font-weight:bold">in</span> executor<span style="color:#000;font-weight:bold">.</span>map(get_html, urls):
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;in main: get page </span><span style="color:#d14">{}</span><span style="color:#d14">s success&#34;</span><span style="color:#000;font-weight:bold">.</span>format(data))
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 执行结果</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># get page 2s finished</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># get page 3s finished</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># in main: get page 3s success</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># in main: get page 2s success</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># get page 4s finished</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># in main: get page 4s success</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d14">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">使用map方法，无需提前使用submit方法，map方法与python标准库中的map含义相同，都是将序列中的每个元素都执行同一个函数。上面的代码就是对urls的每个元素都执行get_html函数，并分配各线程池。可以看到执行结果与上面的as_completed方法的结果不同，输出顺序和urls列表的顺序相同，就算2s的任务先执行完成，也会先打印出3s的任务先完成，再打印2s的任务完成。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#39;&#39;&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="多参数传入submit">多参数传入submit</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">concurrent.futures</span> <span style="color:#000;font-weight:bold">import</span> ThreadPoolExecutor,as_completed
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">doFileParse</span>(filepath,segment,wordslist):
+</span></span><span style="display:flex;"><span>      <span style="color:#0086b3">print</span>(filepath)
+</span></span><span style="display:flex;"><span>      <span style="color:#0086b3">print</span>(segment)
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#调用方法</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#实质就是通过lambda表达式过渡。传入的参数是一个，但是通过lambda表达多后拆散为多个传入。这是很巧妙的方法，实际 就是 *p 这个表达式。</span>
+</span></span><span style="display:flex;"><span>args <span style="color:#000;font-weight:bold">=</span>[filepath,thu1,Words]
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>newTask<span style="color:#000;font-weight:bold">=</span>executor<span style="color:#000;font-weight:bold">.</span>submit(<span style="color:#000;font-weight:bold">lambda</span> p: doFileParse(<span style="color:#000;font-weight:bold">*</span>p),args)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="临界资源互斥访问">临界资源互斥访问</h1>
+<p>threading 模块提供了 Lock 类</p>
+<ul>
+<li>acquire()：对 Lock加锁，其中timeout参数指定加锁多少秒</li>
+<li>release()：释放锁</li>
+</ul>
+<p>RLock被称为重入锁，可以被一个线程请求多次，即锁中可以嵌套锁</p>
+<h2 id="单锁">单锁</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Account</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>, card_id, balance):
+</span></span><span style="display:flex;"><span>        <span style="color:#998;font-style:italic"># 封装账户ID、账户余额的两个变量</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>card_id<span style="color:#000;font-weight:bold">=</span> card_id
+</span></span><span style="display:flex;"><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>balance <span style="color:#000;font-weight:bold">=</span> balance
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">withdraw</span>(account, money):
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># 进行加锁</span>
+</span></span><span style="display:flex;"><span>    lock<span style="color:#000;font-weight:bold">.</span>acquire()
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># 账户余额大于取钱数目</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> account<span style="color:#000;font-weight:bold">.</span>balance <span style="color:#000;font-weight:bold">&gt;=</span> money:
+</span></span><span style="display:flex;"><span>        <span style="color:#998;font-style:italic"># 吐出钞票</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0086b3">print</span>(threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;取钱成功！吐出钞票:&#34;</span> <span style="color:#000;font-weight:bold">+</span> <span style="color:#0086b3">str</span>(money),end<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#998;font-style:italic"># 修改余额</span>
+</span></span><span style="display:flex;"><span>        account<span style="color:#000;font-weight:bold">.</span>balance <span style="color:#000;font-weight:bold">-=</span> money
+</span></span><span style="display:flex;"><span>        <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;</span><span style="color:#d14">\t</span><span style="color:#d14">余额为: &#34;</span> <span style="color:#000;font-weight:bold">+</span> <span style="color:#0086b3">str</span>(account<span style="color:#000;font-weight:bold">.</span>balance))
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#0086b3">print</span>(threading<span style="color:#000;font-weight:bold">.</span>current_thread()<span style="color:#000;font-weight:bold">.</span>name <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;取钱失败！余额不足&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># 进行解锁</span>
+</span></span><span style="display:flex;"><span>    lock<span style="color:#000;font-weight:bold">.</span>release()
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 创建一个账户，银行卡id为8888，存款1000元</span>
+</span></span><span style="display:flex;"><span>acct <span style="color:#000;font-weight:bold">=</span> Account(<span style="color:#d14">&#34;8888&#34;</span> , <span style="color:#099">1000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 模拟两个对同一个账户取钱</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 在主线程中创建一把锁</span>
+</span></span><span style="display:flex;"><span>lock <span style="color:#000;font-weight:bold">=</span> threading<span style="color:#000;font-weight:bold">.</span>Lock()
+</span></span><span style="display:flex;"><span>threading<span style="color:#000;font-weight:bold">.</span>Thread(name<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;窗口A&#39;</span>, target<span style="color:#000;font-weight:bold">=</span>withdraw , args<span style="color:#000;font-weight:bold">=</span>(acct , <span style="color:#099">800</span>))<span style="color:#000;font-weight:bold">.</span>start()
+</span></span><span style="display:flex;"><span>threading<span style="color:#000;font-weight:bold">.</span>Thread(name<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;窗口B&#39;</span>, target<span style="color:#000;font-weight:bold">=</span>withdraw , args<span style="color:#000;font-weight:bold">=</span>(acct , <span style="color:#099">800</span>))<span style="color:#000;font-weight:bold">.</span>start()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="多重锁">多重锁</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">threading</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">time</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">fun_1</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;开始&#39;</span>)
+</span></span><span style="display:flex;"><span>    time<span style="color:#000;font-weight:bold">.</span>sleep(<span style="color:#099">1</span>)
+</span></span><span style="display:flex;"><span>    lock<span style="color:#000;font-weight:bold">.</span>acquire()
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;第一道锁&#34;</span>)
+</span></span><span style="display:flex;"><span>    fun_2()
+</span></span><span style="display:flex;"><span>    lock<span style="color:#000;font-weight:bold">.</span>release()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">fun_2</span>():
+</span></span><span style="display:flex;"><span>    lock<span style="color:#000;font-weight:bold">.</span>acquire()
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;第二道锁&#34;</span>)
+</span></span><span style="display:flex;"><span>    lock<span style="color:#000;font-weight:bold">.</span>release()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> __name__ <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    lock <span style="color:#000;font-weight:bold">=</span> threading<span style="color:#000;font-weight:bold">.</span>RLock()
+</span></span><span style="display:flex;"><span>    t1 <span style="color:#000;font-weight:bold">=</span> threading<span style="color:#000;font-weight:bold">.</span>Thread(target<span style="color:#000;font-weight:bold">=</span>fun_1)
+</span></span><span style="display:flex;"><span>    t2 <span style="color:#000;font-weight:bold">=</span> threading<span style="color:#000;font-weight:bold">.</span>Thread(target<span style="color:#000;font-weight:bold">=</span>fun_1)
+</span></span><span style="display:flex;"><span>    t1<span style="color:#000;font-weight:bold">.</span>start()
+</span></span><span style="display:flex;"><span>    t2<span style="color:#000;font-weight:bold">.</span>start()
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/pattern-5/">结构型模式</a></li>
+        
+        <li><a href="/post/pattern-4/">行为型模式</a></li>
+        
+        <li><a href="/post/pattern-1/">Python设计模式</a></li>
+        
+        <li><a href="/post/pattern-2/">设计模式与面向对象</a></li>
+        
+        <li><a href="/post/pattern-3/">创建型模式</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/python'>Python</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

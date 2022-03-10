@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Python-Spider - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Python-Spider/</link>
+    <description>Python-Spider - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Wed, 09 Feb 2022 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Python-Spider/" rel="self" type="application/rss+xml" /><item>
+  <title>爬虫代理池的使用</title>
+  <link>http://example.org/posts/python-proxy/</link>
+  <pubDate>Wed, 09 Feb 2022 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python-proxy/</guid>
+  <description><![CDATA[<p>requests-proxies</p>]]></description>
+</item><item>
+  <title>自动化接口监控</title>
+  <link>http://example.org/posts/python-4/</link>
+  <pubDate>Thu, 21 Oct 2021 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python-4/</guid>
+  <description><![CDATA[<p>爬虫接口监控</p>]]></description>
+</item></channel>
+</rss>

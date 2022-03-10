@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>物联网概论 PART-12 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="物联网数据检索" />
+<meta name="keywords" content="物联网概论-课程" /><meta itemprop="name" content="物联网概论 PART-12">
+<meta itemprop="description" content="物联网数据检索"><meta itemprop="datePublished" content="2020-05-08T20:30:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-08T20:30:00+00:00" />
+<meta itemprop="wordCount" content="1493"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="物联网概论-课程," /><meta property="og:title" content="物联网概论 PART-12" />
+<meta property="og:description" content="物联网数据检索" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/IOT-12/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-08T20:30:00+00:00" />
+<meta property="article:modified_time" content="2020-05-08T20:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="物联网概论 PART-12"/>
+<meta name="twitter:description" content="物联网数据检索"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/IOT-12/" /><link rel="prev" href="http://example.org/posts/leetcode-2/" /><link rel="next" href="http://example.org/posts/leetcode-3/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "物联网概论 PART-12",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/IOT-12\/"
+    },"genre": "posts","keywords": "物联网概论-课程","wordcount":  1493 ,
+    "url": "http:\/\/example.org\/posts\/IOT-12\/","datePublished": "2020-05-08T20:30:00+00:00","dateModified": "2020-05-08T20:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">物联网概论 PART-12</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/"><i class="far fa-folder fa-fw"></i>物联网</a></span></div>
+      <div class="post-meta-line"><span title=2020-05-08&#32;20:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-08" >2020-05-08</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1493 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#文本检索">文本检索</a>
+      <ul>
+        <li><a href="#基于文字的检索根据文字内容计算查询和文本的相似度">基于文字的检索(根据文字内容计算查询和文本的相似度)</a>
+          <ul>
+            <li><a href="#布尔模型">布尔模型</a></li>
+            <li><a href="#向量空间模型">向量空间模型</a></li>
+            <li><a href="#概率模型">概率模型</a></li>
+          </ul>
+        </li>
+        <li><a href="#基于结构的检索">基于结构的检索</a></li>
+        <li><a href="#基于用户信息的检索">基于用户信息的检索</a></li>
+      </ul>
+    </li>
+    <li><a href="#图像检索">图像检索</a>
+      <ul>
+        <li><a href="#基于内容的图像检索">基于内容的图像检索</a></li>
+        <li><a href="#基于语义的图像检索">基于语义的图像检索</a></li>
+      </ul>
+    </li>
+    <li><a href="#音频检索">音频检索</a>
+      <ul>
+        <li><a href="#音频检索系统结构">音频检索系统结构</a></li>
+        <li><a href="#音频检索概念">音频检索概念</a></li>
+      </ul>
+    </li>
+    <li><a href="#视频检索">视频检索</a></li>
+    <li><a href="#数据的可视化技术">数据的可视化技术</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>物联网数据检索</p>
+<h1 id="文本检索">文本检索</h1>
+<ul>
+<li>基于文字的检索</li>
+<li>基于结构的检索</li>
+<li>基于用户信息的检索</li>
+</ul>
+<h2 id="基于文字的检索根据文字内容计算查询和文本的相似度">基于文字的检索(根据文字内容计算查询和文本的相似度)</h2>
+<ul>
+<li>布尔模型(计算机 AND 文化)检索的相关度0,或者1</li>
+<li>向量空间模型 关键字和权重组成向量</li>
+<li>概率模型-查询中的关键字在相关和不相关文档中的概率</li>
+<li>统计语言模型-通过语言的方法将查询和文档联系起来</li>
+</ul>
+<h3 id="布尔模型">布尔模型</h3>
+<ul>
+<li>在布尔检索模型中, 将用户提问表示成布尔表达式, 使用逻辑运算符将提问词连接起来, 其中每个提问词表达了用户的一个兴趣。</li>
+<li>检索时, 检索系统将提问式与文档进行逻辑匹配操作, 得出命中文献集合为检索结果。检索结果一般不进行相关性排序。</li>
+<li>在检索策略的使用方面, 以<strong>布尔逻辑为基础的文本检索</strong>系统可能提供位置检索、截断检索以及自然语言检索等检索手段。</li>
+</ul>
+<h3 id="向量空间模型">向量空间模型</h3>
+<ul>
+<li>向量空间模型用<strong>检索项的高维向量空间</strong>来表示<strong>用户的检索和文本集信息</strong>,其中每一维为一个特征。一个用户检索向量或文本向量的第i 个元素表示用户检索或文本的第i 个特征的重要度, 或称权值。用户检索向量的权值由用户指定; 文本向量的权值则根据特征在文本或文本集中的出现频率决定。</li>
+<li>检索向量与文本向量间的<strong>余弦角</strong>通常用来测定该文本与该用户提问词之间的<strong>匹配程度</strong>。向量空间模型不仅可以方便地产生有效的检索结果,而且能提供相关文档的文摘,并进行检索结果分类, 为用户提供准确定位所需的信息。</li>
+</ul>
+<h3 id="概率模型">概率模型</h3>
+<ul>
+<li>在概率模型中, 检索是根据概率排序规则进行的。基本的文本检索推理网络包括文本网络和用户检索网络。文本网络使用不同的文本表示框架来表示文本集,对每一个文本集,文本网络只建立一次,且在检索过程中不改变其结构。用户提问网络则只有一个表示用户检索信息的节点及一个或多个查询表达式。</li>
+<li>文本网络与用户检索之间的连接则由文本概念表示节点与提问概念表示节点之间的链来表示。不论是文本网络还是用户检索,每一节点有一个概率值。节点与节点之间的<strong>因果关系</strong>表示为:<strong>给定文本节点的先验概率及中间节点的条件概率,就能得到每一节点的后验概率</strong>。原始文本集与用户检索集经过概率计算,得到文本与用户提问的匹配程度。</li>
+</ul>
+<h2 id="基于结构的检索">基于结构的检索</h2>
+<ul>
+<li>文档结构 包括内部结构和外部结构</li>
+<li>内部结构-文档为文字的位置,格式等信息</li>
+<li>外部结构-文档之间的关联(如引用)</li>
+<li>通常不会单独使用,结合基于文字的检索联合使用</li>
+</ul>
+<h2 id="基于用户信息的检索">基于用户信息的检索</h2>
+<ul>
+<li>使用用户本身的信息参与检索</li>
+<li>用户是第一位的(查询由用户提出,结果要用户认可)</li>
+<li>用户的性别,职业,阅读习惯,爱好等</li>
+<li>基于单个用户的和基于群体用户的</li>
+</ul>
+<h1 id="图像检索">图像检索</h1>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/2.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/2.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/2.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/2.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/2.png"
+    title="img" /></p>
+<h2 id="基于内容的图像检索">基于内容的图像检索</h2>
+<ul>
+<li>将视觉特征,例如颜色、纹理结构和形状等,作为图像内容抽取出来进行匹配查找</li>
+<li>特征提取(颜色、纹理、形状)</li>
+<li>查询方式:示例查询和草图查询</li>
+</ul>
+<h2 id="基于语义的图像检索">基于语义的图像检索</h2>
+<ul>
+<li>如何获取图像的语义?</li>
+<li>利用系统知识的语义提取(特定应用领域)</li>
+<li>利用系统的交互(人工标注)</li>
+<li>基于外部信息</li>
+</ul>
+<h1 id="音频检索">音频检索</h1>
+<h2 id="音频检索系统结构">音频检索系统结构</h2>
+<ul>
+<li>原始音频预处理(语音处理、音频分隔、特征提取)</li>
+<li>用户查询模块</li>
+<li>元数据库和音频媒体数据库</li>
+<li>长音频分割,获得结构关系;特征提取记入特征数据库;分类,建立分类目录;转换成文本,记入文本库</li>
+<li>用户查询(提交查询的音频信号,返回结果;或者浏览库)
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/3.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/3.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/3.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/3.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/3.png"
+    title="img" /></li>
+</ul>
+<h2 id="音频检索概念">音频检索概念</h2>
+<ul>
+<li>自动分类中常用的特征(带宽、响度、过零率)</li>
+<li>音频信号流的分隔(分层分割算法;压缩域窗分割算法、模板分割算法)</li>
+<li>音频内容的描述和索引</li>
+<li>音频检索方法(主观描述查询、示例查询、拟声查询、表格查询)</li>
+</ul>
+<h1 id="视频检索">视频检索</h1>
+<ul>
+<li>关键帧提取</li>
+<li>图像特征提取</li>
+<li>相似性度量</li>
+<li>查询方式</li>
+<li>视频片段匹配</li>
+</ul>
+<h1 id="数据的可视化技术">数据的可视化技术</h1>
+<p>数据可视化,是指将结构或非结构化的数据转换成适当的可视化图表,然后将隐藏在数据中的信息直接展现在人们面前,是一种关于数据视觉表现形式的科学技术研究。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/4.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/4.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/4.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/4.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/4.png"
+    title="img" />
+根据不同的数据挖掘方法,可以采用不同的数据可视化技术
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/5.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/5.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/5.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/5.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-12/5.png"
+    title="img" /></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-05-08&#32;20:30:00>更新于 2020-05-08</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91%E6%A6%82%E8%AE%BA-%E8%AF%BE%E7%A8%8B/">物联网概论-课程</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/leetcode-2/" class="prev" rel="prev" title="Leetcode Part-2"><i class="fas fa-angle-left fa-fw"></i>Leetcode Part-2</a>
+      <a href="/posts/leetcode-3/" class="next" rel="next" title="Leetcode Part-3">Leetcode Part-3<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

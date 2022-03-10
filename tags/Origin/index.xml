@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Origin - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Origin/</link>
+    <description>Origin - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Sat, 13 Jun 2020 20:40:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Origin/" rel="self" type="application/rss+xml" /><item>
+  <title>Origin使用方法</title>
+  <link>http://example.org/posts/paper-2/</link>
+  <pubDate>Sat, 13 Jun 2020 20:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/paper-2/</guid>
+  <description><![CDATA[<p>论文完成啦,趁着现在还存有一些记忆(鱼的三秒记忆),记录一下</p>]]></description>
+</item></channel>
+</rss>

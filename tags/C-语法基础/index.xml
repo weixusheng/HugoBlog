@@ -1,0 +1,45 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>C-语法基础 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/C-%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</link>
+    <description>C-语法基础 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Mon, 18 May 2020 20:40:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/C-%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+  <title>C-数组形参的长度</title>
+  <link>http://example.org/posts/C-10/</link>
+  <pubDate>Mon, 18 May 2020 20:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-10/</guid>
+  <description><![CDATA[<p>刷leetcode的时候,由于报错显示的很简单,想调试程序的话有些困难,所以就想在c环境下断点调试代码,今天做一道关于树的题的时候,遇到了这个问题,就是数组形参的长度永远都是8字节,就很离谱&hellip;后来才发现了缘故
+原来在字符型的数组中我们可以使用 strlen() 来获取当前数组的长度，对于其他类型的数组，这个方法就不适用了.</p>]]></description>
+</item><item>
+  <title>C常用库函数整理</title>
+  <link>http://example.org/posts/C-9/</link>
+  <pubDate>Fri, 15 May 2020 20:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-9/</guid>
+  <description><![CDATA[<p>史上最全</p>]]></description>
+</item><item>
+  <title>C语言的类型定义</title>
+  <link>http://example.org/posts/C-3/</link>
+  <pubDate>Sat, 09 May 2020 14:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-3/</guid>
+  <description><![CDATA[<p>typedef的用法,typedef与const</p>]]></description>
+</item><item>
+  <title>C中的野指针</title>
+  <link>http://example.org/posts/C-2/</link>
+  <pubDate>Sat, 09 May 2020 13:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-2/</guid>
+  <description><![CDATA[<p>指针指南</p>]]></description>
+</item><item>
+  <title>C语言-指针</title>
+  <link>http://example.org/posts/C-1/</link>
+  <pubDate>Sat, 09 May 2020 12:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-1/</guid>
+  <description><![CDATA[<p>这几天发现自己的指针学的有些糊涂,经常写懵,所以决定补习一下指针的概念和用法
+在这里记录一下知识点和心得</p>]]></description>
+</item></channel>
+</rss>

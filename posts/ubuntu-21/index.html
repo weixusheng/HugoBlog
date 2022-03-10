@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Ubuntu挂载Onedrive - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="昨天折腾了一晚上,过程很是艰难,不过还好最后配置成功了,将onedrive挂载上了 使用到一个开源的软件&quot;rclone&quot;," />
+<meta name="keywords" content="Ubuntu" /><meta itemprop="name" content="Ubuntu挂载Onedrive">
+<meta itemprop="description" content="昨天折腾了一晚上,过程很是艰难,不过还好最后配置成功了,将onedrive挂载上了 使用到一个开源的软件&quot;rclone&quot;,"><meta itemprop="datePublished" content="2020-05-15T10:30:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-15T10:30:00+00:00" />
+<meta itemprop="wordCount" content="1317"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="Ubuntu," /><meta property="og:title" content="Ubuntu挂载Onedrive" />
+<meta property="og:description" content="昨天折腾了一晚上,过程很是艰难,不过还好最后配置成功了,将onedrive挂载上了 使用到一个开源的软件&quot;rclone&quot;," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/ubuntu-21/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-15T10:30:00+00:00" />
+<meta property="article:modified_time" content="2020-05-15T10:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Ubuntu挂载Onedrive"/>
+<meta name="twitter:description" content="昨天折腾了一晚上,过程很是艰难,不过还好最后配置成功了,将onedrive挂载上了 使用到一个开源的软件&quot;rclone&quot;,"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/ubuntu-21/" /><link rel="prev" href="http://example.org/posts/leetcode-6/" /><link rel="next" href="http://example.org/posts/C-7/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Ubuntu挂载Onedrive",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/ubuntu-21\/"
+    },"genre": "posts","keywords": "Ubuntu","wordcount":  1317 ,
+    "url": "http:\/\/example.org\/posts\/ubuntu-21\/","datePublished": "2020-05-15T10:30:00+00:00","dateModified": "2020-05-15T10:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">Ubuntu挂载Onedrive</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Ubuntu/"><i class="far fa-folder fa-fw"></i>Ubuntu</a></span></div>
+      <div class="post-meta-line"><span title=2020-05-15&#32;10:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-15" >2020-05-15</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1317 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#命令行安装">命令行安装</a></li>
+    <li><a href="#配置">配置</a>
+      <ul>
+        <li><a href="#获得onedrive授权">获得onedrive授权</a></li>
+        <li><a href="#填写配置文件">填写配置文件</a>
+          <ul>
+            <li><a href="#新建">新建</a></li>
+            <li><a href="#命名">命名</a></li>
+            <li><a href="#选择类型">选择类型</a></li>
+            <li><a href="#填写client_id和client_secret">填写client_id和client_secret</a></li>
+            <li><a href="#advanced-config及auto-config">advanced config及auto config</a></li>
+            <li><a href="#填写token">填写token</a></li>
+            <li><a href="#选择onedrive中的服务">选择onedrive中的服务</a></li>
+            <li><a href="#成功生成配置文件">成功生成配置文件</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#挂载">挂载</a>
+      <ul>
+        <li><a href="#新建文件夹挂载的目标文件夹">新建文件夹(挂载的目标文件夹)</a></li>
+        <li><a href="#挂载为磁盘">挂载为磁盘</a></li>
+      </ul>
+    </li>
+    <li><a href="#systemctl开机自启rclone挂载">systemctl开机自启rclone挂载</a>
+      <ul>
+        <li><a href="#安装systemctl">安装systemctl</a></li>
+        <li><a href="#新建service文件">新建service文件</a></li>
+        <li><a href="#systemctl命令">systemctl命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#上传与下载">上传与下载</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>昨天折腾了一晚上,过程很是艰难,不过还好最后配置成功了,将onedrive挂载上了
+使用到一个开源的软件&quot;rclone&quot;,英文文档好难读&hellip;而且感觉写的还很复杂,最后在一些大佬写的blog帮助下终于配置成功</p>
+<!-- more-->
+<p><a
+  href="https://rclone.org/"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>rclone官网</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">版本号:
+</span></span><span class="line"><span class="cl">Ubuntu20.04
+</span></span><span class="line"><span class="cl">rclone v1.51.0
+</span></span><span class="line"><span class="cl">onedrive 个人版
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="命令行安装">命令行安装</h1>
+<p><a
+  href="https://rclone.org/downloads/"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>官方安装文档</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo curl https://rclone.org/install.sh <span class="p">|</span> sudo bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>也可以下载deb安装包</p>
+<h1 id="配置">配置</h1>
+<h2 id="获得onedrive授权">获得onedrive授权</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">weixusheng@weixusheng-ThinkPad-S5:~$ sudo rclone authorize <span class="s2">&#34;onedrive&#34;</span>
+</span></span><span class="line"><span class="cl">2020/05/14 19:55:04 NOTICE: Config file <span class="s2">&#34;/home/weixusheng/.config/rclone/rclone.conf&#34;</span> not found - using defaults
+</span></span><span class="line"><span class="cl">If your browser doesn<span class="err">&#39;</span>t open automatically go to the following link: http://127.0.0.1:53682/auth?state<span class="o">=</span>1PaeHX9ECA6DpqWDET_6Gw
+</span></span><span class="line"><span class="cl">Log in and authorize rclone <span class="k">for</span> access
+</span></span><span class="line"><span class="cl">Waiting <span class="k">for</span> code...
+</span></span><span class="line"><span class="cl">Got code
+</span></span><span class="line"><span class="cl">Paste the following into your remote machine ---&gt;
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;access_token&#34;</span>:<span class="s2">&#34;*****&#34;</span><span class="o">}</span>        <span class="c1">#得到授权码</span>
+</span></span><span class="line"><span class="cl">&lt;---End paste
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="填写配置文件">填写配置文件</h2>
+<h3 id="新建">新建</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">weixusheng@weixusheng-ThinkPad-S5:~$ sudo rclone config
+</span></span><span class="line"><span class="cl">No remotes found - make a new one
+</span></span><span class="line"><span class="cl">n<span class="o">)</span> New remote
+</span></span><span class="line"><span class="cl">s<span class="o">)</span> Set configuration password
+</span></span><span class="line"><span class="cl">q<span class="o">)</span> Quit config
+</span></span><span class="line"><span class="cl">n/s/q&gt; n
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="命名">命名</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">name&gt; one-drive
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="选择类型">选择类型</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Type of storage to configure.
+</span></span><span class="line"><span class="cl">Enter a string value. Press Enter <span class="k">for</span> the default <span class="o">(</span><span class="s2">&#34;&#34;</span><span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Choose a number from below, or <span class="nb">type</span> in your own value
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> / 1Fichier
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span><span class="s2">&#34;fichier&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="m">2</span> / Alias <span class="k">for</span> an existing remote
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span><span class="s2">&#34;alias&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="m">3</span> / Amazon Drive
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span><span class="s2">&#34;amazon cloud drive&#34;</span>
+</span></span><span class="line"><span class="cl">.....省略.....
+</span></span><span class="line"><span class="cl"><span class="m">23</span> / Microsoft OneDrive
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span><span class="s2">&#34;onedrive&#34;</span>
+</span></span><span class="line"><span class="cl">Storage&gt; <span class="m">23</span>
+</span></span><span class="line"><span class="cl">** See <span class="nb">help</span> <span class="k">for</span> onedrive backend at: https://rclone.org/onedrive/ **
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="填写client_id和client_secret">填写client_id和client_secret</h3>
+<p>直接enter跳过</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Microsoft App Client Id
+</span></span><span class="line"><span class="cl">Leave blank normally.
+</span></span><span class="line"><span class="cl">Enter a string value. Press Enter <span class="k">for</span> the default <span class="o">(</span><span class="s2">&#34;&#34;</span><span class="o">)</span>.
+</span></span><span class="line"><span class="cl">client_id&gt; 
+</span></span><span class="line"><span class="cl">Microsoft App Client Secret
+</span></span><span class="line"><span class="cl">Leave blank normally.
+</span></span><span class="line"><span class="cl">Enter a string value. Press Enter <span class="k">for</span> the default <span class="o">(</span><span class="s2">&#34;&#34;</span><span class="o">)</span>.
+</span></span><span class="line"><span class="cl">client_secret&gt; 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="advanced-config及auto-config">advanced config及auto config</h3>
+<p>选择no</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Edit advanced config? <span class="o">(</span>y/n<span class="o">)</span>
+</span></span><span class="line"><span class="cl">y<span class="o">)</span> Yes
+</span></span><span class="line"><span class="cl">n<span class="o">)</span> No <span class="o">(</span>default<span class="o">)</span>
+</span></span><span class="line"><span class="cl">y/n&gt; n
+</span></span><span class="line"><span class="cl">Remote config
+</span></span><span class="line"><span class="cl">Use auto config?
+</span></span><span class="line"><span class="cl"> * Say Y <span class="k">if</span> not sure
+</span></span><span class="line"><span class="cl"> * Say N <span class="k">if</span> you are working on a remote or headless machine
+</span></span><span class="line"><span class="cl">y<span class="o">)</span> Yes <span class="o">(</span>default<span class="o">)</span>
+</span></span><span class="line"><span class="cl">n<span class="o">)</span> No
+</span></span><span class="line"><span class="cl">y/n&gt; n
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="填写token">填写token</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">For this to work, you will need rclone available on a machine that has a web browser available.
+</span></span><span class="line"><span class="cl">Execute the following on your machine <span class="o">(</span>same rclone version recommended<span class="o">)</span> :
+</span></span><span class="line"><span class="cl">	rclone authorize <span class="s2">&#34;onedrive&#34;</span>
+</span></span><span class="line"><span class="cl">Then paste the result below:
+</span></span><span class="line"><span class="cl">result&gt; <span class="o">{</span><span class="s2">&#34;access_token&#34;</span>:<span class="s2">&#34;*****&#34;</span><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="选择onedrive中的服务">选择onedrive中的服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Choose a number from below, or <span class="nb">type</span> in an existing value
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> / OneDrive Personal or Business
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span><span class="s2">&#34;onedrive&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="m">2</span> / Root Sharepoint site
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span><span class="s2">&#34;sharepoint&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="m">3</span> / Type in driveID
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span><span class="s2">&#34;driveid&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="m">4</span> / Type in SiteID
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span><span class="s2">&#34;siteid&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="m">5</span> / Search a Sharepoint site
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span><span class="s2">&#34;search&#34;</span>
+</span></span><span class="line"><span class="cl">Your choice&gt; <span class="m">1</span>
+</span></span><span class="line"><span class="cl">Found <span class="m">1</span> drives, please <span class="k">select</span> the one you want to use:
+</span></span><span class="line"><span class="cl">0:  <span class="o">(</span>personal<span class="o">)</span> <span class="nv">id</span><span class="o">=</span>22994754919d54cc
+</span></span><span class="line"><span class="cl">Chose drive to use:&gt; <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Found drive <span class="s1">&#39;root&#39;</span> of <span class="nb">type</span> <span class="s1">&#39;personal&#39;</span>, URL: https://onedrive.live.com/?cid<span class="o">=</span>22994754919d54cc
+</span></span><span class="line"><span class="cl">Is that okay?
+</span></span><span class="line"><span class="cl">y<span class="o">)</span> Yes <span class="o">(</span>default<span class="o">)</span>
+</span></span><span class="line"><span class="cl">n<span class="o">)</span> No
+</span></span><span class="line"><span class="cl">y/n&gt; y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="成功生成配置文件">成功生成配置文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">--------------------
+</span></span><span class="line"><span class="cl"><span class="o">[</span>tronwei<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">type</span> <span class="o">=</span> onedrive
+</span></span><span class="line"><span class="cl"><span class="nv">token</span> <span class="o">=</span> <span class="o">{</span><span class="s2">&#34;*****&#34;</span><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="nv">drive_id</span> <span class="o">=</span> 22994754919d54cc
+</span></span><span class="line"><span class="cl"><span class="nv">drive_type</span> <span class="o">=</span> personal
+</span></span><span class="line"><span class="cl">--------------------
+</span></span><span class="line"><span class="cl">y<span class="o">)</span> Yes this is OK <span class="o">(</span>default<span class="o">)</span>
+</span></span><span class="line"><span class="cl">e<span class="o">)</span> Edit this remote
+</span></span><span class="line"><span class="cl">d<span class="o">)</span> Delete this remote
+</span></span><span class="line"><span class="cl">y/e/d&gt; y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完成配置</p>
+<h1 id="挂载">挂载</h1>
+<h2 id="新建文件夹挂载的目标文件夹">新建文件夹(挂载的目标文件夹)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#新建本地文件夹，路径自己定，即下面的LocalFolder</span>
+</span></span><span class="line"><span class="cl">sudo mkdir /root/OneDrive
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="挂载为磁盘">挂载为磁盘</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#DriveName、Folder、LocalFolder参数根据说明自行替换</span>
+</span></span><span class="line"><span class="cl">sudo rclone mount DriveName:Folder LocalFolder --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask <span class="m">000</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>DriveName为初始化配置填的name</li>
+<li>Folder为OneDrive里的文件夹(可以为根目录&rsquo;/')</li>
+<li>LocalFolder为本地文件夹。</li>
+</ul>
+<p>举例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo rclone mount one-drive:/ /home/onedrive --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask <span class="m">000</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>挂载成功后，输入df -h命令查看即可！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">weixusheng@weixusheng-ThinkPad-S5:~$ df -h
+</span></span><span class="line"><span class="cl">文件系统        容量  已用  可用 已用% 挂载点
+</span></span><span class="line"><span class="cl">/dev/sdb8       123G   34G   83G   30% /
+</span></span><span class="line"><span class="cl">one-drive:      1.1T  113G  927G   11% /home/onedrive
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="systemctl开机自启rclone挂载">systemctl开机自启rclone挂载</h1>
+<h2 id="安装systemctl">安装systemctl</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install systemd-sysv <span class="o">&amp;&amp;</span> reboot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="新建service文件">新建service文件</h2>
+<ol>
+<li>进入systemd目录(/etc/systemd/system)，创建文件rclone.service</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo gedit rclone.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>填写以下</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[Unit]
+</span></span><span class="line"><span class="cl">Description=rclone
+</span></span><span class="line"><span class="cl">[Service]
+</span></span><span class="line"><span class="cl">User=root
+</span></span><span class="line"><span class="cl">ExecStart=sudo rclone mount one-drive:/ /home/onedrive --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000
+</span></span><span class="line"><span class="cl">Restart=on-abort
+</span></span><span class="line"><span class="cl">[Install]
+</span></span><span class="line"><span class="cl">WantedBy=multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>保存退出</li>
+</ol>
+<h2 id="systemctl命令">systemctl命令</h2>
+<ol>
+<li>开机自启：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> rclone
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>启动：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl start rclone
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>重启：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl restart rclone
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>停止：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl stop rclone
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>状态：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl status rclone
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="上传与下载">上传与下载</h1>
+<p>将文件复制到网盘中为上传
+从网盘复制文件到本地为下载</p>
+<p>至此重启电脑就会发现,网盘已挂载
+rclone还有很多命令,由于现在是图形界面环境,所以先解决了能不能用的问题
+命令慢慢学,以后再更新</p>
+<p><a
+  href="https://www.moerats.com/archives/491/comment-page-2"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>参考blog-1</a>
+<a
+  href="https://blog.csdn.net/yichurou2981/article/details/103548190"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>参考blog-2</a></p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-05-15&#32;10:30:00>更新于 2020-05-15</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Ubuntu/">Ubuntu</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/leetcode-6/" class="prev" rel="prev" title="Leetcode Part-6"><i class="fas fa-angle-left fa-fw"></i>Leetcode Part-6</a>
+      <a href="/posts/C-7/" class="next" rel="next" title="C语言程序设计 Part-4">C语言程序设计 Part-4<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

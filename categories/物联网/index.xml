@@ -1,0 +1,80 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>物联网 - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/%E7%89%A9%E8%81%94%E7%BD%91/</link>
+    <description>物联网 - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Fri, 08 May 2020 20:30:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/%E7%89%A9%E8%81%94%E7%BD%91/" rel="self" type="application/rss+xml" /><item>
+  <title>物联网概论 PART-12</title>
+  <link>http://example.org/posts/IOT-12/</link>
+  <pubDate>Fri, 08 May 2020 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-12/</guid>
+  <description><![CDATA[<p>物联网数据检索</p>]]></description>
+</item><item>
+  <title>物联网概论 PART-11</title>
+  <link>http://example.org/posts/IOT-11/</link>
+  <pubDate>Thu, 07 May 2020 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-11/</guid>
+  <description><![CDATA[<p>MapReduce,Spark框架</p>]]></description>
+</item><item>
+  <title>物联网概论 PART-10</title>
+  <link>http://example.org/posts/IOT-10/</link>
+  <pubDate>Thu, 07 May 2020 16:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-10/</guid>
+  <description><![CDATA[<p>物联网云计算和虚拟化,数据的预处理
+今天物联网撒花啦！开心
+但是最后部分知识点有些多,可能最后要分多个Blog来记录</p>]]></description>
+</item><item>
+  <title>物联网概论 PART-9</title>
+  <link>http://example.org/posts/IOT-9/</link>
+  <pubDate>Wed, 06 May 2020 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-9/</guid>
+  <description><![CDATA[<p>物联网与大数据</p>]]></description>
+</item><item>
+  <title>物联网概论 PART-8</title>
+  <link>http://example.org/posts/IOT-8/</link>
+  <pubDate>Tue, 05 May 2020 10:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-8/</guid>
+  <description><![CDATA[<p>网络体系结构</p>]]></description>
+</item><item>
+  <title>物联网概论 PART-7</title>
+  <link>http://example.org/posts/IOT-7/</link>
+  <pubDate>Mon, 04 May 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-7/</guid>
+  <description><![CDATA[<p>卫星通信技术,有线网络</p>]]></description>
+</item><item>
+  <title>物联网概论 PART-6</title>
+  <link>http://example.org/posts/IOT-6/</link>
+  <pubDate>Sun, 03 May 2020 10:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-6/</guid>
+  <description><![CDATA[<p>定位技术,物联网通信体系</p>]]></description>
+</item><item>
+  <title>物联网概论 PART-5</title>
+  <link>http://example.org/posts/IOT-5/</link>
+  <pubDate>Sat, 02 May 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-5/</guid>
+  <description><![CDATA[<p>RFID信号干扰</p>]]></description>
+</item><item>
+  <title>物联网概论 PART-4</title>
+  <link>http://example.org/posts/IOT-4/</link>
+  <pubDate>Wed, 29 Apr 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-4/</guid>
+  <description><![CDATA[<p>物联网标识技术</p>]]></description>
+</item><item>
+  <title>物联网概论 PART-3</title>
+  <link>http://example.org/posts/IOT-3/</link>
+  <pubDate>Tue, 28 Apr 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/IOT-3/</guid>
+  <description><![CDATA[<p>无线传感网络</p>]]></description>
+</item></channel>
+</rss>

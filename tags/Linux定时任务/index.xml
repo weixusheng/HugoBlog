@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Linux定时任务 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</link>
+    <description>Linux定时任务 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 23 Dec 2021 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Linux%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" rel="self" type="application/rss+xml" /><item>
+  <title>Ubuntu设定定时任务</title>
+  <link>http://example.org/posts/ubuntu-31/</link>
+  <pubDate>Thu, 23 Dec 2021 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-31/</guid>
+  <description><![CDATA[<p>Ubuntu crontab</p>]]></description>
+</item></channel>
+</rss>

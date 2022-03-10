@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>物联网概论 PART-10 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="物联网云计算和虚拟化,数据的预处理
+今天物联网撒花啦！开心
+但是最后部分知识点有些多,可能最后要分多个Blog来记录" />
+<meta name="keywords" content="物联网概论-课程" /><meta itemprop="name" content="物联网概论 PART-10">
+<meta itemprop="description" content="物联网云计算和虚拟化,数据的预处理
+今天物联网撒花啦！开心
+但是最后部分知识点有些多,可能最后要分多个Blog来记录"><meta itemprop="datePublished" content="2020-05-07T16:30:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-07T16:30:00+00:00" />
+<meta itemprop="wordCount" content="2803"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="物联网概论-课程," /><meta property="og:title" content="物联网概论 PART-10" />
+<meta property="og:description" content="物联网云计算和虚拟化,数据的预处理
+今天物联网撒花啦！开心
+但是最后部分知识点有些多,可能最后要分多个Blog来记录" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/IOT-10/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-07T16:30:00+00:00" />
+<meta property="article:modified_time" content="2020-05-07T16:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="物联网概论 PART-10"/>
+<meta name="twitter:description" content="物联网云计算和虚拟化,数据的预处理
+今天物联网撒花啦！开心
+但是最后部分知识点有些多,可能最后要分多个Blog来记录"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/IOT-10/" /><link rel="prev" href="http://example.org/posts/ubuntu-20/" /><link rel="next" href="http://example.org/posts/IOT-11/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "物联网概论 PART-10",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/IOT-10\/"
+    },"genre": "posts","keywords": "物联网概论-课程","wordcount":  2803 ,
+    "url": "http:\/\/example.org\/posts\/IOT-10\/","datePublished": "2020-05-07T16:30:00+00:00","dateModified": "2020-05-07T16:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">物联网概论 PART-10</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/"><i class="far fa-folder fa-fw"></i>物联网</a></span></div>
+      <div class="post-meta-line"><span title=2020-05-07&#32;16:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-07" >2020-05-07</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2803 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#物联网云计算和虚拟化">物联网云计算和虚拟化</a>
+      <ul>
+        <li><a href="#云计算">云计算</a>
+          <ul>
+            <li><a href="#云计算技术">云计算技术</a></li>
+          </ul>
+        </li>
+        <li><a href="#虚拟化概述">虚拟化概述</a></li>
+        <li><a href="#物联网云计算和虚拟化-1">物联网云计算和虚拟化</a>
+          <ul>
+            <li><a href="#根据解决x86体系缺陷的不同进行分类">根据解决x86体系缺陷的不同进行分类</a></li>
+          </ul>
+        </li>
+        <li><a href="#虚拟存储技术">虚拟存储技术</a>
+          <ul>
+            <li><a href="#传统存储技术">传统存储技术</a></li>
+            <li><a href="#存储虚拟化概述">存储虚拟化概述</a></li>
+            <li><a href="#存储虚拟化优势">存储虚拟化优势</a></li>
+          </ul>
+        </li>
+        <li><a href="#网络虚拟化">网络虚拟化</a>
+          <ul>
+            <li><a href="#传统数据中心网络">传统数据中心网络</a></li>
+            <li><a href="#网络虚拟化及sdn">网络虚拟化及SDN</a></li>
+            <li><a href="#sdn概念">SDN概念</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#数据的预处理">数据的预处理</a>
+      <ul>
+        <li><a href="#数据的预处理原因">数据的预处理原因</a></li>
+        <li><a href="#数据清洗">数据清洗</a>
+          <ul>
+            <li><a href="#作用">作用</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据集成">数据集成</a></li>
+        <li><a href="#数据转换">数据转换</a></li>
+        <li><a href="#数据归约">数据归约</a></li>
+        <li><a href="#知识发现">知识发现</a>
+          <ul>
+            <li><a href="#广义知识发现">广义知识发现</a></li>
+            <li><a href="#狭义知识发现">狭义知识发现</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据挖掘">数据挖掘</a>
+          <ul>
+            <li><a href="#定义">定义</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据挖掘的方法">数据挖掘的方法</a>
+          <ul>
+            <li><a href="#关联分析">关联分析</a></li>
+            <li><a href="#分类分析">分类分析</a></li>
+            <li><a href="#聚类分析">聚类分析</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>物联网云计算和虚拟化,数据的预处理
+今天物联网撒花啦！开心
+但是最后部分知识点有些多,可能最后要分多个Blog来记录</p>
+<h1 id="物联网云计算和虚拟化">物联网云计算和虚拟化</h1>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/1.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/1.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/1.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/1.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/1.png"
+    title="img" /></p>
+<h2 id="云计算">云计算</h2>
+<p>2006年时任Google首席执行官，在搜索引擎大会上首次提出“云计算”的概念
+云计算是一种无处不在，便携且按需对一个共享的可配置计算资源（网络，服务器，存储，应用，服务）进行网络访问的模式，它通过最少量的管理以及与服务提供商的互动实现计算机资源的迅速供给和释放</p>
+<h3 id="云计算技术">云计算技术</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/2.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/2.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/2.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/2.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/2.png"
+    title="img" /></p>
+<h2 id="虚拟化概述">虚拟化概述</h2>
+<p>虚拟化技术的核心思想是利用软件或固件管理程序构成虚拟化层，把物理资源映射为虚拟资源，在<strong>虚拟资源上可以安装和部署多个虚拟机</strong>，实现多用户共享物力资源
+<strong>随着云计算的发展，传统的数据中心逐渐过渡为虚拟化数据中心</strong></p>
+<ul>
+<li>利用虚拟化技术将原来数据中心的物理资源进行抽象整合</li>
+<li>数据中心的虚拟化可以实现资源的动态分配和调度，提高现有资源的利用率和服务的可靠性</li>
+<li>可以提供自动化的服务，降低运维成本</li>
+<li>具有有效的安全机制和可靠性机制，满足公众客户和企业客户的安全需求</li>
+<li>方便系统升级，迁移和改造</li>
+</ul>
+<h2 id="物联网云计算和虚拟化-1">物联网云计算和虚拟化</h2>
+<p>将<strong>一个或多个物理服务器虚拟成多个逻辑上的服务器</strong>,集中管理,能跨越物理平台不受限制。</p>
+<ul>
+<li>一个物理服务器虚拟成多个独立的逻辑服务器</li>
+<li>把多个分散的物理服务器虚拟为一个大的逻辑服务器</li>
+</ul>
+<h3 id="根据解决x86体系缺陷的不同进行分类">根据解决x86体系缺陷的不同进行分类</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/3.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/3.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/3.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/3.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/3.png"
+    title="img" /></p>
+<h2 id="虚拟存储技术">虚拟存储技术</h2>
+<h3 id="传统存储技术">传统存储技术</h3>
+<ul>
+<li>RAID磁盘阵列</li>
+<li>NAS网络连接存储</li>
+<li>SAN存储区域网络</li>
+</ul>
+<h3 id="存储虚拟化概述">存储虚拟化概述</h3>
+<p>存储虚拟化就是指将存储网络中各个分散且异构的存储设备按照一定的策略映射成一个统一的连续编址的逻辑存储空间,称为虚拟存储池,并将虚拟存储池的访问接口提供给应用系统。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png"
+    title="img" /></p>
+<h3 id="存储虚拟化优势">存储虚拟化优势</h3>
+<ul>
+<li>存储虚拟化将系统中分散的存储资源整合起来</li>
+<li>在虚拟层通过使用数据镜像、数据校验和多路径等技术提高了数据的可靠性及系统的可用性</li>
+<li>利用负载均衡、数据迁移、数据块重组等技术提升系统的潜在性能</li>
+<li>整合和重组低层物理资源
+<strong>存储系统已成为数据中心的核心平台</strong></li>
+</ul>
+<h2 id="网络虚拟化">网络虚拟化</h2>
+<h3 id="传统数据中心网络">传统数据中心网络</h3>
+<ul>
+<li>数据网络</li>
+<li>存储网络</li>
+<li>高性能计算网络
+服务器之间操作系统和上层软件异构、接口和数据格式不统一
+<ul>
+<li>拥塞丢包</li>
+<li>数据冗余
+数据中心网络传输效率低</li>
+</ul>
+</li>
+</ul>
+<h3 id="网络虚拟化及sdn">网络虚拟化及SDN</h3>
+<p>网络虚拟化是让一个物理网络能够支持多个逻辑网络,虚拟化保留了网络设计中原有的层次结构、数据通道和所能提供的服务,使得最终用户的体验和独享物理网络一样,同时网络虚拟化技术还可以高效的利用网络资源如空间、能源、设备容量等。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/5.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/5.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/5.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/5.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/5.png"
+    title="img" /></p>
+<h3 id="sdn概念">SDN概念</h3>
+<p>软件定义网络(Software Defined Network,SDN)是由美国斯坦福大学CLean State课题研究组提出的一种新型网络创新架构,是网络虚拟化的一种实现方式。其核心技术OpenFlow通过将网络设备的控制面与数据面分离开来,从而实现了网络流量的灵活控制,使网络作为管道变得更加智能,为核心网络及应用的创新提供了良好的平台。</p>
+<ul>
+<li>将网络分为控制层(Control Plane)和数据层(Data Plane)</li>
+<li>控制层的控制器软件,通过特定传输通道,统一下达命令给数据层设备</li>
+<li>数据层设备仅依靠控制层的命令转发数据包</li>
+<li></li>
+<li>SDN不等于网络虚拟化,只是SDN这种技术非常适合实现网络虚拟化</li>
+<li>网络虚拟化可以在现有网络中运作,因为它们在服务器运行,并与发送到它们的流量进行交互</li>
+<li>而SDN则需要一种新的网络架构,从而分离数据层和控制层</li>
+</ul>
+<h1 id="数据的预处理">数据的预处理</h1>
+<h2 id="数据的预处理原因">数据的预处理原因</h2>
+<p>在现实生活中存在大量的“脏数据”</p>
+<ol>
+<li>不完整性
+<ul>
+<li>缺少感兴趣的属性</li>
+<li>感兴趣的属性缺少部分属性值</li>
+<li>仅包含聚合数据，没有详细数据</li>
+</ul>
+</li>
+<li>噪音数据
+<ul>
+<li>数据中包含错误数据</li>
+<li>存在着部分偏离期望值的孤立点</li>
+</ul>
+</li>
+<li>不一致性
+<ul>
+<li>数据结构的不一致性</li>
+<li>Label（数据特点）的不一致性</li>
+<li>数据值的不一致性</li>
+</ul>
+</li>
+</ol>
+<h2 id="数据清洗">数据清洗</h2>
+<p>数据清洗主要是删去数据中重复的记录,消除数据中的噪声数据,纠正不完整和不一致的数据。</p>
+<ul>
+<li>噪声数据是指数据中存在着错误或异常的数据</li>
+<li>不完整数据是指数据中缺乏某些属性值</li>
+<li>不一致数据是指数据内涵出现不一致情况</li>
+</ul>
+<h3 id="作用">作用</h3>
+<ul>
+<li>填补遗漏的数据值</li>
+<li>平滑有噪声的数据</li>
+<li>识别或除去异常值</li>
+<li>解决不一致问题
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/6.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/6.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/6.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/6.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/6.png"
+    title="img" /></li>
+</ul>
+<h2 id="数据集成">数据集成</h2>
+<p>数据集成是将这些数据源中的数据集中存放在一个统一的数据存储(如数据仓库)中。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/7.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/7.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/7.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/7.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/7.png"
+    title="img" /></p>
+<h2 id="数据转换">数据转换</h2>
+<p>数据转换指将一种格式的数据转换为另外一种格式的数据,其目的就是为了使数据和将来要建立的模型拟合得更好,形成适合挖掘的形式。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/8.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/8.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/8.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/8.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/8.png"
+    title="img" /></p>
+<h2 id="数据归约">数据归约</h2>
+<p>数据归约是指在尽可能保持数据原貌的情况下,最大限度地精简数据量,因此也称为数据消减。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/9.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/9.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/9.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/9.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/9.png"
+    title="img" /></p>
+<h2 id="知识发现">知识发现</h2>
+<p>知识发现是一个选择和提取数据的过程,它能自动地发现新的、精确的、有用的模式以及现实世界现象。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/10.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/10.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/10.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/10.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/10.png"
+    title="img" /></p>
+<h3 id="广义知识发现">广义知识发现</h3>
+<ul>
+<li>数据立方体:数据立方体是实现某些常用的、代价较高的聚集函数的计算,如计数、求和、平均、最大值等,并将这些实现视图存储在多维数据库中。</li>
+<li>面向属性的归约:面向属性的归约则是以类SQL语言表示数据挖掘查询,收集数据库中的相关数据集,然后在相关数据集上应用一系列数据推广计数进行数据推广。</li>
+</ul>
+<h3 id="狭义知识发现">狭义知识发现</h3>
+<ul>
+<li>关联知识发现:关联知识发现是反映一个事件和其他事件之间依赖或关联。如果两项或多项属性之间存在关联,那么其中一项的属性值就可以依赖其他属性值进行预测。</li>
+<li>分类知识发现:分类知识发现是反映同类事物共同性质的特征型知识和不同事物之间的差异型特征。</li>
+<li>预测知识发现:预测型知识发现是有历史的和当前的数据去推测未来的数据,也可以认为是以时间为关键属性的关联知识发现。</li>
+</ul>
+<h2 id="数据挖掘">数据挖掘</h2>
+<p>二十世纪末以来,全球信息量以惊人的速度急剧增长——据估计,每二十个月将增加一倍。为了充分利用现有信息资源,从海量数据中找出隐藏的知识,数据挖掘技术应运而生并并显示出强大的生命力。</p>
+<h3 id="定义">定义</h3>
+<ul>
+<li>技术角度的定义
+数据挖掘是从大量的、不完全的、有噪声的、模糊的、随机的实际应用数据中,提取隐含在其中的、人们事先不知道的、但又是潜在有用的信息和知识的过程。与数据挖掘相近的同义词包括:<strong>数据融合、数据分析和决策支持</strong>等。</li>
+<li>商业角度的定义
+数据挖掘是一种新的商业信息处理技术,其主要特点是对商业数据库中的大量业务数据进行抽取、转换、分析和其他模型化处理,从中提取<strong>辅助商业决策</strong>的关键性信息。</li>
+</ul>
+<h2 id="数据挖掘的方法">数据挖掘的方法</h2>
+<ul>
+<li>分类(Classification)</li>
+<li>聚类(Clustering)</li>
+<li>相关规划(Association Rule)</li>
+<li>回归(Regression)</li>
+<li>其他</li>
+</ul>
+<h3 id="关联分析">关联分析</h3>
+<ul>
+<li>若两个或多个变量的取值之间存在某种规律性,就称为关联。</li>
+<li>从一个项目集中发现关联规则,该规则显示了给定数据集中经常一起出现的属性-值条件元组。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/11.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/11.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/11.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/11.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/11.png"
+    title="img" /></li>
+<li>算法实现(看不懂&hellip;先写上)
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/12.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/12.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/12.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/12.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/12.png"
+    title="img" /></li>
+</ul>
+<h3 id="分类分析">分类分析</h3>
+<ul>
+<li>分类指通过分析一个类别己知的<strong>数据集的特征</strong>来建立一组模型,该模型可用以预测类别未知的数据项的类别。该分类模型可以表现为多种形式:分类规则,决策树或者数学公式,乃至神经网络。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/13.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/13.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/13.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/13.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/13.png"
+    title="img" /></li>
+</ul>
+<h3 id="聚类分析">聚类分析</h3>
+<p>聚类分析又称为“同质分组”或者“无监督的分类”,指把一组数据分成不同的“簇”,每簇中的数据相似而不同簇间的数据则距离较远。相似性可以由用户或者专家定义的距离函数加以度量。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/4.png"
+    title="img" /></p>
+<ul>
+<li>基于划分的聚类分析
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/15.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/15.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/15.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/15.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/15.png"
+    title="img" /></li>
+<li>基于层次的聚类分析
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/16.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/16.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/16.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/16.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/16.png"
+    title="img" /></li>
+<li>基于密度的聚类分析
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/17.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/17.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/17.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/17.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/17.png"
+    title="img" /></li>
+<li>基于网格的聚类分析
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/18.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/18.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/18.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/18.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/18.png"
+    title="img" /></li>
+<li>基于模型的聚类分析
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/19.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/19.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/19.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/19.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-10/19.png"
+    title="img" /></li>
+</ul></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-05-07&#32;16:30:00>更新于 2020-05-07</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91%E6%A6%82%E8%AE%BA-%E8%AF%BE%E7%A8%8B/">物联网概论-课程</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/ubuntu-20/" class="prev" rel="prev" title="Ubuntu优化总结"><i class="fas fa-angle-left fa-fw"></i>Ubuntu优化总结</a>
+      <a href="/posts/IOT-11/" class="next" rel="next" title="物联网概论 PART-11">物联网概论 PART-11<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>Python自动化办公 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="Python自动化办公 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-10-11T20:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-10-11T20:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Python自动化办公">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/python-2/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Python自动化办公</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年10月11日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>读写Excel.写入Word</p>
+<h1 id="写入worddocx">写入Word(docx)</h1>
+<h2 id="引入库">引入库</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">docx</span> <span style="color:#000;font-weight:bold">import</span> Document <span style="color:#998;font-style:italic"># 文档</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">docx.shared</span> <span style="color:#000;font-weight:bold">import</span> Inches <span style="color:#998;font-style:italic"># 设置距离</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">docx.shared</span> <span style="color:#000;font-weight:bold">import</span> Cm, Pt <span style="color:#998;font-style:italic"># 设置单位</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">docx.oxml.ns</span> <span style="color:#000;font-weight:bold">import</span> qn  <span style="color:#998;font-style:italic"># 设置中文字体</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">docx.enum.text</span> <span style="color:#000;font-weight:bold">import</span> WD_PARAGRAPH_ALIGNMENT <span style="color:#998;font-style:italic"># 段落居中样式</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">docx.enum.table</span> <span style="color:#000;font-weight:bold">import</span> WD_CELL_VERTICAL_ALIGNMENT <span style="color:#998;font-style:italic"># 表格居中样式</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="创建word文件">创建word文件</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>document <span style="color:#000;font-weight:bold">=</span> Document()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="添加图片">添加图片</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>document<span style="color:#000;font-weight:bold">.</span>add_picture(<span style="color:#d14">&#39;dt_logo.png&#39;</span>, width<span style="color:#000;font-weight:bold">=</span>Inches(<span style="color:#099">4.165</span>))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="增加段落和文字">增加段落和文字</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>p <span style="color:#000;font-weight:bold">=</span> document<span style="color:#000;font-weight:bold">.</span>add_paragraph()
+</span></span><span style="display:flex;"><span>p<span style="color:#000;font-weight:bold">.</span>alignment <span style="color:#000;font-weight:bold">=</span> WD_PARAGRAPH_ALIGNMENT<span style="color:#000;font-weight:bold">.</span>CENTER <span style="color:#998;font-style:italic"># 设置段落样式 居中</span>
+</span></span><span style="display:flex;"><span>p4<span style="color:#000;font-weight:bold">.</span>paragraph_format<span style="color:#000;font-weight:bold">.</span>first_line_indent <span style="color:#000;font-weight:bold">=</span> Cm(<span style="color:#099">0.74</span>) <span style="color:#998;font-style:italic"># 设置首段缩进</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#000;font-weight:bold">=</span> p<span style="color:#000;font-weight:bold">.</span>add_run(<span style="color:#d14">&#39;电子商务平台交易服务费付款通知&#39;</span>) <span style="color:#998;font-style:italic"># 段落中添加文字</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#000;font-weight:bold">.</span>font<span style="color:#000;font-weight:bold">.</span>name <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">u</span><span style="color:#d14">&#39;仿宋_GB2312&#39;</span> <span style="color:#998;font-style:italic"># 设置字体</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#000;font-weight:bold">.</span>_element<span style="color:#000;font-weight:bold">.</span>rPr<span style="color:#000;font-weight:bold">.</span>rFonts<span style="color:#000;font-weight:bold">.</span>set(qn(<span style="color:#d14">&#39;w:eastAsia&#39;</span>), <span style="color:#d14">u</span><span style="color:#d14">&#39;仿宋_GB2312&#39;</span>)
+</span></span><span style="display:flex;"><span>a<span style="color:#000;font-weight:bold">.</span>font<span style="color:#000;font-weight:bold">.</span>size <span style="color:#000;font-weight:bold">=</span> Pt(<span style="color:#099">22</span>) <span style="color:#998;font-style:italic"># 设置文字大小 单位:磅</span>
+</span></span><span style="display:flex;"><span>a3<span style="color:#000;font-weight:bold">.</span>bold <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">True</span> <span style="color:#998;font-style:italic"># 设置文字粗体</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="添加空行">添加空行</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 用了笨方法,添加一个没有内容的段落</span>
+</span></span><span style="display:flex;"><span>blank1 <span style="color:#000;font-weight:bold">=</span> document<span style="color:#000;font-weight:bold">.</span>add_paragraph()
+</span></span><span style="display:flex;"><span>b1 <span style="color:#000;font-weight:bold">=</span> blank1<span style="color:#000;font-weight:bold">.</span>add_run(<span style="color:#d14">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span>b1<span style="color:#000;font-weight:bold">.</span>font<span style="color:#000;font-weight:bold">.</span>name <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">u</span><span style="color:#d14">&#39;仿宋_GB2312&#39;</span>
+</span></span><span style="display:flex;"><span>b1<span style="color:#000;font-weight:bold">.</span>font<span style="color:#000;font-weight:bold">.</span>size <span style="color:#000;font-weight:bold">=</span> Pt(<span style="color:#099">22</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="表格">表格</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>table <span style="color:#000;font-weight:bold">=</span> document<span style="color:#000;font-weight:bold">.</span>add_table(rows<span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>,  cols<span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>, style<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;Medium Shading 1 Accent 6&#39;</span>) <span style="color:#998;font-style:italic"># 两行两列,选取官方表格样式</span>
+</span></span><span style="display:flex;"><span>table<span style="color:#000;font-weight:bold">.</span>rows[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">.</span>height<span style="color:#000;font-weight:bold">=</span>Pt(<span style="color:#099">25</span>) <span style="color:#998;font-style:italic"># 第一行的高度</span>
+</span></span><span style="display:flex;"><span>table<span style="color:#000;font-weight:bold">.</span>rows[<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">.</span>height<span style="color:#000;font-weight:bold">=</span>Pt(<span style="color:#099">50</span>) <span style="color:#998;font-style:italic"># 第二行的高度</span>
+</span></span><span style="display:flex;"><span>run <span style="color:#000;font-weight:bold">=</span> table<span style="color:#000;font-weight:bold">.</span>cell(<span style="color:#099">0</span>,<span style="color:#099">0</span>)<span style="color:#000;font-weight:bold">.</span>paragraphs[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">.</span>add_run(<span style="color:#d14">u</span><span style="color:#d14">&#39;收款单号&#39;</span>) <span style="color:#998;font-style:italic"># 在(0,0)表格中添加文字</span>
+</span></span><span style="display:flex;"><span>run<span style="color:#000;font-weight:bold">.</span>font<span style="color:#000;font-weight:bold">.</span>name <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;仿宋&#39;</span> <span style="color:#998;font-style:italic"># 设置文字样式</span>
+</span></span><span style="display:flex;"><span>run<span style="color:#000;font-weight:bold">.</span>font<span style="color:#000;font-weight:bold">.</span>size <span style="color:#000;font-weight:bold">=</span> Pt(<span style="color:#099">11</span>)
+</span></span><span style="display:flex;"><span>k1 <span style="color:#000;font-weight:bold">=</span> run<span style="color:#000;font-weight:bold">.</span>_element
+</span></span><span style="display:flex;"><span>k1<span style="color:#000;font-weight:bold">.</span>rPr<span style="color:#000;font-weight:bold">.</span>rFonts<span style="color:#000;font-weight:bold">.</span>set(qn(<span style="color:#d14">&#39;w:eastAsia&#39;</span>), <span style="color:#d14">&#39;仿宋&#39;</span>)
+</span></span><span style="display:flex;"><span>table<span style="color:#000;font-weight:bold">.</span>cell(<span style="color:#099">0</span>,<span style="color:#099">0</span>)<span style="color:#000;font-weight:bold">.</span>paragraphs[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">.</span>alignment <span style="color:#000;font-weight:bold">=</span> WD_PARAGRAPH_ALIGNMENT<span style="color:#000;font-weight:bold">.</span>CENTER <span style="color:#998;font-style:italic"># 水平居中</span>
+</span></span><span style="display:flex;"><span>table<span style="color:#000;font-weight:bold">.</span>cell(<span style="color:#099">0</span>,<span style="color:#099">0</span>)<span style="color:#000;font-weight:bold">.</span>vertical_alignment <span style="color:#000;font-weight:bold">=</span> WD_CELL_VERTICAL_ALIGNMENT<span style="color:#000;font-weight:bold">.</span>CENTER <span style="color:#998;font-style:italic"># 垂直居中</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="段落统一文字样式">段落统一文字样式</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>p5 <span style="color:#000;font-weight:bold">=</span> document<span style="color:#000;font-weight:bold">.</span>add_paragraph()
+</span></span><span style="display:flex;"><span>list_font <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>list_font<span style="color:#000;font-weight:bold">.</span>append(p5<span style="color:#000;font-weight:bold">.</span>add_run(<span style="color:#d14">&#39;支付方式：</span><span style="color:#d14">\n</span><span style="color:#d14">&#39;</span>))
+</span></span><span style="display:flex;"><span>tmp <span style="color:#000;font-weight:bold">=</span> p5<span style="color:#000;font-weight:bold">.</span>add_run(<span style="color:#d14">&#39;在线支付【推荐，实时结算】。&#39;</span>)
+</span></span><span style="display:flex;"><span>tmp<span style="color:#000;font-weight:bold">.</span>bold <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">True</span>
+</span></span><span style="display:flex;"><span>list_font<span style="color:#000;font-weight:bold">.</span>append(tmp)
+</span></span><span style="display:flex;"><span>list_font<span style="color:#000;font-weight:bold">.</span>append(p5<span style="color:#000;font-weight:bold">.</span>add_run(<span style="color:#d14">&#39;登录平台后，通过管理中心-支付平台-交易费收款单，弹出缴纳页面进行支付。</span><span style="color:#d14">\n</span><span style="color:#d14">联系人：大唐电子商务平台</span><span style="color:#d14">\n</span><span style="color:#d14">&#39;</span>))
+</span></span><span style="display:flex;"><span>list_font<span style="color:#000;font-weight:bold">.</span>append(p5<span style="color:#000;font-weight:bold">.</span>add_run(<span style="color:#d14">&#39;联系电话：400-888-6262</span><span style="color:#d14">\n\n\n\n</span><span style="color:#d14">&#39;</span>))
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(list_font)):
+</span></span><span style="display:flex;"><span>	list_font[i]<span style="color:#000;font-weight:bold">.</span>font<span style="color:#000;font-weight:bold">.</span>name <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">u</span><span style="color:#d14">&#39;仿宋_GB2312&#39;</span>
+</span></span><span style="display:flex;"><span>	list_font[i]<span style="color:#000;font-weight:bold">.</span>_element<span style="color:#000;font-weight:bold">.</span>rPr<span style="color:#000;font-weight:bold">.</span>rFonts<span style="color:#000;font-weight:bold">.</span>set(qn(<span style="color:#d14">&#39;w:eastAsia&#39;</span>), <span style="color:#d14">u</span><span style="color:#d14">&#39;仿宋_GB2312&#39;</span>)
+</span></span><span style="display:flex;"><span>	list_font[i]<span style="color:#000;font-weight:bold">.</span>font<span style="color:#000;font-weight:bold">.</span>size <span style="color:#000;font-weight:bold">=</span> Pt(<span style="color:#099">12</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="读取excel">读取Excel</h1>
+<h1 id="pandas">Pandas</h1>
+<p>Pandas 读取 Excel 是基于 xlrd 的封装</p>
+<p>操作更方便,并且可使用Pandas各种数据处理方法</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">pandas</span> <span style="color:#000;font-weight:bold">import</span> read_excel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#998;font-style:italic">#readbook = xlrd.open_workbook(r&#39;info.xlsx&#39;)</span>
+</span></span><span style="display:flex;"><span>	data <span style="color:#000;font-weight:bold">=</span> read_excel(<span style="color:#d14">r</span><span style="color:#d14">&#39;info.xlsx&#39;</span>, <span style="color:#099">1</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">Exception</span> <span style="color:#000;font-weight:bold">as</span> e:
+</span></span><span style="display:flex;"><span>	<span style="color:#0086b3">print</span>(<span style="color:#0086b3">str</span>(e))
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>    row_num <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">input</span>(<span style="color:#d14">&#34;请输入数量:&#34;</span>)
+</span></span><span style="display:flex;"><span>    row_num <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">int</span>(row_num)
+</span></span><span style="display:flex;"><span>    res <span style="color:#000;font-weight:bold">=</span> data[<span style="color:#099">0</span>:row_num] <span style="color:#998;font-style:italic"># 返回前row_num行的数据</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> res
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d14">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">返回DataFrame数据
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#39;&#39;&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="xlrd">xlrd</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">xlrd</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># noinspection PyBroadException</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span>    readbook <span style="color:#000;font-weight:bold">=</span> xlrd<span style="color:#000;font-weight:bold">.</span>open_workbook(<span style="color:#d14">r</span><span style="color:#d14">&#39;info.xlsx&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">Exception</span> <span style="color:#000;font-weight:bold">as</span> e:
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#print(&#34;文件打开异常&#34;)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#0086b3">str</span>(e))
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># 失败</span>
+</span></span><span style="display:flex;"><span>    sheet <span style="color:#000;font-weight:bold">=</span> readbook<span style="color:#000;font-weight:bold">.</span>sheet_by_index(<span style="color:#099">0</span>) <span style="color:#998;font-style:italic"># 读取第一个sheet</span>
+</span></span><span style="display:flex;"><span>    data_server <span style="color:#000;font-weight:bold">=</span> sheet<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">2</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">18</span>) <span style="color:#998;font-style:italic">#读取服务端</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#server_data = get_interfaceList(get_ClassUrl.server.value, session)</span>
+</span></span><span style="display:flex;"><span>    data_client <span style="color:#000;font-weight:bold">=</span> sheet<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">2</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">19</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">24</span>) <span style="color:#998;font-style:italic">#读取客户端</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#client_data = get_interfaceList(get_ClassUrl.client.value, session)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># 成功</span>
+</span></span><span style="display:flex;"><span>    sheet <span style="color:#000;font-weight:bold">=</span> readbook<span style="color:#000;font-weight:bold">.</span>sheet_by_index(<span style="color:#099">1</span>)
+</span></span><span style="display:flex;"><span>    data_server2 <span style="color:#000;font-weight:bold">=</span> sheet<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">2</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span>)  <span style="color:#998;font-style:italic"># 读取服务端</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#server_data2 = get_interfaceList(get_ClassUrl.suc_server.value, session)</span>
+</span></span><span style="display:flex;"><span>    data_client2 <span style="color:#000;font-weight:bold">=</span> sheet<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">2</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">4</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">7</span>)  <span style="color:#998;font-style:italic"># 读取客户端</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#client_data2 = get_interfaceList(get_ClassUrl.suc_client.value, session)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="读取数据">读取数据</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sheet <span style="color:#000;font-weight:bold">=</span> readbook<span style="color:#000;font-weight:bold">.</span>sheet_by_index(<span style="color:#099">0</span>) <span style="color:#998;font-style:italic"># 读取第一个sheet</span>
+</span></span><span style="display:flex;"><span>data_server <span style="color:#000;font-weight:bold">=</span> sheet<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">2</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">18</span>) <span style="color:#998;font-style:italic"># 读取第三列 起始为第二行,终点为17行</span>
+</span></span><span style="display:flex;"><span><span style="color:#d14">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">返回数组
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#39;&#39;&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/jupyter/">关联Jupyter Notebook和conda</a></li>
+        
+        <li><a href="/post/python_sql-1/">SQLAlchemy</a></li>
+        
+        <li><a href="/post/python_sql-2/">SQLAlchemy-2</a></li>
+        
+        <li><a href="/post/flask/">Apache部署Flask</a></li>
+        
+        <li><a href="/post/selenium_update/">selenium4.1新版</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/python'>Python</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

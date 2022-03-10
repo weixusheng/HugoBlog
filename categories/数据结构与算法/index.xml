@@ -1,0 +1,79 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>数据结构与算法 - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
+    <description>数据结构与算法 - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Fri, 04 Sep 2020 22:59:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+  <title>Map/Set/优先队列 的补充</title>
+  <link>http://example.org/posts/DS-16/</link>
+  <pubDate>Fri, 04 Sep 2020 22:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-16/</guid>
+  <description><![CDATA[<p>最近发现 Set-Map-优先队列 有许多好用的使用方法,整理一下补充的知识点8!</p>]]></description>
+</item><item>
+  <title>动态规划-基本概念</title>
+  <link>http://example.org/posts/DS-15/</link>
+  <pubDate>Wed, 02 Sep 2020 22:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-15/</guid>
+  <description><![CDATA[<p>基本概念 | 数塔问题</p>]]></description>
+</item><item>
+  <title>树状数组</title>
+  <link>http://example.org/posts/DS-13/</link>
+  <pubDate>Wed, 02 Sep 2020 19:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-13/</guid>
+  <description><![CDATA[<p>数据结构-树状数组</p>]]></description>
+</item><item>
+  <title>动态规划 背包问题-1</title>
+  <link>http://example.org/posts/DS-14/</link>
+  <pubDate>Tue, 01 Sep 2020 19:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-14/</guid>
+  <description><![CDATA[<p>花了大半天时间,算是稍微理解了背包问题<br>
+甲级题要把我虐穿了&hellip;这两天肝一肝8&hellip;(哭)</p>]]></description>
+</item><item>
+  <title>红黑树</title>
+  <link>http://example.org/posts/DS-12/</link>
+  <pubDate>Sun, 28 Jun 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-12/</guid>
+  <description><![CDATA[<p>学到STL中的set和map,发现底层实现是红黑树,之前一直听说过这个结构,这次遇到了实际应用,早晚都要学,不如今天学了</p>]]></description>
+</item><item>
+  <title>图的最短路径</title>
+  <link>http://example.org/posts/DS-11/</link>
+  <pubDate>Fri, 17 Apr 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-11/</guid>
+  <description><![CDATA[<p>单源多源最短路径</p>]]></description>
+</item><item>
+  <title>图的算法应用&amp;&amp;最小生成树</title>
+  <link>http://example.org/posts/DS-10/</link>
+  <pubDate>Thu, 16 Apr 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-10/</guid>
+  <description><![CDATA[<p>简单路径,最短路径,最小生成树</p>]]></description>
+</item><item>
+  <title>图的DFS/BFS遍历</title>
+  <link>http://example.org/posts/DS-9/</link>
+  <pubDate>Wed, 15 Apr 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-9/</guid>
+  <description><![CDATA[<p>图的重点!</p>]]></description>
+</item><item>
+  <title>树和哈夫曼树的算法整理</title>
+  <link>http://example.org/posts/DS-8/</link>
+  <pubDate>Sun, 12 Apr 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-8/</guid>
+  <description><![CDATA[<p>今天应该进入图的,但是感觉还是整理一下树和哈夫曼树吧,知识点挺多的</p>]]></description>
+</item><item>
+  <title>线索二叉树</title>
+  <link>http://example.org/posts/DS-7/</link>
+  <pubDate>Thu, 09 Apr 2020 21:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DS-7/</guid>
+  <description><![CDATA[<p>二叉树的线索化</p>]]></description>
+</item></channel>
+</rss>

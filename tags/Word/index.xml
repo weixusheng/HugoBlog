@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Word - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Word/</link>
+    <description>Word - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Mon, 11 Oct 2021 20:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Word/" rel="self" type="application/rss+xml" /><item>
+  <title>Python自动化办公</title>
+  <link>http://example.org/posts/python-2/</link>
+  <pubDate>Mon, 11 Oct 2021 20:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python-2/</guid>
+  <description><![CDATA[<p>读写Excel.写入Word</p>]]></description>
+</item><item>
+  <title>Word论文格式</title>
+  <link>http://example.org/posts/paper-4/</link>
+  <pubDate>Sun, 14 Jun 2020 21:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/paper-4/</guid>
+  <description><![CDATA[<p>论文格式的问题主要集中在目录，页眉，页脚三大部分
+这里分这三块来讲</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">版本: Office 365 Word
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>

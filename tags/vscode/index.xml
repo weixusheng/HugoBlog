@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>vscode - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/vscode/</link>
+    <description>vscode - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Mon, 18 May 2020 20:30:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/vscode/" rel="self" type="application/rss+xml" /><item>
+  <title>VScode配置C环境</title>
+  <link>http://example.org/posts/vscode-3/</link>
+  <pubDate>Mon, 18 May 2020 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/vscode-3/</guid>
+  <description><![CDATA[建立Linux下的C环境 2020.6.22更新 关于math.h等头文件出现链接错误 修改task.json文件 1 2 3 4 5 6 7 &#34;args&#34;: [ &#34;-g&#34;, &#34;${file}&#34;, &#34;-lm&#34;, //新增]]></description>
+</item><item>
+  <title>VScode代码折叠</title>
+  <link>http://example.org/posts/vscode-2/</link>
+  <pubDate>Thu, 14 May 2020 14:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/vscode-2/</guid>
+  <description><![CDATA[今天学c的时候,看到预处理命令#pragma,想起来之前用的代码折叠 既然创建了vscode专区,就把之前的技巧放在这里,方便查找 vscode]]></description>
+</item><item>
+  <title>VScode同步设置</title>
+  <link>http://example.org/posts/vscode-1/</link>
+  <pubDate>Mon, 11 May 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/vscode-1/</guid>
+  <description><![CDATA[VScode虽然很棒,但是配置文件无法同步,这点有些麻烦,还好有插件支持同步 插件名字: Settings Sync 下面开始说配置过程 上传设置 生成 Github gist Token 在Settin]]></description>
+</item></channel>
+</rss>

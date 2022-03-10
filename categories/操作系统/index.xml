@@ -1,0 +1,50 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>操作系统 - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+    <description>操作系统 - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Mon, 11 May 2020 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
+  <title>OS总结 Part-4</title>
+  <link>http://example.org/posts/OS-4/</link>
+  <pubDate>Mon, 11 May 2020 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/OS-4/</guid>
+  <description><![CDATA[<p>设备管理,文件系统</p>]]></description>
+</item><item>
+  <title>OS总结 Part-3</title>
+  <link>http://example.org/posts/OS-3/</link>
+  <pubDate>Mon, 11 May 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/OS-3/</guid>
+  <description><![CDATA[<p>存储管理</p>]]></description>
+</item><item>
+  <title>OS总结 Part-2</title>
+  <link>http://example.org/posts/OS-2/</link>
+  <pubDate>Sat, 02 May 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/OS-2/</guid>
+  <description><![CDATA[<p>绪论,进程</p>]]></description>
+</item><item>
+  <title>开机过程中的操作系统</title>
+  <link>http://example.org/posts/OS-1/</link>
+  <pubDate>Sun, 19 Apr 2020 00:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/OS-1/</guid>
+  <description><![CDATA[<p>今天听操作系统课的时候听到老师简单讲了几句计算机开机的过程,提到了GRUB,我一听,这不是我当初装双系统折腾过的嘛,就好奇去搜了一下开机过程OS的过程,在这里记录一下</p>]]></description>
+</item><item>
+  <title>CMU213_Part-2</title>
+  <link>http://example.org/posts/CMU213-2/</link>
+  <pubDate>Mon, 13 Apr 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/CMU213-2/</guid>
+  <description><![CDATA[<p>二进制运算</p>]]></description>
+</item><item>
+  <title>CMU213_Part-1</title>
+  <link>http://example.org/posts/CMU213-1/</link>
+  <pubDate>Sun, 05 Apr 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/CMU213-1/</guid>
+  <description><![CDATA[<p>原码,反码,补码,有符号数,无符号数</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,36 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>双系统 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/</link>
+    <description>双系统 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Tue, 04 Aug 2020 20:44:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
+  <title>GRUB2 引导顺序</title>
+  <link>http://example.org/posts/ubuntu-29/</link>
+  <pubDate>Tue, 04 Aug 2020 20:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-29/</guid>
+  <description><![CDATA[首先查看开机时,在GRUB中,windows处在第几项,如果当前windows在第四项,则此时需要改为3,因为GRUB从第0项开始计数 1 $ sudo]]></description>
+</item><item>
+  <title>Ubuntu开机挂载Windows磁盘</title>
+  <link>http://example.org/posts/ubuntu-11/</link>
+  <pubDate>Fri, 17 Apr 2020 22:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-11/</guid>
+  <description><![CDATA[<p>挂载windows分区挂载到ubuntu的文件管理器中</p>]]></description>
+</item><item>
+  <title>双系统的Ubuntu18.04扩充分区</title>
+  <link>http://example.org/posts/ubuntu-8/</link>
+  <pubDate>Sun, 29 Mar 2020 14:06:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-8/</guid>
+  <description><![CDATA[<p>使用工具: Gparted</p>]]></description>
+</item><item>
+  <title>双系统安装Ubuntu18.04</title>
+  <link>http://example.org/posts/ubuntu-1/</link>
+  <pubDate>Sun, 22 Mar 2020 00:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-1/</guid>
+  <description><![CDATA[<p>厌倦了在windows里的虚拟机ubuntu来体验套娃linux，索性去重新下载了一个ubuntu18.04版本，从双系统到后来的linux命令，再到最后迁移hexo，走了很多的坑</p>]]></description>
+</item></channel>
+</rss>

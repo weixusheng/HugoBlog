@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Centos - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/Centos/</link>
+    <description>Centos - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 03 Mar 2022 23:05:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/Centos/" rel="self" type="application/rss+xml" /><item>
+  <title>curl常用命令</title>
+  <link>http://example.org/posts/centos-2/</link>
+  <pubDate>Thu, 03 Mar 2022 23:05:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/centos-2/</guid>
+  <description><![CDATA[<p>curl常用命令</p>]]></description>
+</item><item>
+  <title>crond</title>
+  <link>http://example.org/posts/docker-9/</link>
+  <pubDate>Thu, 03 Mar 2022 23:03:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/docker-9/</guid>
+  <description><![CDATA[<p>Linux下用来周期性的执行任务</p>]]></description>
+</item><item>
+  <title>centos安装conda</title>
+  <link>http://example.org/posts/centos-1/</link>
+  <pubDate>Thu, 03 Mar 2022 21:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/centos-1/</guid>
+  <description><![CDATA[<p>整点没用的</p>]]></description>
+</item></channel>
+</rss>

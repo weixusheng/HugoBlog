@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Pyside2程序打包 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="Pyinstaller实现程序打包" />
+<meta name="keywords" content="Pyside" /><meta itemprop="name" content="Pyside2程序打包">
+<meta itemprop="description" content="Pyinstaller实现程序打包"><meta itemprop="datePublished" content="2021-02-08T18:40:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-08T18:40:00+00:00" />
+<meta itemprop="wordCount" content="725"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="Pyside," /><meta property="og:title" content="Pyside2程序打包" />
+<meta property="og:description" content="Pyinstaller实现程序打包" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/qt-2/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-08T18:40:00+00:00" />
+<meta property="article:modified_time" content="2021-02-08T18:40:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Pyside2程序打包"/>
+<meta name="twitter:description" content="Pyinstaller实现程序打包"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/qt-2/" /><link rel="prev" href="http://example.org/posts/qt-1/" /><link rel="next" href="http://example.org/posts/win-10/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Pyside2程序打包",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/qt-2\/"
+    },"genre": "posts","keywords": "Pyside","wordcount":  725 ,
+    "url": "http:\/\/example.org\/posts\/qt-2\/","datePublished": "2021-02-08T18:40:00+00:00","dateModified": "2021-02-08T18:40:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">Pyside2程序打包</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Qt-Python/"><i class="far fa-folder fa-fw"></i>Qt-Python</a></span></div>
+      <div class="post-meta-line"><span title=2021-02-08&#32;18:40:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-08" >2021-02-08</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 725 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#pyinstaller命令">Pyinstaller命令</a>
+      <ul>
+        <li><a href="#解决缺少shiboken2abi3dll文件">解决缺少&quot;shiboken2.abi3.dll&quot;文件</a></li>
+        <li><a href="#指定生成文件路径">指定生成文件路径</a></li>
+      </ul>
+    </li>
+    <li><a href="#配置python虚拟环境">配置Python虚拟环境</a>
+      <ul>
+        <li><a href="#conda常用命令">conda常用命令</a>
+          <ul>
+            <li><a href="#创建虚拟环境">创建虚拟环境</a></li>
+            <li><a href="#激活虚拟环境">激活虚拟环境</a></li>
+            <li><a href="#关闭虚拟环境">关闭虚拟环境</a></li>
+            <li><a href="#指定环境管理包">指定环境管理包</a></li>
+            <li><a href="#删除虚拟环境">删除虚拟环境</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#打包完成的程序结构">打包完成的程序结构</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>Pyinstaller实现程序打包</p>
+<p>这个打包程序,足足耗费了我两天的时间
+以为一行命令就行,但是打包之后的程序,要么缺少东西,要么在新环境下缺少qt库,快给我搞自闭了,添加各种plugin和platform下的文件都不好使
+直到昨天晚上,我才在博客的海洋中,找到有人提了一下Anaconda环境下打包会出问题,需要额外配置一下虚拟环境
+我这才去试了一下,但是在windows terminal中一直调用的还是base环境下的包,就在最后放弃的关头!
+看到有大佬在pycharm的terminal中调用出了虚拟环境,最后终于打包成功!</p>
+<h1 id="pyinstaller命令">Pyinstaller命令</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-F</td>
+<td style="text-align:center">打包为一个文件(exe)</td>
+</tr>
+<tr>
+<td style="text-align:center">&ndash;workpath</td>
+<td style="text-align:center">指定了制作过程中临时文件的存放目录</td>
+</tr>
+<tr>
+<td style="text-align:center">&ndash;distpath</td>
+<td style="text-align:center">指定了最终的可执行文件目录所在的父目录</td>
+</tr>
+<tr>
+<td style="text-align:center">&ndash;runtime-hook=&ldquo;runtimehook.py&rdquo;</td>
+<td style="text-align:center">库文件存在一个文件夹中</td>
+</tr>
+<tr>
+<td style="text-align:center">&ndash;noconsole(-w)</td>
+<td style="text-align:center">运行时没有terminal黑框</td>
+</tr>
+<tr>
+<td style="text-align:center">&ndash;icon=&ldquo;star.ico&rdquo;</td>
+<td style="text-align:center">程序图标</td>
+</tr>
+<tr>
+<td style="text-align:center">&ndash;hidden-import PySide2.QtXml</td>
+<td style="text-align:center">导入动态库</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>demo打包命令</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pyinstaller</span> <span class="n">main_run</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">w</span>  <span class="o">--</span><span class="n">icon</span><span class="o">=</span><span class="s2">&#34;star.ico&#34;</span> <span class="o">--</span><span class="n">hidden</span><span class="o">-</span><span class="kn">import</span> <span class="nn">PySide2.QtXml</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>其中 &ndash;hidden-import PySide2.QtXml 必要参数</strong></p>
+<h2 id="解决缺少shiboken2abi3dll文件">解决缺少&quot;shiboken2.abi3.dll&quot;文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">-p D:/Anaconda/envs/py37_env/Lib/site-packages/shiboken2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="指定生成文件路径">指定生成文件路径</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">--distpath E:/dist
+</span></span><span class="line"><span class="cl">--workpath E:/building_file
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="配置python虚拟环境">配置Python虚拟环境</h1>
+<p>在Anaconda中配置一个python3.7的环境</p>
+<h2 id="conda常用命令">conda常用命令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="nb">list</span> <span class="c1">#查看安装了哪些包。</span>
+</span></span><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">env</span> <span class="nb">list</span> <span class="n">或</span> <span class="n">conda</span> <span class="n">info</span> <span class="o">-</span><span class="n">e</span> <span class="c1">#查看当前存在哪些虚拟环境</span>
+</span></span><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">update</span> <span class="n">conda</span> <span class="c1">#检查更新当前conda</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="创建虚拟环境">创建虚拟环境</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">xxx</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>xxx为虚拟环境的名字,该文件可在Anaconda安装目录 envs文件下找到</p>
+<h3 id="激活虚拟环境">激活虚拟环境</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">activate</span> <span class="n">your_env_name</span> <span class="c1"># Windows</span>
+</span></span><span class="line"><span class="cl"><span class="n">source</span> <span class="n">activate</span> <span class="n">your_env_nam</span> <span class="c1"># Linux</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="关闭虚拟环境">关闭虚拟环境</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">deactivate</span> <span class="n">env_name</span> <span class="c1"># Windows</span>
+</span></span><span class="line"><span class="cl"><span class="n">source</span> <span class="n">deactivate</span>   <span class="c1">#Linux</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="指定环境管理包">指定环境管理包</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">install</span> <span class="o">--</span><span class="n">name</span> <span class="err">$</span><span class="n">your_env_name</span>  <span class="err">$</span><span class="n">package_name</span> 
+</span></span><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">remove</span> <span class="o">--</span><span class="n">name</span> <span class="err">$</span><span class="n">your_env_name</span>  <span class="err">$</span><span class="n">package_name</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="删除虚拟环境">删除虚拟环境</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">remove</span> <span class="o">-</span><span class="n">n</span> <span class="n">your_env_name</span> <span class="o">--</span><span class="nb">all</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后切换到虚拟环境安装pyside2等库,实现打包</p>
+<h1 id="打包完成的程序结构">打包完成的程序结构</h1>
+<p>最后打包文件dist中应该有</p>
+<ul>
+<li>界面ui文件</li>
+<li>主程序exe文件</li>
+<li>程序图标ico文件</li>
+</ul></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2021-02-08&#32;18:40:00>更新于 2021-02-08</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Pyside/">Pyside</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/qt-1/" class="prev" rel="prev" title="Pyside2开发第一个GUI程序"><i class="fas fa-angle-left fa-fw"></i>Pyside2开发第一个GUI程序</a>
+      <a href="/posts/win-10/" class="next" rel="next" title="BT文件下载">BT文件下载<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

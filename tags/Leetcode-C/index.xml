@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Leetcode-C - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Leetcode-C/</link>
+    <description>Leetcode-C - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Sat, 23 May 2020 21:40:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Leetcode-C/" rel="self" type="application/rss+xml" /><item>
+  <title>C语言-qsort函数</title>
+  <link>http://example.org/posts/C-13/</link>
+  <pubDate>Sat, 23 May 2020 21:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-13/</guid>
+  <description><![CDATA[<p>今天刷leetcode遇到一个神奇的函数,但是没看懂大佬怎么用的这个函数,查了一下发现大有用处!在此记录</p>]]></description>
+</item><item>
+  <title>单链表排序</title>
+  <link>http://example.org/posts/C-12/</link>
+  <pubDate>Wed, 20 May 2020 21:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-12/</guid>
+  <description><![CDATA[<p>今天被单链表排序那题卡了大半天,我一直想写冒泡&hellip;但是最后给我绕懵了,发现单链表的冒泡也太难写了(哭)
+最后我还写了构造单链表和打印单链表的一套函数用来debug&hellip;
+失败的收获:排序过程中其实并不用去交换节点,交换节点的value完全可以啊
+过几天开始系统学查找排序算法</p>]]></description>
+</item><item>
+  <title>C-打印层序遍历构造的二叉树</title>
+  <link>http://example.org/posts/C-11/</link>
+  <pubDate>Mon, 18 May 2020 21:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-11/</guid>
+  <description><![CDATA[<p>方便leetcode本地调试</p>]]></description>
+</item></channel>
+</rss>

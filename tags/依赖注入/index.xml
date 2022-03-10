@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>依赖注入 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</link>
+    <description>依赖注入 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Fri, 04 Feb 2022 12:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" rel="self" type="application/rss+xml" /><item>
+  <title>依赖注入</title>
+  <link>http://example.org/posts/python-DI/</link>
+  <pubDate>Fri, 04 Feb 2022 12:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python-DI/</guid>
+  <description><![CDATA[<p>在知乎上看到了一篇讲 依赖注入 非常好的文章,在这里分享一下</p>]]></description>
+</item></channel>
+</rss>

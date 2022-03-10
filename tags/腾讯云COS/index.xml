@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>腾讯云COS - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/%E8%85%BE%E8%AE%AF%E4%BA%91COS/</link>
+    <description>腾讯云COS - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Mon, 08 Jun 2020 22:30:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E8%85%BE%E8%AE%AF%E4%BA%91COS/" rel="self" type="application/rss+xml" /><item>
+  <title>腾讯云COS加速静态资源</title>
+  <link>http://example.org/posts/hexo-1/</link>
+  <pubDate>Mon, 08 Jun 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/hexo-1/</guid>
+  <description><![CDATA[<p>6.7-心情不太好,没学习新知识&hellip;但优化了一下静态网站的速度
+6.8-今天改了一天论文,整体重复率降到了30嘿嘿,再稍微改一改,就可以快乐毕业啦(终于完成了毕业论文!)
+昨天这篇blog也没写完,只好今天发了</p>]]></description>
+</item></channel>
+</rss>

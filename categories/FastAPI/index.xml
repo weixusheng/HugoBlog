@@ -1,0 +1,36 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>FastAPI - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/FastAPI/</link>
+    <description>FastAPI - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 10 Feb 2022 21:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/FastAPI/" rel="self" type="application/rss+xml" /><item>
+  <title>FastAPI-3</title>
+  <link>http://example.org/posts/fastapi-3/</link>
+  <pubDate>Thu, 10 Feb 2022 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/fastapi-3/</guid>
+  <description><![CDATA[<p>FastAPI-文档</p>]]></description>
+</item><item>
+  <title>Centos部署Fastapi</title>
+  <link>http://example.org/posts/fastapi-4/</link>
+  <pubDate>Tue, 08 Feb 2022 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/fastapi-4/</guid>
+  <description><![CDATA[<p>Centos + gunicorn + Supervisor 部署 Fastapi</p>]]></description>
+</item><item>
+  <title>FastAPI-2</title>
+  <link>http://example.org/posts/fastapi-2/</link>
+  <pubDate>Sun, 30 Jan 2022 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/fastapi-2/</guid>
+  <description><![CDATA[<p>FastAPI-文档</p>]]></description>
+</item><item>
+  <title>FastAPI</title>
+  <link>http://example.org/posts/fastapi-1/</link>
+  <pubDate>Tue, 28 Dec 2021 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/fastapi-1/</guid>
+  <description><![CDATA[<p>FastAPI-文档</p>]]></description>
+</item></channel>
+</rss>

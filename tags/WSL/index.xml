@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>WSL - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/WSL/</link>
+    <description>WSL - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Sun, 30 Aug 2020 10:44:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/WSL/" rel="self" type="application/rss+xml" /><item>
+  <title>WSL2-参考对象类型不支持尝试操作</title>
+  <link>http://example.org/posts/win-5/</link>
+  <pubDate>Sun, 30 Aug 2020 10:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-5/</guid>
+  <description><![CDATA[一开始我还以为 WSL2崩了&hellip; 原来重置一下网络就行&hellip;应该是昨天折腾梯子导致的 在管理员模式下运行命令后重启即可 1 netsh winsock]]></description>
+</item><item>
+  <title>WSL迁移</title>
+  <link>http://example.org/posts/win-3/</link>
+  <pubDate>Fri, 28 Aug 2020 15:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-3/</guid>
+  <description><![CDATA[<p>WSL默认安装在C盘,因此有必要迁移出系统盘</p>]]></description>
+</item><item>
+  <title>WSL安装过程</title>
+  <link>http://example.org/posts/ubuntu-28/</link>
+  <pubDate>Tue, 04 Aug 2020 16:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-28/</guid>
+  <description><![CDATA[<p>好久没有更新了&hellip;那么今天就来搞出个大招!&mdash;WSL!</p>]]></description>
+</item></channel>
+</rss>

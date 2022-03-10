@@ -1,0 +1,81 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>PAT - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/PAT/</link>
+    <description>PAT - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 03 Sep 2020 22:59:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/PAT/" rel="self" type="application/rss+xml" /><item>
+  <title>PAT-A1068(背包问题)</title>
+  <link>http://example.org/posts/pat-43/</link>
+  <pubDate>Thu, 03 Sep 2020 22:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-43/</guid>
+  <description><![CDATA[<p>终于搞明白这道题啦!</p>]]></description>
+</item><item>
+  <title>PAT-Advanced 54-66</title>
+  <link>http://example.org/posts/pat-42/</link>
+  <pubDate>Thu, 03 Sep 2020 19:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-42/</guid>
+  <description><![CDATA[<p>1054-1066</p>]]></description>
+</item><item>
+  <title>PAT典型题 Part-1</title>
+  <link>http://example.org/posts/pat-41/</link>
+  <pubDate>Wed, 02 Sep 2020 19:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-41/</guid>
+  <description><![CDATA[<p>最近几天就总结一下解题套路吧&hellip;毕竟没几天就要考试了,绝不能做一只轻言放弃鸭!(甲级太顶了&hellip;我好菜)</p>]]></description>
+</item><item>
+  <title>PAT-Advanced 45-53</title>
+  <link>http://example.org/posts/pat-40/</link>
+  <pubDate>Tue, 25 Aug 2020 19:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-40/</guid>
+  <description><![CDATA[<p>1045-1053</p>]]></description>
+</item><item>
+  <title>PAT-Advanced 41-44</title>
+  <link>http://example.org/posts/pat-39/</link>
+  <pubDate>Sat, 22 Aug 2020 14:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-39/</guid>
+  <description><![CDATA[<p>1041-1044</p>]]></description>
+</item><item>
+  <title>PAT-Advanced 36-40</title>
+  <link>http://example.org/posts/pat-38/</link>
+  <pubDate>Sat, 22 Aug 2020 13:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-38/</guid>
+  <description><![CDATA[<p>1036-1040</p>]]></description>
+</item><item>
+  <title>PAT-Advanced 31-35</title>
+  <link>http://example.org/posts/pat-37/</link>
+  <pubDate>Fri, 21 Aug 2020 23:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-37/</guid>
+  <description><![CDATA[<p>1031-1035<br>
+一直在做题,但是没更新blog,这两天都补上</p>]]></description>
+</item><item>
+  <title>PAT-Advanced 26-30</title>
+  <link>http://example.org/posts/pat-36/</link>
+  <pubDate>Sat, 15 Aug 2020 22:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-36/</guid>
+  <description><![CDATA[<p>1026-1030<br>
+今天才收到了乙级的证书，突然意识到离甲级考试就剩20天了，加油鸭！</p>]]></description>
+</item><item>
+  <title>PAT-Advanced 22-25</title>
+  <link>http://example.org/posts/pat-35/</link>
+  <pubDate>Fri, 14 Aug 2020 22:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-35/</guid>
+  <description><![CDATA[<p>1022-1025<br>
+甲级慢慢上道啦!</p>]]></description>
+</item><item>
+  <title>PAT-Advanced 21</title>
+  <link>http://example.org/posts/pat-34/</link>
+  <pubDate>Fri, 14 Aug 2020 10:59:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/pat-34/</guid>
+  <description><![CDATA[<p>1021</p>]]></description>
+</item></channel>
+</rss>

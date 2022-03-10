@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>NNDL-回归模型 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="线性回归&amp;逻辑回归" />
+<meta name="keywords" content="Andrew NNDL" /><meta itemprop="name" content="NNDL-回归模型">
+<meta itemprop="description" content="线性回归&amp;逻辑回归"><meta itemprop="datePublished" content="2021-01-04T15:30:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-04T15:30:00+00:00" />
+<meta itemprop="wordCount" content="2037"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="Andrew NNDL," /><meta property="og:title" content="NNDL-回归模型" />
+<meta property="og:description" content="线性回归&amp;逻辑回归" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/nndl-3/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-04T15:30:00+00:00" />
+<meta property="article:modified_time" content="2021-01-04T15:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="NNDL-回归模型"/>
+<meta name="twitter:description" content="线性回归&amp;逻辑回归"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/nndl-3/" /><link rel="prev" href="http://example.org/posts/ai-1/" /><link rel="next" href="http://example.org/posts/nndl-4/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "NNDL-回归模型",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/nndl-3\/"
+    },"genre": "posts","keywords": "Andrew NNDL","wordcount":  2037 ,
+    "url": "http:\/\/example.org\/posts\/nndl-3\/","datePublished": "2021-01-04T15:30:00+00:00","dateModified": "2021-01-04T15:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">NNDL-回归模型</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>神经网络与深度学习</a></span></div>
+      <div class="post-meta-line"><span title=2021-01-04&#32;15:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-04" >2021-01-04</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2037 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#线性回归linear-regression">线性回归–Linear Regression</a>
+      <ul>
+        <li><a href="#影响因素">影响因素</a></li>
+        <li><a href="#损失函数">损失函数</a>
+          <ul>
+            <li><a href="#最小二乘法">最小二乘法</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#逻辑回归logistic-regression">逻辑回归–Logistic Regression</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>线性回归&amp;逻辑回归</p>
+<h1 id="线性回归linear-regression">线性回归–Linear Regression</h1>
+<p>线性回归模型可应用与监督学习(supervised learning)预测问题，如房价预测，疾病预测…….
+对线性回归的直观解释: 找到一个线性函数能尽可能拟合已给出的点
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/1.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/1.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/1.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/1.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/1.png"
+    title="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/1.png" /></p>
+<p>理论解释:</p>
+<h2 id="影响因素">影响因素</h2>
+<p>$$X=[x_1,x_2,x_3,&hellip;&hellip;.,x_m]T$$
+$x_i$代表影响结果的一个特征(feature), y ∈ R
+当X与结果y属于线性关系时，即可得到线性回归假设(hypotheses)：
+$$h_θ(X)=θ_1x_1+θ_2x_2+&hellip;&hellip;.+θ_mx_m+b$$
+写成向量形式即为：
+$$h_Θ(X)=Θ^TX+b$$</p>
+<h2 id="损失函数">损失函数</h2>
+<p>构造损失函数（损失函数就是用来表现预测与实际数据的差距程度）:
+cost function（损失函数）:
+$$J(\Theta)={1\over2}\sum_i^{smaples}[h_\Theta(X)-y]$$</p>
+<p>利用梯度下降方法找到一组 $$\Theta=[θ_1,θ_2,&hellip;.,θ_m]$$
+最小化J(Θ)
+在得到Θ向量后，将 $$X_predict$$  代入 $$h_Θ(X)=Θ^TX$$ 中即可得到  $$y_predict $$</p>
+<h3 id="最小二乘法">最小二乘法</h3>
+<p><a
+  href="https://blog.csdn.net/qq_41598072/article/details/83984299"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>CSDN解释</a></p>
+<p>标准定义:
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_1.jpg"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_1.jpg, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_1.jpg 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_1.jpg 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_1.jpg"
+    title="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_1.jpg" />
+用一个具体的例子来说明:
+小明是跑运输的，跑1公里需要6块，跑2公里需要5块（那段时间刚好油价跌了），跑3公里需要7块，跑4公里需要10块，请问跑5公里需要多少块？
+如果我们有初中数学基础，应该会自然而然地想到用线性方程组来做，对吧。
+$y = \beta_1+\beta_2x$</p>
+<p>这里假定x是公里数，y是运输成本（β1和β2是要求的系数）。我们把上面的一组数据代入得到这么几个方程：
+$\beta_1+1\beta_2 = 6$</p>
+<p>$\beta_1+2\beta_2 = 5$</p>
+<p>$\beta_1+3\beta_2 = 7$</p>
+<p>$\beta_1+4\beta_2 = 10$</p>
+<p>如果存在这样的β1和β2，让所有的数据（x，y）=（1,6），（2,5），（3,7），（4，10）都能满足的话，那么解答就很简单了，β1+5β2就是5公里的成本，对吧。
+但遗憾的是，这样的β1和β2是不存在的，上面的方程组很容易，你可以把前面两个解出来得到一组β1和β2，后面两个也解出来同样得到一组β1和β2。这两组β1和β2是不一样的。
+形象地说，就是你找不到一条直线，穿过所有的点，因为他们不在一条直线上。如下图：
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_4.jpg"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_4.jpg, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_4.jpg 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_4.jpg 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_4.jpg"
+    title="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_4.jpg" /></p>
+<p>可是现实生活中，我们就希望能找到一条直线，虽然不能满足所有条件，但能近似地表示这个趋势，或者说，能近似地知道5公里的运输成本，这也是有意义的。</p>
+<p>现实生活当中，有很多这样的例子，想起以前在某公司上班的时候，CEO说我们研发部做事有个问题：一个研发任务，要求三个月做完，因为周期太短，完成不了，就干脆不做，这显然是不对的，要尽全力，哪怕三个月完成了80%，或者最终4个月完成，总比不作为的好。</p>
+<p>其实最小二乘法也是这样，要尽全力让这条直线最接近这些点，那么问题来了，怎么才叫做最接近呢？直觉告诉我们，这条直线在所有数据点中间穿过，让这些点到这条直线的误差之和越小越好。这里我们用方差来算更客观。也就是说，把每个点到直线的误差平方加起来：
+$$S( \beta_1, \beta_2) = [6-(\beta_1+1\beta_2)]^{2} +[5-(\beta_1+2\beta_2)]^{2}+
+[7-(\beta_1+3\beta_2)]^{2} + $$
+$$[10-(\beta_1+4\beta_2)]^{2}$$</p>
+<p>（如果上面的四个方程都能满足，那么S的值显然为0，这是最完美的，但如果做不到完美，我们就让这个S越小越好）</p>
+<p>接下来的问题就是，如何让这个S变得最小。这里有一个概念，就是求偏导数。这里我想提一下，在培训的过程中，我发现机器学习的数学基础课程当中，微积分是大家印象最深刻的，而且也最容易理解：比如导数就是求变化率，而偏导数则是当变量超过一个的时候，对其中一个变量求变化率。如果这个概念也忘了，可以参考我在深度学习回答里那个王小二卖猪的例子。这里就不细讲了：</p>
+<p>要让S取得最小值（或最大值，但显然这个函数没有最大值，自己琢磨一下），那么S对于β1和β2分别求偏导结果为0，用一个直观的图来表示：
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_6.jpg"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_6.jpg, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_6.jpg 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_6.jpg 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_6.jpg"
+    title="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/least_square_6.jpg" /></p>
+<p>我们看到这条曲线，前半部分是呈下降的趋势，也就是变化率（导数）为负的，后半部分呈上升的趋势，也就是变化率（导数）为正，那么分界点的导数为0，也就是取得最小值的地方。这是一个变量的情况，对于多个变量的情况，要让S取得最小值，那最好是对β1和β2分别求导（对β1求导的时候，把β2当常量所以叫求偏导），值为0：
+$$\frac{\partial S}{\partial\beta_1} = 0 = 8\beta_1+20\beta_2-56$$</p>
+<p>$$\frac{\partial S}{\partial\beta_2} = 0 = 20\beta_1+60\beta_2-154$$</p>
+<p>看到这个我们就熟悉了，两个变量，刚好有两个方程式，初中学过，那么很容易得出：
+$\beta_1 = 3.5 \beta_2 = 1.4$
+其实也就意味着
+$y = 3.5+1.4x$
+这个函数也就是我们要的直线，这条直线虽然不能把那些点串起来，但它能最大程度上接近这些点。也就是说5公里的时候，成本为3.5+1.4x5=10.5块，虽然不完美，但是很接近实际情况。</p>
+<h1 id="逻辑回归logistic-regression">逻辑回归–Logistic Regression</h1>
+<p>逻辑回归模型应用于监督学习分类问题，暂且考虑二分类(如0,1分类)问题
+直观解释：得到一条函数将不同类别的分开，如图:
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/2.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/2.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/2.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/2.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/2.png"
+    title="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/4/2.png" /></p>
+<p>假设
+$X=[x_1,x_2,x_3,&hellip;&hellip;.,x_m]$
+$Θ=[θ_1,θ_2,θ_3,&hellip;&hellip;.θ_m]$
+定义hypotheses(也就是预测预测结果 $\check{y}$)</p>
+<p>$hΘ(X)=\frac{1}{1+exp(−Θ^TX)}$</p>
+<p>$$\left \lbrace\begin{matrix}
+h_\Theta(X)&gt;0.5, set h_\Theta(X) = 1\
+h_\Theta(X)&lt;0.5, set h_\Theta(X) = 0
+\end{matrix} \right.$$</p>
+<p>cost functions:
+$$J(\Theta) = \left{\begin{matrix}
+-log(h_\Theta(x^i)), if y^i = 1\
+-log(1-h_\Theta(x^i)), if y^i = 0
+\end{matrix}\right.$$</p>
+<p>统一起来即为:
+$$J(\theta) = \sum_{i}{samples}[y^{i}log(h_\Theta)(x^i)+((1-y^i)log(1-h_\Theta(x^i))]$$</p>
+<p>同样是<strong>用到梯度下降优化参数</strong>,得到优化后的参数$$\Theta = [\Theta_1,\Theta_2,&hellip;\Theta_m]$$后,将$$X_predict$$ 代入 $$h_\Theta(X)$$
+即可得到对该X对应的分类</p>
+<p><a
+  href="https://blog.csdn.net/weixin_37140379/article/details/82289704"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>参考博客</a></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2021-01-04&#32;15:30:00>更新于 2021-01-04</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Andrew-NNDL/">Andrew NNDL</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/ai-1/" class="prev" rel="prev" title="AI-Uninformed Search"><i class="fas fa-angle-left fa-fw"></i>AI-Uninformed Search</a>
+      <a href="/posts/nndl-4/" class="next" rel="next" title="NNDL-向量化">NNDL-向量化<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

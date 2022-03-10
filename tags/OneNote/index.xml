@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>OneNote - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/OneNote/</link>
+    <description>OneNote - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Sat, 29 Aug 2020 22:44:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/OneNote/" rel="self" type="application/rss+xml" /><item>
+  <title>Win-OneNote同步</title>
+  <link>http://example.org/posts/win-6/</link>
+  <pubDate>Sat, 29 Aug 2020 22:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-6/</guid>
+  <description><![CDATA[<p>PAC模式下的OneNote同步加速</p>]]></description>
+</item></channel>
+</rss>

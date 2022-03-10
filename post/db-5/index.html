@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>数据库原理及应用 PART-5 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="数据库原理及应用 PART-5 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-04-23T23:11:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-04-23T23:11:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="数据库原理及应用 PART-5">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/db-5/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">数据库原理及应用 PART-5</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月23日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>数据库范式定义,模式分解,函数依赖,正则覆盖,模式分解</p>
+<p>昨天数据库还剩10节课,以为能看完,再来写总结,可没想到&hellip;最后两章这么难
+到现在还是有些迷糊,这两章可以说全是理论,集合之间的操作
+今天可算学完了,数据库原理撒花</p>
+<h1 id="数据库范式定义">数据库范式定义</h1>
+<p>  设计关系数据库时，遵从不同的<strong>规范要求</strong>，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范
+  <strong>越高的范式数据库冗余越小</strong>。</p>
+<h1 id="模式分解">模式分解</h1>
+<h2 id="定义">定义</h2>
+<ul>
+<li>例如可以将关系模式( A,B,C,D) 分解为:( A,B )和( B,C,D ),或( A,C,D )和
+( A,B,D ),或( A,B,C )和( C,D ),或( A,B )、( B,C )和( C,D ),或 ( A,D )和( B,C,D )</li>
+<li>原模式( R )的所有属性都必须出现在分解后的( R1 , R2 )中: R = R1 并R 2</li>
+<li>无损连接分解
+对关系模式 R 上的所有可能的关系 r
+
+        <img class="mx-auto" alt="无损分解" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/2.png" />   
+    </li>
+</ul>
+<p>
+        <img class="mx-auto" alt="无损分解2" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/3.png" />   
+    </p>
+<h2 id="目标">目标</h2>
+<p>目标:设计一个理论</p>
+<ul>
+<li>以判断关系模式 R 是否为“好的”形式(不冗余)</li>
+<li>当 R 不是“好的”形式时,将它分解成模式集合{ R 1 , R 2 , &hellip;, R n }使得
+<ul>
+<li>每个关系模式都是“好的”形式</li>
+<li>分解是无损连接分解</li>
+</ul>
+</li>
+<li>理论基于:
+<ul>
+<li><strong>函数依赖</strong>( functional dependencies )</li>
+<li><strong>多值依赖</strong>( multivalued dependencies )</li>
+</ul>
+</li>
+</ul>
+<h1 id="函数依赖">函数依赖</h1>
+<h2 id="定义-1">定义</h2>
+<p>设 R 是一个关系模式,且有属性集 α ⊆ R, β⊆ R</p>
+<ul>
+<li>β函数依赖于α, α函数决定β  (α -&gt; β)
+
+        <img class="mx-auto" alt="函数依赖" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/4.png" />   
+    </li>
+<li>函数依赖是码概念的推广</li>
+<li>被所有关系实例都满足的函数依赖称为平凡的</li>
+</ul>
+<h2 id="函数依赖集的闭包">函数依赖集的闭包</h2>
+<ul>
+<li>给定函数依赖集 F, 存在其他函数依赖被 F 逻辑蕴含
+例如如果 A -&gt; B 且 B -&gt; C ,则可推出 A -&gt; C
+被 F 逻辑蕴含的全体函数依赖的集合称为 F 的闭包,用 F<!-- raw HTML omitted -->+<!-- raw HTML omitted -->表示 F 的闭包
+例:  F = { A -&gt; B, B -&gt; C } ,F + = { A -&gt; B, B -&gt; C, A -&gt; C,A -&gt; A, AB -&gt; B, AC -&gt; C, A -&gt; BC, &hellip; }</li>
+</ul>
+<h3 id="计算闭包">计算闭包</h3>
+<p>例: R = ( A, B, C, G, H, I )
+F = { A -&gt; B, A-&gt; C, CG -&gt; H, CG -&gt; I, B -&gt; H }
+计算F<!-- raw HTML omitted -->+<!-- raw HTML omitted --> : 可用Armstrong公理计算</p>
+<h3 id="armstrong公理">Armstrong公理</h3>
+<ol>
+<li><strong>自反律</strong>
+若 β  ⊆ α ,则 α -&gt; β</li>
+<li><strong>增补律</strong>
+若 α -&gt; β ,则 γα -&gt; γβ</li>
+<li><strong>传递律</strong>
+若 α -&gt; β 且 β -&gt; γ ,则 α -&gt; γ</li>
+<li><strong>合并律</strong>
+若 α -&gt; β 与 α -&gt; γ 成立,则 α -&gt; βγ</li>
+<li><strong>分解律</strong>
+若 α -&gt; βγ 成立,则 α -&gt; β 与 α -&gt; γ</li>
+<li><strong>伪传递律</strong>
+若 α -&gt; β 与 βγ -&gt; g 成立,则 αγ -&gt; g</li>
+</ol>
+<p>Armstrong公理</p>
+<ul>
+<li>正确有效的(不会产生错误的函数依赖)</li>
+<li>完备的(产生所有成立的函数依赖即 F + )</li>
+</ul>
+<p>
+        <img class="mx-auto" alt="Armstrong公理" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/5.png" />   
+    </p>
+<h3 id="公式计算过程">公式计算过程</h3>
+<p>
+        <img class="mx-auto" alt="函数依赖集的闭包" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/6.png" />   
+    </p>
+<h2 id="属性集的闭包">属性集的闭包</h2>
+<h3 id="定义-2">定义</h3>
+<p>给定一个属性集 α, 在函数依赖集 F 下由 α 函数确定的所有属性的集合为 F 下 α 的闭包(记做 α <!-- raw HTML omitted -->+<!-- raw HTML omitted --> )
+- 检查函数依赖 α -&gt; β 是否属于 F <!-- raw HTML omitted -->+<!-- raw HTML omitted -->  &lt;-&gt; β ⊆ α<!-- raw HTML omitted -->+<!-- raw HTML omitted -->
+- 判断 α 是否为超码: α -&gt; R 属于 F <!-- raw HTML omitted -->+<!-- raw HTML omitted -->  -&gt; R ⊆ α</p>
+<h3 id="公式计算过程-1">公式计算过程</h3>
+<p>
+        <img class="mx-auto" alt="属性集的闭包" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/7.png" />   
+    </p>
+<h3 id="例题">例题</h3>
+<p>
+        <img class="mx-auto" alt="属性集的闭包" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/8.png" />   
+    </p>
+<h3 id="属性闭包算法的用途">属性闭包算法的用途:</h3>
+<ul>
+<li>测试超码( α -&gt; R )
+<ul>
+<li>为检测 α 是否超码,可计算 α<!-- raw HTML omitted -->+<!-- raw HTML omitted --> 并检查 α<!-- raw HTML omitted -->+<!-- raw HTML omitted --> 是否包含 R 的所有属性</li>
+</ul>
+</li>
+<li>测试函数依赖( α -&gt; β )
+<ul>
+<li>为检测函数依赖 α -&gt; β 是否成立(即是否属于 F<!-- raw HTML omitted -->+<!-- raw HTML omitted --> ),只需检查是否β⊆ α 即,可计算 α<!-- raw HTML omitted -->+<!-- raw HTML omitted -->,并检查它是否包含β</li>
+</ul>
+</li>
+<li>计算 F 的闭包( F<!-- raw HTML omitted -->+<!-- raw HTML omitted --> = ? )
+<ul>
+<li>对每个 γ ⊆ R ,计算 γ<!-- raw HTML omitted -->+<!-- raw HTML omitted -->,再对每个 S ⊆ γ<!-- raw HTML omitted -->+<!-- raw HTML omitted -->,输出函数依赖 γ -&gt; S</li>
+</ul>
+</li>
+</ul>
+<h1 id="正则覆盖">正则覆盖</h1>
+<h2 id="定义-3">定义</h2>
+<p>F 的正则覆盖(记做 F<!-- raw HTML omitted -->c<!-- raw HTML omitted --> )是指与 F 等价的&quot;极小的&quot;函数依赖集合</p>
+<ul>
+<li>F<!-- raw HTML omitted -->c<!-- raw HTML omitted --> 中任何函数依赖都不包含无关属性</li>
+<li>F<!-- raw HTML omitted -->c<!-- raw HTML omitted --> 中函数依赖的左半部都是唯一的</li>
+</ul>
+<h2 id="计算过程">计算过程</h2>
+<p>
+        <img class="mx-auto" alt="正则覆盖" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/9.png" />   
+    
+
+        <img class="mx-auto" alt="正则覆盖" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/10.png" />   
+    </p>
+<h2 id="无关属性">无关属性</h2>
+<p>
+        <img class="mx-auto" alt="无关属性" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/11.png" />   
+    </p>
+<h2 id="公式计算过程-2">公式计算过程</h2>
+<p>
+        <img class="mx-auto" alt="正则覆盖" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/12.png" />   
+    </p>
+<h2 id="例题-1">例题</h2>
+<p>
+        <img class="mx-auto" alt="正则覆盖例题" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/13.png" />   
+    </p>
+<h1 id="模式分解-1">模式分解</h1>
+<h2 id="定义-4">定义</h2>
+<p>规范化的目标</p>
+<ul>
+<li>以判断关系模式 R 是否为“好的”形式(不冗余,无插入、删除、更新异常)</li>
+<li>当 R 不是“好的”形式时,将它分解成模式集合{ R 1 , R 2 , &hellip;, R n }使得
+<ul>
+<li>每个关系模式都是“好的”形式</li>
+<li>分解是无损连接分解</li>
+<li>分解是保持依赖</li>
+</ul>
+</li>
+</ul>
+<h2 id="分解要求">分解要求</h2>
+<p>
+        <img class="mx-auto" alt="模式分解" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/14.png" />   
+    
+
+        <img class="mx-auto" alt="模式分解" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/15.png" />   
+    </p>
+<h2 id="例题-2">例题</h2>
+<p>
+        <img class="mx-auto" alt="模式分解" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png" />   
+    </p>
+<h2 id="公式判定是否保持依赖">公式判定是否保持依赖</h2>
+<p>
+        <img class="mx-auto" alt="模式分解" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png" />   
+    </p>
+<p><strong>由于最后两章东西太多了,所以第十章再开一个blog写,不得不说,数据库最后这两章真的让我有些头疼,感觉今天学了一天才差不多明白个大概</strong></p>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/db-4/">数据库原理及应用 PART-4</a></li>
+        
+        <li><a href="/post/db-3/">数据库原理及应用 PART-3</a></li>
+        
+        <li><a href="/post/db-2/">数据库原理及应用 PART-2</a></li>
+        
+        <li><a href="/post/db-1/">数据库原理及应用 PART-1</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E6%95%B0%E6%8D%AE%E5%BA%93'>数据库</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

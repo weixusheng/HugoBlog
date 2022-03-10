@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta name="generator" content="Hugo 0.93.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="这是我的全新 Hugo 网站" />
+<meta name="keywords" content="Theme,Hugo" /><meta itemprop="name" content="小辣鸡的Hugo">
+<meta itemprop="description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="小辣鸡的Hugo" />
+<meta property="og:description" content="这是我的全新 Hugo 网站" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/" /><meta property="og:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="小辣鸡的Hugo"/>
+<meta name="twitter:description" content="这是我的全新 Hugo 网站"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="小辣鸡的Hugo">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="小辣鸡的Hugo"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "http:\/\/example.org\/","inLanguage": "zh-CN","author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": "这是我的全新 Hugo 网站","name": "小辣鸡的Hugo"
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><div class="page home" posts><div class="home-profile"></div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/java-1/">Java简单入门</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-31 20:30:00'>发布于 <time datetime="2021-03-31">2021-03-31</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Java/"><i class="far fa-folder fa-fw"></i>Java</a></span></div><div class="content"><p>初识java</p></div><div class="post-footer">
+    <a href="/posts/java-1/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/">java命名规范</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/nodejs-2/">nodejs入门</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-31 20:30:00'>发布于 <time datetime="2021-03-31">2021-03-31</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Javascript/"><i class="far fa-folder fa-fw"></i>Javascript</a></span></div><div class="content"><p>Mosh/初识nodejs</p></div><div class="post-footer">
+    <a href="/posts/nodejs-2/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Node.js/">Node.js</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/js-2/">Javascript基础 Part-2</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-28 20:30:00'>发布于 <time datetime="2021-03-28">2021-03-28</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Javascript/"><i class="far fa-folder fa-fw"></i>Javascript</a></span></div><div class="content"><p>常用命令</p></div><div class="post-footer">
+    <a href="/posts/js-2/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Javascript基础语法</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/nodejs-1/">Webpack基础概念</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-26 20:30:00'>发布于 <time datetime="2021-03-26">2021-03-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Javascript/"><i class="far fa-folder fa-fw"></i>Javascript</a></span></div><div class="content"><p>JS模块化打包</p></div><div class="post-footer">
+    <a href="/posts/nodejs-1/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Node.js/">Node.js</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/docker-5/">Radis架构模式</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-25 22:40:00'>发布于 <time datetime="2021-03-25">2021-03-25</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Radis/"><i class="far fa-folder fa-fw"></i>Radis</a></span></div><div class="content"><p>搭建Radis cluster预备知识</p></div><div class="post-footer">
+    <a href="/posts/docker-5/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Radis%E5%9F%BA%E7%A1%80/">Radis基础</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/docker-4/">VMware安装Centos</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-25 20:40:00'>发布于 <time datetime="2021-03-25">2021-03-25</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/VMware/"><i class="far fa-folder fa-fw"></i>VMware</a></span></div><div class="content"><p>VMware安装Centos集群</p></div><div class="post-footer">
+    <a href="/posts/docker-4/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/VMware%E9%9B%86%E7%BE%A4/">VMware集群</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/docker-3/">Docker网络模式</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-24 21:50:00'>发布于 <time datetime="2021-03-24">2021-03-24</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Docker/"><i class="far fa-folder fa-fw"></i>Docker</a></span></div><div class="content"><p>Docker网络模式</p></div><div class="post-footer">
+    <a href="/posts/docker-3/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/docker-2/">Dockerfile构建镜像</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-22 20:50:00'>发布于 <time datetime="2021-03-22">2021-03-22</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Docker/"><i class="far fa-folder fa-fw"></i>Docker</a></span></div><div class="content"><p>Dockerfile</p></div><div class="post-footer">
+    <a href="/posts/docker-2/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/docker-1/">Docker基本概念</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-22 20:40:00'>发布于 <time datetime="2021-03-22">2021-03-22</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Docker/"><i class="far fa-folder fa-fw"></i>Docker</a></span></div><div class="content"><p>Docker常用命令</p></div><div class="post-footer">
+    <a href="/posts/docker-1/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Docker%E5%9F%BA%E7%A1%80/">Docker基础</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/js-1/">Javascript基础 Part-1</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-22 20:30:00'>发布于 <time datetime="2021-03-22">2021-03-22</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Javascript/"><i class="far fa-folder fa-fw"></i>Javascript</a></span></div><div class="content"><p>常用命令</p></div><div class="post-footer">
+    <a href="/posts/js-1/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Javascript%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">Javascript基础语法</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/flask/">Apache部署Flask</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-16 20:30:00'>发布于 <time datetime="2021-03-16">2021-03-16</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Flask/"><i class="far fa-folder fa-fw"></i>Flask</a></span></div><div class="content"><p>Apache部署Flask过程</p></div><div class="post-footer">
+    <a href="/posts/flask/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Flask%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/">Flask服务器部署</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/python-1/">Python(NCRE)</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-03-01 21:30:00'>发布于 <time datetime="2021-03-01">2021-03-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Python/"><i class="far fa-folder fa-fw"></i>Python</a></span></div><div class="content"><p>二级Python</p></div><div class="post-footer">
+    <a href="/posts/python-1/">阅读全文</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/nndl-22/">NNDL-序列模型</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-02-25 21:30:00'>发布于 <time datetime="2021-02-25">2021-02-25</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>神经网络与深度学习</a></span></div><div class="content"><p>循环神经网络(Andrew Ng)</p></div><div class="post-footer">
+    <a href="/posts/nndl-22/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Andrew-NNDL/">Andrew NNDL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/shell-2/">Shell-字符串正则提取</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-02-23 22:30:00'>发布于 <time datetime="2021-02-23">2021-02-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Shell/"><i class="far fa-folder fa-fw"></i>Shell</a></span></div><div class="content"><p>正则表达式
+我吐辣&hellip;正则和shell真是折磨王了
+从昨晚折磨我到今天上午
+还好写出来了,要是再搞不出来真要自闭了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="k">for</span> x in *<span class="p">;</span><span class="k">do</span> <span class="nv">var</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$x</span><span class="p">|</span>egrep -o <span class="s1">&#39;[^img_.png]&#39;</span><span class="k">)</span><span class="p">;</span><span class="nv">var</span><span class="o">=</span><span class="k">$((</span><span class="m">1</span><span class="o">+</span><span class="nv">$var</span><span class="k">))</span>.png<span class="p">;</span> mv <span class="nv">$x</span> <span class="nv">$var</span><span class="p">;</span> <span class="k">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer">
+    <a href="/posts/shell-2/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Shell%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">Shell语法基础</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/matplotlib-2/">Matplotlib 进阶</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-02-22 22:30:00'>发布于 <time datetime="2021-02-22">2021-02-22</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Matplotlib/"><i class="far fa-folder fa-fw"></i>Matplotlib</a></span></div><div class="content"><p>Python数据可视化</p></div><div class="post-footer">
+    <a href="/posts/matplotlib-2/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Matplotlib/">Matplotlib</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/matplotlib-1/">Matplotlib 绘制基本图表</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-02-21 20:30:00'>发布于 <time datetime="2021-02-21">2021-02-21</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Matplotlib/"><i class="far fa-folder fa-fw"></i>Matplotlib</a></span></div><div class="content"><p>Python数据可视化</p></div><div class="post-footer">
+    <a href="/posts/matplotlib-1/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Matplotlib/">Matplotlib</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/nndl-21/">NNDL-RNN</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-02-16 12:30:00'>发布于 <time datetime="2021-02-16">2021-02-16</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>神经网络与深度学习</a></span></div><div class="content"><p>循环神经网络</p></div><div class="post-footer">
+    <a href="/posts/nndl-21/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Andrew-NNDL/">Andrew NNDL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/github-5/">Git master转为main</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-02-08 23:06:00'>发布于 <time datetime="2021-02-08">2021-02-08</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Git/"><i class="far fa-folder fa-fw"></i>Git</a></span></div><div class="content">因为前段时间的BLM运动,Github就把master改名成了main,因为master有奴隶主的意思&hellip; 这就导致本地分支和ma</div><div class="post-footer">
+    <a href="/posts/github-5/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Github/">Github</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/win-10/">BT文件下载</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-02-08 22:44:00'>发布于 <time datetime="2021-02-08">2021-02-08</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/win/"><i class="far fa-folder fa-fw"></i>win</a></span></div><div class="content"><p>加快BT文件下载速度</p></div><div class="post-footer">
+    <a href="/posts/win-10/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/win/">win</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/qt-2/">Pyside2程序打包</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-02-08 18:40:00'>发布于 <time datetime="2021-02-08">2021-02-08</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Qt-Python/"><i class="far fa-folder fa-fw"></i>Qt-Python</a></span></div><div class="content"><p>Pyinstaller实现程序打包</p></div><div class="post-footer">
+    <a href="/posts/qt-2/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Pyside/">Pyside</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/qt-1/">Pyside2开发第一个GUI程序</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-02-08 17:40:00'>发布于 <time datetime="2021-02-08">2021-02-08</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Qt-Python/"><i class="far fa-folder fa-fw"></i>Qt-Python</a></span></div><div class="content"><p>monitor_control</p></div><div class="post-footer">
+    <a href="/posts/qt-1/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Pyside/">Pyside</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/win-9/">跨平台同步书签</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-01-31 22:44:00'>发布于 <time datetime="2021-01-31">2021-01-31</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/win/"><i class="far fa-folder fa-fw"></i>win</a></span></div><div class="content"><p>Firefox/Chrome利用WebDav同步书签</p></div><div class="post-footer">
+    <a href="/posts/win-9/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Chrome/">Chrome</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/DB-8/">数据库系统概论 SQL-2</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-01-30 21:15:00'>发布于 <time datetime="2021-01-30">2021-01-30</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="far fa-folder fa-fw"></i>数据库</a></span></div><div class="content"><p>SQL大礼包</p></div><div class="post-footer">
+    <a href="/posts/DB-8/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E8%AF%BE%E7%A8%8B/">数据库系统概论-课程</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/nndl-20/">NNDL-神经风格迁移</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-01-29 23:30:00'>发布于 <time datetime="2021-01-29">2021-01-29</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>神经网络与深度学习</a></span></div><div class="content"><p>Style Transfer</p></div><div class="post-footer">
+    <a href="/posts/nndl-20/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Andrew-NNDL/">Andrew NNDL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/DB-7/">数据库系统概论 SQL-1</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-01-29 21:15:00'>发布于 <time datetime="2021-01-29">2021-01-29</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="far fa-folder fa-fw"></i>数据库</a></span></div><div class="content"><p>SQL大礼包</p></div><div class="post-footer">
+    <a href="/posts/DB-7/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E8%AF%BE%E7%A8%8B/">数据库系统概论-课程</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/win-8/">PAC代理规则</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-01-29 01:44:00'>发布于 <time datetime="2021-01-29">2021-01-29</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/win/"><i class="far fa-folder fa-fw"></i>win</a></span></div><div class="content"><p>编辑 PAC.txt 代理规则</p></div><div class="post-footer">
+    <a href="/posts/win-8/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/SSR/">SSR</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/nndl-19/">NNDL-人脸识别</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-01-28 22:30:00'>发布于 <time datetime="2021-01-28">2021-01-28</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>神经网络与深度学习</a></span></div><div class="content"><p>Object Detection</p></div><div class="post-footer">
+    <a href="/posts/nndl-19/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Andrew-NNDL/">Andrew NNDL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/shell-1/">Shell语法</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-01-27 22:30:00'>发布于 <time datetime="2021-01-27">2021-01-27</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Shell/"><i class="far fa-folder fa-fw"></i>Shell</a></span></div><div class="content"><p>Shell教程</p></div><div class="post-footer">
+    <a href="/posts/shell-1/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Shell%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">Shell语法基础</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/nndl-18/">NNDL-目标检测</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-01-25 22:30:00'>发布于 <time datetime="2021-01-25">2021-01-25</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>神经网络与深度学习</a></span></div><div class="content"><p>Object Detection</p></div><div class="post-footer">
+    <a href="/posts/nndl-18/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Andrew-NNDL/">Andrew NNDL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/nndl-17/">卷积的理解</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2021-01-25 21:30:00'>发布于 <time datetime="2021-01-25">2021-01-25</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>神经网络与深度学习</a></span></div><div class="content"><p>Convolution</p></div><div class="post-footer">
+    <a href="/posts/nndl-17/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Andrew-NNDL/">Andrew NNDL</a></div></div>
+</article><ul class="pagination"><li class="page-item ">
+          <span class="page-link">
+            <a href="/">1</a>
+          </span>
+        </li><li class="page-item ">
+          <span class="page-link">
+            <a href="/page/2/">2</a>
+          </span>
+        </li><li class="page-item active">
+          <span class="page-link">
+            <a href="/page/3/">3</a>
+          </span>
+        </li><li class="page-item ">
+          <span class="page-link">
+            <a href="/page/4/">4</a>
+          </span>
+        </li><li class="page-item ">
+          <span class="page-link">
+            <a href="/page/5/">5</a>
+          </span>
+        </li><li class="page-item ">
+          <span class="page-link" aria-hidden="true">&hellip;</span>
+        </li><li class="page-item ">
+          <span class="page-link">
+            <a href="/page/11/">11</a>
+          </span>
+        </li></ul></div></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

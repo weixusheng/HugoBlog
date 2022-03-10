@@ -1,0 +1,80 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Ubuntu - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/Ubuntu/</link>
+    <description>Ubuntu - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 30 Dec 2021 20:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/Ubuntu/" rel="self" type="application/rss+xml" /><item>
+  <title>Ubuntu搭建FTP</title>
+  <link>http://example.org/posts/ubuntu-33/</link>
+  <pubDate>Thu, 30 Dec 2021 20:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-33/</guid>
+  <description><![CDATA[<p>Ubuntu20.04搭建FTP服务</p>]]></description>
+</item><item>
+  <title>Ubuntu设定定时任务</title>
+  <link>http://example.org/posts/ubuntu-31/</link>
+  <pubDate>Thu, 23 Dec 2021 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-31/</guid>
+  <description><![CDATA[<p>Ubuntu crontab</p>]]></description>
+</item><item>
+  <title>云服务器部署hexo</title>
+  <link>http://example.org/posts/ubuntu-32/</link>
+  <pubDate>Mon, 20 Dec 2021 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-32/</guid>
+  <description><![CDATA[<p>Nginx 部署 hexo</p>]]></description>
+</item><item>
+  <title>配置云服务器Python环境</title>
+  <link>http://example.org/posts/ubuntu-30/</link>
+  <pubDate>Wed, 20 Oct 2021 20:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-30/</guid>
+  <description><![CDATA[<p>远程服务器开发环境</p>]]></description>
+</item><item>
+  <title>GRUB2 引导顺序</title>
+  <link>http://example.org/posts/ubuntu-29/</link>
+  <pubDate>Tue, 04 Aug 2020 20:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-29/</guid>
+  <description><![CDATA[首先查看开机时,在GRUB中,windows处在第几项,如果当前windows在第四项,则此时需要改为3,因为GRUB从第0项开始计数 1 $ sudo]]></description>
+</item><item>
+  <title>WSL安装过程</title>
+  <link>http://example.org/posts/ubuntu-28/</link>
+  <pubDate>Tue, 04 Aug 2020 16:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-28/</guid>
+  <description><![CDATA[<p>好久没有更新了&hellip;那么今天就来搞出个大招!&mdash;WSL!</p>]]></description>
+</item><item>
+  <title>COSCMD工具</title>
+  <link>http://example.org/posts/ubuntu-27/</link>
+  <pubDate>Sat, 11 Jul 2020 08:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-27/</guid>
+  <description><![CDATA[<p>可视化界面操作起来很慢(并且linux是Appimage安装包),还是bash来的实在,今天把COSCMD配置了一下</p>]]></description>
+</item><item>
+  <title>Ubuntu中文显示异常</title>
+  <link>http://example.org/posts/ubuntu-26/</link>
+  <pubDate>Sat, 13 Jun 2020 23:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-26/</guid>
+  <description><![CDATA[<p>很久之前解决的这个问题,不过还是要记录下来(睡前水个贴)
+设置系统语言为英文后,就会发现有些中文字体很难看,后来才知道原来那些丑丑的中文符号是日本语
+呕&hellip;所以赶紧改回来吧</p>]]></description>
+</item><item>
+  <title>Ubuntu护眼软件</title>
+  <link>http://example.org/posts/ubuntu-25/</link>
+  <pubDate>Wed, 03 Jun 2020 21:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-25/</guid>
+  <description><![CDATA[20.04竟然没有带护眼模式,我记得18.04有这个模式的&hellip;只好自己装一个软件啦 安装 1 sudo apt-get install redshift-gtk 配置参数 进入~/.config 1]]></description>
+</item><item>
+  <title>Ubuntu20.04修复openweather</title>
+  <link>http://example.org/posts/ubuntu-24/</link>
+  <pubDate>Mon, 01 Jun 2020 21:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-24/</guid>
+  <description><![CDATA[前天gnome的openweather插件突然无法更新 在gitlab找到了解决方案 在这里记录一下方法 Download SectigoRSADomainValidationSecureServerCA.crt from Sectigo RSA Domain Validation Secure Server CA Drop the file to /usr/local/share/ca-certificates Run sudo update-ca-certificates Restart shell]]></description>
+</item></channel>
+</rss>

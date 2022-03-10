@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>Leetcode Part-4 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="Leetcode Part-4 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-05-10T21:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-05-10T21:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Leetcode Part-4">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/leetcode-4/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Leetcode Part-4</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月10日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>今天母亲节,做了锅包肉和蜜汁鸡排嘿嘿(没想到锅包肉做的还蛮好吃的),晚上家里的仙人球还开花了!今天还第一次通过了leetcode,好开心嗷,做题好像有感觉了!
+明天更操作系统,不拖了不拖了&hellip;</p>
+<p>1047-删除字符串中的所有相邻重复项<!-- raw HTML omitted -->
+617-合并二叉树<!-- raw HTML omitted -->
+226-翻转二叉树<!-- raw HTML omitted -->
+101-对称二叉树<!-- raw HTML omitted -->
+236-二叉树的最近公共祖先<!-- raw HTML omitted -->
+1-两数之和(哈希散列法)</p>
+<h2 id="1047-删除字符串中的所有相邻重复项">1047-删除字符串中的所有相邻重复项</h2>
+<ol>
+<li>题目:
+给出由小写字母组成的字符串 S，重复项删除操作会选择两个相邻且相同的字母，并删除它们。
+在 S 上反复执行重复项删除操作，直到无法继续删除。
+在完成所有重复项删除操作后返回最终的字符串。</li>
+<li>解题思路:
+我竟然上来先写了一个栈(以后不要这样了&hellip;)下次碰到字符串要注意了,字符串本身加一个int top就可以实现栈</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">char</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#900;font-weight:bold">removeDuplicates</span>(<span style="color:#458;font-weight:bold">char</span> <span style="color:#000;font-weight:bold">*</span> s){
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> sl <span style="color:#000;font-weight:bold">=</span> strlen(s);
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">char</span> <span style="color:#000;font-weight:bold">*</span>stack <span style="color:#000;font-weight:bold">=</span> (<span style="color:#458;font-weight:bold">char</span> <span style="color:#000;font-weight:bold">*</span>)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(<span style="color:#458;font-weight:bold">char</span>) <span style="color:#000;font-weight:bold">*</span> sl); <span style="color:#998;font-style:italic">// 申请一个栈 返回也用它
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#458;font-weight:bold">int</span> top <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>; <span style="color:#998;font-style:italic">// 栈顶
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:bold">&lt;</span> sl; i<span style="color:#000;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(<span style="color:#099">0</span> <span style="color:#000;font-weight:bold">&gt;</span> top) {
+</span></span><span style="display:flex;"><span>            <span style="color:#998;font-style:italic">// 空的栈 直接加
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>            stack[<span style="color:#000;font-weight:bold">++</span>top] <span style="color:#000;font-weight:bold">=</span> s[i];
+</span></span><span style="display:flex;"><span>        } <span style="color:#000;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(stack[top] <span style="color:#000;font-weight:bold">==</span> s[i]) {
+</span></span><span style="display:flex;"><span>                <span style="color:#998;font-style:italic">// 栈顶元素与当前元素相同则出栈
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>                top<span style="color:#000;font-weight:bold">--</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#000;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#998;font-style:italic">// 不同则入栈
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>                stack[<span style="color:#000;font-weight:bold">++</span>top] <span style="color:#000;font-weight:bold">=</span> s[i];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">// 封口
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    stack[<span style="color:#000;font-weight:bold">++</span>top] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> stack;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="617-合并二叉树">617-合并二叉树</h2>
+<ol>
+<li>题目:
+给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
+你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。</li>
+<li>解题思路:
+基于二叉树的递归遍历,这道题是我自己写出来的!没看题解,感觉现在做题有手感了!!!</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span> <span style="color:#900;font-weight:bold">mergeTrees</span>(<span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span> t1, <span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span> t2){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>(t1 <span style="color:#000;font-weight:bold">==</span> <span style="color:#0086b3">NULL</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> t2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>(t2 <span style="color:#000;font-weight:bold">==</span> <span style="color:#0086b3">NULL</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> t1;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>(t1 <span style="color:#000;font-weight:bold">&amp;&amp;</span> t2){
+</span></span><span style="display:flex;"><span>        t1<span style="color:#000;font-weight:bold">-&gt;</span>val <span style="color:#000;font-weight:bold">=</span> t1<span style="color:#000;font-weight:bold">-&gt;</span>val<span style="color:#000;font-weight:bold">+</span>t2<span style="color:#000;font-weight:bold">-&gt;</span>val;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    t1<span style="color:#000;font-weight:bold">-&gt;</span>left <span style="color:#000;font-weight:bold">=</span> mergeTrees(t1<span style="color:#000;font-weight:bold">-&gt;</span>left, t2<span style="color:#000;font-weight:bold">-&gt;</span>left);
+</span></span><span style="display:flex;"><span>    t1<span style="color:#000;font-weight:bold">-&gt;</span>right <span style="color:#000;font-weight:bold">=</span> mergeTrees(t1<span style="color:#000;font-weight:bold">-&gt;</span>right, t2<span style="color:#000;font-weight:bold">-&gt;</span>right);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> t1;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="226-翻转二叉树">226-翻转二叉树</h2>
+<ol>
+<li>题目:
+翻转一棵二叉树</li>
+<li>解题思路:
+快乐递归二叉树</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span> <span style="color:#900;font-weight:bold">invertTree</span>(<span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span> root){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>(root <span style="color:#000;font-weight:bold">==</span> <span style="color:#0086b3">NULL</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">NULL</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span> node <span style="color:#000;font-weight:bold">=</span> (<span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span>)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(<span style="color:#000;font-weight:bold">struct</span> TreeNode));
+</span></span><span style="display:flex;"><span>    node <span style="color:#000;font-weight:bold">=</span> root<span style="color:#000;font-weight:bold">-&gt;</span>right;
+</span></span><span style="display:flex;"><span>    root<span style="color:#000;font-weight:bold">-&gt;</span>right <span style="color:#000;font-weight:bold">=</span> root<span style="color:#000;font-weight:bold">-&gt;</span>left;
+</span></span><span style="display:flex;"><span>    root<span style="color:#000;font-weight:bold">-&gt;</span>left <span style="color:#000;font-weight:bold">=</span> node;
+</span></span><span style="display:flex;"><span>    invertTree(root<span style="color:#000;font-weight:bold">-&gt;</span>left);
+</span></span><span style="display:flex;"><span>    invertTree(root<span style="color:#000;font-weight:bold">-&gt;</span>right);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="101-对称二叉树">101-对称二叉树</h2>
+<ol>
+<li>题目:
+给定一个二叉树，检查它是否是镜像对称的</li>
+<li>解题思路:
+左右子树的分别遍历,但是遍历路径是镜像路径</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#998;font-style:italic">//我一开始写错的代码,错在于没有进行镜像遍历
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/*bool isSymmetric(struct TreeNode* root){
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    struct TreeNode* root_left = root-&gt;left;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    struct TreeNode* root_right = root-&gt;right;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    if(root_left == NULL &amp;&amp; root_right == NULL){
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">        return true;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    if(root_left-&gt;val == root_right-&gt;val){
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">        return true;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    else{
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">        return false;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    isSymmetric(root-&gt;left);
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    isSymmetric(root_right);
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">}*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">bool</span> <span style="color:#900;font-weight:bold">Symmetric</span>(<span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span> leftNode, <span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span> rightNode)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> (<span style="color:#0086b3">NULL</span> <span style="color:#000;font-weight:bold">==</span> leftNode <span style="color:#000;font-weight:bold">&amp;&amp;</span> <span style="color:#0086b3">NULL</span> <span style="color:#000;font-weight:bold">==</span> rightNode)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> (<span style="color:#0086b3">NULL</span> <span style="color:#000;font-weight:bold">==</span> leftNode <span style="color:#000;font-weight:bold">||</span> <span style="color:#0086b3">NULL</span> <span style="color:#000;font-weight:bold">==</span> rightNode)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> (leftNode<span style="color:#000;font-weight:bold">-&gt;</span>val <span style="color:#000;font-weight:bold">==</span> rightNode<span style="color:#000;font-weight:bold">-&gt;</span>val) <span style="color:#000;font-weight:bold">&amp;&amp;</span>           \
+</span></span><span style="display:flex;"><span>            Symmetric(leftNode<span style="color:#000;font-weight:bold">-&gt;</span>right, rightNode<span style="color:#000;font-weight:bold">-&gt;</span>left) <span style="color:#000;font-weight:bold">&amp;&amp;</span> \
+</span></span><span style="display:flex;"><span>            Symmetric(leftNode<span style="color:#000;font-weight:bold">-&gt;</span>left, rightNode<span style="color:#000;font-weight:bold">-&gt;</span>right);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">bool</span> <span style="color:#900;font-weight:bold">isSymmetric</span>(<span style="color:#000;font-weight:bold">struct</span> TreeNode<span style="color:#000;font-weight:bold">*</span> root){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> Symmetric(root, root);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="236-二叉树的最近公共祖先">236-二叉树的最近公共祖先</h2>
+<ol>
+<li>题目:寻找二叉树两个节点的最近公共祖先</li>
+<li>解题思路:这个题我一开始没想出来&hellip;看了题解才想明白,使用dfs即可,豁然开朗,<strong>dfs在判定时是从下向上的顺序进行的</strong>所以即可得到最近的公共结点</li>
+</ol>
+<h3 id="官方解法">官方解法</h3>
+<p><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/solution/er-cha-shu-de-zui-jin-gong-gong-zu-xian-by-leetc-2/">解法地址</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/*由于判定条件有些技巧,所以还是看官方解释吧*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">public</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#000;font-weight:bold">*</span> ans;
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">bool</span> <span style="color:#900;font-weight:bold">dfs</span>(TreeNode<span style="color:#000;font-weight:bold">*</span> root, TreeNode<span style="color:#000;font-weight:bold">*</span> p, TreeNode<span style="color:#000;font-weight:bold">*</span> q) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span> (root <span style="color:#000;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">nullptr</span>) <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#458;font-weight:bold">bool</span> lson <span style="color:#000;font-weight:bold">=</span> dfs(root<span style="color:#000;font-weight:bold">-&gt;</span>left, p, q);
+</span></span><span style="display:flex;"><span>        <span style="color:#458;font-weight:bold">bool</span> rson <span style="color:#000;font-weight:bold">=</span> dfs(root<span style="color:#000;font-weight:bold">-&gt;</span>right, p, q);
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span> ((lson <span style="color:#000;font-weight:bold">&amp;&amp;</span> rson) <span style="color:#000;font-weight:bold">||</span> ((root<span style="color:#000;font-weight:bold">-&gt;</span>val <span style="color:#000;font-weight:bold">==</span> p<span style="color:#000;font-weight:bold">-&gt;</span>val <span style="color:#000;font-weight:bold">||</span> root<span style="color:#000;font-weight:bold">-&gt;</span>val <span style="color:#000;font-weight:bold">==</span> q<span style="color:#000;font-weight:bold">-&gt;</span>val) <span style="color:#000;font-weight:bold">&amp;&amp;</span> (lson <span style="color:#000;font-weight:bold">||</span> rson))) {
+</span></span><span style="display:flex;"><span>            ans <span style="color:#000;font-weight:bold">=</span> root;
+</span></span><span style="display:flex;"><span>        } 
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> lson <span style="color:#000;font-weight:bold">||</span> rson <span style="color:#000;font-weight:bold">||</span> (root<span style="color:#000;font-weight:bold">-&gt;</span>val <span style="color:#000;font-weight:bold">==</span> p<span style="color:#000;font-weight:bold">-&gt;</span>val <span style="color:#000;font-weight:bold">||</span> root<span style="color:#000;font-weight:bold">-&gt;</span>val <span style="color:#000;font-weight:bold">==</span> q<span style="color:#000;font-weight:bold">-&gt;</span>val);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#000;font-weight:bold">*</span> <span style="color:#900;font-weight:bold">lowestCommonAncestor</span>(TreeNode<span style="color:#000;font-weight:bold">*</span> root, TreeNode<span style="color:#000;font-weight:bold">*</span> p, TreeNode<span style="color:#000;font-weight:bold">*</span> q) {
+</span></span><span style="display:flex;"><span>        dfs(root, p, q);
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="dfs递归判定">DFS递归判定</h3>
+<p><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/solution/c-jing-dian-di-gui-si-lu-fei-chang-hao-li-jie-shi-/">解答地址</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">public</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#000;font-weight:bold">*</span> lowestCommonAncestor(TreeNode<span style="color:#000;font-weight:bold">*</span> root, TreeNode<span style="color:#000;font-weight:bold">*</span> p, TreeNode<span style="color:#000;font-weight:bold">*</span> q) {
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(root <span style="color:#000;font-weight:bold">==</span> <span style="color:#0086b3">NULL</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">NULL</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(root <span style="color:#000;font-weight:bold">==</span> p <span style="color:#000;font-weight:bold">||</span> root <span style="color:#000;font-weight:bold">==</span> q) 
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span> root;  
+</span></span><span style="display:flex;"><span>        TreeNode<span style="color:#000;font-weight:bold">*</span> left <span style="color:#000;font-weight:bold">=</span>  lowestCommonAncestor(root<span style="color:#000;font-weight:bold">-&gt;</span>left, p, q);
+</span></span><span style="display:flex;"><span>        TreeNode<span style="color:#000;font-weight:bold">*</span> right <span style="color:#000;font-weight:bold">=</span> lowestCommonAncestor(root<span style="color:#000;font-weight:bold">-&gt;</span>right, p, q);
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(left <span style="color:#000;font-weight:bold">==</span> <span style="color:#0086b3">NULL</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span> right;
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(right <span style="color:#000;font-weight:bold">==</span> <span style="color:#0086b3">NULL</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span> left;      
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(left <span style="color:#000;font-weight:bold">&amp;&amp;</span> right) <span style="color:#998;font-style:italic">// p和q在两侧
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>            <span style="color:#000;font-weight:bold">return</span> root;
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">NULL</span>; <span style="color:#998;font-style:italic">// 必须有返回值
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="1-两数之和哈希散列法">1-两数之和(哈希散列法)</h2>
+<p>之前用暴力求解,今天带着好奇来看看哈希表怎么做,果然c的哈希还要自己写,很麻烦,但是看到这个解法很新颖,直接把数组的值和数组下标进行哈希表的key和value
+<a href="https://leetcode-cn.com/problems/two-sum/solution/cyu-yan-ji-yu-shu-zu-de-san-lie-15xing-dai-ma-8ms-/">解体地址</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#define MAX_SIZE 2048
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic"></span><span style="color:#458;font-weight:bold">int</span> <span style="color:#000;font-weight:bold">*</span><span style="color:#900;font-weight:bold">twoSum</span>(<span style="color:#458;font-weight:bold">int</span> <span style="color:#000;font-weight:bold">*</span>nums, <span style="color:#458;font-weight:bold">int</span> numsSize, <span style="color:#458;font-weight:bold">int</span> target, <span style="color:#458;font-weight:bold">int</span> <span style="color:#000;font-weight:bold">*</span>returnSize)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> i, hash[MAX_SIZE], <span style="color:#000;font-weight:bold">*</span>res <span style="color:#000;font-weight:bold">=</span> (<span style="color:#458;font-weight:bold">int</span> <span style="color:#000;font-weight:bold">*</span>)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(<span style="color:#458;font-weight:bold">int</span>) <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">2</span>);
+</span></span><span style="display:flex;"><span>    memset(hash, <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>, <span style="color:#000;font-weight:bold">sizeof</span>(hash));
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> (i <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:bold">&lt;</span> numsSize; i<span style="color:#000;font-weight:bold">++</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span> (hash[(target <span style="color:#000;font-weight:bold">-</span> nums[i] <span style="color:#000;font-weight:bold">+</span> MAX_SIZE) <span style="color:#000;font-weight:bold">%</span> MAX_SIZE] <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            res[<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">=</span> hash[(target <span style="color:#000;font-weight:bold">-</span> nums[i] <span style="color:#000;font-weight:bold">+</span> MAX_SIZE) <span style="color:#000;font-weight:bold">%</span> MAX_SIZE];
+</span></span><span style="display:flex;"><span>            res[<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">=</span> i;
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">*</span>returnSize <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">2</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        hash[(nums[i] <span style="color:#000;font-weight:bold">+</span> MAX_SIZE) <span style="color:#000;font-weight:bold">%</span> MAX_SIZE] <span style="color:#000;font-weight:bold">=</span> i;  <span style="color:#998;font-style:italic">//将数组中的值放入哈希数组中,因为一开始都是-1,所以都在执行该行代码,直到遇到和为目标值的另一个数,才执行if中的结果语句
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#998;font-style:italic">//防止负数下标越界，循环散列
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>    free(hash);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">*</span>returnSize <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> res;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/leetcode-3/">Leetcode Part-3</a></li>
+        
+        <li><a href="/post/leetcode-2/">Leetcode Part-2</a></li>
+        
+        <li><a href="/post/leetcode-1/">Leetcode Part-1</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/leetcode'>Leetcode</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

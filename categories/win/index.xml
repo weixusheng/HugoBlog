@@ -1,0 +1,78 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>win - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/win/</link>
+    <description>win - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 30 Dec 2021 22:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/win/" rel="self" type="application/rss+xml" /><item>
+  <title>OneDrive创建文件同步</title>
+  <link>http://example.org/posts/win-23/</link>
+  <pubDate>Thu, 30 Dec 2021 22:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-23/</guid>
+  <description><![CDATA[<p>OneDrive小技巧</p>]]></description>
+</item><item>
+  <title>AppleMusic导入全量网易云</title>
+  <link>http://example.org/posts/win-22/</link>
+  <pubDate>Wed, 29 Dec 2021 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-22/</guid>
+  <description><![CDATA[<p>便捷小脚本</p>]]></description>
+</item><item>
+  <title>qrcp &amp; SwitchHosts</title>
+  <link>http://example.org/posts/win-11/</link>
+  <pubDate>Sun, 19 Dec 2021 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-11/</guid>
+  <description><![CDATA[<p>便捷小工具</p>]]></description>
+</item><item>
+  <title>安装scoop包管理器</title>
+  <link>http://example.org/posts/win-12/</link>
+  <pubDate>Sat, 18 Dec 2021 22:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-12/</guid>
+  <description><![CDATA[<p>scoop</p>]]></description>
+</item><item>
+  <title>BT文件下载</title>
+  <link>http://example.org/posts/win-10/</link>
+  <pubDate>Mon, 08 Feb 2021 22:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-10/</guid>
+  <description><![CDATA[<p>加快BT文件下载速度</p>]]></description>
+</item><item>
+  <title>跨平台同步书签</title>
+  <link>http://example.org/posts/win-9/</link>
+  <pubDate>Sun, 31 Jan 2021 22:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-9/</guid>
+  <description><![CDATA[<p>Firefox/Chrome利用WebDav同步书签</p>]]></description>
+</item><item>
+  <title>PAC代理规则</title>
+  <link>http://example.org/posts/win-8/</link>
+  <pubDate>Fri, 29 Jan 2021 01:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-8/</guid>
+  <description><![CDATA[<p>编辑 PAC.txt 代理规则</p>]]></description>
+</item><item>
+  <title>C&#43;&#43;运行库安装报错(权限不足)</title>
+  <link>http://example.org/posts/win-7/</link>
+  <pubDate>Sun, 17 Jan 2021 22:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-7/</guid>
+  <description><![CDATA[<p>无法打开注册表项 UNKNOWN\Components\…</p>]]></description>
+</item><item>
+  <title>WSL2-参考对象类型不支持尝试操作</title>
+  <link>http://example.org/posts/win-5/</link>
+  <pubDate>Sun, 30 Aug 2020 10:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-5/</guid>
+  <description><![CDATA[一开始我还以为 WSL2崩了&hellip; 原来重置一下网络就行&hellip;应该是昨天折腾梯子导致的 在管理员模式下运行命令后重启即可 1 netsh winsock]]></description>
+</item><item>
+  <title>Win-科学上网</title>
+  <link>http://example.org/posts/win-4/</link>
+  <pubDate>Sat, 29 Aug 2020 23:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-4/</guid>
+  <description><![CDATA[<p>Win环境下的全局梯子配置</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>图的算法应用&amp;&amp;最小生成树 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="图的算法应用&amp;&amp;最小生成树 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-04-16T22:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-04-16T22:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="图的算法应用&amp;&amp;最小生成树">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/ds-10/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">图的算法应用&amp;&amp;最小生成树</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月16日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>简单路径,最短路径,最小生成树</p>
+<h2 id="1求包含图中所有顶点的简单路径问题">1.求包含图中所有顶点的简单路径问题</h2>
+<p>思路: 哈密尔顿问题-基于深度优先遍历
+创建变量 int n ,访问结点后, n++
+创建 path 数组记录顶点(路径)
+判断条件: n == g.vexnum 则输出当前path</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">Hamilton</span>(MGraph g){
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> i;
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> visited[<span style="color:#099">100</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> path[<span style="color:#099">100</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(i <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>vexNum; i<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//初始化数组
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        visited[i] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>        path[i] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> n <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(i <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; i<span style="color:#000;font-weight:bold">++</span>){        <span style="color:#998;font-style:italic">//将所有结点都进行遍历操作
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">if</span>(<span style="color:#000;font-weight:bold">!</span>visited[i]){
+</span></span><span style="display:flex;"><span>            DFS_h(g, i, path, <span style="color:#000;font-weight:bold">&amp;</span>n);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">DFS_h</span>(MGraph g, <span style="color:#458;font-weight:bold">int</span> i, <span style="color:#458;font-weight:bold">int</span> path[], <span style="color:#458;font-weight:bold">int</span> visited[], <span style="color:#458;font-weight:bold">int</span> <span style="color:#000;font-weight:bold">*</span>n){
+</span></span><span style="display:flex;"><span>    visited[i] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>    path[<span style="color:#000;font-weight:bold">*</span>n] <span style="color:#000;font-weight:bold">=</span> i;
+</span></span><span style="display:flex;"><span>    (<span style="color:#000;font-weight:bold">*</span>n)<span style="color:#000;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>((<span style="color:#000;font-weight:bold">*</span>n) <span style="color:#000;font-weight:bold">==</span> g.vexNum){           <span style="color:#998;font-style:italic">//满足条件输出路径
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        printf(path);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    fot(j <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; j<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; j<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(g.arcs[i][j] <span style="color:#000;font-weight:bold">&amp;&amp;</span> visited[j]){         <span style="color:#998;font-style:italic">//递归执行dfs
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>            DFS_h(g, j, path, n);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    visited[i] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;         <span style="color:#998;font-style:italic">//此时所有子结点都访问完成,向上一级继续访问
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    (<span style="color:#000;font-weight:bold">*</span>n)<span style="color:#000;font-weight:bold">--</span>;         <span style="color:#998;font-style:italic">//路径结点数-1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2判断图中是否存在环">2.判断图中是否存在环</h2>
+<p>思路:基于深度优先遍历
+判断条件: 如果深度遍历过程中结点的子结点都已经被访问,则代表存在环</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">DFSloop</span>(MGraph g, <span style="color:#458;font-weight:bold">int</span> i, <span style="color:#458;font-weight:bold">int</span> visited[]){
+</span></span><span style="display:flex;"><span>    visited[i] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>;         <span style="color:#998;font-style:italic">//当前结点访问
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> di<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>, vi<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>, j<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; j<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; j<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//判断边是否都被访问
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">if</span>(g.arcs[i][j]){
+</span></span><span style="display:flex;"><span>            di<span style="color:#000;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(visited[j]){
+</span></span><span style="display:flex;"><span>                vi<span style="color:#000;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>(di <span style="color:#000;font-weight:bold">==</span> vi <span style="color:#000;font-weight:bold">&amp;&amp;</span> di<span style="color:#000;font-weight:bold">!=</span> <span style="color:#099">1</span>){         <span style="color:#998;font-style:italic">//判断是否存在环
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        printf(<span style="color:#d14">&#34;有回路&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(j<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; j<span style="color:#000;font-weight:bold">&lt;</span>g.arcNum; j<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//dfs遍历,递归判断
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">if</span>(g.arcs[i][j] <span style="color:#000;font-weight:bold">&amp;&amp;</span> visited[j] <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span>){
+</span></span><span style="display:flex;"><span>            DFSloop(g, j, visited);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3求无向图中顶点-a-到-i-之间的简单路径">3.求无向图中顶点 a 到 i 之间的简单路径</h2>
+<p>思路:基于深度优先遍历
+path记录路径上的结点,如果访问到目标节点,输出path,如果当前结点的子节点深度遍历都没有访问到目标节点,则path删除当前结点,回溯上一层节点,进行上次一层节点的下一次循环(下一个子结点)进行递归查找</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">DFSSearchPath</span>(MGraph g, <span style="color:#458;font-weight:bold">int</span> v, <span style="color:#458;font-weight:bold">int</span> s, <span style="color:#458;font-weight:bold">char</span> path[], <span style="color:#458;font-weight:bold">int</span> visited[], <span style="color:#458;font-weight:bold">int</span> <span style="color:#000;font-weight:bold">*</span>found){
+</span></span><span style="display:flex;"><span>    visited[v<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>;           <span style="color:#998;font-style:italic">//访问该结点
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    append(path, g.vertex[v<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]);            <span style="color:#998;font-style:italic">//结点进数组path
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">for</span>(j <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; j<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum <span style="color:#000;font-weight:bold">&amp;&amp;</span> <span style="color:#000;font-weight:bold">!</span>(<span style="color:#000;font-weight:bold">*</span>found); j<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(g.arcs[v<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>][j] <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">1</span>){            <span style="color:#998;font-style:italic">//边存在
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>            <span style="color:#000;font-weight:bold">if</span>(s <span style="color:#000;font-weight:bold">==</span> j<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>){           <span style="color:#998;font-style:italic">//当前结点为为目标节点,则找到路径
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>                <span style="color:#000;font-weight:bold">*</span>found <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>                append(path, g.vertex[j]);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span>(visited[j] <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span>){           <span style="color:#998;font-style:italic">//dfs递归遍历
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>                DFSSearchPath(g, j<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>, s, path, visited, <span style="color:#000;font-weight:bold">*</span>found);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span>(<span style="color:#000;font-weight:bold">!</span>(<span style="color:#000;font-weight:bold">*</span>found)){          <span style="color:#998;font-style:italic">//递归子结点都访问完,删除当前结点,回溯进入下一次循环
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        delete(path);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4求无向图中-vi-到-vj-之间的最短路径">4.求无向图中 vi 到 vj 之间的最短路径</h2>
+<p>思路:这个算法很是巧妙,一开始很懵,直到手动模拟过程,才明白其中的道理,巧妙的点就在于 prior 指针指向的是 front ,这样在输出的时候就是最短路径</p>
+<ol>
+<li>算法基于广度优先遍历,这个很好理解,因为最短路径就是最少层去发现的过程</li>
+<li>构建了新的队列,带有前驱和后继指针,重写了进栈的函数,prior 指向 front</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#998;font-style:italic">//求无向图中vi和vj之间的最短路径
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">BFSsearchPath</span>(MGraph g, <span style="color:#458;font-weight:bold">int</span> vi, <span style="color:#458;font-weight:bold">int</span> vj, SqQueue <span style="color:#000;font-weight:bold">*</span>q){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum, i<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//初始化 visted[]
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        visited[i] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    initQueue(q);
+</span></span><span style="display:flex;"><span>    EnQueue_bfs(q, vi);         <span style="color:#998;font-style:italic">//第一个节点访问
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    visited[vi] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span>(<span style="color:#000;font-weight:bold">!</span>QueueEmpty(q)){          <span style="color:#998;font-style:italic">//广度优先遍历
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        DeQueue_bfs(q, <span style="color:#000;font-weight:bold">&amp;</span>v);
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">for</span>(w <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; w<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; w<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(g.arcs[v][w] <span style="color:#000;font-weight:bold">&amp;&amp;</span> visited[w]){
+</span></span><span style="display:flex;"><span>                visited[w] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>                EnQueue_bfs(q, w);
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">if</span>(w <span style="color:#000;font-weight:bold">==</span> vj){
+</span></span><span style="display:flex;"><span>                    <span style="color:#000;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(w <span style="color:#000;font-weight:bold">&gt;=</span> g.vexNum){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">continue</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">typedef</span> <span style="color:#000;font-weight:bold">struct</span> bfsnode{     <span style="color:#998;font-style:italic">//队列实现
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">struct</span> bfsnode <span style="color:#000;font-weight:bold">*</span>prior;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">struct</span> bfsnode <span style="color:#000;font-weight:bold">*</span>next;
+</span></span><span style="display:flex;"><span>    Elemdata data;
+</span></span><span style="display:flex;"><span>}bfsnode, <span style="color:#000;font-weight:bold">*</span>bfslink;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">typedef</span> <span style="color:#000;font-weight:bold">struct</span> {
+</span></span><span style="display:flex;"><span>    bfslink front;
+</span></span><span style="display:flex;"><span>    bfslink rear;
+</span></span><span style="display:flex;"><span>}bfsqueue;
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">EnQueue_bfs</span>(bfsqueue <span style="color:#000;font-weight:bold">*</span>q, Elemdata data){           <span style="color:#998;font-style:italic">//prior指向队头front
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    p <span style="color:#000;font-weight:bold">=</span> (bfsqueue)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(bfsnode));
+</span></span><span style="display:flex;"><span>    p<span style="color:#000;font-weight:bold">-&gt;</span>data <span style="color:#000;font-weight:bold">=</span> data;
+</span></span><span style="display:flex;"><span>    p<span style="color:#000;font-weight:bold">-&gt;</span>next <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">NULL</span>;
+</span></span><span style="display:flex;"><span>    p<span style="color:#000;font-weight:bold">-&gt;</span>prior <span style="color:#000;font-weight:bold">=</span> q<span style="color:#000;font-weight:bold">-&gt;</span>front;
+</span></span><span style="display:flex;"><span>    q<span style="color:#000;font-weight:bold">-&gt;</span>rear<span style="color:#000;font-weight:bold">-&gt;</span>next <span style="color:#000;font-weight:bold">=</span> p;
+</span></span><span style="display:flex;"><span>    q<span style="color:#000;font-weight:bold">-&gt;</span>rear <span style="color:#000;font-weight:bold">=</span> p;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">Dequeue_bfs</span>(bfsqueue <span style="color:#000;font-weight:bold">*</span>q, Elemdata <span style="color:#000;font-weight:bold">*</span>data){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">*</span>data <span style="color:#000;font-weight:bold">=</span> q<span style="color:#000;font-weight:bold">-&gt;</span>front;
+</span></span><span style="display:flex;"><span>    q<span style="color:#000;font-weight:bold">-&gt;</span>front <span style="color:#000;font-weight:bold">=</span> q<span style="color:#000;font-weight:bold">-&gt;</span>front<span style="color:#000;font-weight:bold">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5最小生成树">5.最小生成树</h2>
+<h3 id="prim算法">Prim算法</h3>
+<p>思路: 使用 lowcost 辅助数组记录结点到生成树的距离</p>
+<ol>
+<li>从未包含在生成树的结点(weight == 0)的边中选取权值最小</li>
+<li>赋值新进入结点的lowcost.weigh = 0</li>
+<li>从新进入生成树的 i 结点开始更新lowcost数组(比较g.arc[i][j]和lowcost[j])
+外部循环g.vexnum次,即对每个节点都进行该操作</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#define maxcost 10000
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic"></span><span style="color:#000;font-weight:bold">typedef</span> <span style="color:#000;font-weight:bold">struct</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> vi;
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> weight;
+</span></span><span style="display:flex;"><span>}Lowcost;
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">prim</span>(MGraph g){
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> mincost, i, j, k;
+</span></span><span style="display:flex;"><span>    Lowcost <span style="color:#000;font-weight:bold">*</span>lowcost <span style="color:#000;font-weight:bold">=</span> (Lowcost<span style="color:#000;font-weight:bold">*</span>)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(Lowcost) <span style="color:#000;font-weight:bold">*</span> g.vexNum);            <span style="color:#998;font-style:italic">//申请 lowcost 数组空间
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">for</span>(i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; i<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//初始化 lowcost 数组
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        lowcost[i].vi <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>        lowcost[i].weight <span style="color:#000;font-weight:bold">=</span> g.arcs[<span style="color:#099">0</span>][i];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    lowcost[<span style="color:#099">0</span>].weight <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;          <span style="color:#998;font-style:italic">//第一个节点进入生成树中,weight=0
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">for</span>(i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; i<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//找到当前离树权值最小的结点
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        mincost <span style="color:#000;font-weight:bold">=</span> maxcost;
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">for</span>(j<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; j<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; j<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(lowcost[j].weight <span style="color:#000;font-weight:bold">&lt;</span> mincost <span style="color:#000;font-weight:bold">&amp;&amp;</span> lowcost[j].weight <span style="color:#000;font-weight:bold">!=</span> <span style="color:#099">0</span>){
+</span></span><span style="display:flex;"><span>                mincost <span style="color:#000;font-weight:bold">=</span> lowcost[j].weight;
+</span></span><span style="display:flex;"><span>                k <span style="color:#000;font-weight:bold">=</span> j;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        lowcost[k].weight <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;          <span style="color:#998;font-style:italic">//权值最小结点进生成树,weight=0
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">for</span>(j<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; j<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; g<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//更新其余未进入生成树结点的权值
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>            <span style="color:#000;font-weight:bold">if</span>(g.ars[k][j] <span style="color:#000;font-weight:bold">&lt;</span> lowcost[j].weight){
+</span></span><span style="display:flex;"><span>                lowcost[j] <span style="color:#000;font-weight:bold">=</span> g.ars[k][j];
+</span></span><span style="display:flex;"><span>                lowcost[j].vi <span style="color:#000;font-weight:bold">=</span> k;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="kruskal算法">Kruskal算法</h3>
+<p>思路:这个算法也很有意思,一开始看到五个循环我人都傻&hellip;
+其实蛮简单的,应该是作者希望读者理解的更快一点,才这么写的
+算法中有两个小知识点</p>
+<ol>
+<li>int转char 因为字符是ASCII值表示的,&lsquo;0&rsquo;是一个字符,由48表示
+所以c[i][0] = i+48;</li>
+<li>stract函数
+例如 char d[20]=&ldquo;Golden&rdquo;;  char s[20]=&ldquo;View&rdquo;;
+strcat(d,s); printf(&quot;%s&quot;,d);
+输出 d 为 &lsquo;GoldenView&rsquo;   返回指向d的指针。</li>
+</ol>
+<ul>
+<li>第一个for循环: 将结点的下标转换为字符串 i+48,加入c数组中</li>
+<li>第二个for循环: 将所有边进行初始化,加入x数组</li>
+<li>第三个for循环: 将边的权值从小到大排序</li>
+<li>第四个for循环: 依次找到最小边,判断是否边的两个节点都在生成树中,如果不在生成树中,则将两个结点合并到第一个节点,并删除第二个结点</li>
+<li>第五个for循环: 输出生成树的边</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">typedef</span> <span style="color:#458;font-weight:bold">char</span> afc[MAX];
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">kruskal</span>(MGraph g){
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> i, j, k, t., p, q, x[MAX][<span style="color:#099">4</span>];
+</span></span><span style="display:flex;"><span>    zfc c[MAX];
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; i<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>        c[i][<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">=</span> i<span style="color:#000;font-weight:bold">+</span><span style="color:#099">48</span>;         <span style="color:#998;font-style:italic">//初始化,下标转字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        c[i][<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;            <span style="color:#998;font-style:italic">//字符串结束标志
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>g,vexNum; i<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//初始化所有边,放进 x[max][4] 数组
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">for</span>(j<span style="color:#000;font-weight:bold">=</span>i; j<span style="color:#000;font-weight:bold">&lt;</span>g.vexNum; j<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(g.arcs[i][j] <span style="color:#000;font-weight:bold">!=</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">&amp;&amp;</span> g.arcs[i][j] <span style="color:#000;font-weight:bold">!=</span> maxcost){
+</span></span><span style="display:flex;"><span>                x[k][<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">=</span> i;
+</span></span><span style="display:flex;"><span>                x[k][<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">=</span> j;
+</span></span><span style="display:flex;"><span>                x[k][<span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">=</span> g.arcs[i][j];
+</span></span><span style="display:flex;"><span>                x[k][<span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span>                k<span style="color:#000;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>g.arcNum; i<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//对所有边进行排列,权值从小到大
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">for</span>(j<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; j<span style="color:#000;font-weight:bold">&lt;</span>g.arcNum<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">-</span>i; j<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(x[j][<span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">&gt;</span> x[j<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>][<span style="color:#099">2</span>]){
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">for</span>(p<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; p<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#099">4</span>; p<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>                    t <span style="color:#000;font-weight:bold">=</span> x[j][p];
+</span></span><span style="display:flex;"><span>                    x[j][p] <span style="color:#000;font-weight:bold">=</span> x[j<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>][p];
+</span></span><span style="display:flex;"><span>                    x[j<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>][p] <span style="color:#000;font-weight:bold">=</span> t;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>, k<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>g.arcNum; i<span style="color:#000;font-weight:bold">++</span>){         <span style="color:#998;font-style:italic">//对所有边进行从小到大判断
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        p <span style="color:#000;font-weight:bold">=</span> find(c, g.vexNum, x[i][<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">+</span><span style="color:#099">48</span>);
+</span></span><span style="display:flex;"><span>        q <span style="color:#000;font-weight:bold">=</span> find(c, g.vexNum, x[i][<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">+</span><span style="color:#099">48</span>);          <span style="color:#998;font-style:italic">//判断边的两个结点是否成环
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">if</span>(p <span style="color:#000;font-weight:bold">!=</span> q){
+</span></span><span style="display:flex;"><span>            stract(c[p], c[q]);
+</span></span><span style="display:flex;"><span>            c[q][<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>            k<span style="color:#000;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>            x[i][<span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(k <span style="color:#000;font-weight:bold">==</span> g.vexNum<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>){            <span style="color:#998;font-style:italic">//当有 vexnum-1 条边时,最小生成树构造完成
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>            <span style="color:#000;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#d14">&#34;%7c%7c%6s&#34;</span>, <span style="color:#d14">&#34;顶点&#34;</span>, <span style="color:#d14">&#34;顶点&#34;</span>, <span style="color:#d14">&#34;权值&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>g.arcNum; i<span style="color:#000;font-weight:bold">++</span>){          <span style="color:#998;font-style:italic">//输出边
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">if</span>(x[i][<span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">1</span>){
+</span></span><span style="display:flex;"><span>            printf(<span style="color:#d14">&#34;%7c%7c%6d&#34;</span>, g.vertex[x[i][<span style="color:#099">0</span>]], g.vertex[x[i][<span style="color:#099">1</span>]], x[i][<span style="color:#099">2</span>])
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">find</span>(afc <span style="color:#000;font-weight:bold">*</span>s, <span style="color:#458;font-weight:bold">int</span> n, <span style="color:#458;font-weight:bold">char</span> c){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>n; i<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> j<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; j<span style="color:#000;font-weight:bold">&lt;</span>strlen(s[i]); j<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(s[i][j] <span style="color:#000;font-weight:bold">==</span> c){
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">return</span> i;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/ds-9/">图的DFS/BFS遍历</a></li>
+        
+        <li><a href="/post/ds-8/">树和哈夫曼树的算法整理</a></li>
+        
+        <li><a href="/post/ds-7/">线索二叉树</a></li>
+        
+        <li><a href="/post/ds-6/">二叉树应用算法整理</a></li>
+        
+        <li><a href="/post/ds-5/">链式存储中传入参数的类型</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95'>数据结构与算法</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

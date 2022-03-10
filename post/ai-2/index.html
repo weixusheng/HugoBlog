@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>AI-Informed Search | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="AI-Informed Search - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-01-04T23:10:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-01-04T23:10:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="AI-Informed Search">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/ai-2/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">AI-Informed Search</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年1月4日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>Berkeley CS-188</p>
+<h1 id="informed-search有信息搜索">Informed Search(有信息搜索)</h1>
+<p>一致代价搜索很棒，因为它兼顾了完备性和最优性。但它也可能会相当的慢，因为它在搜索一个目标时向所有方向扩展。如果我们对于我们应该搜索的方向有一定的了解，我们就能显著提高性能并更快地达到目标。这就是有信息搜索。
+Heuristics 启发式搜索</p>
+<p>启发式搜索是允许估计到目标状态距离的驱动力——它们是将状态作为输入并输出相应估计的函数。由这样一个函数执行的计算是专门针对所解决的搜索问题的。由于一些我们将在A*搜索中见到的原因，下面，我们一般希望启发函数是到达目标剩余距离的下界，因此启发式搜索通常是松弛问题（relaxed problems）（其中原问题的一些限制被移除了）的解决办法。回到我们的吃豆人例子，我们来考虑一下前面描述的路径规划问题。用来解决这个问题的一个通用方法是曼哈顿距离法（Manhattan Distance），对于两个点$(x_1,y_1)$和$(x_2,y_2)$的定义为：</p>
+<h2 id="manhattan-distance">Manhattan Distance</h2>
+<p>曼哈顿距离的命名原因是从规划为方型建筑区块的城市（如曼哈顿）间，最短的行车路径而来（忽略曼哈顿的单向车道以及只存在于3、14大道的斜向车道）。任何往东三区块、往北六区块的的路径一定最少要走九区块，没有其他捷径。</p>
+<p>$dis(x_1,y_1,x_2,y_2) = |x_1-x_2|+|y_1-y_2|$</p>
+<p>欧氏距离:
+$dis = \sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$</p>
+<h2 id="偏好性">偏好性</h2>
+<p>
+        <img class="mx-auto" alt="" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/AI/2/1.png" />   
+    
+上图表示了曼哈顿距离帮助解决的松弛问题——假设吃豆人想到达迷宫的左下角，它在计算了假设没有墙的情况下从吃豆人现在的位置到目标位置的距离。这个距离是松弛搜索问题中的精确（exact）距离，而相应的在实际的搜索问题中的是估计（estimated）目标距离。有了启发式搜索，在我们的agent中实现逻辑变得很简单，这使它们在决定执行哪个操作时能“偏好”在估计中离目标状态比较近的扩展状态。这个偏好的概念非常有用，并且在以下两种搜索算法中都有利用到它：贪婪搜索和A*搜索。</p>
+<h1 id="greedy-search">Greedy Search</h1>
+<ul>
+<li>描述：贪婪搜索总是选择有最小启发值（lowest heuristic value）的节点来扩展，这些节点对应的是它认为最接近目标的状态。</li>
+<li>边缘描述：贪婪搜索的操作和UCS相同，具有优先队列边缘表示。不同之处在于，贪婪搜索使用估计前进代价（estimated forward cost），而不是计算后退代价（computed backward cost）（通往状态的路径上各边的权重之和）。</li>
+<li>完备性和最优性：如果存在一个目标状态，贪婪搜索无法保证能找到它，它也不是最优的，尤其是在选择了非常糟糕的启发函数的情况下。在不同场景中。它的行为通常是不可预测的，有可能一路直奔目标状态，也有可能像一个被错误引导的DFS一样并遍历所有的错误区域。
+
+        <img class="mx-auto" alt="" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/AI/2/2.png" />   
+    </li>
+</ul>
+<h1 id="a-search">A* Search</h1>
+<ul>
+<li>描述：A*搜索总是选择有最低估计总代价（lowest estimated total cost）的边缘节点来扩展，其中总代价是指从起始节点到目标节点的全部代价。</li>
+<li>边缘表示：和贪婪搜索及UCS一样，A* 搜索也用一个优先队列来表示它的边缘。和之前一样，唯一的区别在于优先权选择的方法。A*搜索将UCS使用的全部后退代价（到达状态的路径上各边权重之和）和贪婪搜索使用的估计前进代价（启发值）通过相加联合起来，有效地得到了从起始到目标的估计总代价（estimated total value）。由于我们想将从起始到目标的总代价最小化，这是一个很好的选择。</li>
+<li>完备性和最优性：在给定一个合适的启发函数（我们很快就能得到）时，A*搜索既是完备的又是最优的。它结合了目前我们发现的所有其他搜索策略的优点，兼备贪婪搜索的高搜索速度以及UCS的完备性和最优性。</li>
+</ul>
+<h1 id="admissibility-and-consistency">Admissibility and Consistency</h1>
+<p><strong>可纳性和一致性</strong>
+现在我们已经讨论了启发式搜索以及它在贪婪和A* 搜索中应用的，接下来我们来花些时间讨论一下一个好的启发式是由什么构成的。为此，我们首先重新定义UCS、贪婪搜索和A* 中用于确定优先级队列顺序的方法，定义如下：</p>
+<ul>
+<li>g(n)：UCS计算的总后退代价函数。</li>
+<li>h(n)：贪婪搜索使用的启发值函数，或者说估计前进代价函数。</li>
+<li>f(n)：A*搜索使用的估计总代价函数。 F(n) = g(n)+h(n)</li>
+</ul>
+<p>在回答一个“好的”启发式由什么构成这个问题之前，我们必须先抛开我们使用的启发式函数，思考一下A<em>是否保持了它的完备性和最优性的特点。的确，很容易就能找到失去了这两个黄金特点的启发式。举个例子，考虑一下启发函数$h(n) = 1-g(n)$。先不谈搜索问题，用这个启发式能得到
+$f(n) = g(n)+h(n)$
+$ = g(n)+(1-g(n))$
+$ = 1$
+于是，这样的一个启发式将A</em>退化为了BFS，所有代价都相等了。我们之前已经说明了，BFS在边的权重不恒定的通常情况下不能保证是最优的。</p>
+<h2 id="admissibility">admissibility</h2>
+<p>使用A* 树搜索时，最优性所需的条件称为<strong>可纳性（admissibility）</strong>。可纳性约束表明，用一个可纳的启发式估算的值既不是负的，也不会被高估。定义 $h^<em>(n)$ 为从一个给定节点n到达目标状态的真正的最佳前进代价，我们能将可纳性约束数学表示为：
+$\forall n, 0\leq h(n)\leq h^</em>(n)$</p>
+<p><strong>定理: 对于一个给定的搜索问题，如果一个启发式函数h满足可纳性约束，使用含有h的A*树搜索能得到最优解。</strong></p>
+<p>证明:
+假设两个可以到达的目标状态，最优目标A和次优目标B在一个给定的搜索问题的搜索树中。因为可以从初始状态到达A，A的某个祖先节点n（有可能是A本身）现在一定在边缘上。用以下三个陈述，我们可以断定n会在B之前被选来扩展</p>
+<ul>
+<li>$g(A)&lt;g(B)$ 因为A是最优而B是次优，我们能得出A到达起始状态的后退代价低于B。</li>
+<li>$h(A) = h(B) = 0$ 因为已知我们的启发式满足可纳性约束。因为A和B都是目标状态，从A或B到达目标状态的真实最优代价就是$h^*(n) = 0$。因此$0\leq h(n)\leq0$。</li>
+<li>$f(n)\leq f(A)$，虽然h有可纳性,$f(n) = g(n)+h(n)\leq g(n)+h*(n) = g(A) = f(A)$。穿过节点n的总代价最大是A的真实后退代价，也就是A的总代价。</li>
+</ul>
+<p>我们通过陈述1和2得到$f(A)&lt;f(B) = f(A)+h(A)&lt;f(B)+h(B)$
+由此，我们知道n在B之前被扩展。因为我们已经证明了对任意n均有这个结论，我们能得出结论：A所有的祖先（包括A自己）都在B之前扩展。</p>
+<p>我们在上面发现树搜索有一个问题，那就是有些情况下它可能会找不到解，在状态空间图中陷入同一个环中无限地搜索下去。即使是在我们的搜索技术不涉及这样一个无限循环的情况下，因为有多个路径能到达同一个点，我们经常会多次访问同一个节点。这导致工作量指数上升，而自然地解决方案只是<strong>简单地跟踪哪些状态已经扩展过</strong>，并且永远不再扩展它们。更明确地讲，在使用你选择的方法的同时维持一个**“封闭”的扩展节点集**。然后，确保每一个节点在扩展前不在这个集合中，并且在扩展后将其加入集合里。经过这种优化的树搜索称为**图搜索（graph search）**伪代码为:
+
+        <img class="mx-auto" alt="" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/AI/2/3.png" />   
+    </p>
+<p>注意在实现时，很重要的一点是将封闭集存储为一个不相交集合而不是一个队列。将它存储为队列需要花费O(n)个操作来检查资格（membership），这会抵消图搜索本来的优势。关于图搜索，另一个需要注意的是即使是在可纳的启发式下，它也会破坏A*的最优性。思考一下下面这个简单的状态空间图和相应的搜索树，启发值和权重都已标出：
+
+        <img class="mx-auto" alt="" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/AI/2/4.png" />   
+    </p>
+<h2 id="consistency">consistency</h2>
+<p>在上面这个例子中，最佳路径显然是S→A→C→G，得到总路径代价为1+1+3=5.仅有的另一条到达目标的路径，S→B→C→G的代价为1+2+3=6.然而，因为节点A的启发值比B大得多，节点C首先作为节点B的孩子沿着次优路径扩展。然后它才被放入“封闭”集，所以A* 在把它当做A的孩子访问它时无法重新扩展它，导致它永远无法找到最优解。于是，为了维持A*搜索下的完备性和最优性，我们需要一个比可纳性更强的性质，<strong>一致性（consistency）</strong><a href="https://www.zhihu.com/question/23052955">知乎:一致性的解释</a>。一致性的核心思想在于，我们不仅仅强制让启发式算法低估从任意给定节点到目标的总距离，还低估了图中每一条边的代价/权重。由启发式函数度量的边的代价只是两个连接的节点的启发值的差异。一致性约束的数学表示如下：
+$\forall A,C h(A)-h(C)\leq cost(A,C)$</p>
+<p>定理. 对于一个给定的搜索问题，如果启发式函数h满足一致性约束，对这个搜索问题使用有h的A*图搜索能得到一个最优解。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/61895500">证明详解</a></p>
+<h1 id="dominance-优势">Dominance 优势</h1>
+<p>现在我们已经建立了可纳性和一致性的性质以及它们在保持A*搜索的最优性中扮演的角色，我们能够回到我们最初的问题，创建“好”的启发式以及如何比较启发式之间的优劣。<strong>衡量这个的标准就是优势（dominance）</strong>。如果启发式a相对于启发式b而言有优势，那么<strong>对状态空间图中的所有节点，a的估计目标距离都比b要好</strong>。数学表示为:
+$\forall n:h_a(n)\geq h_b(n)$</p>
+<p>优势能非常直观地表示一个启发式比另一个好的概念——如果一个可纳/一致的启发式对另一个有优势，它肯定更好，因为它总是能更准确地估计从任何给定状态到目标的距离。除此之外，<strong>微启发式（trivial heuristic）被定义为$h(n) = 0$，使用它会将A*搜索退化为UCS。所有可纳启发式都比这个微启发式有优势</strong>。对于一个搜索问题，在搜索问题中通常在的基础上加入微启发式，在半网格基础上又加入了一个优势等级序列。下面是一个结合了不同启发式$h_a$，$h_b$ 和 $h_c$的半网格，它们的范围是从最底下的微启发式到最顶端的精确目标距离。
+image:5.png</p>
+<p>一般地，应用于多个可纳启发式的最大函数同样总是可纳的。这只是启发式算法为任意给定的由可纳条件约束的状态输出的所有值中的一种结果，<strong>$0\leq h(n) \leq h^*(n)$</strong>。在这个范围内的最大数也必须落在同样的范围内。对于多个一致启发式，同样的情况也很容易被证明。为任何给定的搜索问题生成多个可纳/一致启发式，并且计算由它们输出的最大值来生成一个相比较它们中的任何一个都有优势（也更好）的启发式，这是一个惯例。</p>
+<ul>
+<li>BFS宽度优先搜索</li>
+<li>DFS深度优先搜索</li>
+<li>UCS一致代价搜索</li>
+<li>贪婪搜索</li>
+<li>A*搜索</li>
+</ul>
+<p>前三种搜索技术都属于<strong>无信息搜索（uninformed search）</strong>，而后两种都是通过启发式（heuristics）来估计目标距离并完善性能的<strong>有信息搜索（informed search）</strong>。</p>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/ai-1/">AI-Uninformed Search</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA'>人工智能导论</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

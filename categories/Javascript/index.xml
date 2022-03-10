@@ -1,0 +1,36 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Javascript - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/Javascript/</link>
+    <description>Javascript - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Wed, 31 Mar 2021 20:30:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/Javascript/" rel="self" type="application/rss+xml" /><item>
+  <title>nodejs入门</title>
+  <link>http://example.org/posts/nodejs-2/</link>
+  <pubDate>Wed, 31 Mar 2021 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/nodejs-2/</guid>
+  <description><![CDATA[<p>Mosh/初识nodejs</p>]]></description>
+</item><item>
+  <title>Javascript基础 Part-2</title>
+  <link>http://example.org/posts/js-2/</link>
+  <pubDate>Sun, 28 Mar 2021 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/js-2/</guid>
+  <description><![CDATA[<p>常用命令</p>]]></description>
+</item><item>
+  <title>Webpack基础概念</title>
+  <link>http://example.org/posts/nodejs-1/</link>
+  <pubDate>Fri, 26 Mar 2021 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/nodejs-1/</guid>
+  <description><![CDATA[<p>JS模块化打包</p>]]></description>
+</item><item>
+  <title>Javascript基础 Part-1</title>
+  <link>http://example.org/posts/js-1/</link>
+  <pubDate>Mon, 22 Mar 2021 20:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/js-1/</guid>
+  <description><![CDATA[<p>常用命令</p>]]></description>
+</item></channel>
+</rss>

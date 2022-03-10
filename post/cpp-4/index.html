@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>C&#43;&#43; Part-4 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="C&#43;&#43; Part-4 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-07-18T23:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-07-18T23:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="C&#43;&#43; Part-4">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/cpp-4/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">C&#43;&#43; Part-4</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月18日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>算法笔记知识点汇总-C++ STL<!-- raw HTML omitted -->
+7.18更新完成</p>
+<p>这里为了精简一点,所以只记录一些个人觉得重要的东西,由于是第一遍学,所以相对基础</p>
+<p>在STL容器中,只有vector和string支持 *(it+i)的访问方式</p>
+<h1 id="vector">vector</h1>
+<p>向量,变长数组
+对于定义STL容器,方法都一样</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>vector<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> vector1;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>迭代器,方法也一样</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>vector<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">::</span> iterator it;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果其中填装的结构也是容器,则需要注意,在括号后要加入一个空格,以区分 &laquo; 否则编译会出错</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>vector <span style="color:#000;font-weight:bold">&lt;</span>vector<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">&gt;</span> vector1;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="函数操作">函数操作</h2>
+<p>push_back(): 在vector后面添加一个元素
+pop_back(): 删除vector尾元素
+size(): 获得元素个数
+clear(): 清空元素
+insert(it, x): 在迭代器it处,插入元素x
+erase(it): 删除迭代器处的元素
+erase(first, last): 删除first到last之间的元素(前闭后开,first,last为迭代器)</p>
+<h1 id="set">set</h1>
+<p>集合:内部自动有序,且不含重复元素的集合
+底层实现为红黑树,也可以使用unordered_set容器,底层实现为散列,速度比set快很多</p>
+<h2 id="函数操作-1">函数操作</h2>
+<p>insert(x): 将x元素插入到set中
+find(value): 查找值为value的元素,并返回迭代器
+erase(x): 删除迭代器对应的元素
+erase(value): 删除值为value的元素
+erase(first,last)
+size()
+clear()</p>
+<h1 id="string">string</h1>
+<p>c++对char[]进行封装,从而产生string类型
+对于在printf中输出string,可以使用c_str()函数</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>string s <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;hello world&#34;</span>;
+</span></span><span style="display:flex;"><span>printf(<span style="color:#d14">&#34;%s&#34;</span>, s.c_str());
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于string的加法,代表两个string进行拼接
+而对于两个string的比较符号,比较规则为字典序,与char[]的比较规则相同</p>
+<h2 id="操作函数">操作函数</h2>
+<p>length(),size()
+insert(pos,string)
+insert(it1,it2,it3): it为被插入字符串的欲插入位置,it2,it3为待插入字符串的起始和终止位置迭代器(前闭后开)
+erase(it),erase(first,last)
+erase(pos, length): 从起始位置pos开始,删除length个元素
+substr(pos, length): 从pos位置开始,截取length长度元素,并返回(字符串并不会发生改变)
+string::npos 是一个常数,作为find函数失配时的返回值
+find(str2): 如果str2为str的字串,返回其在str中的第一次出现的位置</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span>(str.find(str2) <span style="color:#000;font-weight:bold">!=</span> string<span style="color:#000;font-weight:bold">::</span>npos){
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">/*code*/</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>replace(pos, length, str2): 将str从pos位置开始,长度为length的字串替换为str2</p>
+<h1 id="map">map</h1>
+<p>映射,字典,键值唯一</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>map<span style="color:#000;font-weight:bold">&lt;</span>string <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> mp;
+</span></span><span style="display:flex;"><span>map<span style="color:#000;font-weight:bold">&lt;</span>set<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> string<span style="color:#000;font-weight:bold">&gt;</span> mp2;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>访问键和对应的值</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>it<span style="color:#000;font-weight:bold">-&gt;</span>first <span style="color:#998;font-style:italic">//访问键
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>it<span style="color:#000;font-weight:bold">-&gt;</span>second <span style="color:#998;font-style:italic">//访问值
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于map底层为红黑树实现,因此键会从大到小进行排列自动排序</p>
+<h2 id="操作函数-1">操作函数</h2>
+<p>find(key)
+erase(it), erase(key), erase(first,last)
+size()
+clear()</p>
+<h1 id="queue">queue</h1>
+<p>队列是一种限制性的数据结构,因此只能通过front()访问队首元素,back()访问队尾元素
+在使用front()和back()函数前,必须用empty()判断队列是否为空</p>
+<h2 id="操作函数-2">操作函数</h2>
+<p>push(x) 队尾入队
+pop() 队首出队
+front() 获得队首元素
+back() 获得队尾元素
+empty() 判断queue是否为空
+size() 返回队列长度</p>
+<h1 id="priority_queue">priority_queue</h1>
+<p>优先队列,底层用堆来实现,在任何时候push进队列,堆(heap)都会调整结构,保证队首元素为优先级最大
+头文件: queue
+和队列不同,priority_queue没有front()和back()函数,只能通过top()来访问队首元素(堆顶元素)</p>
+<h2 id="操作函数-3">操作函数</h2>
+<p>push()
+top()
+pop()
+empty()
+size()</p>
+<h2 id="优先级的设置">优先级的设置</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>priority_queue<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span>, vector<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span>, less<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">&gt;</span> q;
+</span></span><span style="display:flex;"><span>priority_queue<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span>, vector<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span>, greator<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">&gt;</span> p;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第一个参数vector-int填写的是底层数据结构(heap)的容器,如果第一个参数为char,则第二个参数为vector-char
+第三个参数为是对第一个参数的比较类,less-int表示数字越大的优先级越大</p>
+<h3 id="结构体优先级">结构体优先级</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">fruit</span>{
+</span></span><span style="display:flex;"><span>    string name;
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> price;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">friend</span> <span style="color:#458;font-weight:bold">bool</span> <span style="color:#000;font-weight:bold">operator</span> <span style="color:#000;font-weight:bold">&lt;</span> (fruit f1, fruit f2){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> f1.price <span style="color:#000;font-weight:bold">&lt;</span> f2.price; <span style="color:#998;font-style:italic">//价格高的水果,优先级高
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>priority_queue<span style="color:#000;font-weight:bold">&lt;</span>fruit<span style="color:#000;font-weight:bold">&gt;</span> q; <span style="color:#998;font-style:italic">//结构体内部会自动排序,而不需要额外写别的比较函数
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>friend为友元,结构体内对 &ldquo;&lt;&rdquo; 进行了重载(重载&quot;&gt;&ldquo;会报错)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>f1 <span style="color:#000;font-weight:bold">==</span> f2 <span style="color:#a61717;background-color:#e3d2d2">等价于判断</span> <span style="color:#000;font-weight:bold">!</span>(f1<span style="color:#000;font-weight:bold">&lt;</span>f2) <span style="color:#000;font-weight:bold">&amp;&amp;</span> <span style="color:#000;font-weight:bold">!</span>(f2<span style="color:#000;font-weight:bold">&lt;</span>f1)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中对于小于号的重载,结果与sort函数中的cmp排列是相反的</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#998;font-style:italic">/*cmp*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">return</span> a<span style="color:#000;font-weight:bold">&gt;</span>b; <span style="color:#998;font-style:italic">//递减排序,大的元素在前面
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">/* &lt; 重载*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">return</span> a<span style="color:#000;font-weight:bold">&gt;</span>b; <span style="color:#998;font-style:italic">//递增排序,小的元素在前面
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>将比较函数写在结构体外面</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">fruit</span>{
+</span></span><span style="display:flex;"><span>    string name;
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> price;
+</span></span><span style="display:flex;"><span>}f1,f2,f3;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">cmp</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">bool</span> <span style="color:#900;font-weight:bold">operator</span>()(fruit f1, fruit f2){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> f1.price <span style="color:#000;font-weight:bold">&gt;</span> f2.price;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>priority_queue<span style="color:#000;font-weight:bold">&lt;</span>fruit, vector<span style="color:#000;font-weight:bold">&lt;</span>fruit<span style="color:#000;font-weight:bold">&gt;</span>, cmp<span style="color:#000;font-weight:bold">&gt;</span> q;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果结构体内数据较为庞大,应该使用引用来提高效率,此时比较类的参数应该加上&quot;const&quot;和&rdquo;&amp;&quot;</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">friend</span> <span style="color:#458;font-weight:bold">bool</span> <span style="color:#000;font-weight:bold">operator</span> <span style="color:#000;font-weight:bold">&lt;</span> (<span style="color:#000;font-weight:bold">const</span> fruit <span style="color:#000;font-weight:bold">&amp;</span>f1, <span style="color:#000;font-weight:bold">const</span> fruit <span style="color:#000;font-weight:bold">&amp;</span>f2){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> f1.price <span style="color:#000;font-weight:bold">&gt;</span> f2.price;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">bool</span> <span style="color:#900;font-weight:bold">operator</span>() (<span style="color:#000;font-weight:bold">const</span> fruit <span style="color:#000;font-weight:bold">&amp;</span>f1, <span style="color:#000;font-weight:bold">const</span> fruit <span style="color:#000;font-weight:bold">&amp;</span>f2){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> f1.price <span style="color:#000;font-weight:bold">&gt;</span> f2.price;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="stack">stack</h1>
+<h2 id="操作函数-4">操作函数</h2>
+<p>push()
+top()
+pop()
+empty()
+siza()</p>
+<h1 id="pair">pair</h1>
+<p>头文件 map
+内部有两个元素的结构体,分别对应first和second</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>pair<span style="color:#000;font-weight:bold">&lt;</span>string, <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> p;
+</span></span><span style="display:flex;"><span>pair<span style="color:#000;font-weight:bold">&lt;</span>string, <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> p(<span style="color:#d14">&#34;haha&#34;</span>, <span style="color:#099">5</span>); <span style="color:#998;font-style:italic">//初始化数据
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>pair<span style="color:#000;font-weight:bold">&lt;</span>string, <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span>(<span style="color:#d14">&#34;haha&#34;</span>, <span style="color:#099">5</span>) <span style="color:#998;font-style:italic">//创建临时变量
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>make_pair(<span style="color:#d14">&#34;haha&#34;</span>, <span style="color:#099">5</span>); <span style="color:#998;font-style:italic">//创建临时变量
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>pair经常用作插入map中</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>map<span style="color:#000;font-weight:bold">&lt;</span>string, <span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> mp;
+</span></span><span style="display:flex;"><span>mp.insert(make_pair(<span style="color:#d14">&#34;haha&#34;</span>,<span style="color:#099">5</span>));
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span>(<span style="color:#000;font-weight:bold">auto</span> it <span style="color:#000;font-weight:bold">=</span> mp.begin(); it<span style="color:#000;font-weight:bold">!=</span>mp.end(); it<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>    cout <span style="color:#000;font-weight:bold">&lt;&lt;</span> it<span style="color:#000;font-weight:bold">-&gt;</span>first <span style="color:#000;font-weight:bold">&lt;&lt;</span> it<span style="color:#000;font-weight:bold">-&gt;</span>second;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="比较函数">比较函数</h2>
+<p>pair可以使用 ==,!=,&lt;,&lt;=,&gt;,&gt;=进行比较,比较规则是首先对first的大小作为标准,只有当first相等时才会去判断second的大小</p>
+<h1 id="algorithm头文件下的常用函数">algorithm头文件下的常用函数</h1>
+<h2 id="max">max()</h2>
+<p>返回最大值 max(x,y)
+三个值取最大,利用嵌套 max(x,max(y,z))</p>
+<h2 id="min">min()</h2>
+<p>返回最小值</p>
+<h2 id="abs">abs()</h2>
+<p>返回绝对值,需要注意的是,abs只能用于整型int,浮点数的绝对值需要使用fabs()函数</p>
+<h2 id="swap">swap()</h2>
+<p>swap(x,y)交换x,y两个变量的值</p>
+<h2 id="reverse">reverse()</h2>
+<p>将数组指针在[it1, it2)之间的元素或容器的迭代器在[it1, it2)之间的元素进行反转
+注意区间,前闭后开</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> a[<span style="color:#099">10</span>] <span style="color:#000;font-weight:bold">=</span> {<span style="color:#099">10</span>,<span style="color:#099">11</span>,<span style="color:#099">12</span>,<span style="color:#099">13</span>,<span style="color:#099">14</span>,<span style="color:#099">15</span>};
+</span></span><span style="display:flex;"><span>reverse(a, a<span style="color:#000;font-weight:bold">+</span><span style="color:#099">4</span>); <span style="color:#998;font-style:italic">//将 a[0]到a[3] 的元素进行反转
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>string a <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;abcdefg&#34;</span>;
+</span></span><span style="display:flex;"><span>reverse(a.begin()<span style="color:#000;font-weight:bold">+</span><span style="color:#099">2</span>, a.begin()<span style="color:#000;font-weight:bold">+</span><span style="color:#099">5</span>); <span style="color:#998;font-style:italic">//对 a[2]到a[4] 的元素进行反转
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="fil">fil()</h2>
+<p>可以将数组或容器的某一区间赋值为某个相同得值</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> a[<span style="color:#099">5</span>] <span style="color:#000;font-weight:bold">=</span> {<span style="color:#099">1</span>,<span style="color:#099">2</span>,<span style="color:#099">3</span>,<span style="color:#099">4</span>,<span style="color:#099">5</span>};
+</span></span><span style="display:flex;"><span>fill(a, a<span style="color:#000;font-weight:bold">+</span><span style="color:#099">5</span>, <span style="color:#099">233</span>); <span style="color:#998;font-style:italic">//将 a[0]到a[4] 均赋值为233
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="lower_bound和upper_bound">lower_bound()和upper_bound()</h2>
+<p>首先，lower_bound和upper_bound是C++ STL中提供的非常实用的函数。其操作对象可以是vector、set以及map
+lower_bound返回值一般是&gt;= 给定val的最小指针（iterator）
+upper_bound返回值则是 &gt; 给定val的最小指针（iterator）</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span> <span style="color:#999;font-weight:bold;font-style:italic">&lt;iostream&gt;     // std::cout</span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span> <span style="color:#999;font-weight:bold;font-style:italic">&lt;algorithm&gt;    // std::lower_bound, std::upper_bound, std::sort</span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span> <span style="color:#999;font-weight:bold;font-style:italic">&lt;vector&gt;       // std::vector</span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">using</span> namepace std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">main</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#458;font-weight:bold">int</span> myints[] <span style="color:#000;font-weight:bold">=</span> {<span style="color:#099">10</span>,<span style="color:#099">20</span>,<span style="color:#099">30</span>,<span style="color:#099">30</span>,<span style="color:#099">20</span>,<span style="color:#099">10</span>,<span style="color:#099">10</span>,<span style="color:#099">20</span>};
+</span></span><span style="display:flex;"><span>  vector<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;</span> v(myints,myints<span style="color:#000;font-weight:bold">+</span><span style="color:#099">8</span>);           <span style="color:#998;font-style:italic">// 10 20 30 30 20 10 10 20
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  sort (v.begin(), v.end());                <span style="color:#998;font-style:italic">// 10 10 10 20 20 20 30 30
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  vector<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#458;font-weight:bold">int</span><span style="color:#000;font-weight:bold">&gt;::</span>iterator low,up;
+</span></span><span style="display:flex;"><span>  low <span style="color:#000;font-weight:bold">=</span> lower_bound (v.begin(), v.end(), <span style="color:#099">20</span>); 
+</span></span><span style="display:flex;"><span>  up <span style="color:#000;font-weight:bold">=</span> upper_bound (v.begin(), v.end(), <span style="color:#099">20</span>); 
+</span></span><span style="display:flex;"><span>  cout <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#d14">&#34;lower_bound at position &#34;</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> (low<span style="color:#000;font-weight:bold">-</span> v.begin()) <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#d14">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>  cout <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#d14">&#34;upper_bound at position &#34;</span> <span style="color:#000;font-weight:bold">&lt;&lt;</span> (up <span style="color:#000;font-weight:bold">-</span> v.begin()) <span style="color:#000;font-weight:bold">&lt;&lt;</span> <span style="color:#d14">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/cpp-3/">C&#43;&#43; Part-3</a></li>
+        
+        <li><a href="/post/cpp-2/">C&#43;&#43; Part-2</a></li>
+        
+        <li><a href="/post/cpp-1/">C&#43;&#43; Part-1</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/c&#43;&#43;'>C&#43;&#43;</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

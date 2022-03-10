@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>wine - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/wine/</link>
+    <description>wine - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Tue, 26 May 2020 20:44:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/wine/" rel="self" type="application/rss+xml" /><item>
+  <title>Ubuntu20.04安装wine</title>
+  <link>http://example.org/posts/ubuntu-22/</link>
+  <pubDate>Tue, 26 May 2020 20:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-22/</guid>
+  <description><![CDATA[今天想在ubuntu上装一个cajviewer,去下了一个deepin-wine版本的,但是缺少字体库装不上 去晚上找了很多帖子,都推荐去装w]]></description>
+</item><item>
+  <title>Ubuntu安装Deepin-Wine</title>
+  <link>http://example.org/posts/ubuntu-9/</link>
+  <pubDate>Mon, 30 Mar 2020 10:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ubuntu-9/</guid>
+  <description><![CDATA[<p>套娃Windows</p>]]></description>
+</item></channel>
+</rss>

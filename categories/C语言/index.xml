@@ -1,0 +1,85 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>C语言 - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/C%E8%AF%AD%E8%A8%80/</link>
+    <description>C语言 - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Sat, 23 May 2020 21:40:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/C%E8%AF%AD%E8%A8%80/" rel="self" type="application/rss+xml" /><item>
+  <title>C语言-qsort函数</title>
+  <link>http://example.org/posts/C-13/</link>
+  <pubDate>Sat, 23 May 2020 21:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-13/</guid>
+  <description><![CDATA[<p>今天刷leetcode遇到一个神奇的函数,但是没看懂大佬怎么用的这个函数,查了一下发现大有用处!在此记录</p>]]></description>
+</item><item>
+  <title>单链表排序</title>
+  <link>http://example.org/posts/C-12/</link>
+  <pubDate>Wed, 20 May 2020 21:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-12/</guid>
+  <description><![CDATA[<p>今天被单链表排序那题卡了大半天,我一直想写冒泡&hellip;但是最后给我绕懵了,发现单链表的冒泡也太难写了(哭)
+最后我还写了构造单链表和打印单链表的一套函数用来debug&hellip;
+失败的收获:排序过程中其实并不用去交换节点,交换节点的value完全可以啊
+过几天开始系统学查找排序算法</p>]]></description>
+</item><item>
+  <title>C-打印层序遍历构造的二叉树</title>
+  <link>http://example.org/posts/C-11/</link>
+  <pubDate>Mon, 18 May 2020 21:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-11/</guid>
+  <description><![CDATA[<p>方便leetcode本地调试</p>]]></description>
+</item><item>
+  <title>C-数组形参的长度</title>
+  <link>http://example.org/posts/C-10/</link>
+  <pubDate>Mon, 18 May 2020 20:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-10/</guid>
+  <description><![CDATA[<p>刷leetcode的时候,由于报错显示的很简单,想调试程序的话有些困难,所以就想在c环境下断点调试代码,今天做一道关于树的题的时候,遇到了这个问题,就是数组形参的长度永远都是8字节,就很离谱&hellip;后来才发现了缘故
+原来在字符型的数组中我们可以使用 strlen() 来获取当前数组的长度，对于其他类型的数组，这个方法就不适用了.</p>]]></description>
+</item><item>
+  <title>C常用库函数整理</title>
+  <link>http://example.org/posts/C-9/</link>
+  <pubDate>Fri, 15 May 2020 20:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-9/</guid>
+  <description><![CDATA[<p>史上最全</p>]]></description>
+</item><item>
+  <title>C语言程序设计 Part-5</title>
+  <link>http://example.org/posts/C-8/</link>
+  <pubDate>Fri, 15 May 2020 18:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-8/</guid>
+  <description><![CDATA[<p>C内存管理,C命令行参数</p>]]></description>
+</item><item>
+  <title>C语言程序设计 Part-4</title>
+  <link>http://example.org/posts/C-7/</link>
+  <pubDate>Fri, 15 May 2020 16:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-7/</guid>
+  <description><![CDATA[<p>C头文件,C强制类型转换,C错误处理,C可变参数</p>]]></description>
+</item><item>
+  <title>C语言程序设计 Part-3</title>
+  <link>http://example.org/posts/C-6/</link>
+  <pubDate>Thu, 14 May 2020 12:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-6/</guid>
+  <description><![CDATA[<p>typedef与#define,C输入&amp;输出,C文件读写,C预处理器</p>]]></description>
+</item><item>
+  <title>C语言程序设计 Part-2</title>
+  <link>http://example.org/posts/C-5/</link>
+  <pubDate>Thu, 14 May 2020 09:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-5/</guid>
+  <description><![CDATA[<p>指针,字符串,结构体,位域,共用体</p>]]></description>
+</item><item>
+  <title>C语言程序设计 Part-1</title>
+  <link>http://example.org/posts/C-4/</link>
+  <pubDate>Wed, 13 May 2020 20:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-4/</guid>
+  <description><![CDATA[<p>今天补习了一下c语言(重新再学习一遍c),毕竟基础要牢靠
+也为了下一步刷PAT做基础,这里记录新得
+今天心态又崩了&hellip;感觉一直以来自己就是一个快乐与崩溃的结合体
+无尽的失落和失望,像是一个深渊,不过明天醒来又是新的一天</p>]]></description>
+</item></channel>
+</rss>

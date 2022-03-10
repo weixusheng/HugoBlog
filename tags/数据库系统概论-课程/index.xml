@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>数据库系统概论-课程 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E8%AF%BE%E7%A8%8B/</link>
+    <description>数据库系统概论-课程 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Sat, 30 Jan 2021 21:15:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA-%E8%AF%BE%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+  <title>数据库系统概论 SQL-2</title>
+  <link>http://example.org/posts/DB-8/</link>
+  <pubDate>Sat, 30 Jan 2021 21:15:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DB-8/</guid>
+  <description><![CDATA[<p>SQL大礼包</p>]]></description>
+</item><item>
+  <title>数据库系统概论 SQL-1</title>
+  <link>http://example.org/posts/DB-7/</link>
+  <pubDate>Fri, 29 Jan 2021 21:15:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DB-7/</guid>
+  <description><![CDATA[<p>SQL大礼包</p>]]></description>
+</item></channel>
+</rss>

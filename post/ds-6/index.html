@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>二叉树应用算法整理 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="二叉树应用算法整理 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-04-09T14:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-04-09T14:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="二叉树应用算法整理">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/ds-6/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">二叉树应用算法整理</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月9日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>今天线索二叉树还是没弄完,快给我脑壳绕晕了,开题报告和论文翻译昨晚肝到今天中午,最后可算完成了。
+上一篇总结了非递归遍历,这篇总结各种应用算法&hellip;本来7号就应该写完的,结果拖了这么久&hellip;(惭愧)</p>
+<h2 id="1-读边创建二叉树">1. 读边创建二叉树:</h2>
+<ul>
+<li>读取参数为（fa, ch, lrtag）分别为father, child, 左右子树标志</li>
+<li>根据读取的参数,创建一个结点</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>BiTree p <span style="color:#000;font-weight:bold">=</span> (BiTree)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(BiTNode));      <span style="color:#998;font-style:italic">//申请空间
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>p <span style="color:#000;font-weight:bold">-&gt;</span> data <span style="color:#000;font-weight:bold">=</span> ch;      <span style="color:#998;font-style:italic">//后来的结点通过data寻找father
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>p <span style="color:#000;font-weight:bold">-&gt;</span>lchild <span style="color:#000;font-weight:bold">=</span> p<span style="color:#000;font-weight:bold">-&gt;</span>rchild <span style="color:#000;font-weight:bold">=</span> null;
+</span></span><span style="display:flex;"><span>Enqueue(p,s);      <span style="color:#998;font-style:italic">//进栈
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>判断此时节点是否是根节点</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span>(p <span style="color:#000;font-weight:bold">-</span> <span style="color:#000;font-weight:bold">&gt;</span>fa <span style="color:#000;font-weight:bold">==</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;&#39;</span>) <span style="color:#000;font-weight:bold">*</span>t <span style="color:#000;font-weight:bold">=</span> p;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>在栈中寻找父节点,并链接</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>  s <span style="color:#000;font-weight:bold">=</span> gethead(s);
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">while</span>(s<span style="color:#000;font-weight:bold">-&gt;</span>data <span style="color:#000;font-weight:bold">!=</span> fa){
+</span></span><span style="display:flex;"><span>    Dequeue(s);
+</span></span><span style="display:flex;"><span>    s <span style="color:#000;font-weight:bold">=</span> gethead(s);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>递归传入新的节点</li>
+</ul>
+<h2 id="2-先序和中序确定一棵二叉树">2. 先序和中序确定一棵二叉树</h2>
+<ul>
+<li>思想:根据先序遍历序列中第一个字符在中序中的位置,分两种情况递归函数</li>
+<li>参数:先序遍历的序列,中序遍历的序列,两种遍历的首字符位置,默认为0</li>
+<li>判断是否为空树</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span>(n <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span>) <span style="color:#000;font-weight:bold">*</span>t <span style="color:#000;font-weight:bold">=</span> null;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>判断先序遍历序列第一个字符是否在中序遍历序列中存在,否则为空树</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>k <span style="color:#000;font-weight:bold">=</span> search(ino, pre[ps]);
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span>(k <span style="color:#000;font-weight:bold">==</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>) <span style="color:#000;font-weight:bold">*</span>t <span style="color:#000;font-weight:bold">=</span> null;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>分两种情况递归</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span>(<span style="color:#000;font-weight:bold">!</span>(<span style="color:#000;font-weight:bold">*</span>t <span style="color:#000;font-weight:bold">=</span> (BiTree)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(BiTNode))))  exit <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span>(k <span style="color:#000;font-weight:bold">==</span> is){      <span style="color:#998;font-style:italic">//没有左子树
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  (<span style="color:#000;font-weight:bold">*</span>t) <span style="color:#000;font-weight:bold">-&gt;</span> lchild <span style="color:#000;font-weight:bold">=</span> null;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>  CrtBT(<span style="color:#000;font-weight:bold">&amp;</span>(<span style="color:#000;font-weight:bold">*</span>t)<span style="color:#000;font-weight:bold">-&gt;</span>lchild, pre, ino, ps<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>, is, k<span style="color:#000;font-weight:bold">-</span>is);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span>(k <span style="color:#000;font-weight:bold">==</span> is<span style="color:#000;font-weight:bold">+</span>n<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>){      <span style="color:#998;font-style:italic">//没有右子树
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  (<span style="color:#000;font-weight:bold">*</span>t) <span style="color:#000;font-weight:bold">-&gt;</span>rchild <span style="color:#000;font-weight:bold">=</span> null;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>  CrtBT(<span style="color:#000;font-weight:bold">&amp;</span>(<span style="color:#000;font-weight:bold">*</span>t)<span style="color:#000;font-weight:bold">-&gt;</span>rchild, ps, ino, ps<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">+</span>(k<span style="color:#000;font-weight:bold">-</span>is), k<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>, n<span style="color:#000;font-weight:bold">-</span>(k<span style="color:#000;font-weight:bold">-</span>is)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3-求二叉树深度">3. 求二叉树深度</h2>
+<ul>
+<li>思想:后序递归遍历,在父节点进行判断左右子树的深度</li>
+<li>代码实现</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">depth</span> (BiTree t){
+</span></span><span style="display:flex;"><span>   <span style="color:#000;font-weight:bold">if</span>(t <span style="color:#000;font-weight:bold">==</span> null) <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>   <span style="color:#000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>     depth_left <span style="color:#000;font-weight:bold">=</span> depth(t<span style="color:#000;font-weight:bold">-&gt;</span>lchild);
+</span></span><span style="display:flex;"><span>     depth_right <span style="color:#000;font-weight:bold">=</span> depth(t<span style="color:#000;font-weight:bold">-&gt;</span>rchild);
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">if</span>(depth_left <span style="color:#000;font-weight:bold">&gt;</span> depth_right) <span style="color:#000;font-weight:bold">return</span> depth_left;
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">return</span> depth_right;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4-求二叉树节点数量">4. 求二叉树节点数量</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">count</span>(BiTree t, <span style="color:#458;font-weight:bold">int</span> <span style="color:#000;font-weight:bold">*</span>x){
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">if</span>(t <span style="color:#000;font-weight:bold">==</span> null) <span style="color:#000;font-weight:bold">return</span>;     <span style="color:#998;font-style:italic">//空树直接返回
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  <span style="color:#000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>    count(t<span style="color:#000;font-weight:bold">-&gt;</span>rchild, x);      <span style="color:#998;font-style:italic">//递归左子树,传入x参数
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">if</span>(t<span style="color:#000;font-weight:bold">-&gt;</span>lchild <span style="color:#000;font-weight:bold">==</span> null <span style="color:#000;font-weight:bold">&amp;&amp;</span> t<span style="color:#000;font-weight:bold">-&gt;</span>rchild <span style="color:#000;font-weight:bold">==</span> null) x<span style="color:#000;font-weight:bold">++</span>;     <span style="color:#998;font-style:italic">//当前为叶子节点
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    count(t<span style="color:#000;font-weight:bold">-&lt;</span>rchild, x);      <span style="color:#998;font-style:italic">//递归右子树
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5-二叉树任意结点的父节点">5. 二叉树任意结点的父节点</h2>
+<ul>
+<li>思想:二叉树基于路径分析的非递归遍历&ndash;后序遍历</li>
+<li>使用栈,直接goleft,到最左结点,进栈</li>
+</ul>
+<ol>
+<li>第一次访问结点,标记数组初始化:c[p] = &lsquo;L&rsquo;</li>
+<li>第二次遇到时c[p] = &lsquo;R&rsquo;</li>
+<li>第三次遇到代表该结点的子结点都访问完成
+如果此时p为需要求父节点的结点,那么此时栈中的元素就是它的所有父结点</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">search_priorder</span>(BiTree t, Elemdata x){     <span style="color:#998;font-style:italic">//基于路径分析法实现-后序遍历
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>     SqStack s;
+</span></span><span style="display:flex;"><span>     initStack(<span style="color:#000;font-weight:bold">&amp;</span>s);
+</span></span><span style="display:flex;"><span>     <span style="color:#458;font-weight:bold">char</span> lrtag[MAX] <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>     BiTree t;
+</span></span><span style="display:flex;"><span>     t <span style="color:#000;font-weight:bold">=</span> priGoleft(t, <span style="color:#000;font-weight:bold">&amp;</span>s, lrtag);
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">while</span>(t <span style="color:#000;font-weight:bold">&amp;&amp;</span> t<span style="color:#000;font-weight:bold">-&gt;</span>data <span style="color:#000;font-weight:bold">!=</span> x){
+</span></span><span style="display:flex;"><span>         lrtag[s.top] <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;R&#39;</span>;
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">if</span>(t<span style="color:#000;font-weight:bold">-&gt;</span>rchild) t <span style="color:#000;font-weight:bold">=</span> priGoleft(t<span style="color:#000;font-weight:bold">-&gt;</span>rchild, <span style="color:#000;font-weight:bold">&amp;</span>s, lrtag);
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>             <span style="color:#000;font-weight:bold">while</span>(<span style="color:#000;font-weight:bold">!</span>SqStackEmpty(s) <span style="color:#000;font-weight:bold">&amp;&amp;</span> lrtag[s.top] <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;R&#39;</span>){
+</span></span><span style="display:flex;"><span>                 gettop(s, <span style="color:#000;font-weight:bold">&amp;</span>t);
+</span></span><span style="display:flex;"><span>                 <span style="color:#000;font-weight:bold">if</span>(t<span style="color:#000;font-weight:bold">-&gt;</span>data <span style="color:#000;font-weight:bold">==</span> x){
+</span></span><span style="display:flex;"><span>                     printstack(s);
+</span></span><span style="display:flex;"><span>                     <span style="color:#000;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>                 }
+</span></span><span style="display:flex;"><span>             }
+</span></span><span style="display:flex;"><span>             <span style="color:#000;font-weight:bold">if</span>(<span style="color:#000;font-weight:bold">!</span>SqStackEmpty(s)) gettop(s, <span style="color:#000;font-weight:bold">&amp;</span>t);
+</span></span><span style="display:flex;"><span>             <span style="color:#000;font-weight:bold">else</span> t <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">NULL</span>;
+</span></span><span style="display:flex;"><span>         }
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> BiTree <span style="color:#900;font-weight:bold">priGoleft</span>(BiTree t, SqStack <span style="color:#000;font-weight:bold">*</span>s, <span style="color:#458;font-weight:bold">char</span> c[]){
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">if</span>(<span style="color:#000;font-weight:bold">!</span>t){
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">NULL</span>;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">while</span>(t){
+</span></span><span style="display:flex;"><span>             push(s, t);
+</span></span><span style="display:flex;"><span>             c[s<span style="color:#000;font-weight:bold">-&gt;</span>top] <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;L&#39;</span>;
+</span></span><span style="display:flex;"><span>             <span style="color:#000;font-weight:bold">if</span>(t <span style="color:#000;font-weight:bold">==</span> <span style="color:#0086b3">NULL</span>){
+</span></span><span style="display:flex;"><span>                 <span style="color:#000;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>             }
+</span></span><span style="display:flex;"><span>             t <span style="color:#000;font-weight:bold">=</span> t<span style="color:#000;font-weight:bold">-&gt;</span>lchild;
+</span></span><span style="display:flex;"><span>         }
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">return</span> t;
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="6-二叉树叶子节点的路径">6. 二叉树叶子节点的路径</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">AllBitreePath</span>(BiTree t, stack <span style="color:#000;font-weight:bold">*</span>s){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span>(t){
+</span></span><span style="display:flex;"><span>        SqStackPush(s, t<span style="color:#000;font-weight:bold">-&gt;</span>data);
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(<span style="color:#000;font-weight:bold">!</span>t<span style="color:#000;font-weight:bold">-&gt;</span> lchild <span style="color:#000;font-weight:bold">&amp;&amp;</span> <span style="color:#000;font-weight:bold">!</span>t<span style="color:#000;font-weight:bold">-&gt;</span>rchild){          <span style="color:#998;font-style:italic">//叶子节点此时输出栈
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>            SqStackTraverse(<span style="color:#000;font-weight:bold">*</span>s);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>            AllBitreePath(t<span style="color:#000;font-weight:bold">-&gt;</span>lchild, <span style="color:#000;font-weight:bold">*</span>s);       <span style="color:#998;font-style:italic">//非叶子结点进栈
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>            AllBitreePath(t<span style="color:#000;font-weight:bold">-&gt;</span>rchild, <span style="color:#000;font-weight:bold">*</span>s);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        SqStackPop(s);          <span style="color:#998;font-style:italic">//此时已经输出栈,出栈当前叶子结点
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>目前书本上的应用是这几种,如果以后遇到新的,还会加上!</p>
+<p>这两天看了&lt;Inside Bill&rsquo;s Brain: Decoding Bill Gates&gt;,本以为是在讲bill的成功历程,但主题是bill现在搞的慈善,帮助非洲贫穷国家改善卫生,消除一些很低级的疾病,相比其他传记,感觉可能讲这个更加人文一点(虽然也并不是很明白人文这个词的含义),讲到bill的成功秘诀就是天生的聪慧和不断的思考(恰巧我这两点都没有),果然伟大的人,总是如此谦虚而又有些高傲&hellip;</p>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/ds-5/">链式存储中传入参数的类型</a></li>
+        
+        <li><a href="/post/ds-4/">二叉树的非递归遍历</a></li>
+        
+        <li><a href="/post/ds-3/">算法题 - 小知识点2</a></li>
+        
+        <li><a href="/post/ds-2/">算法题 - 小知识点1</a></li>
+        
+        <li><a href="/post/ds-1/">算法题 - typedef与struct</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95'>数据结构与算法</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

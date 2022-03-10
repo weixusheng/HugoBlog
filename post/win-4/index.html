@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>Win-科学上网 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="Win-科学上网 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-08-29T23:44:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-08-29T23:44:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Win-科学上网">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/win-4/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Win-科学上网</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年8月29日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>Win环境下的全局梯子配置</p>
+<p>这两天OneNote把我折腾了好久&hellip;熬了两天夜
+主要问题在于,之前onenote同步数据速度很快,但现如今同步速度甚至达到了不能用的地步,忍不了鸭,我还有好多笔记在里边
+所以就想解决方法,第一天晚上,知道了onenote香港cnd服务器被微软撤走了,因此国区数据同步慢(但都慢到不能用了&hellip;)
+第二天就开始研究怎么不全局加速,使得数据能同步过来,一开始还天真挂香港节点,结果今天一ping,发现数据在美国微软云&hellip;我吐了
+因为我买的那个加速器软件开全局会安装一个虚拟网卡,很容易出事(之前就是因为这个重装的电脑)
+所以我连带着&hellip;学会了两个通用的梯子和一个全局代理工具,最后算是解决了OneNote同步问题</p>
+<h1 id="ssr-酸酸乳">SSR-酸酸乳</h1>
+<p>一开始看大家说酸酸乳,我还一脸疑惑,我在这查梯子,你们给我搞一堆饮料上来是什么操作&hellip;
+后来查多了才慢慢知道,原来大佬们口口相传的酸酸乳&hellip;就是SSR
+现在主流的梯子网站都会提供一个订阅地址,而一些就会提供ssr网址,当然也会有的不提供ssr,而提供其他类型的订阅网址</p>
+<h2 id="ssr配置教程">SSR配置教程</h2>
+<h3 id="安装">安装</h3>
+<p><a href="https://github.com/shadowsocksrr/shadowsocksr-csharp">Github项目地址</a></p>
+<h2 id="ssr-windows客户端安装及运行">SSR Windows客户端安装及运行</h2>
+<p>下载完成后，解压，然后后运行ShadowsocksR-dotnet2.0.exe 或 ShadowsocksR-dotnet4.0.exe 即可。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/1.png" />   
+    
+SSR Windows客户端的运行，需要.net环境的支持，一般来说Win7以上系统可以直接运行。
+如果运行时提示错误，那么需要先安装Microsoft .NET Framework 4。
+<a href="https://www.microsoft.com/zh-cn/download/details.aspx?id=17718">下载地址</a></p>
+<h2 id="ssr客户端使用教程">SSR客户端使用教程</h2>
+<h3 id="1-服务器配置">1-服务器配置</h3>
+<p>1.SSR成功运行后，系统任务栏（桌面右下角时间那里，没有的话，就是隐藏起来了）会出现一个小飞机标志。
+2.需要先添加SSR服务器，右键点击小飞机——服务器——编辑服务器。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/2.png" />   
+    
+3.在弹出的编辑服务器窗口，直接修改默认的几项参数。修改为你获取的节点数据，或直接导入ssr链接（导入链接，需要你复制链接，右键系统任务栏中的小飞机图标，点击上图中的剪贴板批量导入ssr：//链接）。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/3.png" />   
+    </p>
+<pre tabindex="0"><code>服务器IP：前面打勾后可见，需要填写你的VPS服务器IP地址
+服务器端口：安装SSR服务端时设置的端口（port）
+密码：安装SSR服务端时设置的密码（password）
+加密、协议、混淆：这几项分别对应安装SSR服务端时设置的 Stream Cipher、Protocol、obfs 几项，下图中仅为示范，具体按实际填写
+混淆参数：留空
+</code></pre><h3 id="2-添加订阅地址">2-添加订阅地址</h3>
+<p>如果提供是订阅链接，那么点击下图的服务器订阅——ssr服务器订阅设置
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/4.png" />   
+    
+在弹出的窗口点击add，把订阅网址填好后确定。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/5.png" />   
+    
+右键客户端，菜单中选择服务器订阅——更新服务器订阅（不通过代理）。等待更新成功的通知，然后再服务器那一栏中即可看到节点信息。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/6.png" />   
+    </p>
+<h3 id="其他配置">其他配置</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/7.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/8.png" />   
+    </p>
+<p>设置完成后，点击确定即可完成服务器的设置。</p>
+<h2 id="模式介绍">模式介绍</h2>
+<p>右键点击任务栏的小飞机，在弹出的菜单中，通过相关设置搭配，可以对访问流量进行个性化分流。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/9.png" />   
+    </p>
+<h3 id="系统代理模式">系统代理模式：</h3>
+<p>SSR的代理模式，通过该项对流量进行二次分流（第一次分流见下文）。决定进入SSR客户端的流量是否走代理。默认为全局模式，下面我们分别介绍。</p>
+<ol>
+<li>直连模式：
+所有进入SSR的流量不走代理，相当于没有安装SSR，一般我们很少选择这一项</li>
+<li>PAC模式：
+通过SSR目录中的pac.txt文件，判断进入SSR客户端的流量是否走代理</li>
+<li>全局模式：
+所有进入SSR客户端的流量都走代理</li>
+</ol>
+<h3 id="pac">PAC：</h3>
+<p>即PAC模式用到的pac.txt，在其它模式下不生效。在该菜单下，我们可以对该文件进行相关操作，一般我们选择PAC为GFWList。
+在SSR服务器连接成功后，可以点击“更新PAC为GFWList”进行更新。</p>
+<h3 id="代理规则">代理规则：</h3>
+<p>决定哪些流量进入SSR客户端，对电脑流量进行第一次分流。</p>
+<ol>
+<li>绕过局域网：局域网的IP直接连接，不进入SSR客户端。</li>
+<li>绕过局域网和大陆：局域网和大陆的IP，不进入SSR客户端，直接连接。</li>
+<li>绕过局域网和非大陆：大陆以外的IP，不进入SSR客户端，直接连接。这一项很少选择。</li>
+<li>用户自定义：很少选择。</li>
+<li>全局：所有流量全部进入SSR客户端。</li>
+</ol>
+<h2 id="各项目常用的搭配为">各项目常用的搭配为：</h2>
+<pre tabindex="0"><code>系统代理模式：PAC模式。
+PAC：更新PAC为GFWList。
+代理规则：绕过局域网和大陆。
+如何设置SSR开机启动
+</code></pre><p>为了避免每次开机，都需要手动开启SSR，我们可以设置SSR开机自启。具体：右键点击任务栏小飞机——选项设置——开机启动打勾——确定。如下图：</p>
+<h2 id="局域网其它设备连接ssr">局域网其它设备连接SSR</h2>
+<p>电脑端的SSR，其实可以通过设置，与其它局域网设备共享，实现上网。</p>
+<ol>
+<li>右键任务栏小飞机——选项设置——允许来自局域网的连接打勾——确定。</li>
+<li>其它局域网设备的网络连接里，设置代理地址为电脑局域网IP，端口为默认的1080。设置生效后，流量就会经过电脑的SSR进行转接了。</li>
+</ol>
+<h2 id="常见问题汇总">常见问题汇总</h2>
+<p><a href="https://www.cnblogs.com/sstealer/p/12452075.html">常见问题汇总</a>
+<a href="https://www.dwhd.org/20160901_223415.html">PAC配置文件介绍</a></p>
+<h1 id="v2rayn">V2rayN</h1>
+<h2 id="安装-1">安装</h2>
+<p><a href="https://github.com/2dust/v2rayN">Github项目地址</a></p>
+<h2 id="使用教程">使用教程</h2>
+<p>相比较SSR而言,V2rayN的使用就简单了很多,有一个图形化界面</p>
+<ol>
+<li>
+<p>首先，找到文件夹中的v2rayn.exe文件，双击运行。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/21.png" />   
+    </p>
+</li>
+<li>
+<p>添加订阅
+点击主界面的订阅-订阅设置，然后粘贴自己的v2ray订阅地址，填写备注等信息。注意勾选备用。然后保存。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/22.png" />   
+    </p>
+</li>
+<li>
+<p>更新订阅
+点击主界面的订阅-更新订阅，等待几秒钟即可。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/24.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/25.png" />   
+    </p>
+</li>
+<li>
+<p>启用节点
+选择一个节点，单击右键-设为活动服务器，即意味着选中了此节点。（也可以在左键点击节点名称以后按一下回车键，即Enter键）
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/26.png" />   
+    </p>
+</li>
+<li>
+<p>选择代理模式
+在任务栏图标上单击右键，找到Http代理，推荐选择开启PAC，并自动配置系统代理(PAC模式)。勾选后，系统代理正式启动，已经可以达到科学上网效果。此模式下，V2RayN将会针对访问请求自动分流，国内站点直连，被屏蔽站点将走代理。（但也不是万能的，准确性非100%）
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/27.png" />   
+    </p>
+</li>
+<li>
+<p>显示网速统计
+在主界面点击参数设置，勾选启用统计，需要重启v2rayN客户端。</p>
+</li>
+<li>
+<p>测试服务器状态
+在主界面点击测试服务状态，选择测试服务状态，即可查看真实延迟。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/28.png" />   
+    </p>
+</li>
+<li>
+<p>更新v2rayN及v2rayCore
+v2rayCore是v2ray的核心文件，v2rayN是图形化客户端。
+在主界面点击检查更新，即可选择更新对象。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/29.png" />   
+    </p>
+</li>
+</ol>
+<h1 id="proxifier全局代理">Proxifier全局代理</h1>
+<p>酸酸乳支持全局(PAC模式和代理方式都选择全局即可)
+<strong>V2rayN全局需要搭配 Proxofier实现</strong></p>
+<h2 id="配置代理服务器地址">配置代理服务器地址</h2>
+<p>端口填写当前梯子的端口
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/31.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/32.png" />   
+    </p>
+<h2 id="name-solutions">Name Solutions</h2>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/34.png" />   
+    
+只选择第二个勾选项</p>
+<h2 id="代理规则-rules">代理规则-Rules</h2>
+<h3 id="指定程序代理">指定程序代理</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/35.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/win-4/36.png" />   
+    </p>
+<h3 id="设置全局代理">设置全局代理</h3>
+<p>不需要在Appplications中添加程序
+直接 更改Action为Proxy socks5 127.0.0.1 即可</p>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/win-6/">Win-OneNote同步</a></li>
+        
+        <li><a href="/post/win-2/">快乐踩坑</a></li>
+        
+        <li><a href="/post/win-3/">WSL迁移</a></li>
+        
+        <li><a href="/post/win-1/">Terminal更换主题</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/win'>win</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

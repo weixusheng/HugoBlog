@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Terminal - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Terminal/</link>
+    <description>Terminal - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Tue, 04 Aug 2020 19:44:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Terminal/" rel="self" type="application/rss+xml" /><item>
+  <title>Terminal更换主题</title>
+  <link>http://example.org/posts/win-1/</link>
+  <pubDate>Tue, 04 Aug 2020 19:44:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/win-1/</guid>
+  <description><![CDATA[<p>众所周知,win10的UI一直都很一言难尽,这次的WSL-Terminal也是看的我难受,后来才发现原来微软做了一个能改主题色的工具</p>]]></description>
+</item></channel>
+</rss>

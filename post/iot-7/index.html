@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>物联网概论 PART-7 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="物联网概论 PART-7 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-05-04T23:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-05-04T23:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="物联网概论 PART-7">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/iot-7/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">物联网概论 PART-7</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月4日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>卫星通信技术,有线网络</p>
+<h1 id="卫星通信技术">卫星通信技术</h1>
+<h2 id="概念">概念</h2>
+<ul>
+<li>卫星通信是指利用人造地球卫星作为中继站转发无线电波,在两个或多个地球站之间进行的通信。其无线电波频率使用微波频段(300 MHz~300 GHz)。</li>
+<li>卫星通信是地面微波中继通信的继承和发展,是微波接力向太空的延伸。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/1.png" />   
+    </li>
+</ul>
+<h2 id="系统组成">系统组成</h2>
+<p>卫星通信系统由通信卫星、地球站、跟踪遥测及指令分系统、监控管理分系统四大功能部分组成。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/2.png" />   
+    </p>
+<ol>
+<li>空间设备也就是通信卫星是由若干转发器、数副天线、位置和姿态控制系统、遥测和指令系统、电源分系统组成,其主要作用是转发各地球站信号。</li>
+<li>地球站由天线、发射系统、接收系统、以及电源、监控等设备组成。主要功能是将需要发射的信号传至卫星和从卫星接收信号。</li>
+<li>地面的跟踪遥测及指令分系统并不直接用于通信,而是用来保障通信的正常进行。</li>
+<li>监控管理分系统对在轨卫星的通信性能及参数进行监测与控制。</li>
+</ol>
+<h2 id="通信链路">通信链路</h2>
+<h3 id="单卫星">单卫星</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/3.png" />   
+    </p>
+<h3 id="双卫星">双卫星</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/4.png" />   
+    </p>
+<h2 id="通信卫星的分类">通信卫星的分类</h2>
+<ul>
+<li>按照<strong>卫星的结构</strong>:
+可分为有源卫星和无源卫星。</li>
+<li>按照<strong>卫星的运动方式</strong>:
+可分为静止卫星(同步卫星)和运动卫星(非同步卫星),包括相位卫星和随机卫星等类型。</li>
+<li>按照卫星离地面的高度(h):
+通信卫星可分为低轨道(h&lt;5000 km)卫星、中轨道(5000&lt;h&lt;20000 km)卫星、高轨道(h&gt;20000 km)卫星和地球同步轨道(h=35786 km)卫星。</li>
+</ul>
+<h2 id="卫星轨道的分类">卫星轨道的分类</h2>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/5.png" />   
+    </p>
+<h2 id="同步卫星通信">同步卫星通信</h2>
+<ol>
+<li>运行轨道在赤道平面内</li>
+<li>高度约为35786 km,</li>
+<li>运行方向和周期与地球相同;
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/6.png" />   
+    </li>
+</ol>
+<h2 id="卫星通信的特点">卫星通信的特点</h2>
+<h3 id="优势">优势</h3>
+<ul>
+<li>覆盖面积大,通信距离远,建站成本与通信距离基本无关</li>
+<li>组网灵活,便于多址连接
+不受地理条件的限制,不管是固定站还是移动站,不同种类的业务可组网在同一个卫星通信网内。</li>
+<li>通信容量大
+卫星通信工作在微波频段,可用带宽范围很大。</li>
+<li>通信质量好可靠性高
+电磁波主要在接近真空的外层空间传播</li>
+<li>经济效益、社会效益好
+卫星通信不受地理和环境条件的限制,具有建设快,投资少,经济效益高的优点。</li>
+</ul>
+<h3 id="局限性">局限性</h3>
+<ul>
+<li>通信卫星使用寿命较短。
+<ul>
+<li>部件故障导致的不可修复</li>
+<li>推进剂携带量有限(作用:控制卫星入轨,轨道位置保持,姿态保持)</li>
+</ul>
+</li>
+<li>存在日凌中断和星蚀现象。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/7.png" />   
+    </li>
+</ul>
+<h2 id="卫星移动通信系统">卫星移动通信系统</h2>
+<h3 id="海事卫星通信系统-inmarsat高轨道">海事卫星通信系统 INMARSAT(高轨道)</h3>
+<ul>
+<li>最 早 的 海 事 卫 星 移 动 系 统 , 由 美 国 COMSAT 公 司 利 用Marisat卫星进行卫星通信,是一个军用的卫星通信系统。</li>
+<li>70年代中期为增强海上船只的安全保障,将部分内容提供给远洋船只使用。1982年形成了以国际海事卫星组织管理的INMARSAT系统,开始提供全球海事卫星通信服务。</li>
+<li>如今已发展为INMARSAT-4 移动通信卫星以及INMARSAT-5宽带通信卫星,管理着135个国家的大量通信服务。</li>
+<li>运行在地球静止轨道上,为除南北极75度以上的级区外的全球区域提供通信服务。</li>
+<li>按发展顺序由INMARSAT-1、INMARSAT-2、INMARSAT-3、INMARSAT-4、INMARSAT-5代卫星组成。当前主要用后三代,共有11颗GEO卫星在轨运行。</li>
+</ul>
+<ol>
+<li>INMARSAT-4 BGAN系统</li>
+</ol>
+<ul>
+<li>BGAN是宽带全球区域网络(broadband global area network)的简称,是国际海事卫星组织主导的第四代卫星通信系统。</li>
+<li>BGAN具有全球无缝隙宽带网络接入、移动实时视频直播、兼容3G等多种通信的能力,它的出现给海事、航空以及陆地偏远地区移动信息化带来革命性的变化。</li>
+</ul>
+<ol start="2">
+<li>INMARSAT-5</li>
+</ol>
+<ul>
+<li>是由 3 颗卫星组成全球高速移动网络Global Xpress,最高上下行速率可分别达 5Mbit/s和 50Mbit/s,而用户终端仅为iPad大小。</li>
+<li>Global Xpress 现已建成,总的吞吐率超过100Gbit/s,信息传输速率将达 50Gbit/s,相当于以前的BGAN业务量的10倍。</li>
+</ul>
+<h3 id="铱星通信系统">铱星通信系统</h3>
+<ol>
+<li>
+<p>概念
+铱(Iridium)系统是一个基于低轨道卫星群的全球移动通信系统,由美国Motorola公司牵头、多个国家(包括我国)的19个公司或单位投资57亿美元创建。</p>
+</li>
+<li>
+<p>特点</p>
+<ul>
+<li>基本上能做到用手机实现任何人在任何时间、任何地方用任何方式与任何人进行通信。</li>
+<li>铱星系统最显著的特点就是 星际链路和极地轨道,最大的优势是达到真正的全球覆盖。</li>
+<li>与静止轨道卫星通信系统相比,铱星系统轨道低,传播损耗小,时延小,通信质量大大提高</li>
+</ul>
+</li>
+<li>
+<p>组成及发展</p>
+<ul>
+<li>铱星系统空间段是由66颗卫星构成的低轨移动通信卫星星座,“第二代铱星”铱星系统除了66颗工作星,还包括6颗在轨备份星和9颗地面备份星。</li>
+<li>66颗在轨卫星分布在6个极地圆轨道上,每个轨道面11颗卫星,轨道高度780km,倾角86.4<!-- raw HTML omitted -->o<!-- raw HTML omitted -->, 每个轨道周期大约101min,设计寿命15年。</li>
+<li>2007启动的第二代铱星计划的目标是:提高数据传输速率,改善话音质量,支持频带的灵活分配,采用端到端的IP 技术,以及提供更强的业务和设备。届时手持终端的数据业务最高速率达1.5Mbit/s,便携式、运输式终端速率分别可达 10Mbit/s、30Mbit/s。</li>
+</ul>
+</li>
+</ol>
+<h1 id="有线网络传输介质">有线网络传输介质</h1>
+<ul>
+<li>电子设备之间进行有线通信,首先需要在它们之间建立物理连接。所有的连接材料都可以称为介质。</li>
+<li>有线网络通信的传输介质有很多种,包括电话线、双绞线、同轴电缆、光纤等。</li>
+<li>和物联网关系最为密切的有线网络是局域网。用于局域网组网的传输媒介主要有两种:双绞线和光纤。</li>
+</ul>
+<h2 id="双绞线">双绞线</h2>
+<ul>
+<li>双绞线是目前使用最广的一种传输介质,它价格便宜、易于安装,适用于多种网络拓扑结构。</li>
+<li>由4对扭在一起且相互绝缘的铜导线组成,两条线扭绞在一起可以减少对邻近线对的电子干扰。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/8.png" />   
+    </li>
+</ul>
+<h3 id="双绞线的分类">双绞线的分类</h3>
+<ul>
+<li>按结构分类,双绞线可分为非屏蔽双绞线(UTP,Unshielded Twisted Pair)和屏蔽双绞线(STP,Shielded Twisted Pair)两类。</li>
+<li>按性能指标分类,双绞线可分为1类,2类,3类,4类,5类,超5类,6类等双绞线。
+<ul>
+<li>3类双绞线的最高传输频率为16MHz,最高传输速率为10Mbps,最大网段长度为100m。</li>
+<li>4类双绞线的最高传输频率为20MHz,最高传输速率为16Mbps,最大网段长度为100m。</li>
+<li>5类双绞线增加了绕线密度,外套使用高质量的绝缘材料。其最高传输频率达到100MHz,最高传输速率达100Mbps,最大网段长度为100m。</li>
+<li>超5类双绞线是增强型的5类双绞线,实际最高的传输频率往往可达200MHz,在工作于全双工通信时,实际最高传输速率可以达到近1000Mbps。</li>
+<li>6类的性能超过超5类,标准规定其带宽为250MHz。是1000 Mbps 数据传输的最佳选择,其最大网段长度也是100m。
+<strong>目前局域网中最常见的双绞线是超5类、6类双绞线</strong></li>
+</ul>
+</li>
+<li>双绞线多数用于局域网的构建。</li>
+</ul>
+<h3 id="屏蔽和非屏蔽双绞线">屏蔽和非屏蔽双绞线</h3>
+<ol>
+<li>屏蔽双绞线
+屏蔽双绞线中的缠绕线对被一种金属制成的屏蔽层所包围,而且每个线对中的电线也是相互绝缘的。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/9.png" />   
+    </li>
+<li>非屏蔽双绞线
+非屏蔽双绞线包括一对或多对由塑料封套包裹的绝缘电线对。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/10.png" />   
+    </li>
+</ol>
+<h3 id="双绞线接头">双绞线接头</h3>
+<ul>
+<li>双绞线与网络设备的接口是RJ-45,根据连接的双绞线的类型,有不同类型的RJ-45连接头。</li>
+<li>双绞线的8根导线需要插入RJ-45接头的8个位置然后固定。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/11.png" />   
+    </li>
+</ul>
+<h3 id="双绞线线序">双绞线线序</h3>
+<ul>
+<li>完整的网线由一定长度的双绞线和两个RJ45水晶头组成。根据双绞线两端导线连接水晶头方式的不同,可以将网线分为三种形式:直连线、交叉线、翻转线。
+<ul>
+<li>直连线 主要用于计算机与网络设备(不同设备)连接等场合;</li>
+<li>交叉线 主要用于连接同种设备;</li>
+<li>翻转线 主要用在对网络设备进行初始设置等场合。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/12.png" />   
+    </li>
+</ul>
+</li>
+</ul>
+<h2 id="光纤">光纤</h2>
+<ul>
+<li>光纤通信的基本特征:
+使用发光器件产生的光作为信息载体,使用光导纤维作为传输光波信号的通信介质。</li>
+<li>光导纤维简称为光纤。</li>
+<li>在它的中心部分包括了一根或多根玻璃纤维,通过从激光器或发光二极管发出的光波穿过中心纤维来进行数据传输。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/13.png" />   
+    </li>
+</ul>
+<h3 id="光纤通信的特点">光纤通信的特点</h3>
+<ul>
+<li>光纤通信的<strong>优点</strong>
+<ul>
+<li>传输频带宽,通信容量大。</li>
+<li>传输衰减小,传输距离长。</li>
+<li>抗电磁干扰,传输质量好。</li>
+<li>体积小、重量轻、便于施工。</li>
+<li>原材料丰富,节约有色金属,有利于环保。</li>
+</ul>
+</li>
+<li>光纤的缺点:
+<ul>
+<li>质地较脆、机械强度低是它的致命弱点,容易折断。</li>
+<li>光纤的安装需要专门设备,以保证光纤的端面平整,以便光能透过,施工人员要有比较好的切断、连接、分路和耦合技术。</li>
+<li>当一根光纤在护套中断裂(如被弯成直角),要确定其位置非常困难。</li>
+<li>修复断裂光纤也很困难,需要专门的设备联结二根光纤以确保光能透过结合部。</li>
+</ul>
+</li>
+</ul>
+<h3 id="光纤的分类">光纤的分类</h3>
+<p>按照光纤中光的传输模式来分:</p>
+<ol>
+<li>单模光纤
+单模光纤只能传输一种模式的光。</li>
+<li>多模光纤
+多模光纤,即发散为多路光波,每一路光波走一条通路。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/14.png" />   
+    </li>
+</ol>
+<h3 id="光缆">光缆</h3>
+<ul>
+<li>光缆是实现光信号传输的通信线路,由一定数量的光纤按照一定方式组成缆心,外面包有护层.</li>
+<li>光缆与电缆在结构上的主要不同点在于光缆必须设有加强构件,以承受机械拉伸负荷.</li>
+<li>光缆比电缆具有更大的传输容量,中继段距离长,体积小,重量轻,无电磁干扰.
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/15.png" />   
+    </li>
+<li>光缆已经发展成长途干线、市内中继、近海及跨洋海底通信,以及局域网、专用网等有线传输线路的骨干
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/16.png" />   
+    </li>
+</ul>
+<h3 id="光纤通信系统构成">光纤通信系统构成</h3>
+<p>光纤通信系统主要包括:电发射机、光发射机、光中继器、光接收机、电接收机。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/17.png" />   
+    </p>
+<ol>
+<li>电发射机:将模拟信号转换成适合光端机处理的数字信号。</li>
+<li>电接收机:将数字信号时分解复用,还原成模拟信号。</li>
+<li>光发射机:是把从电端机送来的电信号转变成光信号,并送入光纤线路进行传输。</li>
+<li>光接收机:是将收到的光信号变换为电信号,并对电信号进行放大、整形、再生后,再生成与发送端相同的电信号,输入到电接收端机。</li>
+<li>光中继器:一个是补偿光信号在光纤中传输时受到的衰减;另一个是对波形失真的脉冲进行整形。</li>
+</ol>
+<h3 id="光纤双绞线应用场合">光纤、双绞线应用场合</h3>
+<ul>
+<li>双绞线:广泛应用于小范围的以太网中。</li>
+<li>光纤:主要应用在长途通信干线,城域网、局域网的的骨干线路中。</li>
+</ul>
+<h1 id="有线网络技术以太网">有线网络技术—以太网</h1>
+<h2 id="概念-1">概念</h2>
+<ul>
+<li>以太网是一种计算机局域网技术。IEEE组织的IEEE802.3标准制定了以太网的技术标准,它规定了包括物理层的连线、电子信号和介质访问层协议的内容 。</li>
+<li>局域网是覆盖较小地理范围的计算机网络。局域网一般在一组楼房内或一座楼房内或在同一房间内。</li>
+<li>以太网是目前应用最普遍的局域网技术,基本取代了其他局域网标准如令牌环、FDDI等技术。</li>
+</ul>
+<h2 id="以太网的发展">以太网的发展</h2>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/18.png" />   
+    </p>
+<ul>
+<li>标准以太网
+传输速率:10M
+传输介质:同轴电缆、非屏蔽3类、5类双绞线。
+拓扑结构:总线型、星形</li>
+<li>快速以太网
+传输速率:100M
+传输介质:主要是双绞线。
+拓扑结构:星形</li>
+<li>千兆以太网
+传输速率达到1000M,传输介质是超5类、6类双绞线、
+光纤等。拓扑结构以星形为主。</li>
+</ul>
+<h2 id="以太网拓扑结构">以太网拓扑结构</h2>
+<ul>
+<li>总线型
+所有互连的对等设备使用一条开放终端的电缆,该电缆只能支持一条信道 。
+<ul>
+<li>优点: 没有外部添加设备,简单便宜。</li>
+<li>缺点: 一条电缆只传输一个信号。一个人传输,其他人等待。</li>
+</ul>
+</li>
+<li>星形拓扑结构（主流）
+从一个公共点“辐射”出多个与设备的连接。
+<ul>
+<li>优点:每个设备都是相互独立的,任何一个出问题,都不影响其他设备使用。</li>
+<li>缺点:所有设备共享带宽。中心设备出问题,所有设备不能通信。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/19.png" />   
+    </li>
+</ul>
+</li>
+</ul>
+<h2 id="以太网通信方式">以太网通信方式</h2>
+<p>以太网解决多台主机共享信道的方法是载波侦听多路存取(Carrier Sense Multi Access,CSMA)。<strong>信道中只能有一个信号在传递</strong></p>
+<ul>
+<li>CSMA协议概要:
+<ul>
+<li>CSMA规定,当主机发送数据时,它首先侦听信道上是否有载波。</li>
+<li>若没有载波,则表明信道上没有数据在传输,主机便将数据发送到信道上。</li>
+<li>若有载波,主机按某种方式继续监听信道,直到确认信道空闲后发送数据。</li>
+</ul>
+</li>
+<li>CSMA不能完全避免冲突的原因
+<ul>
+<li>当主机A认为信道空闲时,主机B也可能认为信道空闲,因此,两台主机差不多同时发送数据,导致冲突发生。</li>
+</ul>
+</li>
+<li>解决方案
+<ul>
+<li>CSMA/CD —带冲突检测的载波监听多点访问</li>
+<li>原理:发送前先监听信道是否空闲,若空闲则立即发送数据。在发送时,边发边继续监听。若监听到冲突,则立即停止发送。等待一段随机时间(称为退避)以后,再重新尝试。</li>
+</ul>
+</li>
+</ul>
+<h2 id="以太网中常用设备">以太网中常用设备</h2>
+<ul>
+<li>集线器(HUB):
+多个网络电缆的中间转接设备,在星形结构的网络中作为中心节点。
+其带宽由它的端口平均分配,如总带宽为100Mb/s的集线器连接4台工作站时,每台工作站平均带宽为100/4=25Mb/s。</li>
+<li>交换机(Switch):
+又称交换式集线器,是工作于数据链路层、能完成封装转发数据包功能的网络设备。交换机的所有端口均有独享的信道带宽,以保证每个端口上的数据快速有效传输。</li>
+<li>路由器(Router)是Internet中最为重要的互联设备,它处于网络层,能够跨越不同的物理网络类型,连接多个逻辑上分开的网络。
+基本功能为“为到达的数据包选择一条最佳路径”。还有对IP数据包进行差错处理及简单的拥塞控制等功能。</li>
+</ul>
+<h3 id="集线器工作方式">集线器工作方式</h3>
+<ul>
+<li>从A发送信息到B的方式:
+A的信息到达Hub,Hub向每个端口转发信息,只有到达B的信息被接收,其他被丢弃。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/20.png" />   
+    </li>
+</ul>
+<h3 id="交换机工作方式">交换机工作方式</h3>
+<ul>
+<li>从A发送信息到B的方式:
+A的信息到达交换机,交换机根据信息内的目标地址只选择一个适当的端口发出信息。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/21.png" />   
+    </li>
+</ul>
+<h2 id="典型以太网结构">典型以太网结构</h2>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/22.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-7/23.png" />   
+    </p>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/iot-6/">物联网概论 PART-6</a></li>
+        
+        <li><a href="/post/iot-5/">物联网概论 PART-5</a></li>
+        
+        <li><a href="/post/iot-4/">物联网概论 PART-4</a></li>
+        
+        <li><a href="/post/iot-3/">物联网概论 PART-3</a></li>
+        
+        <li><a href="/post/iot-2/">物联网概论 PART-2</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E7%89%A9%E8%81%94%E7%BD%91'>物联网</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

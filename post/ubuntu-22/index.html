@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>Ubuntu20.04安装wine | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="Ubuntu20.04安装wine - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-05-26T20:44:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-05-26T20:44:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Ubuntu20.04安装wine">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/ubuntu-22/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Ubuntu20.04安装wine</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月26日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>今天想在ubuntu上装一个cajviewer,去下了一个deepin-wine版本的,但是缺少字体库装不上
+去晚上找了很多帖子,都推荐去装wine,一开始疑惑wine和deepin-wine会不会发生依赖库冲突
+后来去deepin的官方帖子看到管理员说不冲突,我才放心去折腾,嘿嘿
+这里以ubuntu20.04版本作为基准,以下版本不适用</p>
+<blockquote>
+<p>使用后发现,对于win的程序,deepin-wine体验会更好,wine可作为补充使用</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h1 id="安装wine">安装wine</h1>
+<ol>
+<li>如果系统是64位，请启用32位体系结构（如果尚未安装）：</li>
+</ol>
+<pre tabindex="0"><code>sudo dpkg --add-architecture i386 
+</code></pre><ol start="2">
+<li>下载并添加存储库密钥：</li>
+</ol>
+<pre tabindex="0"><code>wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+</code></pre><ol start="3">
+<li>添加存储库（按照ubuntu的版本执行相应的命令）：
+Ubuntu 20.04</li>
+</ol>
+<pre tabindex="0"><code>sudo add-apt-repository &#39;deb https://dl.winehq.org/wine-builds/ubuntu/ focus main&#39;
+</code></pre><ol start="4">
+<li>更新软件源</li>
+</ol>
+<pre tabindex="0"><code>sudo apt update
+</code></pre><ol start="5">
+<li>安装wine5.0稳定版（winehq-stable稳定版，wine–devel开发版）：</li>
+</ol>
+<pre tabindex="0"><code>sudo apt install --install-recommends winehq-stable
+</code></pre><ol start="6">
+<li>打开终端，输入wine &ndash;version，如果出现“wine-5.0”，说明安装成功了！！</li>
+</ol>
+<h1 id="安装winetricks">安装winetricks</h1>
+<p>打开终端，先更新apt源</p>
+<pre tabindex="0"><code>sudo apt update
+</code></pre><p>然后安装winetricks：</p>
+<pre tabindex="0"><code>sudo apt winetricks
+</code></pre><h1 id="wine的使用">wine的使用</h1>
+<p>wine运行exe软件，实际上有两种方法
+一种是在终端上打开软件(不推荐)</p>
+<pre tabindex="0"><code>wine name.exe
+</code></pre><p>第二种方法是直接用归档管理器或文件系统直接打开exe文件。如打开软件根目录，找到主执行程序文件，右键选择以&quot;Wine Windows Program Loader&quot;方式打开软件</p>
+<h1 id="解决软件乱码">解决软件乱码</h1>
+<ol>
+<li>下载以下链接文件，压缩包Fonts.zip里包含了所有Windows的字体。</li>
+</ol>
+<pre tabindex="0"><code>链接: https://pan.baidu.com/s/1SWTe1Dj485FTJSdKqI6QCA
+密码: 4abj
+</code></pre><ol start="2">
+<li>解压该压缩包</li>
+</ol>
+<pre tabindex="0"><code>unzip Fonts.zip
+</code></pre><ol start="3">
+<li>把Fonts文件夹内所有字体复制到wine的映射目录内</li>
+</ol>
+<pre tabindex="0"><code>cp Fonts/* ~/.wine/drive_c/windows/Fonts/
+</code></pre><h1 id="解决软件输入框不显示字体的问题">解决软件输入框不显示字体的问题</h1>
+<pre tabindex="0"><code>winetricks riched20
+</code></pre><p>最后感谢一个大佬的<a href="https://blog.csdn.net/cxrshiz7890/article/details/106038424">帖子</a></p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/ubuntu-21/">Ubuntu挂载Onedrive</a></li>
+        
+        <li><a href="/post/ubuntu-20/">Ubuntu优化总结</a></li>
+        
+        <li><a href="/post/ubuntu-19/">Linux上的Apple生态圈</a></li>
+        
+        <li><a href="/post/ubuntu-18/">Ubuntu管理已安装的包</a></li>
+        
+        <li><a href="/post/ubuntu-17/">Ubuntu输入法配置</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/ubuntu'>Ubuntu</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

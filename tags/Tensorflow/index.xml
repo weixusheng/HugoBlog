@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Tensorflow - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Tensorflow/</link>
+    <description>Tensorflow - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Wed, 10 Nov 2021 21:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Tensorflow/" rel="self" type="application/rss+xml" /><item>
+  <title>搭建TF-GPU环境</title>
+  <link>http://example.org/posts/build_ner/</link>
+  <pubDate>Wed, 10 Nov 2021 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/build_ner/</guid>
+  <description><![CDATA[<p>搭建TF-GPU环境</p>]]></description>
+</item></channel>
+</rss>

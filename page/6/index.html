@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta name="generator" content="Hugo 0.93.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="这是我的全新 Hugo 网站" />
+<meta name="keywords" content="Theme,Hugo" /><meta itemprop="name" content="小辣鸡的Hugo">
+<meta itemprop="description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="小辣鸡的Hugo" />
+<meta property="og:description" content="这是我的全新 Hugo 网站" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/" /><meta property="og:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="小辣鸡的Hugo"/>
+<meta name="twitter:description" content="这是我的全新 Hugo 网站"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="小辣鸡的Hugo">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="小辣鸡的Hugo"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "http:\/\/example.org\/","inLanguage": "zh-CN","author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": "这是我的全新 Hugo 网站","name": "小辣鸡的Hugo"
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><div class="page home" posts><div class="home-profile"></div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-36/">PAT-Advanced 26-30</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-15 22:59:00'>发布于 <time datetime="2020-08-15">2020-08-15</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>1026-1030<br>
+今天才收到了乙级的证书，突然意识到离甲级考试就剩20天了，加油鸭！</p></div><div class="post-footer">
+    <a href="/posts/pat-36/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-35/">PAT-Advanced 22-25</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-14 22:59:00'>发布于 <time datetime="2020-08-14">2020-08-14</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>1022-1025<br>
+甲级慢慢上道啦!</p></div><div class="post-footer">
+    <a href="/posts/pat-35/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-34/">PAT-Advanced 21</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-14 10:59:00'>发布于 <time datetime="2020-08-14">2020-08-14</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>1021</p></div><div class="post-footer">
+    <a href="/posts/pat-34/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-33/">PAT-Advanced 16-20</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-13 22:59:00'>发布于 <time datetime="2020-08-13">2020-08-13</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>1016-1020</p></div><div class="post-footer">
+    <a href="/posts/pat-33/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-32/">PAT-Advanced 11-15</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-11 22:59:00'>发布于 <time datetime="2020-08-11">2020-08-11</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>1011-1015<br>
+甲级题刷的有点不太顺手,慢慢来8</p></div><div class="post-footer">
+    <a href="/posts/pat-32/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-31/">PAT-Advanced 图的遍历</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-10 22:59:00'>发布于 <time datetime="2020-08-10">2020-08-10</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>算法笔记 - BFS-DFS</p></div><div class="post-footer">
+    <a href="/posts/pat-31/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-30/">PAT-Advanced 堆</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-10 22:59:00'>发布于 <time datetime="2020-08-10">2020-08-10</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>算法笔记 - Heap</p></div><div class="post-footer">
+    <a href="/posts/pat-30/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-29/">PAT-Advanced 并查集</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-09 22:59:00'>发布于 <time datetime="2020-08-09">2020-08-09</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>算法笔记 - 并查集</p></div><div class="post-footer">
+    <a href="/posts/pat-29/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-28/">PAT-Advanced 树专题</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-09 21:59:00'>发布于 <time datetime="2020-08-09">2020-08-09</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>算法笔记 - 树专题</p></div><div class="post-footer">
+    <a href="/posts/pat-28/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/CPP-7/">C&#43;&#43; 申请空间</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-09 20:00:00'>发布于 <time datetime="2020-08-09">2020-08-09</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/C++/"><i class="far fa-folder fa-fw"></i>C++</a></span></div><div class="content"><p>这几天每日六个多小时的数学课让我晕晕,码点代码来放松下心情吧</p></div><div class="post-footer">
+    <a href="/posts/CPP-7/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/C&#43;&#43;%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">C&#43;&#43;基础语法</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-27/">PAT-Advanced 05-10</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-05 23:59:00'>发布于 <time datetime="2020-08-05">2020-08-05</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>1005-1010</p></div><div class="post-footer">
+    <a href="/posts/pat-27/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-26/">PAT-Advanced 1004</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-04 23:59:00'>发布于 <time datetime="2020-08-04">2020-08-04</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>树 DFS遍历 + 深度记录</p></div><div class="post-footer">
+    <a href="/posts/pat-26/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-25/">PAT-Advanced 1003</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-04 22:59:00'>发布于 <time datetime="2020-08-04">2020-08-04</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>Dijkstra + 二级判定</p></div><div class="post-footer">
+    <a href="/posts/pat-25/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/ubuntu-29/">GRUB2 引导顺序</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-04 20:44:00'>发布于 <time datetime="2020-08-04">2020-08-04</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Ubuntu/"><i class="far fa-folder fa-fw"></i>Ubuntu</a></span></div><div class="content">首先查看开机时,在GRUB中,windows处在第几项,如果当前windows在第四项,则此时需要改为3,因为GRUB从第0项开始计数 1 $ sudo</div><div class="post-footer">
+    <a href="/posts/ubuntu-29/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/">双系统</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/win-1/">Terminal更换主题</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-04 19:44:00'>发布于 <time datetime="2020-08-04">2020-08-04</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/win/"><i class="far fa-folder fa-fw"></i>win</a></span></div><div class="content"><p>众所周知,win10的UI一直都很一言难尽,这次的WSL-Terminal也是看的我难受,后来才发现原来微软做了一个能改主题色的工具</p></div><div class="post-footer">
+    <a href="/posts/win-1/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Terminal/">Terminal</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/ubuntu-28/">WSL安装过程</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-04 16:44:00'>发布于 <time datetime="2020-08-04">2020-08-04</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Ubuntu/"><i class="far fa-folder fa-fw"></i>Ubuntu</a></span></div><div class="content"><p>好久没有更新了&hellip;那么今天就来搞出个大招!&mdash;WSL!</p></div><div class="post-footer">
+    <a href="/posts/ubuntu-28/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/WSL/">WSL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/github-3/">Git创建SSH公钥</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-03 12:06:00'>发布于 <time datetime="2020-08-03">2020-08-03</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Git/"><i class="far fa-folder fa-fw"></i>Git</a></span></div><div class="content">填写git信息 1 2 git config --global user.name 你的英文名 #此英文名不需要跟GitHub账号保持一致 git config --global user.email 你的邮箱 #此邮箱不需要跟GitHub账号保持一致 生成本</div><div class="post-footer">
+    <a href="/posts/github-3/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Github/">Github</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-24/">栈和队列</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-01 23:30:00'>发布于 <time datetime="2020-08-01">2020-08-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>栈-计算中缀表达式<br></p></div><div class="post-footer">
+    <a href="/posts/pat-24/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-23/">PAT-Advanced 1002</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-08-01 22:59:00'>发布于 <time datetime="2020-08-01">2020-08-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>这几天一直在思考怎么准备甲级,看了很多经验贴之后,决定首先把&quot;算法笔记&quot;这本书看完吧,因为刚刷到第三道题就是dijkstra(菜鸡惊讶),想了想还是先把这些基本算法实现学明白再说吧&hellip;这几天把树看完了,图还剩最短路径和最小生成树<br>
+所以今天开始恢复每日更新!<br>
+在更新这些算法实现前,先把之前欠下的第二道题补上(嘿嘿,又能水一帖了)</p></div><div class="post-footer">
+    <a href="/posts/pat-23/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-22/">PAT-Advanced 1001</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-27 23:59:00'>发布于 <time datetime="2020-07-27">2020-07-27</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>甲级的第一道题!<br>
+终于不用为了线上考试继续在Win10环境写代码了,亲一口俺最爱的Ubuntu</p></div><div class="post-footer">
+    <a href="/posts/pat-22/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-21/">PAT-Advanced 单词整理</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-25 23:59:00'>发布于 <time datetime="2020-07-25">2020-07-25</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>由于甲级是英文题目&hellip;所以先需要背一些常见的单词,这里整理一下!</p></div><div class="post-footer">
+    <a href="/posts/pat-21/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-20/">PAT-Basic 考完啦!</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-25 23:30:00'>发布于 <time datetime="2020-07-25">2020-07-25</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>没有满分,只考了96(排名40/500+)&hellip;但不得不说三个小时的解题过程跟过山车一般,一开始83分,差点以为这次考试要翻车了!不过还好一直沉下心debug&hellip;最后前四道题全部AC,但最后一道题有一个测试点超时了,因为方法过于暴力(菜鸡猛锤自己大腿),但我也服吧&hellip;毕竟代码能力还有待提高!
+最后感觉这个分数还算满意吧!只复习了一个月,从一开始的C都用不明白,到现在能挣扎一下了,而且之前模拟考试一次94,一次96(这次考试没翻车就好嘿嘿)
+下一步等证书邮寄到家啦!
+让人欣慰的是终于能开个甲级专栏了!
+备战九月甲级PAT冲冲冲!</p></div><div class="post-footer">
+    <a href="/posts/pat-20/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-19/">PAT-Basic 函数总结</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-23 23:59:00'>发布于 <time datetime="2020-07-23">2020-07-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>对PAT历年真题中常用的模板函数进行总结</p></div><div class="post-footer">
+    <a href="/posts/pat-19/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-18/">PAT-Basic 91~95</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-23 23:50:00'>发布于 <time datetime="2020-07-23">2020-07-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>B1091-B1095<br>
+上一次PAT考试真题: 一个半小时做完前四道题,两个测试点没过,第五题AC<br>
+成绩: 96<br>
+错的两个测试点,一个是getchar(),另一个是输出格式不对&hellip;我人傻了<br>
+PAT所有的真题都刷完撒花了,这一个月确实从一个低级菜鸡变成了一个高级菜鸡,不仅熟悉了c++的基本语法,并且感觉coding能力也变强了不少,确实刷题才是变强的唯一途径<br>
+希望25号的考试能取得一个好成绩!下一步备战甲级!<br>
+Beijing 冲冲冲!</p></div><div class="post-footer">
+    <a href="/posts/pat-18/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-17/">PAT-Basic 86~90</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-23 23:30:00'>发布于 <time datetime="2020-07-23">2020-07-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>B1086-B1090<br>
+第四道题(20分)没想出来&hellip;题没太看懂,并且逻辑有些复杂&hellip;呜呜呜<br>
+别的题都是常规题,都AC了,满分好难&hellip;</p></div><div class="post-footer">
+    <a href="/posts/pat-17/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-16/">PAT-Basic 81~85</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-23 23:00:00'>发布于 <time datetime="2020-07-23">2020-07-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>B1081-B1085<br>
+第一次模拟考试-94分<br>
+第四道题测试点超时,第五道题排序时没转int,这两个点都没想到&hellip;确实是坑.<br>
+7.23更新
+经过上次五道题的深刻反省,感觉现在代码规范了一些,思路也越来越清晰,下一步二刷,总结知识点,冲刺满分!</p></div><div class="post-footer">
+    <a href="/posts/pat-16/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-15/">PAT-Basic 76~80</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-23 22:59:00'>发布于 <time datetime="2020-07-23">2020-07-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>B1076-B1080<br>
+这五道题让我产生了许多反思,由于代码中变量以及语法上的不规范,造成了许多不必要的麻烦,虽然代码确实可以跑起来,但性价比太低了,规范整洁的代码习惯,不仅可以让写代码过程思路清晰,并且debug过程变得轻松很多.小辣鸡以后要重视这方面啦!<br>
+7.23更新</p></div><div class="post-footer">
+    <a href="/posts/pat-15/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-14/">PAT-Basic 74~75</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-23 22:58:00'>发布于 <time datetime="2020-07-23">2020-07-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>B1074-B1075<br>
+今天只有两道题&hellip;因为都是我最怕的快乐数据题<br>
+7.23更新</p></div><div class="post-footer">
+    <a href="/posts/pat-14/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-13/">PAT-Basic 69~73</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-23 22:57:00'>发布于 <time datetime="2020-07-23">2020-07-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>B1069-B1073<br>
+7.23更新</p></div><div class="post-footer">
+    <a href="/posts/pat-13/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/pat-12/">PAT-Basic 65~68</a>
+  </h1><div class="post-meta"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-publish" title='2020-07-23 22:56:00'>发布于 <time datetime="2020-07-23">2020-07-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div><div class="content"><p>B1065-B1068<br>
+7.23更新</p></div><div class="post-footer">
+    <a href="/posts/pat-12/">阅读全文</a><div class="post-tags">
+        <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></div></div>
+</article><ul class="pagination"><li class="page-item ">
+          <span class="page-link">
+            <a href="/">1</a>
+          </span>
+        </li><li class="page-item ">
+          <span class="page-link" aria-hidden="true">&hellip;</span>
+        </li><li class="page-item ">
+          <span class="page-link">
+            <a href="/page/4/">4</a>
+          </span>
+        </li><li class="page-item ">
+          <span class="page-link">
+            <a href="/page/5/">5</a>
+          </span>
+        </li><li class="page-item active">
+          <span class="page-link">
+            <a href="/page/6/">6</a>
+          </span>
+        </li><li class="page-item ">
+          <span class="page-link">
+            <a href="/page/7/">7</a>
+          </span>
+        </li><li class="page-item ">
+          <span class="page-link">
+            <a href="/page/8/">8</a>
+          </span>
+        </li><li class="page-item ">
+          <span class="page-link" aria-hidden="true">&hellip;</span>
+        </li><li class="page-item ">
+          <span class="page-link">
+            <a href="/page/11/">11</a>
+          </span>
+        </li></ul></div></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>AI-A* Algorithm | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="AI-A* Algorithm - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-01-05T20:10:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-01-05T20:10:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="AI-A* Algorithm">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/ai-3/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">AI-A* Algorithm</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年1月5日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>Berkeley CS-188</p>
+<h1 id="a算法">A算法</h1>
+<p>A*(A-Star)算法是一种静态路网中求解最短路径最有效的直接搜索方法
+A算法公式表示为：f(n)=g(n)+h(n)其中</p>
+<ul>
+<li>f(n) 是从初始点经由节点n到目标点的估价函</li>
+<li>g(n) 是在状态空间中从初始节点到n节点的实际代价</li>
+<li>h(n) 是从n到目标节点<strong>最佳路径的估计代价</strong></li>
+</ul>
+<p>启发信息给得越多（估价函数值越大），则A算法需要搜索处理的状态数就越少，效率就越高。但并不是估计值越大越好，有时估价函数值太大会使A算法不一定搜索到最优解。(局部最优解)</p>
+<h1 id="a算法-1">A*算法</h1>
+<p>A* 算法公式：f*(n) = g* (n) + h* (n)</p>
+<ul>
+<li>g* (n)是从初始结点到n结点的最短路径代价</li>
+<li>h* (n)是从n结点到目的结点的<strong>最佳路径代价</strong></li>
+</ul>
+<p>当我们要求估价函数f(n)中的**h(n)都小于等于h*(n)*<em>即： h(n) &lt;= h</em>(n)时 A搜索算法就成为A*搜索算法，所得路径为最优路径。</p>
+<h1 id="大佬的讲解httpsblogcsdnnethitwhylzarticledetails23089415"><a href="https://blog.csdn.net/hitwhylz/article/details/23089415">大佬的讲解</a></h1>
+<h1 id="实例">实例</h1>
+<p>问题分析：从节点A开始搜索至#节点，该节点对应的h* (n)即为该城市到目标城市的直线距离（即最佳路径代价），从A点到#节点走过的实际距离（即最短路径代价）则为g* (n)。</p>
+<blockquote>
+<p>每次搜索节点查找最小的g* (n) + h* (n)</p>
+</blockquote>
+<p>
+        <img class="mx-auto" alt="" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/AI/3/1.png" />   
+    </p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">125
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">126
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">127
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">128
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">129
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">130
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">131
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">132
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">133
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">134
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">135
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">136
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">137
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">138
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">139
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">140
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">141
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">142
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">143
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">144
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">145
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">146
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">147
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">148
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">149
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">150
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">151
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">152
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">153
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">154
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">155
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">156
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">157
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">158
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">159
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">160
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">161
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">162
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">163
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">164
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">165
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">166
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">167
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">168
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">169
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">170
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">171
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">172
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">173
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">174
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">175
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">176
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">177
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">178
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">179
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">180
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">181
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">182
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">183
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">184
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">185
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">186
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">187
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">188
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">189
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">190
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">191
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">192
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">193
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">194
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">195
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">196
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">197
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">198
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">199
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">200
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">201
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">202
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">203
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">204
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">205
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">206
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">207
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">208
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">209
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">210
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">211
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">212
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">213
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">214
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">215
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">216
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">217
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">218
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">219
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">220
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">221
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">222
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">223
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">224
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">225
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">226
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">227
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">228
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">229
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">230
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">231
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">232
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">233
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">234
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">235
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">236
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">237
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">238
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">239
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">240
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span><span style="color:#999;font-weight:bold;font-style:italic">&lt;stdio.h&gt;</span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span><span style="color:#999;font-weight:bold;font-style:italic">&lt;stdio.h&gt;</span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span><span style="color:#999;font-weight:bold;font-style:italic">&lt;stdlib.h&gt;</span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#include</span><span style="color:#999;font-weight:bold;font-style:italic">&lt;string&gt;</span><span style="color:#999;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic"></span><span style="color:#458;font-weight:bold">int</span> city_num<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;<span style="color:#998;font-style:italic">//城市数目
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">int</span> g[<span style="color:#099">100</span>][<span style="color:#099">100</span>];<span style="color:#998;font-style:italic">//存储城市间实际距离的邻接矩阵
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> closeNum<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;<span style="color:#998;font-style:italic">//close表大小
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">int</span> track[<span style="color:#099">100</span>];<span style="color:#998;font-style:italic">//行驶路径
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">int</span> tra_num<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;<span style="color:#998;font-style:italic">//途径城市的数目
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">typedef</span> <span style="color:#000;font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">node</span><span style="color:#998;font-style:italic">//代表城市的结构体
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  { <span style="color:#458;font-weight:bold">int</span> data; <span style="color:#998;font-style:italic">//城市名
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#458;font-weight:bold">int</span> num;<span style="color:#998;font-style:italic">//估价函数值
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>     <span style="color:#000;font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">node</span> <span style="color:#000;font-weight:bold">*</span>next; <span style="color:#998;font-style:italic">//存储下一个结点的地址
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>     <span style="color:#458;font-weight:bold">int</span> fa;<span style="color:#998;font-style:italic">//上一个城市
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  }LinkList;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">typedef</span> <span style="color:#000;font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">distance</span>
+</span></span><span style="display:flex;"><span>  { 
+</span></span><span style="display:flex;"><span>      <span style="color:#458;font-weight:bold">char</span> city;
+</span></span><span style="display:flex;"><span>      <span style="color:#458;font-weight:bold">int</span> dist;
+</span></span><span style="display:flex;"><span>  }dis;<span style="color:#998;font-style:italic">//存储实际距离和数字与城市名的对应关系
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>dis h[<span style="color:#099">100</span>];
+</span></span><span style="display:flex;"><span>LinkList <span style="color:#000;font-weight:bold">*</span>head,<span style="color:#000;font-weight:bold">*</span>p,<span style="color:#000;font-weight:bold">*</span>q;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">INITLIST</span>(LinkList <span style="color:#000;font-weight:bold">*</span>L){
+</span></span><span style="display:flex;"><span> <span style="color:#998;font-style:italic">// L=(LinkList*)malloc(sizeof(LinkList));
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  <span style="color:#998;font-style:italic">//判断是否申请成功
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  <span style="color:#000;font-weight:bold">if</span>(<span style="color:#000;font-weight:bold">!</span>L){
+</span></span><span style="display:flex;"><span>     printf(<span style="color:#d14">&#34;无内存空间可分配&#34;</span>);exit(<span style="color:#099">0</span>);}
+</span></span><span style="display:flex;"><span>  L<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">NULL</span>;
+</span></span><span style="display:flex;"><span>} <span style="color:#998;font-style:italic">//INITLIST      
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>LinkList close[<span style="color:#099">100</span>];<span style="color:#998;font-style:italic">//close表
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">Init</span>()<span style="color:#998;font-style:italic">//初始化，主要是将文件中的内容读入
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>{
+</span></span><span style="display:flex;"><span>    FILE <span style="color:#000;font-weight:bold">*</span>stream<span style="color:#000;font-weight:bold">=</span>fopen(<span style="color:#d14">&#34;text.txt&#34;</span>,<span style="color:#d14">&#34;r&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> initNum<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;<span style="color:#998;font-style:italic">//城市数目
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">if</span>(stream<span style="color:#000;font-weight:bold">==</span><span style="color:#0086b3">NULL</span>)
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#d14">&#34;The file fscanf.out was not opened</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">while</span>(fscanf(stream,<span style="color:#d14">&#34;%d%c&#34;</span>,<span style="color:#000;font-weight:bold">&amp;</span>h[initNum].dist,<span style="color:#000;font-weight:bold">&amp;</span>h[initNum].city) <span style="color:#000;font-weight:bold">!=</span>EOF){<span style="color:#998;font-style:italic">//h数组存储各城市到达目标城市的直线距离
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>            initNum<span style="color:#000;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        city_num<span style="color:#000;font-weight:bold">=</span>initNum;
+</span></span><span style="display:flex;"><span>     fclose(stream);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    FILE <span style="color:#000;font-weight:bold">*</span>stream2<span style="color:#000;font-weight:bold">=</span>fopen(<span style="color:#d14">&#34;map.txt&#34;</span>,<span style="color:#d14">&#34;r&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">//int initNum=0;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">if</span>(stream2<span style="color:#000;font-weight:bold">==</span><span style="color:#0086b3">NULL</span>)
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#d14">&#34;The file fscanf.out was not opened</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;i<span style="color:#000;font-weight:bold">&lt;</span>initNum;i<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> j<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;j<span style="color:#000;font-weight:bold">&lt;</span>initNum;j<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">if</span>(fscanf(stream,<span style="color:#d14">&#34;%d&#34;</span>,<span style="color:#000;font-weight:bold">&amp;</span>g[i][j]) <span style="color:#000;font-weight:bold">!=</span>EOF)
+</span></span><span style="display:flex;"><span>                    <span style="color:#998;font-style:italic">//initNum++;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>                        <span style="color:#000;font-weight:bold">continue</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>     fclose(stream);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">Initend</span>()<span style="color:#998;font-style:italic">//仅仅是为了找到目标城市而已
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;i<span style="color:#000;font-weight:bold">&lt;</span>city_num;i<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(h[i].dist<span style="color:#000;font-weight:bold">==</span><span style="color:#099">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span> i;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">find</span>(<span style="color:#458;font-weight:bold">char</span> c){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;i<span style="color:#000;font-weight:bold">&lt;</span>city_num;i<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(h[i].city<span style="color:#000;font-weight:bold">==</span>c)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span> i;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">addOpen</span>(LinkList <span style="color:#000;font-weight:bold">*</span>p,<span style="color:#458;font-weight:bold">int</span> a,<span style="color:#458;font-weight:bold">int</span> dis,<span style="color:#458;font-weight:bold">int</span> f)<span style="color:#998;font-style:italic">//将走过的节点加入到open表
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>{
+</span></span><span style="display:flex;"><span>    LinkList <span style="color:#000;font-weight:bold">*</span>q;
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">//p =(LinkList *)malloc(sizeof(LinkList));
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">//q =(LinkList *)malloc(sizeof(LinkList));
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    q<span style="color:#000;font-weight:bold">=</span>head;
+</span></span><span style="display:flex;"><span>    p<span style="color:#000;font-weight:bold">-&gt;</span>data<span style="color:#000;font-weight:bold">=</span>a;
+</span></span><span style="display:flex;"><span>    p<span style="color:#000;font-weight:bold">-&gt;</span>fa<span style="color:#000;font-weight:bold">=</span>f;
+</span></span><span style="display:flex;"><span>    p<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">=</span>dis<span style="color:#000;font-weight:bold">+</span>h[a].dist;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span>(<span style="color:#099">1</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(q<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">==</span><span style="color:#0086b3">NULL</span><span style="color:#000;font-weight:bold">||</span>q<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">&gt;</span>p<span style="color:#000;font-weight:bold">-&gt;</span>num){
+</span></span><span style="display:flex;"><span>            p<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">=</span>q<span style="color:#000;font-weight:bold">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            q<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">=</span>p;
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        q<span style="color:#000;font-weight:bold">=</span>q<span style="color:#000;font-weight:bold">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">deleteOpen</span>(<span style="color:#458;font-weight:bold">int</span> n)<span style="color:#998;font-style:italic">//将重新找到更短的路径从open表替换
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>{
+</span></span><span style="display:flex;"><span>    LinkList <span style="color:#000;font-weight:bold">*</span>r;
+</span></span><span style="display:flex;"><span>    r<span style="color:#000;font-weight:bold">=</span>head;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span>(r<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">!=</span><span style="color:#0086b3">NULL</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(r<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">-&gt;</span>data<span style="color:#000;font-weight:bold">==</span>n){
+</span></span><span style="display:flex;"><span>            r<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">=</span>r<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            r<span style="color:#000;font-weight:bold">=</span>r<span style="color:#000;font-weight:bold">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">findClose</span>(<span style="color:#458;font-weight:bold">int</span> a)<span style="color:#998;font-style:italic">//查找某城市是否在close表中
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;i<span style="color:#000;font-weight:bold">&lt;</span>city_num;i<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(close[i].data<span style="color:#000;font-weight:bold">==</span>a)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span> i;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">deleteclose</span>(<span style="color:#458;font-weight:bold">int</span> n)<span style="color:#998;font-style:italic">//在需要时从close表中转移出来
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;i<span style="color:#000;font-weight:bold">&lt;</span>closeNum;i<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(close[i].data<span style="color:#000;font-weight:bold">==</span>n){
+</span></span><span style="display:flex;"><span>            close[i].data<span style="color:#000;font-weight:bold">=</span>close[closeNum<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>].data;
+</span></span><span style="display:flex;"><span>            close[i].num<span style="color:#000;font-weight:bold">=</span>close[closeNum<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>].num;
+</span></span><span style="display:flex;"><span>            closeNum<span style="color:#000;font-weight:bold">--</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">findOpen</span>(<span style="color:#458;font-weight:bold">int</span> n,<span style="color:#458;font-weight:bold">int</span> dis)<span style="color:#998;font-style:italic">//查找某节点是否在open表中
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>{
+</span></span><span style="display:flex;"><span>    LinkList <span style="color:#000;font-weight:bold">*</span>r;
+</span></span><span style="display:flex;"><span>    r<span style="color:#000;font-weight:bold">=</span>head;
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span>(r<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">!=</span><span style="color:#0086b3">NULL</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span>(r<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">-&gt;</span>data<span style="color:#000;font-weight:bold">==</span>n){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(r<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">&gt;</span>dis<span style="color:#000;font-weight:bold">+</span>h[n].dist)
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>        }   
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            r<span style="color:#000;font-weight:bold">=</span>r<span style="color:#000;font-weight:bold">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            i<span style="color:#000;font-weight:bold">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">Track</span>()<span style="color:#998;font-style:italic">//形成track表
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> a,b;
+</span></span><span style="display:flex;"><span>    track[tra_num<span style="color:#000;font-weight:bold">++</span>]<span style="color:#000;font-weight:bold">=</span>head<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">-&gt;</span>data;
+</span></span><span style="display:flex;"><span>    b<span style="color:#000;font-weight:bold">=</span>head<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">-&gt;</span>fa;
+</span></span><span style="display:flex;"><span>    track[tra_num<span style="color:#000;font-weight:bold">++</span>]<span style="color:#000;font-weight:bold">=</span>b;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span>(<span style="color:#099">1</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;i<span style="color:#000;font-weight:bold">&lt;</span>closeNum;i<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(close[i].data<span style="color:#000;font-weight:bold">==</span>b){
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">if</span>(close[i].fa<span style="color:#000;font-weight:bold">==-</span><span style="color:#099">1</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#000;font-weight:bold">return</span>;
+</span></span><span style="display:flex;"><span>                b<span style="color:#000;font-weight:bold">=</span>close[i].fa;
+</span></span><span style="display:flex;"><span>                track[tra_num<span style="color:#000;font-weight:bold">++</span>]<span style="color:#000;font-weight:bold">=</span>b;
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">main</span>(){
+</span></span><span style="display:flex;"><span>    Init();
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">char</span> name;
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">int</span> end;
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#d14">&#34;输入初始城市:&#34;</span>);
+</span></span><span style="display:flex;"><span>    scanf(<span style="color:#d14">&#34;%c&#34;</span>,<span style="color:#000;font-weight:bold">&amp;</span>name);
+</span></span><span style="display:flex;"><span>    end<span style="color:#000;font-weight:bold">=</span>Initend();<span style="color:#998;font-style:italic">//找到目标城市
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    head <span style="color:#000;font-weight:bold">=</span>(LinkList <span style="color:#000;font-weight:bold">*</span>)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(LinkList));
+</span></span><span style="display:flex;"><span>    INITLIST(head);<span style="color:#998;font-style:italic">//初始化open表
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    p <span style="color:#000;font-weight:bold">=</span>(LinkList <span style="color:#000;font-weight:bold">*</span>)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(LinkList));<span style="color:#998;font-style:italic">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    p<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">=</span>head<span style="color:#000;font-weight:bold">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>    head<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">=</span>p;
+</span></span><span style="display:flex;"><span>    p<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">=</span>h[find(name)].dist;
+</span></span><span style="display:flex;"><span>    p<span style="color:#000;font-weight:bold">-&gt;</span>data<span style="color:#000;font-weight:bold">=</span>find(name);
+</span></span><span style="display:flex;"><span>    p<span style="color:#000;font-weight:bold">-&gt;</span>fa<span style="color:#000;font-weight:bold">=-</span><span style="color:#099">1</span>;<span style="color:#998;font-style:italic">//...起点城市入open表
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    LinkList <span style="color:#000;font-weight:bold">*</span>t;
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span>(head<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">-&gt;</span>data<span style="color:#000;font-weight:bold">!=</span>end){
+</span></span><span style="display:flex;"><span>        t<span style="color:#000;font-weight:bold">=</span>head<span style="color:#000;font-weight:bold">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        <span style="color:#998;font-style:italic">//addTrack(t);
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        head<span style="color:#000;font-weight:bold">-&gt;</span>next<span style="color:#000;font-weight:bold">=</span>t<span style="color:#000;font-weight:bold">-&gt;</span>next;<span style="color:#998;font-style:italic">//open表头入close表
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        close[closeNum].data<span style="color:#000;font-weight:bold">=</span>t<span style="color:#000;font-weight:bold">-&gt;</span>data;
+</span></span><span style="display:flex;"><span>        close[closeNum].num<span style="color:#000;font-weight:bold">=</span>t<span style="color:#000;font-weight:bold">-&gt;</span>num;
+</span></span><span style="display:flex;"><span>        close[closeNum<span style="color:#000;font-weight:bold">++</span>].fa<span style="color:#000;font-weight:bold">=</span>t<span style="color:#000;font-weight:bold">-&gt;</span>fa;
+</span></span><span style="display:flex;"><span>        <span style="color:#998;font-style:italic">//printf(&#34;%d\n&#34;,t-&gt;data);
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>;i<span style="color:#000;font-weight:bold">&lt;</span>city_num;i<span style="color:#000;font-weight:bold">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span>(g[t<span style="color:#000;font-weight:bold">-&gt;</span>data][i]<span style="color:#000;font-weight:bold">!=</span><span style="color:#099">0</span>){<span style="color:#998;font-style:italic">//如果找到与此城市相连的城市&amp;&amp;不在close表中
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>                p <span style="color:#000;font-weight:bold">=</span>(LinkList <span style="color:#000;font-weight:bold">*</span>)malloc(<span style="color:#000;font-weight:bold">sizeof</span>(LinkList));
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">if</span>(findClose(i)<span style="color:#000;font-weight:bold">==-</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">&amp;&amp;</span>findOpen(i,t<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">-</span>h[t<span style="color:#000;font-weight:bold">-&gt;</span>data].dist<span style="color:#000;font-weight:bold">+</span>g[t<span style="color:#000;font-weight:bold">-&gt;</span>data][i])<span style="color:#000;font-weight:bold">==-</span><span style="color:#099">1</span>){
+</span></span><span style="display:flex;"><span>                    addOpen(p,i,t<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">-</span>h[t<span style="color:#000;font-weight:bold">-&gt;</span>data].dist<span style="color:#000;font-weight:bold">+</span>g[t<span style="color:#000;font-weight:bold">-&gt;</span>data][i],t<span style="color:#000;font-weight:bold">-&gt;</span>data);<span style="color:#998;font-style:italic">//添加到open表中（城市序号，到此城市要走的路）
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">if</span>(findOpen(i,t<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">-</span>h[t<span style="color:#000;font-weight:bold">-&gt;</span>data].dist<span style="color:#000;font-weight:bold">+</span>g[t<span style="color:#000;font-weight:bold">-&gt;</span>data][i])<span style="color:#000;font-weight:bold">==</span><span style="color:#099">1</span>){
+</span></span><span style="display:flex;"><span>                    deleteOpen(i);
+</span></span><span style="display:flex;"><span>                    addOpen(p,i,t<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">-</span>h[t<span style="color:#000;font-weight:bold">-&gt;</span>data].dist<span style="color:#000;font-weight:bold">+</span>g[t<span style="color:#000;font-weight:bold">-&gt;</span>data][i],t<span style="color:#000;font-weight:bold">-&gt;</span>data);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">if</span>(findClose(i)<span style="color:#000;font-weight:bold">!=-</span><span style="color:#099">1</span>){
+</span></span><span style="display:flex;"><span>                    <span style="color:#000;font-weight:bold">if</span>(close[findClose(i)].num<span style="color:#000;font-weight:bold">&gt;</span>t<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">-</span>h[t<span style="color:#000;font-weight:bold">-&gt;</span>data].dist<span style="color:#000;font-weight:bold">+</span>g[t<span style="color:#000;font-weight:bold">-&gt;</span>data][i]<span style="color:#000;font-weight:bold">+</span>h[t<span style="color:#000;font-weight:bold">-&gt;</span>data].dist){
+</span></span><span style="display:flex;"><span>                        deleteclose(i);
+</span></span><span style="display:flex;"><span>                        addOpen(p,i,t<span style="color:#000;font-weight:bold">-&gt;</span>num<span style="color:#000;font-weight:bold">-</span>h[t<span style="color:#000;font-weight:bold">-&gt;</span>data].dist<span style="color:#000;font-weight:bold">+</span>g[t<span style="color:#000;font-weight:bold">-&gt;</span>data][i],t<span style="color:#000;font-weight:bold">-&gt;</span>data);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">//close[closeNum].data=t-&gt;data;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">//close[closeNum].next=NULL;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">//close[closeNum].num=t-&gt;num;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">//closeNum++;
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    Track();
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#d14">&#34;最优路径为:&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">=</span>tra_num<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>;i<span style="color:#000;font-weight:bold">&gt;=</span><span style="color:#099">0</span>;i<span style="color:#000;font-weight:bold">--</span>){
+</span></span><span style="display:flex;"><span>        printf(<span style="color:#d14">&#34;%c  &#34;</span>,h[track[i]].city);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#d14">&#34;</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/ai-2/">AI-Informed Search</a></li>
+        
+        <li><a href="/post/ai-1/">AI-Uninformed Search</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA'>人工智能导论</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

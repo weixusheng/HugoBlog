@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>OS总结 Part-3 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="存储管理" />
+<meta name="keywords" content="操作系统-课程" /><meta itemprop="name" content="OS总结 Part-3">
+<meta itemprop="description" content="存储管理"><meta itemprop="datePublished" content="2020-05-11T22:30:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-11T22:30:00+00:00" />
+<meta itemprop="wordCount" content="3345"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="操作系统-课程," /><meta property="og:title" content="OS总结 Part-3" />
+<meta property="og:description" content="存储管理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/OS-3/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-11T22:30:00+00:00" />
+<meta property="article:modified_time" content="2020-05-11T22:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="OS总结 Part-3"/>
+<meta name="twitter:description" content="存储管理"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/OS-3/" /><link rel="prev" href="http://example.org/posts/leetcode-4/" /><link rel="next" href="http://example.org/posts/OS-4/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "OS总结 Part-3",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/OS-3\/"
+    },"genre": "posts","keywords": "操作系统-课程","wordcount":  3345 ,
+    "url": "http:\/\/example.org\/posts\/OS-3\/","datePublished": "2020-05-11T22:30:00+00:00","dateModified": "2020-05-11T22:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">OS总结 Part-3</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><i class="far fa-folder fa-fw"></i>操作系统</a></span></div>
+      <div class="post-meta-line"><span title=2020-05-11&#32;22:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-11" >2020-05-11</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3345 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#存储管理">存储管理</a>
+      <ul>
+        <li><a href="#地址映射">地址映射</a>
+          <ul>
+            <li><a href="#固定地址映射">固定地址映射</a></li>
+            <li><a href="#静态地址映射">静态地址映射</a></li>
+            <li><a href="#动态地址映射">动态地址映射</a></li>
+            <li><a href="#存储管理的功能-虚拟内存">存储管理的功能-虚拟内存</a></li>
+            <li><a href="#存储管理的功能-内存分配功能">存储管理的功能-内存分配功能</a></li>
+            <li><a href="#存储管理的功能-存储保护功能">存储管理的功能-存储保护功能</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#分区内存管理">分区内存管理</a>
+      <ul>
+        <li><a href="#单一存储管理不分区存储管理">单一存储管理（不分区存储管理）</a>
+          <ul>
+            <li><a href="#定义">定义</a></li>
+            <li><a href="#优点">优点</a></li>
+            <li><a href="#缺点">缺点</a></li>
+          </ul>
+        </li>
+        <li><a href="#分区存储管理">分区存储管理</a>
+          <ul>
+            <li><a href="#定义-1">定义</a></li>
+          </ul>
+        </li>
+        <li><a href="#空闲分区使用策略">空闲分区使用策略</a>
+          <ul>
+            <li><a href="#空闲分区算法">空闲分区算法</a></li>
+          </ul>
+        </li>
+        <li><a href="#分区的回收">分区的回收</a></li>
+        <li><a href="#覆盖">覆盖</a></li>
+        <li><a href="#交换技术">交换技术</a></li>
+        <li><a href="#内存碎片">内存碎片</a>
+          <ul>
+            <li><a href="#动态分区的缺点">动态分区的缺点</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#虚拟内存管理">虚拟内存管理</a>
+      <ul>
+        <li><a href="#页式系统中的地址">页式系统中的地址</a></li>
+      </ul>
+    </li>
+    <li><a href="#快表机制">快表机制</a></li>
+    <li><a href="#页面的共享">页面的共享</a></li>
+    <li><a href="#缺页中断">缺页中断</a>
+      <ul>
+        <li><a href="#页表的扩充">页表的扩充</a></li>
+        <li><a href="#缺页中断定义">缺页中断定义</a></li>
+        <li><a href="#缺页中断率">缺页(中断)率</a></li>
+      </ul>
+    </li>
+    <li><a href="#页面淘汰">页面淘汰</a>
+      <ul>
+        <li><a href="#常用的淘汰算法">常用的淘汰算法</a></li>
+      </ul>
+    </li>
+    <li><a href="#段式存储器">段式存储器</a>
+      <ul>
+        <li><a href="#段式存储的内存分配">段式存储的内存分配</a></li>
+        <li><a href="#段式内存的虚拟地址">段式内存的虚拟地址</a></li>
+        <li><a href="#段的共享">段的共享</a></li>
+        <li><a href="#段的缺点">段的缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#段式系统和页式系统的比较">段式系统和页式系统的比较</a></li>
+    <li><a href="#段页式存储">段页式存储</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>存储管理</p>
+<h1 id="存储管理">存储管理</h1>
+<p>多道程序并行带来的问题：</p>
+<ul>
+<li>共享：代码和数据共享，节省内存</li>
+<li>保护：不允许内存中的程序相互间非法访问</li>
+</ul>
+<h2 id="地址映射">地址映射</h2>
+<h3 id="固定地址映射">固定地址映射</h3>
+<p><strong>编程或编译时</strong>确定逻辑地址和物理地址映射关系
+特点：</p>
+<ul>
+<li>程序加载时必须放在指定的区域</li>
+<li>容易发生地址冲突，运行失败</li>
+<li>程序占用连续空间</li>
+<li>程序装入后不能移动</li>
+</ul>
+<h3 id="静态地址映射">静态地址映射</h3>
+<p>程序装入时<strong>由操作系统</strong>完成逻辑地址到物理地址的映射</p>
+<ul>
+<li>逻辑地址：VA(Virtual Addr)</li>
+<li>装入基址：BA(Base Addr)</li>
+<li>物理地址：MA(Memory Addr)</li>
+<li>MA = BA+VA
+特点：</li>
+<li>程序运行前确定映射关系</li>
+<li>程序装入后不能移动（如果移动必须放回原来的位置）</li>
+<li>程序占用连续的内存空间</li>
+</ul>
+<h3 id="动态地址映射">动态地址映射</h3>
+<ul>
+<li>程序占用的内存空间可动态变化,要求及时更新基质BA</li>
+<li>程序不要求占用连续的内存空间</li>
+<li>便于多个进程共享代码,共享代码作为独立的一段存放
+缺点:</li>
+<li>硬件支持(MMU:内存管理单元)</li>
+<li>软件复杂
+如果程序有移动，BA可能会发生改变，自动计算新的MA
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/11.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/11.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/11.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/11.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/11.png"
+    title="img" /></li>
+</ul>
+<h3 id="存储管理的功能-虚拟内存">存储管理的功能-虚拟内存</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/1.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/1.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/1.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/1.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/1.png"
+    title="img" />
+虚拟内存的目标</p>
+<ul>
+<li>使得大的程序能在较小的内存中运行</li>
+<li>是的多个程序能在较小的内存中运行</li>
+<li>使得多个程序迸发运行时地址不冲突</li>
+<li>使得内存利用效率高，无碎片，共享方便</li>
+</ul>
+<h3 id="存储管理的功能-内存分配功能">存储管理的功能-内存分配功能</h3>
+<p>为程序分配足够的内存空间
+需要解决的问题：</p>
+<ul>
+<li>放置策略：程序调入内存是将其放置在哪个分区</li>
+<li>调入策略：何时把运行的代码和要访问的数据调入内存</li>
+<li>淘汰策略:内存不够时，迁出哪些代码或数据以腾出内存空间</li>
+</ul>
+<h3 id="存储管理的功能-存储保护功能">存储管理的功能-存储保护功能</h3>
+<p>保证在内存中的多道程序只能在给定的存储区域内活动互不干扰</p>
+<ul>
+<li>防止访问越界</li>
+<li>防止访问越权
+方法：界址寄存器</li>
+<li>在CPU中设置一对下限寄存器和上限寄存器存放程序在内存中的下限地址和上限地址</li>
+<li>基址寄存器和限长寄存器</li>
+</ul>
+<h1 id="分区内存管理">分区内存管理</h1>
+<ul>
+<li>单一区存储管理</li>
+<li>分区存储管理
+<ul>
+<li>固定分区</li>
+<li>动态分区</li>
+</ul>
+</li>
+</ul>
+<h2 id="单一存储管理不分区存储管理">单一存储管理（不分区存储管理）</h2>
+<h3 id="定义">定义</h3>
+<p>用户区不分区，完全被一个程序占用
+例如 DOS</p>
+<h3 id="优点">优点</h3>
+<p>简单，不需要复杂的硬件支持，适用于单用户单任务OS</p>
+<h3 id="缺点">缺点</h3>
+<p>程序运行占用整个内存，即使小程序也是如此，内存浪费，利用率低</p>
+<h2 id="分区存储管理">分区存储管理</h2>
+<h3 id="定义-1">定义</h3>
+<ul>
+<li>把用户区内存划分若干大小不等的分区，供不同程序使用</li>
+<li>分类
+<ul>
+<li>固定分区</li>
+<li>动态分区</li>
+</ul>
+</li>
+</ul>
+<h2 id="空闲分区使用策略">空闲分区使用策略</h2>
+<p>分配过程(假定用户要求空间大小为s)</p>
+<ul>
+<li>从空闲区表的第一个区开始,寻找&gt;=s的空闲区</li>
+<li>找到后从分区中分割出大小为s的部分给用户使用</li>
+<li>分割后的剩余部分作为空闲区仍然登记在空闲区表中
+注意:分割空闲区时一般从底部分割</li>
+</ul>
+<h3 id="空闲分区算法">空闲分区算法</h3>
+<ol>
+<li>按空闲区位置(首址)递增排序
+<strong>首次适应算法</strong>
+尽可能先使用低地址空间
+当需要较大分区时在高地址空间有较大的满足可能性</li>
+<li>按空闲区大小的递增排序
+<strong>最佳适应算法</strong>
+尽可能地使用较小的空闲区,保留大的空闲区
+当需要较大分区时又较大的满足可能性</li>
+<li>按空闲区大小的递减排序
+<strong>最坏适应算法</strong>
+大空闲区分割后剩下部分还是很大,还能装下较大的程序
+仅作一次检查就能找到所要分区</li>
+</ol>
+<h2 id="分区的回收">分区的回收</h2>
+<p>回收程序释放分区,登记到空闲区表
+回收算法:</p>
+<ul>
+<li>要考虑释放区与现有空闲区是否相邻</li>
+<li>若释放区与现有空闲区不相邻,则直接插入空闲区表</li>
+<li>若释放区与现有空闲区相邻,则与空闲区合并后更新空闲区表</li>
+</ul>
+<h2 id="覆盖">覆盖</h2>
+<p>在较小的内存空间中运行较大的程序
+常驻区:被某段单独且独立的占用,可划分多个
+覆盖区:能被多段共用(覆盖),可划分多个
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/2.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/2.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/2.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/2.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/2.png"
+    title="img" />
+覆盖的缺点:</p>
+<ul>
+<li>编程复杂,需要程序员划分程序模块并确定覆盖关系</li>
+<li>程序执行时间长,从外村装入内存耗时</li>
+</ul>
+<h2 id="交换技术">交换技术</h2>
+<p>内存不够时将进程写入磁盘(swap out)
+当进程要运行时重新写回内存(swap in)
+优点:</p>
+<ul>
+<li>增加进程并发数</li>
+<li>不考虑程序结构
+缺点:</li>
+<li>换入换出增加cpu开销</li>
+<li>交换单位太大(整个进程)
+需要考虑的问题:
+减少交换传送的信息量(模块/段)
+外存交换空间的管理方法
+程序换入时的地址重定位</li>
+</ul>
+<h2 id="内存碎片">内存碎片</h2>
+<p>过小的空闲区,难实际使用
+内存碎片会降低内存有效利用率</p>
+<h3 id="动态分区的缺点">动态分区的缺点</h3>
+<p>容易产生<strong>内存碎片</strong>:内存反复分配和分割
+首次适应法,最佳适应法,最坏适应法
+解决碎片的方法</p>
+<ol>
+<li>规定门限值,分割空闲区时若剩余部分小于门限值,则此空闲区不进行分割,而是全分配给用户</li>
+<li>内存拼接技术:将所有空闲区集中构成一个大的空闲区
+拼接技术的缺点:消耗系统的资源,离线拼接,重新定义作业</li>
+<li>解除程序占用连续内存才能运行的限制</li>
+</ol>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png"
+    title="img" /></p>
+<h1 id="虚拟内存管理">虚拟内存管理</h1>
+<p>目标:使得大的程序能在较小的内存中运行
+使得多个程序并发运行时地址不冲突
+使得内存利用率提高,无碎片,共享方便
+程序运行的局部性:</p>
+<ul>
+<li>程序在有限的时间段内访问的代码和数据往往在有限的范围内
+典型的虚拟内存管理方式:</li>
+<li>页式虚拟存储管理</li>
+<li>段式虚拟存储管理</li>
+<li>段页式虚拟存储管理
+将进程空间(虚拟)和内存空间划分成等大小的片
+片的典型大小:1k,2k,4k
+进程的片-页(虚拟页)
+内存的片-页框(物理页)
+内存以页框的单位分配使用
+进程以页为单位装入内存</li>
+<li>只把程序部分页装入内存便可运行</li>
+<li>页在内存中占用的页框不必相邻</li>
+<li>需要新页时,按需从硬盘中调入内存</li>
+<li>不再运行的页及时删除,腾出空间</li>
+</ul>
+<h2 id="页式系统中的地址">页式系统中的地址</h2>
+<p>虚拟地址(VA)可以分解为页号p和页内偏移w
+页号p = va/页的大小
+页内偏移w = va%页的大小
+p和w的另一种算法,已知页的大小2<sup>n</sup>
+p = VA&raquo;n
+w = VA &amp;&amp; (2<sup>n-1</sup>)
+记录页和页框之间的对应关系-&gt;页表</p>
+<h1 id="快表机制">快表机制</h1>
+<p>快表的特点:</p>
+<ul>
+<li>容量小,访问快</li>
+<li>快表是慢表部分内容的复制</li>
+<li>若在快表中找到所需内容,则称为&quot;命中&quot;,若没有命中则访问慢表,更新快表</li>
+</ul>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/4.png"
+    title="img" /></p>
+<h1 id="页面的共享">页面的共享</h1>
+<ul>
+<li>在不同进程的页表上填上相同的页框号,多个进程能访问相同的内存空间,从而实现页面共享</li>
+<li>共享页面在内存上只有一份真实存储,节省内存</li>
+</ul>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/5.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/5.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/5.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/5.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/5.png"
+    title="img" /></p>
+<h1 id="缺页中断">缺页中断</h1>
+<h2 id="页表的扩充">页表的扩充</h2>
+<p>即页表中有中断位和辅存地址
+中断位i-标识该页是否在内存</p>
+<ul>
+<li>i =1 不在内存</li>
+<li>i =0 在内存
+辅存地址:该页在辅存上的地址
+修改位-&gt;标识该页的数据是否已被修改</li>
+<li>0-&gt;该页未被修改</li>
+<li>1-&gt;该页已被修改</li>
+</ul>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/6.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/6.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/6.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/6.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/6.png"
+    title="img" /></p>
+<h2 id="缺页中断定义">缺页中断定义</h2>
+<p>在地址映射过程中,当所要访问的目的页不在内存时,则系统产生异常中断-&gt;缺页中断
+却也中断处理程序:中断处理程序将所缺的页从页表指出的辅存地址调入内存的某个页框中,并更新页表中该页对应的页框号以及修改中断位为0
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/7.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/7.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/7.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/7.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/7.png"
+    title="img" /></p>
+<h2 id="缺页中断率">缺页(中断)率</h2>
+<p>缺页率f = 缺页次数/访问页面次数
+命中率= 1-f</p>
+<h1 id="页面淘汰">页面淘汰</h1>
+<ol>
+<li>淘汰策略
+选择淘汰哪一页的规则称为淘汰策略</li>
+<li>页面抖动
+<ul>
+<li>页面在内存和辅存间频繁交换的现象</li>
+<li>&ldquo;抖动&quot;会导致系统效率下降</li>
+</ul>
+</li>
+<li>好的淘汰策略
+<ul>
+<li>具有较低的缺页率(高命中率)</li>
+<li>页面抖动较少</li>
+</ul>
+</li>
+</ol>
+<h2 id="常用的淘汰算法">常用的淘汰算法</h2>
+<ol>
+<li>最佳算法(OPT-optimal)</li>
+</ol>
+<ul>
+<li>淘汰以后不再需要或最远的未来才会使用到的页面</li>
+<li>理论上最佳,但实践中算法无法实现</li>
+</ul>
+<ol start="2">
+<li>先进先出算法(FIFO)</li>
+</ol>
+<ul>
+<li>淘汰在内存中停留时间最长的页面</li>
+<li>实现简单,但只有进程按顺序访问时命中率才是最理想的,对于指定的访问序列,随着分配页框的增多,缺页率反而增加</li>
+</ul>
+<ol start="3">
+<li>最久未使用淘汰算法(LRU)</li>
+</ol>
+<ul>
+<li>淘汰最长时间未被使用的页面</li>
+<li><strong>实现方法:</strong>
+<ul>
+<li>页面设置一个移位寄存器R,每当页面访问时将其重置为1</li>
+<li>周期性的将所有页面的R左移一位(右边补0),当需要淘汰时选择R值最大的页</li>
+<li>R的位数越多(移位周期越小)就越精确,但是硬件成本实现较高</li>
+</ul>
+</li>
+<li><strong>近似算法</strong>
+<ul>
+<li>利用页表访问位,页被访问时将其值由硬件置为1</li>
+<li>软件周期性(T)将所有访问位置0</li>
+<li>当淘汰页面时根据该页访问位来判断是否淘汰
+<ul>
+<li>访问位为1时:在T时间内,该页被访问过</li>
+<li>访问位为0时:在T时间内,该页未被访问过</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>周期T难定
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/8.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/8.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/8.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/8.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/8.png"
+    title="img" /></li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>最不经常使用算法(LFU)</li>
+</ol>
+<ul>
+<li>选择到当前时间位置被访问次数最少的页面</li>
+<li>每页设置访问计数器,每当页面被访问时,该页的访问器上计数器+1</li>
+<li>发生缺页中断时,淘汰计数器最小的页面,并将所有计数器清零</li>
+</ul>
+<h1 id="段式存储器">段式存储器</h1>
+<p>进程分段:把进程按逻辑意义划分为多个段,每段有段名,长度不定,进程由多段组成</p>
+<h2 id="段式存储的内存分配">段式存储的内存分配</h2>
+<p>程序以段为单位装入,每段分配连续的内存
+但是段和段不要求相邻</p>
+<h2 id="段式内存的虚拟地址">段式内存的虚拟地址</h2>
+<p>段式虚拟地址VA包含段号s和段内偏移w
+段表:</p>
+<ul>
+<li>段号:段的编号</li>
+<li>段长:段的长度</li>
+<li>基地址:该段在内存中的首地址</li>
+</ul>
+<h2 id="段的共享">段的共享</h2>
+<ul>
+<li>共享段在内存中只有一份存储</li>
+<li>共享段被多个进程映射到各自的段</li>
+<li>需要共享的模块可以设置为单独的段</li>
+</ul>
+<h2 id="段的缺点">段的缺点</h2>
+<p>段需要连续的存储空间
+段的最大尺寸收到内存大小的限制
+在辅存中管理可变尺寸的段比较困难</p>
+<h1 id="段式系统和页式系统的比较">段式系统和页式系统的比较</h1>
+<p>页式系统:一维空间
+段式系统:二维空间
+段长可变-页面大小固定
+段的划分有意义-页面无意义
+段方便共享-页面不方便共享
+段用户可见-页面用户不可见
+段偏移有溢出-页面偏移无溢出</p>
+<h1 id="段页式存储">段页式存储</h1>
+<p>系统为每个进程建立一个段表
+每个段有一个页表
+段表给出每段的页表基址及页表长度(段长)
+页表给出每页对应的页框
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/9.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/9.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/9.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/9.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/OS-3/9.png"
+    title="img" /></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-05-11&#32;22:30:00>更新于 2020-05-11</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%AF%BE%E7%A8%8B/">操作系统-课程</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/leetcode-4/" class="prev" rel="prev" title="Leetcode Part-4"><i class="fas fa-angle-left fa-fw"></i>Leetcode Part-4</a>
+      <a href="/posts/OS-4/" class="next" rel="next" title="OS总结 Part-4">OS总结 Part-4<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

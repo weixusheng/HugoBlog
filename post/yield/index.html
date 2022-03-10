@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>yield的用法 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="yield的用法 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2022-02-11T23:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2022-02-11T23:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="yield的用法">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/yield/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">yield的用法</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2022年2月11日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>Python Generator</p>
+<h2 id="1生成器">1.生成器</h2>
+<ul>
+<li>在 Python 中，一边循环一边计算的机制，称为生成器（Generator）；</li>
+<li>生成器是一个返回迭代器的函数，只能用于迭代操作；</li>
+</ul>
+<h2 id="2什么是生成器函数">2.什么是生成器函数</h2>
+<ul>
+<li>生成器是Python中的一个对象，对这个对象进行操作，可以依次生产出按生成器内部运算产生的数据；</li>
+<li>生成器函数指的是函数体中包含yield关键字的函数（yield就是专门给生成器用的return）；</li>
+<li>生成器可以通过生成器表达式和生成器函数获取到；</li>
+</ul>
+<h2 id="生成器语法">生成器语法</h2>
+<h3 id="生成器表达式">生成器表达式</h3>
+<p>通列表解析语法，只不过把列表解析的[]换成()
+生成器表达式能做的事情列表解析基本都能处理，只不过在需要处理的序列比较大时，列表解析比较费内存。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&gt;&gt;&gt;</span> gen <span style="color:#000;font-weight:bold">=</span> (x<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span> <span style="color:#000;font-weight:bold">for</span> x <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">5</span>))
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&gt;&gt;&gt;</span> gen
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;</span>generator <span style="color:#0086b3">object</span> <span style="color:#000;font-weight:bold">&lt;</span>genexpr<span style="color:#000;font-weight:bold">&gt;</span> at <span style="color:#099">0x0000000002FB7B40</span><span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&gt;&gt;&gt;</span> <span style="color:#000;font-weight:bold">for</span> g <span style="color:#000;font-weight:bold">in</span> gen:
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">...</span>   <span style="color:#0086b3">print</span>(g, end<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;-&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">0</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">4</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">9</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">16</span><span style="color:#000;font-weight:bold">-</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&gt;&gt;&gt;</span> <span style="color:#000;font-weight:bold">for</span> x <span style="color:#000;font-weight:bold">in</span> [<span style="color:#099">0</span>,<span style="color:#099">1</span>,<span style="color:#099">2</span>,<span style="color:#099">3</span>,<span style="color:#099">4</span>,<span style="color:#099">5</span>]:
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">...</span>   <span style="color:#0086b3">print</span>(x, end<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;-&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">0</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">3</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">4</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">5</span><span style="color:#000;font-weight:bold">-</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="生成器函数">生成器函数</h3>
+<p>在函数中如果出现了yield关键字，那么该函数就不再是普通函数，而是生成器函数。
+但是生成器函数可以生产一个无线的序列，这样列表根本没有办法进行处理。
+yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">odd</span>():
+</span></span><span style="display:flex;"><span>    n<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">yield</span> n
+</span></span><span style="display:flex;"><span>        n<span style="color:#000;font-weight:bold">+=</span><span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>odd_num <span style="color:#000;font-weight:bold">=</span> odd()
+</span></span><span style="display:flex;"><span>count <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> o <span style="color:#000;font-weight:bold">in</span> odd_num:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> count <span style="color:#000;font-weight:bold">&gt;=</span><span style="color:#099">5</span>: <span style="color:#000;font-weight:bold">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(o)
+</span></span><span style="display:flex;"><span>    count <span style="color:#000;font-weight:bold">+=</span><span style="color:#099">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="send"><code>send()</code></h3>
+<p>生成器函数最大的特点是可以接受外部传入的一个变量，并根据变量内容计算结果后返回。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">gen</span>():
+</span></span><span style="display:flex;"><span>    value<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">True</span>:
+</span></span><span style="display:flex;"><span>        receive <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">yield</span> value
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span> receive <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14">&#39;e&#39;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">break</span>
+</span></span><span style="display:flex;"><span>        value <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;got: </span><span style="color:#d14">%s</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> receive
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>g<span style="color:#000;font-weight:bold">=</span>gen()
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(g<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#000;font-weight:bold">None</span>))     
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(g<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#d14">&#39;aaa&#39;</span>))
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(g<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#099">3</span>))
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(g<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#d14">&#39;e&#39;</span>))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>输出</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">1. 通过g.send(None)或者next(g)可以启动生成器函数，并执行到第一个yield语句结束的位置。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">   此时，执行完了yield语句，但是没有给receive赋值。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">   yield value会输出初始值0
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">   注意：在启动生成器函数时只能send(None),如果试图输入其它的值都会得到错误提示信息。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">2. 通过g.send(&#39;aaa&#39;)，会传入aaa，并赋值给receive，然后计算出value的值，并回到while头部，执行yield value语句有停止。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">   此时yield value会输出&#34;got: aaa&#34;，然后挂起。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">3. 通过g.send(3)，会重复第2步，最后输出结果为&#34;got: 3&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">4. 当我们g.send(&#39;e&#39;)时，程序会执行break然后推出循环，最后整个函数执行完毕，所以会得到StopIteration异常。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">   最后的执行结果如下：
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span>got: aaa
+</span></span><span style="display:flex;"><span>got: <span style="color:#099">3</span>
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>File <span style="color:#d14">&#34;h.py&#34;</span>, line <span style="color:#099">14</span>, <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">&lt;</span>module<span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#0086b3">print</span>(g<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#d14">&#39;e&#39;</span>))
+</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">StopIteration</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="throw"><code>throw()</code></h3>
+<p>用来向生成器函数送入一个异常，可以结束系统定义的异常，或者自定义的异常。
+throw()后直接跑出异常并结束程序，或者消耗掉一个yield，或者在没有下一个yield的时候直接进行到程序的结尾。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">gen</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">True</span>: 
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">yield</span> <span style="color:#d14">&#39;normal value&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">yield</span> <span style="color:#d14">&#39;normal value 2&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;here&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">ValueError</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;we got ValueError here&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">TypeError</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>g<span style="color:#000;font-weight:bold">=</span>gen()
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(<span style="color:#0086b3">next</span>(g))
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(g<span style="color:#000;font-weight:bold">.</span>throw(<span style="color:#900;font-weight:bold">ValueError</span>))
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(<span style="color:#0086b3">next</span>(g))
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(g<span style="color:#000;font-weight:bold">.</span>throw(<span style="color:#900;font-weight:bold">TypeError</span>))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>输出</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">1. print(next(g))：会输出normal value，并停留在yield &#39;normal value 2&#39;之前。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">2. 由于执行了g.throw(ValueError)，所以会跳过所有后续的try语句，也就是说yield &#39;normal value 2&#39;不会被执行，然后进入到except    语句，打印出we got ValueError here。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">3. 然后再次进入到while语句部分，消耗一个yield，所以会输出normal value。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">4. print(next(g))，会执行yield &#39;normal value 2&#39;语句，并停留在执行完该语句后的位置。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">5. g.throw(TypeError)：会跳出try语句，从而print(&#39;here&#39;)不会被执行，然后执行break语句，跳出while循环，然后到达程序结尾，所    以跑出StopIteration异常。
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>normal value
+</span></span><span style="display:flex;"><span>we got <span style="color:#900;font-weight:bold">ValueError</span> here
+</span></span><span style="display:flex;"><span>normal value
+</span></span><span style="display:flex;"><span>normal value <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File <span style="color:#d14">&#34;h.py&#34;</span>, line <span style="color:#099">15</span>, <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">&lt;</span>module<span style="color:#000;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(g<span style="color:#000;font-weight:bold">.</span>throw(<span style="color:#900;font-weight:bold">TypeError</span>))
+</span></span><span style="display:flex;"><span><span style="color:#900;font-weight:bold">StopIteration</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="yield-from"><code>yield from</code></h3>
+<p>yield产生的函数就是一个迭代器，所以我们通常会把它放在循环语句中进行输出结果。
+有时候我们需要把这个yield产生的迭代器放在另一个生成器函数中，也就是生成器嵌套。
+比如下面的例子：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">inner</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">10</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">yield</span> i
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">outer</span>():
+</span></span><span style="display:flex;"><span>    g_inner<span style="color:#000;font-weight:bold">=</span>inner()    <span style="color:#998;font-style:italic">#这是一个生成器</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">True</span>:
+</span></span><span style="display:flex;"><span>        res <span style="color:#000;font-weight:bold">=</span> g_inner<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#000;font-weight:bold">None</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">yield</span> res
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>g_outer<span style="color:#000;font-weight:bold">=</span>outer()
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#0086b3">print</span>(g_outer<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#000;font-weight:bold">None</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">StopIteration</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">break</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，我们可以采用yield from语句来减少我么你的工作量。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">outer2</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">yield from</span> inner()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3生成器函数的定义">3.生成器函数的定义</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">add</span>():    
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">10</span>):       
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">yield</span> i
+</span></span><span style="display:flex;"><span>g <span style="color:#000;font-weight:bold">=</span> add()
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(g)  <span style="color:#998;font-style:italic"># &lt;generator object add at 0x10f6110f8&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(<span style="color:#0086b3">next</span>(g))  <span style="color:#998;font-style:italic"># 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(<span style="color:#0086b3">next</span>(g))  <span style="color:#998;font-style:italic"># 1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>我们可以通过yield关键字来定义一个生成器函数，这个生成器函数返回值就是一个生成器对象；</li>
+</ul>
+<h2 id="4生成器函数的调用">4.生成器函数的调用</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">gen</span>():    
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;111111&#39;</span>)    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">yield</span> <span style="color:#d14">&#39;111111&#39;</span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;222222&#39;</span>)    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">yield</span> <span style="color:#d14">&#39;222222&#39;</span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;333333&#39;</span>)    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">yield</span> <span style="color:#d14">&#39;333333&#39;</span>
+</span></span><span style="display:flex;"><span>g <span style="color:#000;font-weight:bold">=</span> gen()
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(g)  <span style="color:#998;font-style:italic"># &lt;generator object gen at 0x0026BBF0&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">next</span>(g)   <span style="color:#998;font-style:italic"># 111111</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">next</span>(g)   <span style="color:#998;font-style:italic"># 222222</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">next</span>(g)   <span style="color:#998;font-style:italic"># 333333</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">next</span>(g, <span style="color:#d14">&#39;over&#39;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>生成器函数可以使用next()迭代，且每次next()只会返回一次yield的值，然后暂停，下次一次next()时会在当前位置继续，如果没有元素可以迭代了，还 执在行next()则需要给定一个默认值，不给默认值会报错；</li>
+<li>如果在生成器函数中使用return，则会终止迭代，且不能得到返回值；</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">gen</span>():    
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;111111&#39;</span>)    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">yield</span> <span style="color:#d14">&#39;111111&#39;</span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;222222&#39;</span>)    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#d14">&#39;222222&#39;</span>    
+</span></span><span style="display:flex;"><span>	<span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;333333&#39;</span>)    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">yield</span> <span style="color:#d14">&#39;333333&#39;</span>
+</span></span><span style="display:flex;"><span>g <span style="color:#000;font-weight:bold">=</span> gen()
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(g)  <span style="color:#998;font-style:italic"># &lt;generator object gen at 0x0026BBF0&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">next</span>(g)   <span style="color:#998;font-style:italic"># 111111</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">next</span>(g)   <span style="color:#998;font-style:italic"># 222222, 抛出异常</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5生成器函数的使用场景">5.生成器函数的使用场景</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 死循环</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">way</span>():    
+</span></span><span style="display:flex;"><span>    i <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">True</span>:        
+</span></span><span style="display:flex;"><span>        i <span style="color:#000;font-weight:bold">+=</span> <span style="color:#099">1</span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">yield</span> i
+</span></span><span style="display:flex;"><span>c <span style="color:#000;font-weight:bold">=</span> way()
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(<span style="color:#0086b3">next</span>(c)) <span style="color:#998;font-style:italic"># 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(<span style="color:#0086b3">next</span>(c)) <span style="color:#998;font-style:italic"># 2</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(<span style="color:#0086b3">next</span>(c)) <span style="color:#998;font-style:italic"># 3</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(<span style="color:#0086b3">next</span>(c)) <span style="color:#998;font-style:italic"># 4</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(<span style="color:#0086b3">next</span>(c)) <span style="color:#998;font-style:italic"># 5</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>在生成器中使用死循环，不会一直执行，仍旧是执行多少次next()，返回多少个值；</li>
+</ul>
+<h2 id="6生成器函数中的语法糖">6.生成器函数中的语法糖</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 普通生成器函数way1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">way1</span>():    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">5</span>):        
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">yield</span> i
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 带语法糖的生成器函数way2</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">way2</span>():    
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">yield from</span> <span style="color:#0086b3">range</span>(<span style="color:#099">5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#循环输出way1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> way1():    
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(i)  <span style="color:#998;font-style:italic">#0 1 2 3 4</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#循环输出way2</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> j <span style="color:#000;font-weight:bold">in</span> way2():    
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(j)  <span style="color:#998;font-style:italic">#0 1 2 3 4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="生成器的实例">生成器的实例</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">eat</span>(name):
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;</span><span style="color:#d14">%s</span><span style="color:#d14"> ready to eat&#39;</span> <span style="color:#000;font-weight:bold">%</span> name)
+</span></span><span style="display:flex;"><span>    food_list <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">True</span>:
+</span></span><span style="display:flex;"><span>        food <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">yield</span> food_list  <span style="color:#998;font-style:italic"># food=&#39;骨头&#39;</span>
+</span></span><span style="display:flex;"><span>        food_list<span style="color:#000;font-weight:bold">.</span>append(food)  <span style="color:#998;font-style:italic"># food_list=[&#39;泔水&#39;,&#39;骨头&#39;]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;</span><span style="color:#d14">%s</span><span style="color:#d14"> start to eat </span><span style="color:#d14">%s</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> (name, food))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dog1 <span style="color:#000;font-weight:bold">=</span> eat(<span style="color:#d14">&#39;alex&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 1、必须初始化一次，让函数停在yield的位置</span>
+</span></span><span style="display:flex;"><span>res0 <span style="color:#000;font-weight:bold">=</span> dog1<span style="color:#000;font-weight:bold">.</span>__next__()
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(res0)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 接下来的事，就是喂狗,send有两方面的功能</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 1、给yield传值</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 2、同__next__的功能</span>
+</span></span><span style="display:flex;"><span>res1 <span style="color:#000;font-weight:bold">=</span> dog1<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#d14">&#39;泔水&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(res1)
+</span></span><span style="display:flex;"><span>res2 <span style="color:#000;font-weight:bold">=</span> dog1<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#d14">&#39;骨头&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(res2)
+</span></span><span style="display:flex;"><span>res3 <span style="color:#000;font-weight:bold">=</span> dog1<span style="color:#000;font-weight:bold">.</span>send(<span style="color:#d14">&#39;shit&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span>(res3)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;控制台打印
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">alex ready to eat
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">alex start to eat 泔水
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[&#39;泔水&#39;]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">alex start to eat 骨头
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[&#39;泔水&#39;, &#39;骨头&#39;]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">alex start to eat shit
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">[&#39;泔水&#39;, &#39;骨头&#39;, &#39;shit&#39;]
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#34;&#34;&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/apschedule/">APScheduler的使用</a></li>
+        
+        <li><a href="/post/python-proxy/">爬虫代理池的使用</a></li>
+        
+        <li><a href="/post/python-tqdm/">进度条显示tqdm</a></li>
+        
+        <li><a href="/post/python-di/">依赖注入</a></li>
+        
+        <li><a href="/post/python-classmethod/">classmethod修饰符</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/python'>Python</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>NEXT Part-1 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="18号刷PAT,19号改NEXT的bug,鸽了两天,今天全都补上
+一直犹豫要不要换到NEXT,因为工作量很大,但是原来使用的主题拓展性实在太差了&hellip;我真的很想加个站内检索&hellip;因为经常需要找原来blog记录的某一个知识点
+
+
+1
+
+
+Version: NEXT-7.8 
+
+
+" />
+<meta name="keywords" content="HEXO-NEXT" /><meta itemprop="name" content="NEXT Part-1">
+<meta itemprop="description" content="18号刷PAT,19号改NEXT的bug,鸽了两天,今天全都补上
+一直犹豫要不要换到NEXT,因为工作量很大,但是原来使用的主题拓展性实在太差了&hellip;我真的很想加个站内检索&hellip;因为经常需要找原来blog记录的某一个知识点
+
+
+1
+
+
+Version: NEXT-7.8 
+
+
+"><meta itemprop="datePublished" content="2020-06-20T22:30:00+00:00" />
+<meta itemprop="dateModified" content="2020-06-20T22:30:00+00:00" />
+<meta itemprop="wordCount" content="2088"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="HEXO-NEXT," /><meta property="og:title" content="NEXT Part-1" />
+<meta property="og:description" content="18号刷PAT,19号改NEXT的bug,鸽了两天,今天全都补上
+一直犹豫要不要换到NEXT,因为工作量很大,但是原来使用的主题拓展性实在太差了&hellip;我真的很想加个站内检索&hellip;因为经常需要找原来blog记录的某一个知识点
+
+
+1
+
+
+Version: NEXT-7.8 
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/hexo-2/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-06-20T22:30:00+00:00" />
+<meta property="article:modified_time" content="2020-06-20T22:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="NEXT Part-1"/>
+<meta name="twitter:description" content="18号刷PAT,19号改NEXT的bug,鸽了两天,今天全都补上
+一直犹豫要不要换到NEXT,因为工作量很大,但是原来使用的主题拓展性实在太差了&hellip;我真的很想加个站内检索&hellip;因为经常需要找原来blog记录的某一个知识点
+
+
+1
+
+
+Version: NEXT-7.8 
+
+
+"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/hexo-2/" /><link rel="prev" href="http://example.org/posts/paper-5/" /><link rel="next" href="http://example.org/posts/CN-2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "NEXT Part-1",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/hexo-2\/"
+    },"genre": "posts","keywords": "HEXO-NEXT","wordcount":  2088 ,
+    "url": "http:\/\/example.org\/posts\/hexo-2\/","datePublished": "2020-06-20T22:30:00+00:00","dateModified": "2020-06-20T22:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">NEXT Part-1</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/HEXO/"><i class="far fa-folder fa-fw"></i>HEXO</a></span></div>
+      <div class="post-meta-line"><span title=2020-06-20&#32;22:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-20" >2020-06-20</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2088 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#首页不显示全文">首页不显示全文</a></li>
+    <li><a href="#页面元素设置">页面元素设置</a></li>
+    <li><a href="#文章目录的坑">文章目录的坑</a></li>
+    <li><a href="#hexo-g报错">hexo g报错</a></li>
+    <li><a href="#引入自定义css">引入自定义css</a></li>
+    <li><a href="#标签页加入tagcloud">标签页加入tagcloud</a>
+      <ul>
+        <li><a href="#增加css代码">增加css代码</a></li>
+        <li><a href="#swig增加代码">swig增加代码</a>
+          <ul>
+            <li><a href="#html5中的canvas宽度为100">Html5中的Canvas宽度为100%</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#内容块圆角">内容块圆角</a></li>
+    <li><a href="#增加站内搜索">增加站内搜索</a>
+      <ul>
+        <li><a href="#安装插件">安装插件:</a></li>
+        <li><a href="#修改站点文件_configyml">修改站点文件_config.yml</a></li>
+        <li><a href="#修改主题配置文件_configyml">修改主题配置文件_config.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#文章字数统计阅读时长">文章字数统计、阅读时长</a>
+      <ul>
+        <li><a href="#安装插件-1">安装插件：</a></li>
+        <li><a href="#修改主题配置文件_configyml-1">修改主题配置文件_config.yml</a></li>
+        <li><a href="#站点配置文件_configyml">站点配置文件_config.yml</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>18号刷PAT,19号改NEXT的bug,鸽了两天,今天全都补上
+一直犹豫要不要换到NEXT,因为工作量很大,但是原来使用的主题拓展性实在太差了&hellip;我真的很想加个站内检索&hellip;因为经常需要找原来blog记录的某一个知识点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Version: NEXT-7.8 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>以下方法使用于scheme: Gemini</strong></p>
+<h1 id="安装">安装</h1>
+<p>仓库地址:
+<a
+  href="https://github.com/theme-next/hexo-theme-next"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>NEXT</a></p>
+<h1 id="首页不显示全文">首页不显示全文</h1>
+<p>next默认首页文章不显示全,但需要在markdown中进行标注
+在需要显示的文字下增加,进行截至标注</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;!--more--&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="页面元素设置">页面元素设置</h1>
+<p>具体参考<a
+  href="https://blog.csdn.net/nightmare_dimple/article/details/86661502"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>大佬的blog</a>
+另外config文件中已经注释的很清楚了,慢慢看就可以完全理解</p>
+<h1 id="文章目录的坑">文章目录的坑</h1>
+<p>之前的主题,为了在文章前面加上目录,安装了&quot;hexo-toc&quot;插件
+但是我一直以为是hexo自带的&hellip;使用next之后,文章目录显示错误,目录上没有文章锚点,并且不可以跟随阅读进度进行实时更新
+大晚上的&hellip;这个bug差点没给我送走
+还好最后搜到了一个<a
+  href="https://github.com/theme-next/hexo-theme-next/issues/380"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>issue</a>
+万万没想到啊&hellip;这都可以,行吧,卸载就完事了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm remove hexo-toc --save
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="hexo-g报错">hexo g报错</h1>
+<p>出现如下错误:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cannot read property &#39;replace&#39; of null
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>原因为文章头部格式出错
+<a
+  href="https://blog.csdn.net/qq_36408085/article/details/104323674"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>参考blog</a></p>
+<h1 id="引入自定义css">引入自定义css</h1>
+<p>NEXT-7取消了custom.styl文件,老版本的教程都无效
+但是在config文件中进行了集成</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">custom_file_path:
+</span></span><span class="line"><span class="cl">  <span class="c1">#head: source/_data/head.swig</span>
+</span></span><span class="line"><span class="cl">  ...省略
+</span></span><span class="line"><span class="cl">  <span class="c1">#mixin: source/_data/mixins.styl</span>
+</span></span><span class="line"><span class="cl">  style: themes/next/source/_data/styles.styl <span class="c1">#取消注释</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在路径&quot;themes/next/source&quot;创建&quot;_data&quot;文件夹
+创建styles.styl文件
+我加入了以下的样式,感觉效果还不错:</p>
+<ul>
+<li>添加背景图片</li>
+<li>标题栏背景颜色</li>
+<li>透明度调整</li>
+<li>增加圆角</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// 添加背景图片
+</span></span><span class="line"><span class="cl">body {
+</span></span><span class="line"><span class="cl">      background: url(https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/Blog_sourse/images/bg.jpg);//自己喜欢的图片地址
+</span></span><span class="line"><span class="cl">      background-size: cover;
+</span></span><span class="line"><span class="cl">      background-repeat: no-repeat;
+</span></span><span class="line"><span class="cl">      background-attachment: fixed;
+</span></span><span class="line"><span class="cl">      background-position: 50% 50%;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// 标题栏背景
+</span></span><span class="line"><span class="cl">.site-meta {
+</span></span><span class="line"><span class="cl">    padding: 20px 0;
+</span></span><span class="line"><span class="cl">    color: #fff;
+</span></span><span class="line"><span class="cl">    background: $black;
+</span></span><span class="line"><span class="cl">    background-repeat: no-repeat;
+</span></span><span class="line"><span class="cl">    background-attachment:fixed;
+</span></span><span class="line"><span class="cl">    background-position:center;
+</span></span><span class="line"><span class="cl">    background-size:cover;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//文章内容的透明度设置
+</span></span><span class="line"><span class="cl">.content-wrap {
+</span></span><span class="line"><span class="cl">  opacity: 0.94;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//侧边框的透明度设置
+</span></span><span class="line"><span class="cl">.sidebar {
+</span></span><span class="line"><span class="cl">  opacity: 0.86;
+</span></span><span class="line"><span class="cl">  border-radius: 40px 40px 0px 0px;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">.sidebar-inner{
+</span></span><span class="line"><span class="cl">  border-radius: 40px 40px 0px 0px;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//菜单栏的透明度设置
+</span></span><span class="line"><span class="cl">.header-inner {
+</span></span><span class="line"><span class="cl">  background: rgba(255,255,255,0.9);
+</span></span><span class="line"><span class="cl">  border-radius 40px;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//搜索框（local-search）的透明度设置
+</span></span><span class="line"><span class="cl">.popup {
+</span></span><span class="line"><span class="cl">  opacity: 0.9;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a
+  href="https://blog.csdn.net/kuashijidexibao/article/details/106373443?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>参考blog</a></p>
+<h1 id="标签页加入tagcloud">标签页加入tagcloud</h1>
+<p>之前主题我在tag页中加入了文字云,感觉显示效果很棒!
+然后就想在next中也加入,不过之前是pug模板,现在是swig模板,所以有点差别
+然而最后为了省时间反而踩了个大坑(哭)
+<strong>请不要使用&quot;hexo-tag-cloud&quot;插件</strong>
+这里介绍我的方法,显示效果没问题,那个插件问题就很多&hellip;蜜汁默认300*150像素,我自适应大小后,云图直接糊了(我人傻了)&hellip;凌晨一点又差点给我送走,还好过了一晚上,今天决定用之前的了,之后就成功啦
+但这个插件也能用,适合一个小块显示,不适用于整个页面显示<a
+  href="https://blog.csdn.net/aoman_hao/article/details/89416634"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>参考blog</a></p>
+<h2 id="增加css代码">增加css代码</h2>
+<p>在之前的style.styl文件中加入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//标签云图css
+</span></span><span class="line"><span class="cl">.tag_box{
+</span></span><span class="line"><span class="cl">  position: relative;
+</span></span><span class="line"><span class="cl">  width: 100%;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">.leancloud-visitors-count{
+</span></span><span class="line"><span class="cl">  margin-left: 5px;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">.by_farbox {
+</span></span><span class="line"><span class="cl">  font-size: 10px;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">.by_farbox a {
+</span></span><span class="line"><span class="cl">  color: #A6A6A6;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">.by_farbox a:hover {
+</span></span><span class="line"><span class="cl">  color: #4786D6;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="swig增加代码">swig增加代码</h2>
+<p>在next/layout/page.swig中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{%- if page.type === &#39;tags&#39; %}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>后增加tag-cloud代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">      &lt;div class=&#34;post-body{%- if page.direction and page.direction.toLowerCase() === &#39;rtl&#39; %} rtl{%- endif %}&#34;&gt;
+</span></span><span class="line"><span class="cl">        {%- if page.type === &#39;tags&#39; %}
+</span></span><span class="line"><span class="cl">        {#
+</span></span><span class="line"><span class="cl">	        新增加的云图显示标签页
+</span></span><span class="line"><span class="cl">	    #}
+</span></span><span class="line"><span class="cl">	    &lt;style type=&#34;text/css&#34;&gt;
+</span></span><span class="line"><span class="cl">     	 #resCanvas {
+</span></span><span class="line"><span class="cl">        	height: 100%; width: 100%;
+</span></span><span class="line"><span class="cl">     	 }
+</span></span><span class="line"><span class="cl">   	    &lt;/style&gt;
+</span></span><span class="line"><span class="cl">   	    &lt;script type=&#34;text/javascript&#34; charset=&#34;utf-8&#34; src=&#34;../js/tagcloud.js&#34;&gt;&lt;/script&gt;
+</span></span><span class="line"><span class="cl">   	    &lt;script type=&#34;text/javascript&#34; charset=&#34;utf-8&#34; src=&#34;../js/tagcanvas.js&#34;&gt;&lt;/script&gt;
+</span></span><span class="line"><span class="cl">	    &lt;div class=&#34;tag_box&#34;&gt;
+</span></span><span class="line"><span class="cl">		    &lt;div id=&#34;myCanvasContainer&#34; class=&#34;widget tagcloud&#34; style=&#34;text-align:center&#34;&gt;
+</span></span><span class="line"><span class="cl">		     &lt;canvas id=&#34;resCanvas&#34;&gt;
+</span></span><span class="line"><span class="cl">			    {{ list_tags() }}
+</span></span><span class="line"><span class="cl">		     &lt;/canvas&gt;
+</span></span><span class="line"><span class="cl">		&lt;/div&gt;
+</span></span><span class="line"><span class="cl">	&lt;/div&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="html5中的canvas宽度为100">Html5中的Canvas宽度为100%</h3>
+<p>这里的canvas自适应大小,参照这个blog
+<a
+  href="https://blog.csdn.net/u013682842/article/details/50328471"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>参考blog</a></p>
+<h1 id="内容块圆角">内容块圆角</h1>
+<p>我找了好久的post-block(内容块的class),最后在对应的scheme文件中找到了
+文件路径: &ldquo;next/source/css/_schemes/Gemini/index.styl&rdquo;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// Post &amp; Comments blocks.
+</span></span><span class="line"><span class="cl">.post-block {
+</span></span><span class="line"><span class="cl">  background: var(--content-bg-color);
+</span></span><span class="line"><span class="cl">  border-radius: $border-radius-inner; //border-radius-inner变量
+</span></span><span class="line"><span class="cl">  box-shadow: $box-shadow-inner;
+</span></span><span class="line"><span class="cl">  padding: $content-desktop-padding;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  // When blocks are siblings (homepage).
+</span></span><span class="line"><span class="cl">  &amp; + .post-block {
+</span></span><span class="line"><span class="cl">    border-radius: $border-radius; //border-radius变量
+</span></span><span class="line"><span class="cl">    // Rewrite shadows &amp; borders because all blocks have offsets.
+</span></span><span class="line"><span class="cl">    box-shadow: $box-shadow;
+</span></span><span class="line"><span class="cl">    margin-top: $sidebar-offset;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到圆角值由两个css变量控制
+打开文件: &ldquo;next/source/css/_variables/Gemini.styl&rdquo;
+修改两个变量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$border-radius-inner     = 30px;
+</span></span><span class="line"><span class="cl">$border-radius           = 30px;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后完成圆角修改</p>
+<h1 id="增加站内搜索">增加站内搜索</h1>
+<h2 id="安装插件">安装插件:</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm install hexo-generator-searchdb --save
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="修改站点文件_configyml">修改站点文件_config.yml</h2>
+<p>添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Search 
+</span></span><span class="line"><span class="cl">search:
+</span></span><span class="line"><span class="cl">  path: ./public/search.xml
+</span></span><span class="line"><span class="cl">  field: post
+</span></span><span class="line"><span class="cl">  format: html
+</span></span><span class="line"><span class="cl">  limit: 10000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>path：索引文件的路径，相对于站点根目录</li>
+<li>field：搜索范围，默认是 post，还可以选择 page、all，设置成 all 表示搜索所有页面</li>
+<li>limit：限制搜索的条目数</li>
+</ul>
+<p><a
+  href="https://cndrew.cn/2020/04/07/local-search/"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>hexo增加search(非next主题)参考blog</a></p>
+<h2 id="修改主题配置文件_configyml">修改主题配置文件_config.yml</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">local_search:
+</span></span><span class="line"><span class="cl">  enable: true
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="文章字数统计阅读时长">文章字数统计、阅读时长</h1>
+<h2 id="安装插件-1">安装插件：</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm install hexo-symbols-count-time --save
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="修改主题配置文件_configyml-1">修改主题配置文件_config.yml</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">symbols_count_time:
+</span></span><span class="line"><span class="cl">  separated_meta: true  # false会显示一行
+</span></span><span class="line"><span class="cl">  item_text_post: true  # 显示属性名称,设为false后只显示图标和统计数字,不显示属性的文字
+</span></span><span class="line"><span class="cl">  item_text_total: true # 底部footer是否显示字数统计属性文字
+</span></span><span class="line"><span class="cl">  awl: 4                # 计算字数的一个设置,没设置过
+</span></span><span class="line"><span class="cl">  wpm: 275              # 一分钟阅读的字数
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="站点配置文件_configyml">站点配置文件_config.yml</h2>
+<p>增加以下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">symbols_count_time:
+</span></span><span class="line"><span class="cl">#文章内是否显示
+</span></span><span class="line"><span class="cl">  symbols: true
+</span></span><span class="line"><span class="cl">  time: true
+</span></span><span class="line"><span class="cl">#网页底部是否显示
+</span></span><span class="line"><span class="cl">  total_symbols: true
+</span></span><span class="line"><span class="cl">  total_time: true
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a
+  href="https://tding.top/archives/42c38b10.html"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>参考blog</a></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-06-20&#32;22:30:00>更新于 2020-06-20</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/HEXO-NEXT/">HEXO-NEXT</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/paper-5/" class="prev" rel="prev" title="答辩完啦!"><i class="fas fa-angle-left fa-fw"></i>答辩完啦!</a>
+      <a href="/posts/CN-2/" class="next" rel="next" title="计算机网络 Part-2">计算机网络 Part-2<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

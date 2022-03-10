@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>腾讯云COS加速静态资源 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="腾讯云COS加速静态资源 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-06-08T22:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-06-08T22:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="腾讯云COS加速静态资源">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/hexo-1/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">腾讯云COS加速静态资源</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月8日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>6.7-心情不太好,没学习新知识&hellip;但优化了一下静态网站的速度
+6.8-今天改了一天论文,整体重复率降到了30嘿嘿,再稍微改一改,就可以快乐毕业啦(终于完成了毕业论文!)
+昨天这篇blog也没写完,只好今天发了</p>
+<h1 id="需求背景">需求背景</h1>
+<p>由于之前hexo博客的整体资源都挂在了GitHub上,由于其与生俱来的网络速度慢,导致blog中观看图片的体验极差,我的很多&quot;技术&quot;(辣鸡)blog都有很多图片&hellip;所以,还是赶紧尽早优化吧
+首先我想到了blog挂在云服务器上,但是价格好贵啊&hellip;而且等于重新配置一个LinuxOS的环境,想想都头疼,所以pass,去网上搜了一下,发现现在很火的对象存储似乎不错嗷,去七牛云看了一眼,有了一点思路,因为之前域名是腾讯云上买的,索性就搞腾讯云COS了,以后方便一站式管理(虽然也没方便多少),并且腾讯云价格很便宜!(穷才是真正的原因)</p>
+<h1 id="对象存储">对象存储</h1>
+<p>对象存储主要就是指存储互联网时代&quot;非结构化&quot;数据的平台,图片,视频,音乐这类的</p>
+<ul>
+<li>基于云存储的概念，可以快速扩容，而且对于数据的容量的上限没有限制。这样就可以很好地应对爆发式的大量文件上传。</li>
+<li>解决了个人服务器带宽小，处理能力有限，文件读取慢的弊端，将所有的有效资源都用于数据的交互。而把静态文件的请求交给了COS对象存储进行处理。</li>
+<li>COS的带宽相较于个人服务器的带宽更大，在提升页面打开速度，文件资源下载时，以及应对高并发访问，用户体验有很大提升。</li>
+</ul>
+<p>综上所述,对象存储是个好东西,以后很多项目都会用上</p>
+<h1 id="腾讯云cos">腾讯云COS</h1>
+<h2 id="方案1-整体部署">方案1-整体部署</h2>
+<p>首先第一种解决方案是最好的,就是将hexo整体部署在COS上,这样就完全是起飞的速度,但是唯一的难点就是绑定的域名需要备案&hellip;我查了好久得出了一个结论&hellip;2020年,域名备案难于上青天,不光时间周期长,还要有一个大于六个月的云服务器,并且备案网站不可以带有&quot;博客&quot;字样&hellip;我大中华真的各种迷惑操作
+如果有备案域名就好说了,blog上传也方便</p>
+<h3 id="安装插件">安装插件</h3>
+<pre tabindex="0"><code>npm install hexo-deployer-qcloud-cos --save
+</code></pre><h3 id="配置文件">配置文件</h3>
+<p>打开/_config.yml文件</p>
+<pre tabindex="0"><code>deploy:
+  type: qcloud-cos
+  cosRegion: ap-chengdu
+  cosSecretId: 
+  cosSecretKey: 
+  cosBucket: work-blog
+  cosAppid:  1257072316
+  remotePath: 
+</code></pre><p>其中type：照填。
+cosRegion：根据你选择的位置填写。（可从储存桶基本信息所属地域查看）
+cosSecretId：填写之前创建的密钥id
+cosSecretKey：填写id对应的key
+cosBucket：填写储存同的名称
+cosAppid：填写空间名称中的数字</p>
+<h3 id="generate-deploy">Generate-Deploy</h3>
+<pre tabindex="0"><code>hexo g &amp;&amp; hexo d
+</code></pre><p>然后最后绑定一下域名,就完事了</p>
+<h3 id="坑">坑</h3>
+<p>记录一下坑,一开始COS不让绑定域名,我想你这边不让未备案绑定,那我去用域名去解析你好啦,与此同时踩坑之旅也开始啦!
+不得不说还是我想的太简单,域名配置解析之后,COS不让访问,报错未解析的CNAME,应该是COS那边做了防解析
+并且ssl证书也对不上,ssl证书是对应于tencent的,而不是我自己的域名
+所以&hellip;还是老老实实用GitHub Pages吧</p>
+<h2 id="方案2-静态资源加速">方案2-静态资源加速</h2>
+<p>像我这种没有备案域名的普通小辣鸡,只好另辟蹊径了
+方法很简单,把图片文件都放到COS上,blog中图片放资源链接
+最后我把js,css,images都放上了,并且把blog源码改了一下,就完事啦!</p>
+<h3 id="跨域访问">跨域访问</h3>
+<p>在COS中css等文件中一些路径可以继续使用相对地址
+而在使用awesome-font时,可能会发生跨域访问错误
+这时需要在&quot;基础设置&quot; -&gt; &ldquo;跨域访问CORS设置&rdquo; 中进行设置</p>
+<pre tabindex="0"><code>来源 Origin: * (填写一个&#34;*&#34;,下同)
+操作 Methods: PUT GET POST DELETE HEAD(全部勾选)
+Allow-Headers: *
+Expose-Headers: *
+超时 Max-Age: 0
+</code></pre><p>就解决啦,最后blog的访问速度起飞!解决了困扰我好久的问题</p>
+        </div>
+
+        
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/hexo'>HEXO</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

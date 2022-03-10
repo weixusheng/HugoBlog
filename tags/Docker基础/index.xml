@@ -1,0 +1,36 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Docker基础 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Docker%E5%9F%BA%E7%A1%80/</link>
+    <description>Docker基础 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Sun, 19 Dec 2021 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Docker%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+  <title>部署Docker</title>
+  <link>http://example.org/posts/docker-6/</link>
+  <pubDate>Sun, 19 Dec 2021 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/docker-6/</guid>
+  <description><![CDATA[<p>Docker 部署 Python 和 Mysql 环境</p>]]></description>
+</item><item>
+  <title>Docker网络模式</title>
+  <link>http://example.org/posts/docker-3/</link>
+  <pubDate>Wed, 24 Mar 2021 21:50:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/docker-3/</guid>
+  <description><![CDATA[<p>Docker网络模式</p>]]></description>
+</item><item>
+  <title>Dockerfile构建镜像</title>
+  <link>http://example.org/posts/docker-2/</link>
+  <pubDate>Mon, 22 Mar 2021 20:50:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/docker-2/</guid>
+  <description><![CDATA[<p>Dockerfile</p>]]></description>
+</item><item>
+  <title>Docker基本概念</title>
+  <link>http://example.org/posts/docker-1/</link>
+  <pubDate>Mon, 22 Mar 2021 20:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/docker-1/</guid>
+  <description><![CDATA[<p>Docker常用命令</p>]]></description>
+</item></channel>
+</rss>

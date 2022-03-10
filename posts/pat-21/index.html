@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>PAT-Advanced 单词整理 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="由于甲级是英文题目&hellip;所以先需要背一些常见的单词,这里整理一下!" />
+<meta name="keywords" content="Leetcode-C&#43;&#43;" /><meta itemprop="name" content="PAT-Advanced 单词整理">
+<meta itemprop="description" content="由于甲级是英文题目&hellip;所以先需要背一些常见的单词,这里整理一下!"><meta itemprop="datePublished" content="2020-07-25T23:59:00+00:00" />
+<meta itemprop="dateModified" content="2020-07-25T23:59:00+00:00" />
+<meta itemprop="wordCount" content="896"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="Leetcode-C&#43;&#43;," /><meta property="og:title" content="PAT-Advanced 单词整理" />
+<meta property="og:description" content="由于甲级是英文题目&hellip;所以先需要背一些常见的单词,这里整理一下!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/pat-21/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-07-25T23:59:00+00:00" />
+<meta property="article:modified_time" content="2020-07-25T23:59:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="PAT-Advanced 单词整理"/>
+<meta name="twitter:description" content="由于甲级是英文题目&hellip;所以先需要背一些常见的单词,这里整理一下!"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/pat-21/" /><link rel="prev" href="http://example.org/posts/pat-20/" /><link rel="next" href="http://example.org/posts/pat-22/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "PAT-Advanced 单词整理",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/pat-21\/"
+    },"genre": "posts","keywords": "Leetcode-C\u002b\u002b","wordcount":  896 ,
+    "url": "http:\/\/example.org\/posts\/pat-21\/","datePublished": "2020-07-25T23:59:00+00:00","dateModified": "2020-07-25T23:59:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">PAT-Advanced 单词整理</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/PAT/"><i class="far fa-folder fa-fw"></i>PAT</a></span></div>
+      <div class="post-meta-line"><span title=2020-07-25&#32;23:59:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-25" >2020-07-25</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 896 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据结构类型">数据结构类型</a></li>
+    <li><a href="#数字单词">数字单词</a></li>
+    <li><a href="#结构内部关系">结构内部关系</a></li>
+    <li><a href="#动词">动词</a></li>
+    <li><a href="#连接词">连接词</a></li>
+    <li><a href="#形容词">形容词</a></li>
+    <li><a href="#名词">名词</a></li>
+    <li><a href="#题目要求">题目要求</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>由于甲级是英文题目&hellip;所以先需要背一些常见的单词,这里整理一下!</p>
+<h1 id="数据结构类型">数据结构类型</h1>
+<p>Deduplication 链表去重
+for every seniority level 对于每一个高层，对于每一层
+recursively 递归
+ascend 上升 increasing 上升
+descend 下降 decreasing 下降
+Stripe 条纹，链
+radix 基数，进制，根
+intersection 交点，交集
+non-leaf nodes 非叶子结点
+fewest intersections 最少结点的
+every seniority level 每一层
+vertices 顶点
+edges 边
+indices 索引
+labeling 标记
+M by N matrix m行n列矩阵
+permutation 一组排列
+Quadratic probing 二次方探查法
+with positive increments only 只是正向增加
+Topological Order 拓扑排序
+clique 团</p>
+<h1 id="数字单词">数字单词</h1>
+<p>suffix 后缀
+radix 根，基数
+decimal 小数的，十进位的
+sub-string 子串
+alphabetical 按字母顺序
+even 偶数
+odd 奇怪的，奇数
+two-digit number 两位数
+decimal system 十进制 == decimal number
+any numeral system 任何进制
+absolute value 绝对值
+Note: Simple chopping is assumed without rounding. 不用四舍五入</p>
+<h1 id="结构内部关系">结构内部关系</h1>
+<p>threshold 起征点，下限，开端
+top-down 自顶向下
+symmetric 对称的
+disjoint 不相交的，脱节，解体
+partition 分割，分隔
+separate 分开的，独有的，另外的
+respectively 各自地
+randomize 使…随机化
+adjacent 毗连的，邻近的
+be supposed to 应该，被期望
+exactly 确切地
+distinct 清晰的，明显的，不同的
+distinguish 区分，区别
+fundamental 基本的，重要的
+indirect 间接的，拐弯抹角的，迂回的
+specify 具体说明
+general 通用的，普遍的，普通的
+potential 潜在的
+inadequate 不充分的</p>
+<h1 id="动词">动词</h1>
+<p>implementation 实现
+be supposed to 应该，被期望
+simulate 假装，模拟，模仿
+collaborate 合作
+forward 转发
+denote 代表，指示，表示
+recommendation 推荐，建议
+cluster 集群
+register 注册</p>
+<h1 id="连接词">连接词</h1>
+<p>For the sake of simplicity 为了简单起见
+It is assumed that 我们假定…
+for the sake of 为了
+hence 因此</p>
+<h1 id="形容词">形容词</h1>
+<p>stuck 动不了的，被卡住的
+notorious 臭名昭著的，声名狼藉的，众人皆知的</p>
+<h1 id="名词">名词</h1>
+<p>key words 关键词
+casino 赌场
+tie 平局
+shuffles 洗牌
+gamblers 赌徒
+a deck of playing cards 一副牌
+Joker 鬼牌
+红桃（Heart）
+黑桃（Spade）
+方片（Diamond）
+梅花（Club）
+course 课程
+Course List for Student 学生选课情况
+property 房产，财产
+estate 房产
+unit price 单价
+bonus 奖金，红利，好处
+coupon 优惠券
+Forbes 福布斯（美国著名财经杂志）
+followers 追随者，支持者
+trophy 奖牌，奖杯
+Lottery 彩票
+Graduate Admission 研究生入学
+volume 容积，量，体积
+MRI 核磁共振像
+scattered cities 分散的城市
+candidate 候选的
+residential 住宅区
+client 委托人，客户，当事人
+quota 限额</p>
+<h1 id="题目要求">题目要求</h1>
+<p>sequence {A[1], A[2], …} is said to be “smaller” than sequence {B[1], B[2], …} if there exists k &gt;= 1 such that A[i]=B[i] for all i &lt; k, and A[k] &lt; B[k]
+如果序列{A[1], A[2], …}与 {B[1], B[2], …}，如果存在k&gt;=1，使得对任意的i &lt; k都有A[i] == B[i]，而A[k] &lt; B[k]成立，那么就称为方案A比方案B小</p>
+<p>Each input file contains one test case. 每一个输入文件包含一个测试用例。</p>
+<p>one-way is 1 if the street is one-way from V1 to V2, or 0 if not
+如果该道路是从V1到V2的单行线，则one-way为1，否则为0</p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-07-25&#32;23:59:00>更新于 2020-07-25</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Leetcode-C&#43;&#43;/">Leetcode-C&#43;&#43;</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/pat-20/" class="prev" rel="prev" title="PAT-Basic 考完啦!"><i class="fas fa-angle-left fa-fw"></i>PAT-Basic 考完啦!</a>
+      <a href="/posts/pat-22/" class="next" rel="next" title="PAT-Advanced 1001">PAT-Advanced 1001<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

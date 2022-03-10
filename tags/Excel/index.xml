@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Excel - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Excel/</link>
+    <description>Excel - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Mon, 15 Nov 2021 21:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Excel/" rel="self" type="application/rss+xml" /><item>
+  <title>openpyxl基础操作</title>
+  <link>http://example.org/posts/openpyxl/</link>
+  <pubDate>Mon, 15 Nov 2021 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/openpyxl/</guid>
+  <description><![CDATA[<p>openpyxl操作Excel</p>]]></description>
+</item><item>
+  <title>Python创建excel文件</title>
+  <link>http://example.org/posts/python-3/</link>
+  <pubDate>Sat, 16 Oct 2021 21:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python-3/</guid>
+  <description><![CDATA[<p>xlwt写入Excel文件</p>]]></description>
+</item><item>
+  <title>Python自动化办公</title>
+  <link>http://example.org/posts/python-2/</link>
+  <pubDate>Mon, 11 Oct 2021 20:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python-2/</guid>
+  <description><![CDATA[<p>读写Excel.写入Word</p>]]></description>
+</item></channel>
+</rss>

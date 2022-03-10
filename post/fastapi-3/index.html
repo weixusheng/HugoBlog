@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>FastAPI-3 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="FastAPI-3 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="FastAPI-3">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/fastapi-3/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">FastAPI-3</h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>FastAPI-文档</p>
+<h1 id="构建fastapi项目">构建fastapi项目</h1>
+<h2 id="文件层级">文件层级</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">├──</span> app
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">├──</span> __init__<span style="color:#000;font-weight:bold">.</span>py
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">├──</span> main<span style="color:#000;font-weight:bold">.</span>py
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">├──</span> dependencies<span style="color:#000;font-weight:bold">.</span>py
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">└──</span> routers
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">├──</span> __init__<span style="color:#000;font-weight:bold">.</span>py
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">├──</span> items<span style="color:#000;font-weight:bold">.</span>py
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">└──</span> users<span style="color:#000;font-weight:bold">.</span>py
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>   <span style="color:#a61717;background-color:#e3d2d2">└──</span> internal
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>       <span style="color:#a61717;background-color:#e3d2d2">├──</span> __init__<span style="color:#000;font-weight:bold">.</span>py
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">│</span>       <span style="color:#a61717;background-color:#e3d2d2">└──</span> admin<span style="color:#000;font-weight:bold">.</span>py
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="_init_py文件的作用"><code>_init_.py</code>文件的作用</h2>
+<h3 id="package的标识">package的标识</h3>
+<p>如果没有该文件，该目录就不会认为是package</p>
+<p>包有两种导入方式:</p>
+<p>精确导入：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">Root.Pack1</span> <span style="color:#000;font-weight:bold">import</span> Pack1Class
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">Root.Pack1.Pack1Class</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>模糊导入：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">Root.Pack1</span> <span style="color:#000;font-weight:bold">import</span> <span style="color:#000;font-weight:bold">*</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="定义package中的__all__">定义package中的__all__</h3>
+<p>模糊导入中的*中的模块是由__all__来定义的</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>__all__ <span style="color:#000;font-weight:bold">=</span> [<span style="color:#d14">&#34;Pack1Class&#34;</span>,<span style="color:#d14">&#34;Pack1Class1&#34;</span>]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="apirouter"><code>APIRouter</code></h2>
+<p>假设专门用于处理用户逻辑的文件是位于 <code>/app/routers/users.py</code> 的子模块。</p>
+<p>你希望将与用户相关的<em>路径操作</em>与其他代码分开，以使其井井有条。</p>
+<p>但它仍然是同一 <strong>FastAPI</strong> 应用程序/web API 的一部分（它是同一「Python 包」的一部分）。</p>
+<p>你可以使用 <code>APIRouter</code> 为该模块创建<em>路径操作</em>。</p>
+<h3 id="导入-apirouter">导入 <code>APIRouter</code></h3>
+<p>你可以导入它并通过与 <code>FastAPI</code> 类相同的方式创建一个「实例」：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">fastapi</span> <span style="color:#000;font-weight:bold">import</span> APIRouter
+</span></span><span style="display:flex;"><span>router <span style="color:#000;font-weight:bold">=</span> APIRouter()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@router</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/users/&#34;</span>, tags<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14">&#34;users&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_users</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> [{<span style="color:#d14">&#34;username&#34;</span>: <span style="color:#d14">&#34;Rick&#34;</span>}, {<span style="color:#d14">&#34;username&#34;</span>: <span style="color:#d14">&#34;Morty&#34;</span>}]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@router</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/users/me&#34;</span>, tags<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14">&#34;users&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_user_me</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> {<span style="color:#d14">&#34;username&#34;</span>: <span style="color:#d14">&#34;fakecurrentuser&#34;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@router</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/users/</span><span style="color:#d14">{username}</span><span style="color:#d14">&#34;</span>, tags<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14">&#34;users&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_user</span>(username: <span style="color:#0086b3">str</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> {<span style="color:#d14">&#34;username&#34;</span>: username}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="apirouter的参数集成">APIRouter的参数集成</h2>
+<p>假设你在位于 <code>app/routers/items.py</code> 的模块中还有专门用于处理应用程序中「项目」的端点。</p>
+<p>你具有以下<em>路径操作</em>：</p>
+<ul>
+<li><code>/items/</code></li>
+<li><code>/items/{item_id}</code></li>
+</ul>
+<p>这和 <code>app/routers/users.py</code> 的结构完全相同。</p>
+<p>但是我们想变得更聪明并简化一些代码。</p>
+<p>我们知道此模块中的所有<em>路径操作</em>都有相同的：</p>
+<ul>
+<li>路径 <code>prefix</code>：<code>/items</code>。</li>
+<li><code>tags</code>：（仅有一个 <code>items</code> 标签）。</li>
+<li>额外的 <code>responses</code>。</li>
+<li><code>dependencies</code>：它们都需要我们创建的 <code>X-Token</code> 依赖项。</li>
+</ul>
+<p>因此，我们可以将其添加到 <code>APIRouter</code> 中，而不是将其添加到每个路径操作中。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">fastapi</span> <span style="color:#000;font-weight:bold">import</span> APIRouter, Depends, HTTPException
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">..dependencies</span> <span style="color:#000;font-weight:bold">import</span> get_token_header
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>router <span style="color:#000;font-weight:bold">=</span> APIRouter(
+</span></span><span style="display:flex;"><span>    prefix<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/items&#34;</span>,
+</span></span><span style="display:flex;"><span>    tags<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14">&#34;items&#34;</span>],
+</span></span><span style="display:flex;"><span>    dependencies<span style="color:#000;font-weight:bold">=</span>[Depends(get_token_header)],
+</span></span><span style="display:flex;"><span>    responses<span style="color:#000;font-weight:bold">=</span>{<span style="color:#099">404</span>: {<span style="color:#d14">&#34;description&#34;</span>: <span style="color:#d14">&#34;Not found&#34;</span>}},
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fake_items_db <span style="color:#000;font-weight:bold">=</span> {<span style="color:#d14">&#34;plumbus&#34;</span>: {<span style="color:#d14">&#34;name&#34;</span>: <span style="color:#d14">&#34;Plumbus&#34;</span>}, <span style="color:#d14">&#34;gun&#34;</span>: {<span style="color:#d14">&#34;name&#34;</span>: <span style="color:#d14">&#34;Portal Gun&#34;</span>}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@router</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_items</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> fake_items_db
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@router</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/</span><span style="color:#d14">{item_id}</span><span style="color:#d14">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_item</span>(item_id: <span style="color:#0086b3">str</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> item_id <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">in</span> fake_items_db:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">raise</span> HTTPException(status_code<span style="color:#000;font-weight:bold">=</span><span style="color:#099">404</span>, detail<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;Item not found&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> {<span style="color:#d14">&#34;name&#34;</span>: fake_items_db[item_id][<span style="color:#d14">&#34;name&#34;</span>], <span style="color:#d14">&#34;item_id&#34;</span>: item_id}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@router</span><span style="color:#000;font-weight:bold">.</span>put(
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;/</span><span style="color:#d14">{item_id}</span><span style="color:#d14">&#34;</span>,
+</span></span><span style="display:flex;"><span>    tags<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14">&#34;custom&#34;</span>],
+</span></span><span style="display:flex;"><span>    responses<span style="color:#000;font-weight:bold">=</span>{<span style="color:#099">403</span>: {<span style="color:#d14">&#34;description&#34;</span>: <span style="color:#d14">&#34;Operation forbidden&#34;</span>}},
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">update_item</span>(item_id: <span style="color:#0086b3">str</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> item_id <span style="color:#000;font-weight:bold">!=</span> <span style="color:#d14">&#34;plumbus&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">raise</span> HTTPException(
+</span></span><span style="display:flex;"><span>            status_code<span style="color:#000;font-weight:bold">=</span><span style="color:#099">403</span>, detail<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;You can only update the item: plumbus&#34;</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> {<span style="color:#d14">&#34;item_id&#34;</span>: item_id, <span style="color:#d14">&#34;name&#34;</span>: <span style="color:#d14">&#34;The great Plumbus&#34;</span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="添加一些自定义的-tagsresponses-和-dependencies">添加一些自定义的 <code>tags</code>、<code>responses</code> 和 <code>dependencies</code></h2>
+<p>我们不打算在每个<em>路径操作</em>中添加前缀 <code>/items</code> 或 <code>tags =[&quot;items&quot;]</code>，因为我们将它们添加到了 <code>APIRouter</code> 中。</p>
+<p>但是我们仍然可以添加<em>更多</em>将会应用于特定的<em>路径操作</em>的 <code>tags</code>，以及一些特定于该<em>路径操作</em>的额外 <code>responses</code>：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">fastapi</span> <span style="color:#000;font-weight:bold">import</span> APIRouter, Depends, HTTPException
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">..dependencies</span> <span style="color:#000;font-weight:bold">import</span> get_token_header
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>router <span style="color:#000;font-weight:bold">=</span> APIRouter(
+</span></span><span style="display:flex;"><span>    prefix<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/items&#34;</span>,
+</span></span><span style="display:flex;"><span>    tags<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14">&#34;items&#34;</span>],
+</span></span><span style="display:flex;"><span>    dependencies<span style="color:#000;font-weight:bold">=</span>[Depends(get_token_header)],
+</span></span><span style="display:flex;"><span>    responses<span style="color:#000;font-weight:bold">=</span>{<span style="color:#099">404</span>: {<span style="color:#d14">&#34;description&#34;</span>: <span style="color:#d14">&#34;Not found&#34;</span>}},
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fake_items_db <span style="color:#000;font-weight:bold">=</span> {<span style="color:#d14">&#34;plumbus&#34;</span>: {<span style="color:#d14">&#34;name&#34;</span>: <span style="color:#d14">&#34;Plumbus&#34;</span>}, <span style="color:#d14">&#34;gun&#34;</span>: {<span style="color:#d14">&#34;name&#34;</span>: <span style="color:#d14">&#34;Portal Gun&#34;</span>}}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@router</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_items</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> fake_items_db
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@router</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/</span><span style="color:#d14">{item_id}</span><span style="color:#d14">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_item</span>(item_id: <span style="color:#0086b3">str</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> item_id <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">in</span> fake_items_db:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">raise</span> HTTPException(status_code<span style="color:#000;font-weight:bold">=</span><span style="color:#099">404</span>, detail<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;Item not found&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> {<span style="color:#d14">&#34;name&#34;</span>: fake_items_db[item_id][<span style="color:#d14">&#34;name&#34;</span>], <span style="color:#d14">&#34;item_id&#34;</span>: item_id}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@router</span><span style="color:#000;font-weight:bold">.</span>put(
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;/</span><span style="color:#d14">{item_id}</span><span style="color:#d14">&#34;</span>,
+</span></span><span style="display:flex;"><span>    tags<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14">&#34;custom&#34;</span>],
+</span></span><span style="display:flex;"><span>    responses<span style="color:#000;font-weight:bold">=</span>{<span style="color:#099">403</span>: {<span style="color:#d14">&#34;description&#34;</span>: <span style="color:#d14">&#34;Operation forbidden&#34;</span>}},
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">update_item</span>(item_id: <span style="color:#0086b3">str</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> item_id <span style="color:#000;font-weight:bold">!=</span> <span style="color:#d14">&#34;plumbus&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">raise</span> HTTPException(
+</span></span><span style="display:flex;"><span>            status_code<span style="color:#000;font-weight:bold">=</span><span style="color:#099">403</span>, detail<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;You can only update the item: plumbus&#34;</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> {<span style="color:#d14">&#34;item_id&#34;</span>: item_id, <span style="color:#d14">&#34;name&#34;</span>: <span style="color:#d14">&#34;The great Plumbus&#34;</span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="fastapi-主体"><code>FastAPI</code> 主体</h2>
+<p>位于 <code>app/main.py</code> 的模块</p>
+<p>这将是你的应用程序中将所有内容联结在一起的主文件。</p>
+<p>并且由于你的大部分逻辑现在都存在于其自己的特定模块中，因此主文件的内容将非常简单。</p>
+<h3 id="导入-fastapihttpsfastapitiangolocomzhtutorialbigger-applicationsfastapi_1">导入 <code>FastAPI</code><a href="https://fastapi.tiangolo.com/zh/tutorial/bigger-applications/#fastapi_1">¶</a></h3>
+<p>你可以像平常一样导入并创建一个 <code>FastAPI</code> 类。</p>
+<p>我们甚至可以声明<code>全局依赖项</code>，它会和每个 <code>APIRouter</code> 的依赖项组合在一起：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">fastapi</span> <span style="color:#000;font-weight:bold">import</span> Depends, FastAPI
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">.dependencies</span> <span style="color:#000;font-weight:bold">import</span> get_query_token, get_token_header
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">.internal</span> <span style="color:#000;font-weight:bold">import</span> admin
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">.routers</span> <span style="color:#000;font-weight:bold">import</span> items, users
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#000;font-weight:bold">=</span> FastAPI(dependencies<span style="color:#000;font-weight:bold">=</span>[Depends(get_query_token)])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app<span style="color:#000;font-weight:bold">.</span>include_router(users<span style="color:#000;font-weight:bold">.</span>router)
+</span></span><span style="display:flex;"><span>app<span style="color:#000;font-weight:bold">.</span>include_router(items<span style="color:#000;font-weight:bold">.</span>router)
+</span></span><span style="display:flex;"><span>app<span style="color:#000;font-weight:bold">.</span>include_router(
+</span></span><span style="display:flex;"><span>    admin<span style="color:#000;font-weight:bold">.</span>router,
+</span></span><span style="display:flex;"><span>    prefix<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/admin&#34;</span>,
+</span></span><span style="display:flex;"><span>    tags<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14">&#34;admin&#34;</span>],
+</span></span><span style="display:flex;"><span>    dependencies<span style="color:#000;font-weight:bold">=</span>[Depends(get_token_header)],
+</span></span><span style="display:flex;"><span>    responses<span style="color:#000;font-weight:bold">=</span>{<span style="color:#099">418</span>: {<span style="color:#d14">&#34;description&#34;</span>: <span style="color:#d14">&#34;I&#39;m a teapot&#34;</span>}},
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@app</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">root</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> {<span style="color:#d14">&#34;message&#34;</span>: <span style="color:#d14">&#34;Hello Bigger Applications!&#34;</span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="注入依赖">注入依赖</h1>
+<h2 id="示例">示例</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">typing</span> <span style="color:#000;font-weight:bold">import</span> Optional
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">fastapi</span> <span style="color:#000;font-weight:bold">import</span> Depends, FastAPI
+</span></span><span style="display:flex;"><span>app <span style="color:#000;font-weight:bold">=</span> FastAPI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">common_parameters</span>(q: Optional[<span style="color:#0086b3">str</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">None</span>, skip: <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>, limit: <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">100</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> {<span style="color:#d14">&#34;q&#34;</span>: q, <span style="color:#d14">&#34;skip&#34;</span>: skip, <span style="color:#d14">&#34;limit&#34;</span>: limit}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@app</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/items/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_items</span>(commons: <span style="color:#0086b3">dict</span> <span style="color:#000;font-weight:bold">=</span> Depends(common_parameters)):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> commons
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@app</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/users/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_users</span>(commons: <span style="color:#0086b3">dict</span> <span style="color:#000;font-weight:bold">=</span> Depends(common_parameters)):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> commons
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>依赖项函数的形式和结构与<em>路径操作函数</em>一样。</p>
+<p>因此，可以把依赖项当作没有「装饰器」（即，没有 <code>@app.get(&quot;/some-path&quot;)</code> ）的路径操作函数。</p>
+<p>依赖项可以返回各种内容。</p>
+<p>本例中的依赖项预期接收如下参数：</p>
+<ul>
+<li>类型为 <code>str</code> 的可选查询参数 <code>q</code></li>
+<li>类型为 <code>int</code> 的可选查询参数 <code>skip</code>，默认值是 <code>0</code></li>
+<li>类型为 <code>int</code> 的可选查询参数 <code>limit</code>，默认值是 <code>100</code></li>
+</ul>
+<p>然后，依赖项函数返回包含这些值的 <code>dict</code>。</p>
+<p><strong>目的:</strong></p>
+<p>接收到新的请求时，<strong>FastAPI</strong> 执行如下操作：</p>
+<ul>
+<li>用正确的参数调用依赖项函数（「可依赖项」）</li>
+<li>获取函数返回的结果</li>
+<li>把函数返回的结果赋值给<em>路径操作函数</em>的参数</li>
+</ul>
+<p>无需创建专门的类，并将之传递给 <strong>FastAPI</strong> 以进行「注册」或执行类似的操作</p>
+<p>这样，只编写一次代码，<strong>FastAPI</strong> 就可以为多个<em>路径操作</em>共享这段代码 。</p>
+<h2 id="在路径操作装饰器中添加-dependencies-参数">在路径操作装饰器中添加 <code>dependencies</code> 参数</h2>
+<p><em>路径操作装饰器</em>支持可选参数 ~ <code>dependencies</code>。</p>
+<p>该参数的值是由 <code>Depends()</code> 组成的 <code>list</code>：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">fastapi</span> <span style="color:#000;font-weight:bold">import</span> Depends, FastAPI, Header, HTTPException
+</span></span><span style="display:flex;"><span>app <span style="color:#000;font-weight:bold">=</span> FastAPI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">verify_token</span>(x_token: <span style="color:#0086b3">str</span> <span style="color:#000;font-weight:bold">=</span> Header(<span style="color:#000;font-weight:bold">...</span>)):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> x_token <span style="color:#000;font-weight:bold">!=</span> <span style="color:#d14">&#34;fake-super-secret-token&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">raise</span> HTTPException(status_code<span style="color:#000;font-weight:bold">=</span><span style="color:#099">400</span>, detail<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;X-Token header invalid&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">verify_key</span>(x_key: <span style="color:#0086b3">str</span> <span style="color:#000;font-weight:bold">=</span> Header(<span style="color:#000;font-weight:bold">...</span>)):
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> x_key <span style="color:#000;font-weight:bold">!=</span> <span style="color:#d14">&#34;fake-super-secret-key&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">raise</span> HTTPException(status_code<span style="color:#000;font-weight:bold">=</span><span style="color:#099">400</span>, detail<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;X-Key header invalid&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> x_key
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#3c5d5d;font-weight:bold">@app</span><span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;/items/&#34;</span>, dependencies<span style="color:#000;font-weight:bold">=</span>[Depends(verify_token), Depends(verify_key)])
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">read_items</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> [{<span style="color:#d14">&#34;item&#34;</span>: <span style="color:#d14">&#34;Foo&#34;</span>}, {<span style="color:#d14">&#34;item&#34;</span>: <span style="color:#d14">&#34;Bar&#34;</span>}]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="相对导入import">相对导入<code>import</code></h1>
+<p>一个单点 <code>.</code>表示从当前层级寻找包</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">.dependencies</span> <span style="color:#000;font-weight:bold">import</span> get_token_header
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>两个点 <code>..</code>表示从上一级寻找包</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">..dependencies</span> <span style="color:#000;font-weight:bold">import</span> get_token_header
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>三个点<code>...</code>表示上上一级</p>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/fastapi-4/">Centos部署Fastapi</a></li>
+        
+        <li><a href="/post/fastapi-2/">FastAPI-2</a></li>
+        
+        <li><a href="/post/fastapi-1/">FastAPI</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/fastapi'>FastAPI</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

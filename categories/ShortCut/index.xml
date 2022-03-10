@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>ShortCut - 分类 - 小辣鸡的Hugo</title>
+    <link>http://example.org/categories/ShortCut/</link>
+    <description>ShortCut - 分类 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 14 Oct 2021 20:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/categories/ShortCut/" rel="self" type="application/rss+xml" /><item>
+  <title>Chrome删除重复书签</title>
+  <link>http://example.org/posts/shortcut-2/</link>
+  <pubDate>Thu, 14 Oct 2021 20:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/shortcut-2/</guid>
+  <description><![CDATA[<p>删除重复书签</p>]]></description>
+</item><item>
+  <title>网易云导入Apple Music</title>
+  <link>http://example.org/posts/shortcut-1/</link>
+  <pubDate>Sun, 12 Apr 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/shortcut-1/</guid>
+  <description><![CDATA[<p>暴力猴脚本</p>]]></description>
+</item></channel>
+</rss>

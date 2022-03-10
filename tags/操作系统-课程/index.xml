@@ -1,0 +1,36 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>操作系统-课程 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%AF%BE%E7%A8%8B/</link>
+    <description>操作系统-课程 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Mon, 11 May 2020 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%AF%BE%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+  <title>OS总结 Part-4</title>
+  <link>http://example.org/posts/OS-4/</link>
+  <pubDate>Mon, 11 May 2020 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/OS-4/</guid>
+  <description><![CDATA[<p>设备管理,文件系统</p>]]></description>
+</item><item>
+  <title>OS总结 Part-3</title>
+  <link>http://example.org/posts/OS-3/</link>
+  <pubDate>Mon, 11 May 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/OS-3/</guid>
+  <description><![CDATA[<p>存储管理</p>]]></description>
+</item><item>
+  <title>OS总结 Part-2</title>
+  <link>http://example.org/posts/OS-2/</link>
+  <pubDate>Sat, 02 May 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/OS-2/</guid>
+  <description><![CDATA[<p>绪论,进程</p>]]></description>
+</item><item>
+  <title>开机过程中的操作系统</title>
+  <link>http://example.org/posts/OS-1/</link>
+  <pubDate>Sun, 19 Apr 2020 00:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/OS-1/</guid>
+  <description><![CDATA[<p>今天听操作系统课的时候听到老师简单讲了几句计算机开机的过程,提到了GRUB,我一听,这不是我当初装双系统折腾过的嘛,就好奇去搜了一下开机过程OS的过程,在这里记录一下</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>腾讯云COS加速静态资源 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="6.7-心情不太好,没学习新知识&hellip;但优化了一下静态网站的速度
+6.8-今天改了一天论文,整体重复率降到了30嘿嘿,再稍微改一改,就可以快乐毕业啦(终于完成了毕业论文!)
+昨天这篇blog也没写完,只好今天发了" />
+<meta name="keywords" content="腾讯云COS" /><meta itemprop="name" content="腾讯云COS加速静态资源">
+<meta itemprop="description" content="6.7-心情不太好,没学习新知识&hellip;但优化了一下静态网站的速度
+6.8-今天改了一天论文,整体重复率降到了30嘿嘿,再稍微改一改,就可以快乐毕业啦(终于完成了毕业论文!)
+昨天这篇blog也没写完,只好今天发了"><meta itemprop="datePublished" content="2020-06-08T22:30:00+00:00" />
+<meta itemprop="dateModified" content="2020-06-08T22:30:00+00:00" />
+<meta itemprop="wordCount" content="1552"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="腾讯云COS," /><meta property="og:title" content="腾讯云COS加速静态资源" />
+<meta property="og:description" content="6.7-心情不太好,没学习新知识&hellip;但优化了一下静态网站的速度
+6.8-今天改了一天论文,整体重复率降到了30嘿嘿,再稍微改一改,就可以快乐毕业啦(终于完成了毕业论文!)
+昨天这篇blog也没写完,只好今天发了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/hexo-1/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-06-08T22:30:00+00:00" />
+<meta property="article:modified_time" content="2020-06-08T22:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="腾讯云COS加速静态资源"/>
+<meta name="twitter:description" content="6.7-心情不太好,没学习新知识&hellip;但优化了一下静态网站的速度
+6.8-今天改了一天论文,整体重复率降到了30嘿嘿,再稍微改一改,就可以快乐毕业啦(终于完成了毕业论文!)
+昨天这篇blog也没写完,只好今天发了"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/hexo-1/" /><link rel="prev" href="http://example.org/posts/CO-4/" /><link rel="next" href="http://example.org/posts/paper-2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "腾讯云COS加速静态资源",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/hexo-1\/"
+    },"genre": "posts","keywords": "腾讯云COS","wordcount":  1552 ,
+    "url": "http:\/\/example.org\/posts\/hexo-1\/","datePublished": "2020-06-08T22:30:00+00:00","dateModified": "2020-06-08T22:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">腾讯云COS加速静态资源</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/HEXO/"><i class="far fa-folder fa-fw"></i>HEXO</a></span></div>
+      <div class="post-meta-line"><span title=2020-06-08&#32;22:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-08" >2020-06-08</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1552 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#需求背景">需求背景</a></li>
+    <li><a href="#对象存储">对象存储</a></li>
+    <li><a href="#腾讯云cos">腾讯云COS</a>
+      <ul>
+        <li><a href="#方案1-整体部署">方案1-整体部署</a>
+          <ul>
+            <li><a href="#安装插件">安装插件</a></li>
+            <li><a href="#配置文件">配置文件</a></li>
+            <li><a href="#generate-deploy">Generate-Deploy</a></li>
+            <li><a href="#坑">坑</a></li>
+          </ul>
+        </li>
+        <li><a href="#方案2-静态资源加速">方案2-静态资源加速</a>
+          <ul>
+            <li><a href="#跨域访问">跨域访问</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>6.7-心情不太好,没学习新知识&hellip;但优化了一下静态网站的速度
+6.8-今天改了一天论文,整体重复率降到了30嘿嘿,再稍微改一改,就可以快乐毕业啦(终于完成了毕业论文!)
+昨天这篇blog也没写完,只好今天发了</p>
+<h1 id="需求背景">需求背景</h1>
+<p>由于之前hexo博客的整体资源都挂在了GitHub上,由于其与生俱来的网络速度慢,导致blog中观看图片的体验极差,我的很多&quot;技术&quot;(辣鸡)blog都有很多图片&hellip;所以,还是赶紧尽早优化吧
+首先我想到了blog挂在云服务器上,但是价格好贵啊&hellip;而且等于重新配置一个LinuxOS的环境,想想都头疼,所以pass,去网上搜了一下,发现现在很火的对象存储似乎不错嗷,去七牛云看了一眼,有了一点思路,因为之前域名是腾讯云上买的,索性就搞腾讯云COS了,以后方便一站式管理(虽然也没方便多少),并且腾讯云价格很便宜!(穷才是真正的原因)</p>
+<h1 id="对象存储">对象存储</h1>
+<p>对象存储主要就是指存储互联网时代&quot;非结构化&quot;数据的平台,图片,视频,音乐这类的</p>
+<ul>
+<li>基于云存储的概念，可以快速扩容，而且对于数据的容量的上限没有限制。这样就可以很好地应对爆发式的大量文件上传。</li>
+<li>解决了个人服务器带宽小，处理能力有限，文件读取慢的弊端，将所有的有效资源都用于数据的交互。而把静态文件的请求交给了COS对象存储进行处理。</li>
+<li>COS的带宽相较于个人服务器的带宽更大，在提升页面打开速度，文件资源下载时，以及应对高并发访问，用户体验有很大提升。</li>
+</ul>
+<p>综上所述,对象存储是个好东西,以后很多项目都会用上</p>
+<h1 id="腾讯云cos">腾讯云COS</h1>
+<h2 id="方案1-整体部署">方案1-整体部署</h2>
+<p>首先第一种解决方案是最好的,就是将hexo整体部署在COS上,这样就完全是起飞的速度,但是唯一的难点就是绑定的域名需要备案&hellip;我查了好久得出了一个结论&hellip;2020年,域名备案难于上青天,不光时间周期长,还要有一个大于六个月的云服务器,并且备案网站不可以带有&quot;博客&quot;字样&hellip;我大中华真的各种迷惑操作
+如果有备案域名就好说了,blog上传也方便</p>
+<h3 id="安装插件">安装插件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm install hexo-deployer-qcloud-cos --save
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置文件">配置文件</h3>
+<p>打开/_config.yml文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">deploy:
+</span></span><span class="line"><span class="cl">  type: qcloud-cos
+</span></span><span class="line"><span class="cl">  cosRegion: ap-chengdu
+</span></span><span class="line"><span class="cl">  cosSecretId: 
+</span></span><span class="line"><span class="cl">  cosSecretKey: 
+</span></span><span class="line"><span class="cl">  cosBucket: work-blog
+</span></span><span class="line"><span class="cl">  cosAppid:  1257072316
+</span></span><span class="line"><span class="cl">  remotePath: 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中type：照填。
+cosRegion：根据你选择的位置填写。（可从储存桶基本信息所属地域查看）
+cosSecretId：填写之前创建的密钥id
+cosSecretKey：填写id对应的key
+cosBucket：填写储存同的名称
+cosAppid：填写空间名称中的数字</p>
+<h3 id="generate-deploy">Generate-Deploy</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hexo g &amp;&amp; hexo d
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后最后绑定一下域名,就完事了</p>
+<h3 id="坑">坑</h3>
+<p>记录一下坑,一开始COS不让绑定域名,我想你这边不让未备案绑定,那我去用域名去解析你好啦,与此同时踩坑之旅也开始啦!
+不得不说还是我想的太简单,域名配置解析之后,COS不让访问,报错未解析的CNAME,应该是COS那边做了防解析
+并且ssl证书也对不上,ssl证书是对应于tencent的,而不是我自己的域名
+所以&hellip;还是老老实实用GitHub Pages吧</p>
+<h2 id="方案2-静态资源加速">方案2-静态资源加速</h2>
+<p>像我这种没有备案域名的普通小辣鸡,只好另辟蹊径了
+方法很简单,把图片文件都放到COS上,blog中图片放资源链接
+最后我把js,css,images都放上了,并且把blog源码改了一下,就完事啦!</p>
+<h3 id="跨域访问">跨域访问</h3>
+<p>在COS中css等文件中一些路径可以继续使用相对地址
+而在使用awesome-font时,可能会发生跨域访问错误
+这时需要在&quot;基础设置&quot; -&gt; &ldquo;跨域访问CORS设置&rdquo; 中进行设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">来源 Origin: * (填写一个&#34;*&#34;,下同)
+</span></span><span class="line"><span class="cl">操作 Methods: PUT GET POST DELETE HEAD(全部勾选)
+</span></span><span class="line"><span class="cl">Allow-Headers: *
+</span></span><span class="line"><span class="cl">Expose-Headers: *
+</span></span><span class="line"><span class="cl">超时 Max-Age: 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>就解决啦,最后blog的访问速度起飞!解决了困扰我好久的问题</p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-06-08&#32;22:30:00>更新于 2020-06-08</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91COS/">腾讯云COS</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/CO-4/" class="prev" rel="prev" title="计算机组成原理 Part-4"><i class="fas fa-angle-left fa-fw"></i>计算机组成原理 Part-4</a>
+      <a href="/posts/paper-2/" class="next" rel="next" title="Origin使用方法">Origin使用方法<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

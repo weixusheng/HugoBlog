@@ -1,0 +1,3190 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 小辣鸡的Hugo</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 04 Mar 2022 22:30:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建Hugo</title>
+      <link>/post/hugo/</link>
+      <pubDate>Fri, 04 Mar 2022 22:30:00 +0000</pubDate>
+      
+      <guid>/post/hugo/</guid>
+      <description>&lt;p&gt;搭建Hugo&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>curl常用命令</title>
+      <link>/post/curl%E5%B8%B8%E7%94%A8/</link>
+      <pubDate>Thu, 03 Mar 2022 23:05:00 +0000</pubDate>
+      
+      <guid>/post/curl%E5%B8%B8%E7%94%A8/</guid>
+      <description>&lt;p&gt;curl常用命令&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>crond</title>
+      <link>/post/docker-9/</link>
+      <pubDate>Thu, 03 Mar 2022 23:03:00 +0000</pubDate>
+      
+      <guid>/post/docker-9/</guid>
+      <description>&lt;p&gt;Linux下用来周期性的执行任务&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>构建前后端服务组</title>
+      <link>/post/docker-8/</link>
+      <pubDate>Thu, 03 Mar 2022 23:00:00 +0000</pubDate>
+      
+      <guid>/post/docker-8/</guid>
+      <description>&lt;p&gt;构建前后端服务组&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>centos安装conda</title>
+      <link>/post/centos%E5%AE%89%E8%A3%85conda/</link>
+      <pubDate>Thu, 03 Mar 2022 21:40:00 +0000</pubDate>
+      
+      <guid>/post/centos%E5%AE%89%E8%A3%85conda/</guid>
+      <description>&lt;p&gt;整点没用的&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Jenkins入门</title>
+      <link>/post/jenkins/</link>
+      <pubDate>Thu, 03 Mar 2022 20:30:00 +0000</pubDate>
+      
+      <guid>/post/jenkins/</guid>
+      <description>&lt;p&gt;初识Jenkins&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQLAlchemy断连</title>
+      <link>/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Tue, 01 Mar 2022 23:30:00 +0000</pubDate>
+      
+      <guid>/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/</guid>
+      <description>&lt;p&gt;SQLAlchemy持续性断连&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>APScheduler的使用</title>
+      <link>/post/apschedule/</link>
+      <pubDate>Fri, 11 Feb 2022 23:00:00 +0000</pubDate>
+      
+      <guid>/post/apschedule/</guid>
+      <description>&lt;p&gt;定时任务框架的使用&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>yield的用法</title>
+      <link>/post/yield/</link>
+      <pubDate>Fri, 11 Feb 2022 23:00:00 +0000</pubDate>
+      
+      <guid>/post/yield/</guid>
+      <description>&lt;p&gt;Python Generator&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue-TS入门</title>
+      <link>/post/vue-ts/</link>
+      <pubDate>Thu, 10 Feb 2022 23:00:00 +0000</pubDate>
+      
+      <guid>/post/vue-ts/</guid>
+      <description>&lt;p&gt;Vue + TS + element-plus + Vite 搭建管理项目&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>爬虫代理池的使用</title>
+      <link>/post/python-proxy/</link>
+      <pubDate>Wed, 09 Feb 2022 23:00:00 +0000</pubDate>
+      
+      <guid>/post/python-proxy/</guid>
+      <description>&lt;p&gt;requests-proxies&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Centos部署Fastapi</title>
+      <link>/post/fastapi-4/</link>
+      <pubDate>Tue, 08 Feb 2022 23:00:00 +0000</pubDate>
+      
+      <guid>/post/fastapi-4/</guid>
+      <description>&lt;p&gt;Centos + gunicorn + Supervisor 部署 Fastapi&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>进度条显示tqdm</title>
+      <link>/post/python-tqdm/</link>
+      <pubDate>Sun, 06 Feb 2022 21:00:00 +0000</pubDate>
+      
+      <guid>/post/python-tqdm/</guid>
+      <description>&lt;p&gt;进度条tqdm的使用&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>依赖注入</title>
+      <link>/post/python-di/</link>
+      <pubDate>Fri, 04 Feb 2022 12:00:00 +0000</pubDate>
+      
+      <guid>/post/python-di/</guid>
+      <description>&lt;p&gt;在知乎上看到了一篇讲 依赖注入 非常好的文章,在这里分享一下&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>classmethod修饰符</title>
+      <link>/post/python-classmethod/</link>
+      <pubDate>Mon, 31 Jan 2022 21:00:00 +0000</pubDate>
+      
+      <guid>/post/python-classmethod/</guid>
+      <description>&lt;p&gt;Python的classmethod修饰符使用&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FastAPI-2</title>
+      <link>/post/fastapi-2/</link>
+      <pubDate>Sun, 30 Jan 2022 21:00:00 +0000</pubDate>
+      
+      <guid>/post/fastapi-2/</guid>
+      <description>&lt;p&gt;FastAPI-文档&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue基础入门</title>
+      <link>/post/vue/</link>
+      <pubDate>Wed, 19 Jan 2022 23:00:00 +0000</pubDate>
+      
+      <guid>/post/vue/</guid>
+      <description>&lt;p&gt;入门Vue!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>推送到Github</title>
+      <link>/post/git/</link>
+      <pubDate>Thu, 30 Dec 2021 23:00:00 +0000</pubDate>
+      
+      <guid>/post/git/</guid>
+      <description>&lt;p&gt;讲个笑话,都快2202年了,我还不会推新库&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OneDrive创建文件同步</title>
+      <link>/post/win-23/</link>
+      <pubDate>Thu, 30 Dec 2021 22:00:00 +0000</pubDate>
+      
+      <guid>/post/win-23/</guid>
+      <description>&lt;p&gt;OneDrive小技巧&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu搭建FTP</title>
+      <link>/post/ubuntu-33/</link>
+      <pubDate>Thu, 30 Dec 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-33/</guid>
+      <description>&lt;p&gt;Ubuntu20.04搭建FTP服务&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Pyhton实现下载PDF</title>
+      <link>/post/python-10/</link>
+      <pubDate>Thu, 30 Dec 2021 19:00:00 +0000</pubDate>
+      
+      <guid>/post/python-10/</guid>
+      <description>&lt;p&gt;多线程下载PDF文件&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AppleMusic导入全量网易云</title>
+      <link>/post/win-22/</link>
+      <pubDate>Wed, 29 Dec 2021 21:00:00 +0000</pubDate>
+      
+      <guid>/post/win-22/</guid>
+      <description>&lt;p&gt;便捷小脚本&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FastAPI</title>
+      <link>/post/fastapi-1/</link>
+      <pubDate>Tue, 28 Dec 2021 21:00:00 +0000</pubDate>
+      
+      <guid>/post/fastapi-1/</guid>
+      <description>&lt;p&gt;FastAPI-文档&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>gitignore配置</title>
+      <link>/post/gitignore/</link>
+      <pubDate>Sat, 25 Dec 2021 23:00:00 +0000</pubDate>
+      
+      <guid>/post/gitignore/</guid>
+      <description>&lt;p&gt;gitignore文件的使用&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu设定定时任务</title>
+      <link>/post/ubuntu-31/</link>
+      <pubDate>Thu, 23 Dec 2021 23:00:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-31/</guid>
+      <description>&lt;p&gt;Ubuntu crontab&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>云服务器部署hexo</title>
+      <link>/post/ubuntu-32/</link>
+      <pubDate>Mon, 20 Dec 2021 21:00:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-32/</guid>
+      <description>&lt;p&gt;Nginx 部署 hexo&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>部署Docker</title>
+      <link>/post/docker-6/</link>
+      <pubDate>Sun, 19 Dec 2021 23:00:00 +0000</pubDate>
+      
+      <guid>/post/docker-6/</guid>
+      <description>&lt;p&gt;Docker 部署 Python 和 Mysql 环境&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>qrcp &amp; SwitchHosts</title>
+      <link>/post/win-11/</link>
+      <pubDate>Sun, 19 Dec 2021 21:00:00 +0000</pubDate>
+      
+      <guid>/post/win-11/</guid>
+      <description>&lt;p&gt;便捷小工具&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>安装scoop包管理器</title>
+      <link>/post/win-12/</link>
+      <pubDate>Sat, 18 Dec 2021 22:00:00 +0000</pubDate>
+      
+      <guid>/post/win-12/</guid>
+      <description>&lt;p&gt;scoop&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python多线程</title>
+      <link>/post/python-9/</link>
+      <pubDate>Sat, 18 Dec 2021 21:00:00 +0000</pubDate>
+      
+      <guid>/post/python-9/</guid>
+      <description>&lt;p&gt;多线程 / 线程池&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>结构型模式</title>
+      <link>/post/pattern-5/</link>
+      <pubDate>Sat, 20 Nov 2021 20:05:00 +0000</pubDate>
+      
+      <guid>/post/pattern-5/</guid>
+      <description>&lt;p&gt;PY设计模式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>行为型模式</title>
+      <link>/post/pattern-4/</link>
+      <pubDate>Sat, 20 Nov 2021 20:04:00 +0000</pubDate>
+      
+      <guid>/post/pattern-4/</guid>
+      <description>&lt;p&gt;PY设计模式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python设计模式</title>
+      <link>/post/pattern-1/</link>
+      <pubDate>Sat, 20 Nov 2021 20:01:00 +0000</pubDate>
+      
+      <guid>/post/pattern-1/</guid>
+      <description>&lt;p&gt;PY设计模式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>设计模式与面向对象</title>
+      <link>/post/pattern-2/</link>
+      <pubDate>Sat, 20 Nov 2021 20:01:00 +0000</pubDate>
+      
+      <guid>/post/pattern-2/</guid>
+      <description>&lt;p&gt;PY设计模式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>创建型模式</title>
+      <link>/post/pattern-3/</link>
+      <pubDate>Sat, 20 Nov 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/pattern-3/</guid>
+      <description>&lt;p&gt;PY设计模式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>openpyxl基础操作</title>
+      <link>/post/openpyxl/</link>
+      <pubDate>Mon, 15 Nov 2021 21:00:00 +0000</pubDate>
+      
+      <guid>/post/openpyxl/</guid>
+      <description>&lt;p&gt;openpyxl操作Excel&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>搭建TF-GPU环境</title>
+      <link>/post/build_ner/</link>
+      <pubDate>Wed, 10 Nov 2021 21:00:00 +0000</pubDate>
+      
+      <guid>/post/build_ner/</guid>
+      <description>&lt;p&gt;搭建TF-GPU环境&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>余弦相似度推荐系统</title>
+      <link>/post/python-7/</link>
+      <pubDate>Tue, 26 Oct 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/python-7/</guid>
+      <description>&lt;p&gt;基于用户的(user-base)协同过滤推荐系统(cosine_similarity)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>协同过滤推荐系统</title>
+      <link>/post/python-6/</link>
+      <pubDate>Mon, 25 Oct 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/python-6/</guid>
+      <description>&lt;p&gt;基于用户的(user-base)协同过滤推荐系统&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>自动化接口监控</title>
+      <link>/post/python-4/</link>
+      <pubDate>Thu, 21 Oct 2021 21:00:00 +0000</pubDate>
+      
+      <guid>/post/python-4/</guid>
+      <description>&lt;p&gt;爬虫接口监控&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>配置云服务器Python环境</title>
+      <link>/post/ubuntu-30/</link>
+      <pubDate>Wed, 20 Oct 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-30/</guid>
+      <description>&lt;p&gt;远程服务器开发环境&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python创建excel文件</title>
+      <link>/post/python-3/</link>
+      <pubDate>Sat, 16 Oct 2021 21:00:00 +0000</pubDate>
+      
+      <guid>/post/python-3/</guid>
+      <description>&lt;p&gt;xlwt写入Excel文件&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python发送邮件</title>
+      <link>/post/python-5/</link>
+      <pubDate>Sat, 16 Oct 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/python-5/</guid>
+      <description>&lt;p&gt;使用第三方SMTP发送HTML邮件&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Chrome删除重复书签</title>
+      <link>/post/shortcut-2/</link>
+      <pubDate>Thu, 14 Oct 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/shortcut-2/</guid>
+      <description>&lt;p&gt;删除重复书签&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python自动化办公</title>
+      <link>/post/python-2/</link>
+      <pubDate>Mon, 11 Oct 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/python-2/</guid>
+      <description>&lt;p&gt;读写Excel.写入Word&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关联Jupyter Notebook和conda</title>
+      <link>/post/jupyter/</link>
+      <pubDate>Fri, 17 Sep 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/jupyter/</guid>
+      <description>&lt;p&gt;Jupyter Notebook和conda&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQLAlchemy</title>
+      <link>/post/python_sql-1/</link>
+      <pubDate>Wed, 15 Sep 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/python_sql-1/</guid>
+      <description>&lt;p&gt;ORM sqlalchemy&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQLAlchemy-2</title>
+      <link>/post/python_sql-2/</link>
+      <pubDate>Wed, 15 Sep 2021 20:00:00 +0000</pubDate>
+      
+      <guid>/post/python_sql-2/</guid>
+      <description>&lt;p&gt;ORM sqlalchemy&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>招标流程图</title>
+      <link>/post/bid/</link>
+      <pubDate>Mon, 06 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>/post/bid/</guid>
+      <description>&lt;p&gt;几种招标流程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git命令-3</title>
+      <link>/post/git3/</link>
+      <pubDate>Sun, 05 Sep 2021 10:00:00 +0000</pubDate>
+      
+      <guid>/post/git3/</guid>
+      <description>&lt;p&gt;Git常用命令&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>初识Junit</title>
+      <link>/post/junit-1/</link>
+      <pubDate>Tue, 11 May 2021 10:00:00 +0000</pubDate>
+      
+      <guid>/post/junit-1/</guid>
+      <description>&lt;p&gt;了解一下单元测试!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Maven知识点</title>
+      <link>/post/maven/</link>
+      <pubDate>Fri, 07 May 2021 12:00:00 +0000</pubDate>
+      
+      <guid>/post/maven/</guid>
+      <description>&lt;p&gt;Java学学学!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SSM初识</title>
+      <link>/post/ssm-1/</link>
+      <pubDate>Fri, 07 May 2021 10:00:00 +0000</pubDate>
+      
+      <guid>/post/ssm-1/</guid>
+      <description>&lt;p&gt;突然准备接一个项目的运维了&amp;hellip;技术栈是SSM&lt;!-- raw HTML omitted --&gt;
+五一这几天一直在搬家,今天开始搞吧&lt;!-- raw HTML omitted --&gt;
+Java学学学&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>EPC业务模式</title>
+      <link>/post/epc/</link>
+      <pubDate>Tue, 20 Apr 2021 22:59:00 +0000</pubDate>
+      
+      <guid>/post/epc/</guid>
+      <description>&lt;p&gt;工程采购业务模式EPC&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SQL常用命令</title>
+      <link>/post/sql/</link>
+      <pubDate>Sun, 18 Apr 2021 23:30:00 +0000</pubDate>
+      
+      <guid>/post/sql/</guid>
+      <description>&lt;p&gt;Mosh/SQL&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git命令-2</title>
+      <link>/post/git-2/</link>
+      <pubDate>Sat, 10 Apr 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/git-2/</guid>
+      <description>&lt;p&gt;Mosh/Git&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git命令</title>
+      <link>/post/git-1/</link>
+      <pubDate>Tue, 06 Apr 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/git-1/</guid>
+      <description>&lt;p&gt;Mosh/Git&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java简单入门</title>
+      <link>/post/java-1/</link>
+      <pubDate>Wed, 31 Mar 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/java-1/</guid>
+      <description>&lt;p&gt;初识java&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>nodejs入门</title>
+      <link>/post/nodejs-2/</link>
+      <pubDate>Wed, 31 Mar 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/nodejs-2/</guid>
+      <description>&lt;p&gt;Mosh/初识nodejs&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Javascript基础 Part-2</title>
+      <link>/post/js-2/</link>
+      <pubDate>Sun, 28 Mar 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/js-2/</guid>
+      <description>&lt;p&gt;常用命令&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Webpack基础概念</title>
+      <link>/post/nodejs-1/</link>
+      <pubDate>Fri, 26 Mar 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/nodejs-1/</guid>
+      <description>&lt;p&gt;JS模块化打包&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Radis架构模式</title>
+      <link>/post/docker-5/</link>
+      <pubDate>Thu, 25 Mar 2021 22:40:00 +0000</pubDate>
+      
+      <guid>/post/docker-5/</guid>
+      <description>&lt;p&gt;搭建Radis cluster预备知识&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VMware安装Centos</title>
+      <link>/post/docker-4/</link>
+      <pubDate>Thu, 25 Mar 2021 20:40:00 +0000</pubDate>
+      
+      <guid>/post/docker-4/</guid>
+      <description>&lt;p&gt;VMware安装Centos集群&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker网络模式</title>
+      <link>/post/docker-3/</link>
+      <pubDate>Wed, 24 Mar 2021 21:50:00 +0000</pubDate>
+      
+      <guid>/post/docker-3/</guid>
+      <description>&lt;p&gt;Docker网络模式&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Dockerfile构建镜像</title>
+      <link>/post/docker-2/</link>
+      <pubDate>Mon, 22 Mar 2021 20:50:00 +0000</pubDate>
+      
+      <guid>/post/docker-2/</guid>
+      <description>&lt;p&gt;Dockerfile&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker常用命令</title>
+      <link>/post/docker-1/</link>
+      <pubDate>Mon, 22 Mar 2021 20:40:00 +0000</pubDate>
+      
+      <guid>/post/docker-1/</guid>
+      <description>&lt;p&gt;Docker常用命令&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Javascript基础 Part-2</title>
+      <link>/post/js-1/</link>
+      <pubDate>Mon, 22 Mar 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/js-1/</guid>
+      <description>&lt;p&gt;常用命令&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Apache部署Flask</title>
+      <link>/post/flask/</link>
+      <pubDate>Tue, 16 Mar 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/flask/</guid>
+      <description>&lt;p&gt;Apache部署Flask过程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>selenium4.1新版</title>
+      <link>/post/selenium_update/</link>
+      <pubDate>Tue, 02 Mar 2021 18:40:00 +0000</pubDate>
+      
+      <guid>/post/selenium_update/</guid>
+      <description>&lt;p&gt;selenium4.1新版更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python(NCRE)</title>
+      <link>/post/python-1/</link>
+      <pubDate>Mon, 01 Mar 2021 21:30:00 +0000</pubDate>
+      
+      <guid>/post/python-1/</guid>
+      <description>&lt;p&gt;二级Python&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-序列模型</title>
+      <link>/post/nndl-22/</link>
+      <pubDate>Thu, 25 Feb 2021 21:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-22/</guid>
+      <description>&lt;p&gt;循环神经网络(Andrew Ng)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Shell-字符串正则提取</title>
+      <link>/post/shell-2/</link>
+      <pubDate>Tue, 23 Feb 2021 22:30:00 +0000</pubDate>
+      
+      <guid>/post/shell-2/</guid>
+      <description>&lt;p&gt;正则表达式
+我吐辣&amp;hellip;正则和shell真是折磨王了
+从昨晚折磨我到今天上午
+还好写出来了,要是再搞不出来真要自闭了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;for&lt;/span&gt; x in *;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;var&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color:#0086b3&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;$x&lt;/span&gt;|egrep -o &lt;span style=&#34;color:#d14&#34;&gt;&amp;#39;[^img_.png]&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;;&lt;span style=&#34;color:#008080&#34;&gt;var&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;$((&lt;/span&gt;&lt;span style=&#34;color:#099&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#008080&#34;&gt;$var&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;))&lt;/span&gt;.png; mv &lt;span style=&#34;color:#008080&#34;&gt;$x&lt;/span&gt; &lt;span style=&#34;color:#008080&#34;&gt;$var&lt;/span&gt;; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Matplotlib 进阶</title>
+      <link>/post/matplotlib-2/</link>
+      <pubDate>Mon, 22 Feb 2021 22:30:00 +0000</pubDate>
+      
+      <guid>/post/matplotlib-2/</guid>
+      <description>&lt;p&gt;Python数据可视化&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Matplotlib 绘制基本图表</title>
+      <link>/post/matplotlib-1/</link>
+      <pubDate>Sun, 21 Feb 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/matplotlib-1/</guid>
+      <description>&lt;p&gt;Python数据可视化&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-RNN</title>
+      <link>/post/nndl-21/</link>
+      <pubDate>Tue, 16 Feb 2021 12:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-21/</guid>
+      <description>&lt;p&gt;循环神经网络&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git master转为main</title>
+      <link>/post/github-5/</link>
+      <pubDate>Mon, 08 Feb 2021 23:06:00 +0000</pubDate>
+      
+      <guid>/post/github-5/</guid>
+      <description>因为前段时间的BLM运动,Github就把master改名成了main,因为master有奴隶主的意思&amp;hellip;
+这就导致本地分支和main不统一,无法push 所以只能通过合并分支来解决
+1 2 3 4 5 6 7 8 9 10  git checkout -b main # Switched to a new branch &amp;#39;main&amp;#39; git branch # * main # master git merge master # 将master分支合并到main上 # Already up to date. git pull origin main --allow-unrelated-histories # git pull origin main会报错：refusing to merge unrelated histories git push origin main   </description>
+    </item>
+    
+    <item>
+      <title>BT文件下载</title>
+      <link>/post/win-10/</link>
+      <pubDate>Mon, 08 Feb 2021 22:44:00 +0000</pubDate>
+      
+      <guid>/post/win-10/</guid>
+      <description>&lt;p&gt;加快BT文件下载速度&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Pyside2程序打包</title>
+      <link>/post/qt-2/</link>
+      <pubDate>Mon, 08 Feb 2021 18:40:00 +0000</pubDate>
+      
+      <guid>/post/qt-2/</guid>
+      <description>&lt;p&gt;Pyinstaller实现程序打包&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Pyside2开发第一个GUI程序</title>
+      <link>/post/qt-1/</link>
+      <pubDate>Mon, 08 Feb 2021 17:40:00 +0000</pubDate>
+      
+      <guid>/post/qt-1/</guid>
+      <description>&lt;p&gt;monitor_control&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>跨平台同步书签</title>
+      <link>/post/win-9/</link>
+      <pubDate>Sun, 31 Jan 2021 22:44:00 +0000</pubDate>
+      
+      <guid>/post/win-9/</guid>
+      <description>&lt;p&gt;Firefox/Chrome利用WebDav同步书签&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据库系统概论 SQL-2</title>
+      <link>/post/db-8/</link>
+      <pubDate>Sat, 30 Jan 2021 21:15:00 +0000</pubDate>
+      
+      <guid>/post/db-8/</guid>
+      <description>&lt;p&gt;SQL大礼包&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-神经风格迁移</title>
+      <link>/post/nndl-20/</link>
+      <pubDate>Fri, 29 Jan 2021 23:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-20/</guid>
+      <description>&lt;p&gt;Style Transfer&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据库系统概论 SQL-1</title>
+      <link>/post/db-7/</link>
+      <pubDate>Fri, 29 Jan 2021 21:15:00 +0000</pubDate>
+      
+      <guid>/post/db-7/</guid>
+      <description>&lt;p&gt;SQL大礼包&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAC代理规则</title>
+      <link>/post/win-8/</link>
+      <pubDate>Fri, 29 Jan 2021 01:44:00 +0000</pubDate>
+      
+      <guid>/post/win-8/</guid>
+      <description>&lt;p&gt;编辑 PAC.txt 代理规则&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-人脸识别</title>
+      <link>/post/nndl-19/</link>
+      <pubDate>Thu, 28 Jan 2021 22:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-19/</guid>
+      <description>&lt;p&gt;Object Detection&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Shell语法</title>
+      <link>/post/shell-1/</link>
+      <pubDate>Wed, 27 Jan 2021 22:30:00 +0000</pubDate>
+      
+      <guid>/post/shell-1/</guid>
+      <description>&lt;p&gt;Shell教程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-目标检测</title>
+      <link>/post/nndl-18/</link>
+      <pubDate>Mon, 25 Jan 2021 22:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-18/</guid>
+      <description>&lt;p&gt;Object Detection&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>卷积的理解</title>
+      <link>/post/nndl-17/</link>
+      <pubDate>Mon, 25 Jan 2021 21:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-17/</guid>
+      <description>&lt;p&gt;Convolution&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ResNet--人脸识别Demo</title>
+      <link>/post/nndl-16/</link>
+      <pubDate>Sun, 24 Jan 2021 21:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-16/</guid>
+      <description>&lt;p&gt;ResNet&amp;ndash;Face Recognation&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-神经网络模型实例</title>
+      <link>/post/nndl-15/</link>
+      <pubDate>Thu, 21 Jan 2021 21:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-15/</guid>
+      <description>&lt;p&gt;Case Studies&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-CNN实例</title>
+      <link>/post/nndl-14/</link>
+      <pubDate>Wed, 20 Jan 2021 21:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-14/</guid>
+      <description>&lt;p&gt;CNN Example&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-卷积神经网络</title>
+      <link>/post/nndl-13/</link>
+      <pubDate>Tue, 19 Jan 2021 21:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-13/</guid>
+      <description>&lt;p&gt;Convolutional Neural Networks&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-梯度下降的优化算法</title>
+      <link>/post/nndl-12/</link>
+      <pubDate>Mon, 18 Jan 2021 21:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-12/</guid>
+      <description>&lt;p&gt;Optimization algorithms&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>What is AI</title>
+      <link>/post/what_is_ai/</link>
+      <pubDate>Mon, 18 Jan 2021 20:30:00 +0000</pubDate>
+      
+      <guid>/post/what_is_ai/</guid>
+      <description>&lt;p&gt;吴恩达老师 - &amp;ldquo;What is AI&amp;rdquo;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;运行库安装报错(权限不足)</title>
+      <link>/post/win-7/</link>
+      <pubDate>Sun, 17 Jan 2021 22:44:00 +0000</pubDate>
+      
+      <guid>/post/win-7/</guid>
+      <description>&lt;p&gt;无法打开注册表项 UNKNOWN\Components\…&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-梯度计算</title>
+      <link>/post/nndl-11/</link>
+      <pubDate>Fri, 15 Jan 2021 15:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-11/</guid>
+      <description>&lt;p&gt;Gradients&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-正则化</title>
+      <link>/post/nndl-10/</link>
+      <pubDate>Fri, 15 Jan 2021 13:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-10/</guid>
+      <description>&lt;p&gt;Regularization&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-偏差/方差</title>
+      <link>/post/nndl-9/</link>
+      <pubDate>Wed, 13 Jan 2021 23:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-9/</guid>
+      <description>&lt;p&gt;Bias/Variance&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-深层神经网络</title>
+      <link>/post/nndl-8/</link>
+      <pubDate>Sat, 09 Jan 2021 23:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-8/</guid>
+      <description>&lt;p&gt;Deep Neural Networks&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-反向传播</title>
+      <link>/post/nndl-2/</link>
+      <pubDate>Sat, 09 Jan 2021 23:20:00 +0000</pubDate>
+      
+      <guid>/post/nndl-2/</guid>
+      <description>&lt;p&gt;BackPropagation Algorithm&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-梯度下降</title>
+      <link>/post/nndl-6/</link>
+      <pubDate>Sat, 09 Jan 2021 19:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-6/</guid>
+      <description>&lt;p&gt;Gradient Descent&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-浅层神经网络</title>
+      <link>/post/nndl-7/</link>
+      <pubDate>Fri, 08 Jan 2021 23:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-7/</guid>
+      <description>&lt;p&gt;Shallow neural networks&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo-Mathjax渲染Bug</title>
+      <link>/post/hexo-6/</link>
+      <pubDate>Thu, 07 Jan 2021 22:30:00 +0000</pubDate>
+      
+      <guid>/post/hexo-6/</guid>
+      <description>&lt;p&gt;Hexo Mathjax大括号公式渲染问题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-逻辑回归函数的推导</title>
+      <link>/post/nndl-5/</link>
+      <pubDate>Thu, 07 Jan 2021 19:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-5/</guid>
+      <description>&lt;p&gt;Explanation of logistic regression cost function&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AI-CSP</title>
+      <link>/post/ai-5/</link>
+      <pubDate>Tue, 05 Jan 2021 23:10:00 +0000</pubDate>
+      
+      <guid>/post/ai-5/</guid>
+      <description>&lt;p&gt;Constraint Satisfaction Problems&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AI-Heuristic Algorithm</title>
+      <link>/post/ai-4/</link>
+      <pubDate>Tue, 05 Jan 2021 23:10:00 +0000</pubDate>
+      
+      <guid>/post/ai-4/</guid>
+      <description>&lt;p&gt;heuristic algorithm&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AI-A* Algorithm</title>
+      <link>/post/ai-3/</link>
+      <pubDate>Tue, 05 Jan 2021 20:10:00 +0000</pubDate>
+      
+      <guid>/post/ai-3/</guid>
+      <description>&lt;p&gt;Berkeley CS-188&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AI-Informed Search</title>
+      <link>/post/ai-2/</link>
+      <pubDate>Mon, 04 Jan 2021 23:10:00 +0000</pubDate>
+      
+      <guid>/post/ai-2/</guid>
+      <description>&lt;p&gt;Berkeley CS-188&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-向量化</title>
+      <link>/post/nndl-4/</link>
+      <pubDate>Mon, 04 Jan 2021 19:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-4/</guid>
+      <description>&lt;p&gt;数据的向量化处理以及Python Broadcasting&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL-回归模型</title>
+      <link>/post/nndl-3/</link>
+      <pubDate>Mon, 04 Jan 2021 15:30:00 +0000</pubDate>
+      
+      <guid>/post/nndl-3/</guid>
+      <description>&lt;p&gt;线性回归&amp;amp;逻辑回归&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AI-Uninformed Search</title>
+      <link>/post/ai-1/</link>
+      <pubDate>Sun, 03 Jan 2021 23:10:00 +0000</pubDate>
+      
+      <guid>/post/ai-1/</guid>
+      <description>&lt;p&gt;Berkeley CS-188&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NNDL Overview</title>
+      <link>/post/nndl-1/</link>
+      <pubDate>Sat, 02 Jan 2021 23:10:00 +0000</pubDate>
+      
+      <guid>/post/nndl-1/</guid>
+      <description>&lt;p&gt;今天学习了吴恩达大佬的《neutral network and deep learning》的开头一点点
+感觉真是收获颇丰，首先算是真正意义上稍微理解了神经网络的基本原理，以及深度学习其中蕴含的数学
+如果说硬件进步以及大数据的积累是人工智能进步的直接动力，那么数学就是根本动力
+例如微积分导数来实现实现梯度下降法（Gradient Descent）
+下面开始搬运别人写的笔记,并且加上一些自己的见解&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 数据结构简答题</title>
+      <link>/post/ncepu-10/</link>
+      <pubDate>Fri, 11 Dec 2020 22:41:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-10/</guid>
+      <description>&lt;p&gt;数据结构&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 操作系统简答题</title>
+      <link>/post/ncepu-11/</link>
+      <pubDate>Thu, 10 Dec 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-11/</guid>
+      <description>&lt;p&gt;操作系统&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 图-2(习题)</title>
+      <link>/post/ncepu-9/</link>
+      <pubDate>Mon, 23 Nov 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-9/</guid>
+      <description>&lt;p&gt;图 课后习题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 图(习题)</title>
+      <link>/post/ncepu-8/</link>
+      <pubDate>Tue, 17 Nov 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-8/</guid>
+      <description>&lt;p&gt;图 课后习题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 二叉树&amp;图(习题)</title>
+      <link>/post/ncepu-7/</link>
+      <pubDate>Sun, 15 Nov 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-7/</guid>
+      <description>&lt;p&gt;二叉树&amp;amp;&amp;amp;图 课后习题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 排序</title>
+      <link>/post/ncepu-6/</link>
+      <pubDate>Sat, 14 Nov 2020 18:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-6/</guid>
+      <description>&lt;p&gt;查找 &amp;amp;&amp;amp; 排序基本算法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 图</title>
+      <link>/post/ncepu-5/</link>
+      <pubDate>Wed, 28 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-5/</guid>
+      <description>&lt;p&gt;图基本算法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 二叉树</title>
+      <link>/post/ncepu-4/</link>
+      <pubDate>Sun, 25 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-4/</guid>
+      <description>&lt;p&gt;二叉树基本算法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 单链表(习题)</title>
+      <link>/post/ncepu-3/</link>
+      <pubDate>Wed, 21 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-3/</guid>
+      <description>&lt;p&gt;课后习题-单链表&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 线性表(习题)</title>
+      <link>/post/ncepu-2/</link>
+      <pubDate>Tue, 20 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-2/</guid>
+      <description>&lt;p&gt;课后习题-线性表&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-30</title>
+      <link>/post/leetcode-30/</link>
+      <pubDate>Mon, 19 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-30/</guid>
+      <description>&lt;p&gt;链表&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-31</title>
+      <link>/post/leetcode-31/</link>
+      <pubDate>Mon, 19 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-31/</guid>
+      <description>&lt;p&gt;DP-64.最小路径和&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-29</title>
+      <link>/post/leetcode-29/</link>
+      <pubDate>Sun, 18 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-29/</guid>
+      <description>&lt;p&gt;链表 &amp;amp; 树&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NCEPU 基础算法</title>
+      <link>/post/ncepu-1/</link>
+      <pubDate>Sat, 17 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/ncepu-1/</guid>
+      <description>&lt;p&gt;基础算法整理&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-28</title>
+      <link>/post/leetcode-28/</link>
+      <pubDate>Fri, 16 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-28/</guid>
+      <description>&lt;p&gt;昨天刷了一些树的题,今天来刷图&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-27</title>
+      <link>/post/leetcode-27/</link>
+      <pubDate>Thu, 15 Oct 2020 17:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-27/</guid>
+      <description>&lt;p&gt;最近感觉数学有点搞不动了&amp;hellip;练习册也都做的差不多了
+所以时隔4个月的本辣鸡又来刷leetcode啦,但不是天天刷,只是作为放松,娱乐刷
+吸取了去年算法题的惨痛教训,准备把线性表-二叉树-图的算法都刷一遍,给专业课再上一层保险
+最近越来越发现新换的顶配SurfacePro6简直写代码太舒服啦!2k屏幕让我眼睛舒适,i7+16G的性能释放让我快乐
+(原来的Pro5 i5是真的拉跨&amp;hellip;想从巨硬这里提高生产力,真是要下血本呀)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Map/Set/优先队列 的补充</title>
+      <link>/post/ds-16/</link>
+      <pubDate>Fri, 04 Sep 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/ds-16/</guid>
+      <description>&lt;p&gt;最近发现 Set-Map-优先队列 有许多好用的使用方法,整理一下补充的知识点8!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; fiil()与memset()</title>
+      <link>/post/cpp-8/</link>
+      <pubDate>Thu, 03 Sep 2020 23:05:00 +0000</pubDate>
+      
+      <guid>/post/cpp-8/</guid>
+      <description>&lt;p&gt;fill() 与 memset() 的区别&lt;!-- raw HTML omitted --&gt;
+isalnum() 函数&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-A1068(背包问题)</title>
+      <link>/post/pat-43/</link>
+      <pubDate>Thu, 03 Sep 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-43/</guid>
+      <description>&lt;p&gt;终于搞明白这道题啦!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 54-66</title>
+      <link>/post/pat-42/</link>
+      <pubDate>Thu, 03 Sep 2020 19:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-42/</guid>
+      <description>&lt;p&gt;1054-1066&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>动态规划-基本概念</title>
+      <link>/post/ds-15/</link>
+      <pubDate>Wed, 02 Sep 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/ds-15/</guid>
+      <description>&lt;p&gt;基本概念 | 数塔问题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT典型题 Part-1</title>
+      <link>/post/pat-41/</link>
+      <pubDate>Wed, 02 Sep 2020 19:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-41/</guid>
+      <description>&lt;p&gt;最近几天就总结一下解题套路吧&amp;hellip;毕竟没几天就要考试了,绝不能做一只轻言放弃鸭!(甲级太顶了&amp;hellip;我好菜)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>树状数组</title>
+      <link>/post/ds-13/</link>
+      <pubDate>Wed, 02 Sep 2020 19:59:00 +0000</pubDate>
+      
+      <guid>/post/ds-13/</guid>
+      <description>&lt;p&gt;数据结构-树状数组&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>动态规划 背包问题-1</title>
+      <link>/post/ds-14/</link>
+      <pubDate>Tue, 01 Sep 2020 19:59:00 +0000</pubDate>
+      
+      <guid>/post/ds-14/</guid>
+      <description>&lt;p&gt;花了大半天时间,算是稍微理解了背包问题&lt;!-- raw HTML omitted --&gt;
+甲级题要把我虐穿了&amp;hellip;这两天肝一肝8&amp;hellip;(哭)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo-百度谷歌收录</title>
+      <link>/post/hexo-5/</link>
+      <pubDate>Sun, 30 Aug 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/hexo-5/</guid>
+      <description>&lt;p&gt;将网站内容收录入百度谷歌的搜索引擎&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>WSL2-参考对象类型不支持尝试操作</title>
+      <link>/post/win-5/</link>
+      <pubDate>Sun, 30 Aug 2020 10:44:00 +0000</pubDate>
+      
+      <guid>/post/win-5/</guid>
+      <description>一开始我还以为 WSL2崩了&amp;hellip; 原来重置一下网络就行&amp;hellip;应该是昨天折腾梯子导致的
+在管理员模式下运行命令后重启即可
+1  netsh winsock reset   </description>
+    </item>
+    
+    <item>
+      <title>Win-科学上网</title>
+      <link>/post/win-4/</link>
+      <pubDate>Sat, 29 Aug 2020 23:44:00 +0000</pubDate>
+      
+      <guid>/post/win-4/</guid>
+      <description>&lt;p&gt;Win环境下的全局梯子配置&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Win-OneNote同步</title>
+      <link>/post/win-6/</link>
+      <pubDate>Sat, 29 Aug 2020 22:44:00 +0000</pubDate>
+      
+      <guid>/post/win-6/</guid>
+      <description>&lt;p&gt;PAC模式下的OneNote同步加速&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>快乐踩坑</title>
+      <link>/post/win-2/</link>
+      <pubDate>Fri, 28 Aug 2020 19:44:00 +0000</pubDate>
+      
+      <guid>/post/win-2/</guid>
+      <description>&lt;p&gt;这两天被苏菲上新装的win10系统折磨的够呛&amp;hellip;踩了一堆坑&lt;!-- raw HTML omitted --&gt;
+cnpm国内镜像 | hexo d 报错&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>WSL迁移</title>
+      <link>/post/win-3/</link>
+      <pubDate>Fri, 28 Aug 2020 15:44:00 +0000</pubDate>
+      
+      <guid>/post/win-3/</guid>
+      <description>&lt;p&gt;WSL默认安装在C盘,因此有必要迁移出系统盘&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git 强制拉取覆盖本地</title>
+      <link>/post/github-4/</link>
+      <pubDate>Fri, 28 Aug 2020 12:06:00 +0000</pubDate>
+      
+      <guid>/post/github-4/</guid>
+      <description>&lt;p&gt;强制拉取覆盖本地&lt;!-- raw HTML omitted --&gt;
+remote Incorrect username or password 报错&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>部署-spawn failed错误的解决方法</title>
+      <link>/post/hexo-4/</link>
+      <pubDate>Tue, 25 Aug 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/hexo-4/</guid>
+      <description>删除 .deploy_git 文件夹 修改配置文件 git config --global core.autocrlf false 依次执行： hexo clean hexo g hexo d 更改用户凭据 控制面板更改用户凭据,github账号密码</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 45-53</title>
+      <link>/post/pat-40/</link>
+      <pubDate>Tue, 25 Aug 2020 19:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-40/</guid>
+      <description>&lt;p&gt;1045-1053&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 41-44</title>
+      <link>/post/pat-39/</link>
+      <pubDate>Sat, 22 Aug 2020 14:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-39/</guid>
+      <description>&lt;p&gt;1041-1044&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 36-40</title>
+      <link>/post/pat-38/</link>
+      <pubDate>Sat, 22 Aug 2020 13:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-38/</guid>
+      <description>&lt;p&gt;1036-1040&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 31-35</title>
+      <link>/post/pat-37/</link>
+      <pubDate>Fri, 21 Aug 2020 23:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-37/</guid>
+      <description>&lt;p&gt;1031-1035&lt;!-- raw HTML omitted --&gt;
+一直在做题,但是没更新blog,这两天都补上&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 26-30</title>
+      <link>/post/pat-36/</link>
+      <pubDate>Sat, 15 Aug 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-36/</guid>
+      <description>&lt;p&gt;1026-1030&lt;!-- raw HTML omitted --&gt;
+今天才收到了乙级的证书，突然意识到离甲级考试就剩20天了，加油鸭！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 22-25</title>
+      <link>/post/pat-35/</link>
+      <pubDate>Fri, 14 Aug 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-35/</guid>
+      <description>&lt;p&gt;1022-1025&lt;!-- raw HTML omitted --&gt;
+甲级慢慢上道啦!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 21</title>
+      <link>/post/pat-34/</link>
+      <pubDate>Fri, 14 Aug 2020 10:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-34/</guid>
+      <description>&lt;p&gt;1021&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 16-20</title>
+      <link>/post/pat-33/</link>
+      <pubDate>Thu, 13 Aug 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-33/</guid>
+      <description>&lt;p&gt;1016-1020&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 11-15</title>
+      <link>/post/pat-32/</link>
+      <pubDate>Tue, 11 Aug 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-32/</guid>
+      <description>&lt;p&gt;1011-1015&lt;!-- raw HTML omitted --&gt;
+甲级题刷的有点不太顺手,慢慢来8&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 图的遍历</title>
+      <link>/post/pat-31/</link>
+      <pubDate>Mon, 10 Aug 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-31/</guid>
+      <description>&lt;p&gt;算法笔记 - BFS-DFS&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 堆</title>
+      <link>/post/pat-30/</link>
+      <pubDate>Mon, 10 Aug 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-30/</guid>
+      <description>&lt;p&gt;算法笔记 - Heap&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 并查集</title>
+      <link>/post/pat-29/</link>
+      <pubDate>Sun, 09 Aug 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-29/</guid>
+      <description>&lt;p&gt;算法笔记 - 并查集&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 树专题</title>
+      <link>/post/pat-28/</link>
+      <pubDate>Sun, 09 Aug 2020 21:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-28/</guid>
+      <description>&lt;p&gt;算法笔记 - 树专题&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; 申请空间</title>
+      <link>/post/cpp-7/</link>
+      <pubDate>Sun, 09 Aug 2020 20:00:00 +0000</pubDate>
+      
+      <guid>/post/cpp-7/</guid>
+      <description>&lt;p&gt;这几天每日六个多小时的数学课让我晕晕,码点代码来放松下心情吧&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 05-10</title>
+      <link>/post/pat-27/</link>
+      <pubDate>Wed, 05 Aug 2020 23:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-27/</guid>
+      <description>&lt;p&gt;1005-1010&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 1004</title>
+      <link>/post/pat-26/</link>
+      <pubDate>Tue, 04 Aug 2020 23:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-26/</guid>
+      <description>&lt;p&gt;树 DFS遍历 + 深度记录&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 1003</title>
+      <link>/post/pat-25/</link>
+      <pubDate>Tue, 04 Aug 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-25/</guid>
+      <description>&lt;p&gt;Dijkstra + 二级判定&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GRUB2 引导顺序</title>
+      <link>/post/ubuntu-29/</link>
+      <pubDate>Tue, 04 Aug 2020 20:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-29/</guid>
+      <description>首先查看开机时,在GRUB中,windows处在第几项,如果当前windows在第四项,则此时需要改为3,因为GRUB从第0项开始计数
+1  $ sudo gedit /etc/default/grub   找到set_default 改为 3 保存,重启电脑,即可发现 默认光标移至第四项</description>
+    </item>
+    
+    <item>
+      <title>Terminal更换主题</title>
+      <link>/post/win-1/</link>
+      <pubDate>Tue, 04 Aug 2020 19:44:00 +0000</pubDate>
+      
+      <guid>/post/win-1/</guid>
+      <description>&lt;p&gt;众所周知,win10的UI一直都很一言难尽,这次的WSL-Terminal也是看的我难受,后来才发现原来微软做了一个能改主题色的工具&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>WSL安装过程</title>
+      <link>/post/ubuntu-28/</link>
+      <pubDate>Tue, 04 Aug 2020 16:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-28/</guid>
+      <description>&lt;p&gt;好久没有更新了&amp;hellip;那么今天就来搞出个大招!&amp;mdash;WSL!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git创建SSH公钥</title>
+      <link>/post/github-3/</link>
+      <pubDate>Mon, 03 Aug 2020 12:06:00 +0000</pubDate>
+      
+      <guid>/post/github-3/</guid>
+      <description>填写git信息 git config --global user.name 你的英文名 #此英文名不需要跟GitHub账号保持一致git config --global user.email 你的邮箱 #此邮箱不需要跟GitHub账号保持一致 生成本机ssh ssh-keygen -t rsa -C &amp;#34;自己的邮箱地址&amp;#34; 查看ssh密钥 cat ~/.ssh/id_rsa.pub </description>
+    </item>
+    
+    <item>
+      <title>栈和队列</title>
+      <link>/post/pat-24/</link>
+      <pubDate>Sat, 01 Aug 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/pat-24/</guid>
+      <description>&lt;p&gt;栈-计算中缀表达式&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 1002</title>
+      <link>/post/pat-23/</link>
+      <pubDate>Sat, 01 Aug 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-23/</guid>
+      <description>&lt;p&gt;这几天一直在思考怎么准备甲级,看了很多经验贴之后,决定首先把&amp;quot;算法笔记&amp;quot;这本书看完吧,因为刚刷到第三道题就是dijkstra(菜鸡惊讶),想了想还是先把这些基本算法实现学明白再说吧&amp;hellip;这几天把树看完了,图还剩最短路径和最小生成树&lt;!-- raw HTML omitted --&gt;
+所以今天开始恢复每日更新!&lt;!-- raw HTML omitted --&gt;
+在更新这些算法实现前,先把之前欠下的第二道题补上(嘿嘿,又能水一帖了)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 1001</title>
+      <link>/post/pat-22/</link>
+      <pubDate>Mon, 27 Jul 2020 23:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-22/</guid>
+      <description>&lt;p&gt;甲级的第一道题!&lt;!-- raw HTML omitted --&gt;
+终于不用为了线上考试继续在Win10环境写代码了,亲一口俺最爱的Ubuntu&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Advanced 单词整理</title>
+      <link>/post/pat-21/</link>
+      <pubDate>Sat, 25 Jul 2020 23:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-21/</guid>
+      <description>&lt;p&gt;由于甲级是英文题目&amp;hellip;所以先需要背一些常见的单词,这里整理一下!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 考完啦!</title>
+      <link>/post/pat-20/</link>
+      <pubDate>Sat, 25 Jul 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/pat-20/</guid>
+      <description>&lt;p&gt;没有满分,只考了96(排名40/500+)&amp;hellip;但不得不说三个小时的解题过程跟过山车一般,一开始83分,差点以为这次考试要翻车了!不过还好一直沉下心debug&amp;hellip;最后前四道题全部AC,但最后一道题有一个测试点超时了,因为方法过于暴力(菜鸡猛锤自己大腿),但我也服吧&amp;hellip;毕竟代码能力还有待提高!
+最后感觉这个分数还算满意吧!只复习了一个月,从一开始的C都用不明白,到现在能挣扎一下了,而且之前模拟考试一次94,一次96(这次考试没翻车就好嘿嘿)
+下一步等证书邮寄到家啦!
+让人欣慰的是终于能开个甲级专栏了!
+备战九月甲级PAT冲冲冲!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 函数总结</title>
+      <link>/post/pat-19/</link>
+      <pubDate>Thu, 23 Jul 2020 23:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-19/</guid>
+      <description>&lt;p&gt;对PAT历年真题中常用的模板函数进行总结&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 91~95</title>
+      <link>/post/pat-18/</link>
+      <pubDate>Thu, 23 Jul 2020 23:50:00 +0000</pubDate>
+      
+      <guid>/post/pat-18/</guid>
+      <description>&lt;p&gt;B1091-B1095&lt;!-- raw HTML omitted --&gt;
+上一次PAT考试真题: 一个半小时做完前四道题,两个测试点没过,第五题AC&lt;!-- raw HTML omitted --&gt;
+成绩: 96&lt;!-- raw HTML omitted --&gt;
+错的两个测试点,一个是getchar(),另一个是输出格式不对&amp;hellip;我人傻了&lt;!-- raw HTML omitted --&gt;
+PAT所有的真题都刷完撒花了,这一个月确实从一个低级菜鸡变成了一个高级菜鸡,不仅熟悉了c++的基本语法,并且感觉coding能力也变强了不少,确实刷题才是变强的唯一途径&lt;!-- raw HTML omitted --&gt;
+希望25号的考试能取得一个好成绩!下一步备战甲级!&lt;!-- raw HTML omitted --&gt;
+Beijing 冲冲冲!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 86~90</title>
+      <link>/post/pat-17/</link>
+      <pubDate>Thu, 23 Jul 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/pat-17/</guid>
+      <description>&lt;p&gt;B1086-B1090&lt;!-- raw HTML omitted --&gt;
+第四道题(20分)没想出来&amp;hellip;题没太看懂,并且逻辑有些复杂&amp;hellip;呜呜呜&lt;!-- raw HTML omitted --&gt;
+别的题都是常规题,都AC了,满分好难&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 81~85</title>
+      <link>/post/pat-16/</link>
+      <pubDate>Thu, 23 Jul 2020 23:00:00 +0000</pubDate>
+      
+      <guid>/post/pat-16/</guid>
+      <description>&lt;p&gt;B1081-B1085&lt;!-- raw HTML omitted --&gt;
+第一次模拟考试-94分&lt;!-- raw HTML omitted --&gt;
+第四道题测试点超时,第五道题排序时没转int,这两个点都没想到&amp;hellip;确实是坑.&lt;!-- raw HTML omitted --&gt;
+7.23更新
+经过上次五道题的深刻反省,感觉现在代码规范了一些,思路也越来越清晰,下一步二刷,总结知识点,冲刺满分!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 76~80</title>
+      <link>/post/pat-15/</link>
+      <pubDate>Thu, 23 Jul 2020 22:59:00 +0000</pubDate>
+      
+      <guid>/post/pat-15/</guid>
+      <description>&lt;p&gt;B1076-B1080&lt;!-- raw HTML omitted --&gt;
+这五道题让我产生了许多反思,由于代码中变量以及语法上的不规范,造成了许多不必要的麻烦,虽然代码确实可以跑起来,但性价比太低了,规范整洁的代码习惯,不仅可以让写代码过程思路清晰,并且debug过程变得轻松很多.小辣鸡以后要重视这方面啦!&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 74~75</title>
+      <link>/post/pat-14/</link>
+      <pubDate>Thu, 23 Jul 2020 22:58:00 +0000</pubDate>
+      
+      <guid>/post/pat-14/</guid>
+      <description>&lt;p&gt;B1074-B1075&lt;!-- raw HTML omitted --&gt;
+今天只有两道题&amp;hellip;因为都是我最怕的快乐数据题&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 69~73</title>
+      <link>/post/pat-13/</link>
+      <pubDate>Thu, 23 Jul 2020 22:57:00 +0000</pubDate>
+      
+      <guid>/post/pat-13/</guid>
+      <description>&lt;p&gt;B1069-B1073&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 65~68</title>
+      <link>/post/pat-12/</link>
+      <pubDate>Thu, 23 Jul 2020 22:56:00 +0000</pubDate>
+      
+      <guid>/post/pat-12/</guid>
+      <description>&lt;p&gt;B1065-B1068&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 59~64</title>
+      <link>/post/pat-11/</link>
+      <pubDate>Thu, 23 Jul 2020 22:55:00 +0000</pubDate>
+      
+      <guid>/post/pat-11/</guid>
+      <description>&lt;p&gt;B1059-B1064&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 58</title>
+      <link>/post/pat-10/</link>
+      <pubDate>Thu, 23 Jul 2020 22:53:00 +0000</pubDate>
+      
+      <guid>/post/pat-10/</guid>
+      <description>&lt;p&gt;B1058&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 53~57</title>
+      <link>/post/pat-9/</link>
+      <pubDate>Thu, 23 Jul 2020 22:51:00 +0000</pubDate>
+      
+      <guid>/post/pat-9/</guid>
+      <description>&lt;p&gt;B1053-B1057&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 44~52</title>
+      <link>/post/pat-8/</link>
+      <pubDate>Thu, 23 Jul 2020 22:50:00 +0000</pubDate>
+      
+      <guid>/post/pat-8/</guid>
+      <description>&lt;p&gt;B1044-B1052&lt;!-- raw HTML omitted --&gt;
+刷完一半啦!继续冲!&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 41~43</title>
+      <link>/post/pat-7/</link>
+      <pubDate>Thu, 23 Jul 2020 21:50:00 +0000</pubDate>
+      
+      <guid>/post/pat-7/</guid>
+      <description>&lt;p&gt;B1041-B1043&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;
+&lt;p&gt;下午看了俄罗斯的&amp;lt;太空第一步&amp;gt;,之前也看过几个俄系科幻片,不得不说俄国特效做的一点都不比美国拍的那些差,但都有一个通病就是剧情节奏掌握的不是很好,但从故事角度来说,还是很震撼的,不得不佩服苏联的勇气,战斗民族是真的勇,看到最后有一种历经磨难艰险终究胜利的鼓舞,生活也是一样的道理,总会有各种各样难以预测的错误和失败,但只要一直去坚持,一直抱有希望和信心,就一定会造就新的奇迹&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 36~40</title>
+      <link>/post/pat-6/</link>
+      <pubDate>Thu, 23 Jul 2020 11:50:00 +0000</pubDate>
+      
+      <guid>/post/pat-6/</guid>
+      <description>&lt;p&gt;B1036-B1040&lt;!-- raw HTML omitted --&gt;
+一个半小时前四道题AC,第五道数学题挂了&amp;hellip;我爱数学!
+希望25号能拿个满分&lt;!-- raw HTML omitted --&gt;
+7.23更新&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; stoi()函数</title>
+      <link>/post/cpp-6/</link>
+      <pubDate>Mon, 20 Jul 2020 23:00:00 +0000</pubDate>
+      
+      <guid>/post/cpp-6/</guid>
+      <description>&lt;p&gt;C++ stoi()函数用法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; transform()</title>
+      <link>/post/cpp-5/</link>
+      <pubDate>Sun, 19 Jul 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/cpp-5/</guid>
+      <description>&lt;p&gt;C++ transform()函数用法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 29~35</title>
+      <link>/post/pat-5/</link>
+      <pubDate>Sun, 19 Jul 2020 23:00:00 +0000</pubDate>
+      
+      <guid>/post/pat-5/</guid>
+      <description>&lt;p&gt;B1029-B1035&lt;!-- raw HTML omitted --&gt;
+前几天学完了c++和STL的基础,今天开始换c++写,发现解题速度提升很明显,由于c++向下兼容c,所以简直是各种语法糖呀,磨刀不误砍柴工!&lt;!-- raw HTML omitted --&gt;
+2020-07-19 优化题解&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; Part-4</title>
+      <link>/post/cpp-4/</link>
+      <pubDate>Sat, 18 Jul 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/cpp-4/</guid>
+      <description>&lt;p&gt;算法笔记知识点汇总-C++ STL&lt;!-- raw HTML omitted --&gt;
+7.18更新完成&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 19~28</title>
+      <link>/post/pat-4/</link>
+      <pubDate>Sat, 18 Jul 2020 23:03:00 +0000</pubDate>
+      
+      <guid>/post/pat-4/</guid>
+      <description>&lt;p&gt;B1019-B1028&lt;!-- raw HTML omitted --&gt;
+2020-07-18 优化题解&lt;!-- raw HTML omitted --&gt;
+这两天发生了很多事情,所以拖更啦&amp;hellip;并且PAT的神奇测试点把我搞自闭了,还好发生了一些快乐的事情,把心态调整了回来&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 13~18</title>
+      <link>/post/pat-3/</link>
+      <pubDate>Sat, 18 Jul 2020 23:02:00 +0000</pubDate>
+      
+      <guid>/post/pat-3/</guid>
+      <description>&lt;p&gt;B1013-B1018&lt;!-- raw HTML omitted --&gt;
+我刷的太慢了(虽然题很简单)&amp;hellip;但感觉解题速度越来越快了!继续加油!&lt;!-- raw HTML omitted --&gt;
+2020-07-18 优化题解&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 11~12</title>
+      <link>/post/pat-2/</link>
+      <pubDate>Sat, 18 Jul 2020 23:01:00 +0000</pubDate>
+      
+      <guid>/post/pat-2/</guid>
+      <description>&lt;p&gt;B1011-B1012&lt;!-- raw HTML omitted --&gt;
+2020-07-18 优化题解&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PAT-Basic 01~10</title>
+      <link>/post/pat-1/</link>
+      <pubDate>Sat, 18 Jul 2020 23:00:00 +0000</pubDate>
+      
+      <guid>/post/pat-1/</guid>
+      <description>&lt;p&gt;备考7月份的PAT! 冲鸭&lt;!-- raw HTML omitted --&gt;
+B1001-B1010&lt;!-- raw HTML omitted --&gt;
+2020-07-18 优化题解&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>COSCMD工具</title>
+      <link>/post/ubuntu-27/</link>
+      <pubDate>Sat, 11 Jul 2020 08:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-27/</guid>
+      <description>&lt;p&gt;可视化界面操作起来很慢(并且linux是Appimage安装包),还是bash来的实在,今天把COSCMD配置了一下&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; Part-3</title>
+      <link>/post/cpp-3/</link>
+      <pubDate>Sun, 28 Jun 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/cpp-3/</guid>
+      <description>&lt;p&gt;算法笔记知识点汇总-C++语法基础&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>红黑树</title>
+      <link>/post/ds-12/</link>
+      <pubDate>Sun, 28 Jun 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/ds-12/</guid>
+      <description>&lt;p&gt;学到STL中的set和map,发现底层实现是红黑树,之前一直听说过这个结构,这次遇到了实际应用,早晚都要学,不如今天学了&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; Part-2</title>
+      <link>/post/cpp-2/</link>
+      <pubDate>Sun, 28 Jun 2020 20:30:00 +0000</pubDate>
+      
+      <guid>/post/cpp-2/</guid>
+      <description>&lt;p&gt;第二部分: 面向对象-类&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43; Part-1</title>
+      <link>/post/cpp-1/</link>
+      <pubDate>Sat, 27 Jun 2020 20:30:00 +0000</pubDate>
+      
+      <guid>/post/cpp-1/</guid>
+      <description>&lt;p&gt;从一开始刷OJ,leetcode到PAT,一直用的C
+晚上去听了两小时c++刷PAT题的教程,发现原来&amp;hellip;c++这么爽!
+我不行了,我是菜鸡,我用不起c,以我现在的实力,就一个char数组或者哈希我能玩玩,别的工具也太少了
+第一部分: 基础概念&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NEXT Part-2</title>
+      <link>/post/hexo-3/</link>
+      <pubDate>Sun, 21 Jun 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/hexo-3/</guid>
+      <description>&lt;p&gt;今天大部分时间在搞数学,所以更的有点少(哭&amp;hellip;)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机网络 Part-2</title>
+      <link>/post/cn-2/</link>
+      <pubDate>Sat, 20 Jun 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/cn-2/</guid>
+      <description>&lt;p&gt;物理层&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>NEXT Part-1</title>
+      <link>/post/hexo-2/</link>
+      <pubDate>Sat, 20 Jun 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/hexo-2/</guid>
+      <description>&lt;p&gt;18号刷PAT,19号改NEXT的bug,鸽了两天,今天全都补上
+一直犹豫要不要换到NEXT,因为工作量很大,但是原来使用的主题拓展性实在太差了&amp;hellip;我真的很想加个站内检索&amp;hellip;因为经常需要找原来blog记录的某一个知识点&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Version: NEXT-7.8 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>答辩完啦!</title>
+      <link>/post/paper-5/</link>
+      <pubDate>Thu, 18 Jun 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/paper-5/</guid>
+      <description>今天6.18,本科毕业答辩完成! 老师问的问题还挺简单的,并没有难为我,我都答上啦哈哈哈 四年大学算是一个完美的句号啦,以后再也不会被这个放射源那个反应堆所困扰 下一步开始狂刷数学题,继续学习计组和计网 然后准备7月份的PAT考试,拿乙级满分!(报名费肉疼&amp;hellip;) 北京疫情越来越严重,希望老爸照顾好自己 上周老爸回家,整的现在我妈在家隔离了&amp;hellip;这疫情</description>
+    </item>
+    
+    <item>
+      <title>计算机组成原理 Part-8</title>
+      <link>/post/co-8/</link>
+      <pubDate>Tue, 16 Jun 2020 23:55:00 +0000</pubDate>
+      
+      <guid>/post/co-8/</guid>
+      <description>&lt;p&gt;计算机的运算方法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机组成原理 Part-7</title>
+      <link>/post/co-7/</link>
+      <pubDate>Tue, 16 Jun 2020 23:50:00 +0000</pubDate>
+      
+      <guid>/post/co-7/</guid>
+      <description>&lt;p&gt;DMA&lt;!-- raw HTML omitted --&gt;
+今天做完了答辩的PPT!准备开吹了&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机组成原理 Part-6</title>
+      <link>/post/co-6/</link>
+      <pubDate>Mon, 15 Jun 2020 23:50:00 +0000</pubDate>
+      
+      <guid>/post/co-6/</guid>
+      <description>&lt;p&gt;今天论文交到院里,查重过啦&lt;!-- raw HTML omitted --&gt;
+读书笔记还差10页没写,答辩PPT明天做&amp;hellip;吼!&lt;!-- raw HTML omitted --&gt;
+计组今天开始了I/O的学习&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机组成原理 Part-5</title>
+      <link>/post/co-5/</link>
+      <pubDate>Sun, 14 Jun 2020 23:50:00 +0000</pubDate>
+      
+      <guid>/post/co-5/</guid>
+      <description>&lt;p&gt;cache&lt;!-- raw HTML omitted --&gt;
+辅助存储器&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Word论文格式</title>
+      <link>/post/paper-4/</link>
+      <pubDate>Sun, 14 Jun 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/paper-4/</guid>
+      <description>&lt;p&gt;论文格式的问题主要集中在目录，页眉，页脚三大部分
+这里分这三块来讲&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;版本: Office 365 Word
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu中文显示异常</title>
+      <link>/post/ubuntu-26/</link>
+      <pubDate>Sat, 13 Jun 2020 23:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-26/</guid>
+      <description>&lt;p&gt;很久之前解决的这个问题,不过还是要记录下来(睡前水个贴)
+设置系统语言为英文后,就会发现有些中文字体很难看,后来才知道原来那些丑丑的中文符号是日本语
+呕&amp;hellip;所以赶紧改回来吧&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据图取点方法</title>
+      <link>/post/paper-3/</link>
+      <pubDate>Sat, 13 Jun 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/paper-3/</guid>
+      <description>&lt;p&gt;介绍Getdata软件使用方法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Origin使用方法</title>
+      <link>/post/paper-2/</link>
+      <pubDate>Sat, 13 Jun 2020 20:40:00 +0000</pubDate>
+      
+      <guid>/post/paper-2/</guid>
+      <description>&lt;p&gt;论文完成啦,趁着现在还存有一些记忆(鱼的三秒记忆),记录一下&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>腾讯云COS加速静态资源</title>
+      <link>/post/hexo-1/</link>
+      <pubDate>Mon, 08 Jun 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/hexo-1/</guid>
+      <description>&lt;p&gt;6.7-心情不太好,没学习新知识&amp;hellip;但优化了一下静态网站的速度
+6.8-今天改了一天论文,整体重复率降到了30嘿嘿,再稍微改一改,就可以快乐毕业啦(终于完成了毕业论文!)
+昨天这篇blog也没写完,只好今天发了&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机组成原理 Part-4</title>
+      <link>/post/co-4/</link>
+      <pubDate>Sat, 06 Jun 2020 23:40:00 +0000</pubDate>
+      
+      <guid>/post/co-4/</guid>
+      <description>&lt;p&gt;存储器&lt;!-- raw HTML omitted --&gt;
+汉明码&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机网络 Part-1</title>
+      <link>/post/cn-1/</link>
+      <pubDate>Fri, 05 Jun 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/cn-1/</guid>
+      <description>&lt;p&gt;计算机网络概述&lt;!-- raw HTML omitted --&gt;
+0202年了,今天家里终于装了大空调,大房子有了大空调嘿嘿&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-26</title>
+      <link>/post/leetcode-26/</link>
+      <pubDate>Fri, 05 Jun 2020 22:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-26/</guid>
+      <description>&lt;p&gt;面试题29-顺时针打印矩阵&lt;!-- raw HTML omitted --&gt;
+96-不同的二叉搜索树&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机组成原理 Part-3</title>
+      <link>/post/co-3/</link>
+      <pubDate>Thu, 04 Jun 2020 23:40:00 +0000</pubDate>
+      
+      <guid>/post/co-3/</guid>
+      <description>&lt;p&gt;存储器&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>计算机组成原理 Part-2</title>
+      <link>/post/co-2/</link>
+      <pubDate>Wed, 03 Jun 2020 23:40:00 +0000</pubDate>
+      
+      <guid>/post/co-2/</guid>
+      <description>&lt;p&gt;总线&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-25</title>
+      <link>/post/leetcode-25/</link>
+      <pubDate>Wed, 03 Jun 2020 22:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-25/</guid>
+      <description>&lt;p&gt;面试题64-求1+2+…+n&lt;!-- raw HTML omitted --&gt;
+9-回文数&lt;!-- raw HTML omitted --&gt;
+22-括号生成&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu护眼软件</title>
+      <link>/post/ubuntu-25/</link>
+      <pubDate>Wed, 03 Jun 2020 21:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-25/</guid>
+      <description>20.04竟然没有带护眼模式,我记得18.04有这个模式的&amp;hellip;只好自己装一个软件啦
+安装 1  sudo apt-get install redshift-gtk   配置参数 进入~/.config
+1  touch redshift.conf   之后填写配置文件
+1  sudo vim redshift.conf   写入以下内容：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  [redshift] ; 白天屏幕温度 temp-day=5600 ; 夜晚屏幕温度 temp-night=4200 ; 昼夜是否平滑过度(1/0) transition=1 ; 位置提供方式(redshift -l list) location-provider=manual  [manual] ; 位置提供方式设置 ; 经纬度(北京) lat=39 lon=116   </description>
+    </item>
+    
+    <item>
+      <title>计算机组成原理 Part-1</title>
+      <link>/post/co-1/</link>
+      <pubDate>Tue, 02 Jun 2020 22:40:00 +0000</pubDate>
+      
+      <guid>/post/co-1/</guid>
+      <description>&lt;p&gt;计算机基本体系结构&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-24</title>
+      <link>/post/leetcode-24/</link>
+      <pubDate>Mon, 01 Jun 2020 22:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-24/</guid>
+      <description>&lt;p&gt;今天6.1!导员问我学院想让我当 优秀毕业生风采展的代表 可不可以,当然可以鸭嘿嘿
+(虽然大学本专业成绩辣鸡的很,但是!找到了自己喜欢的行业和目标,不算太亏吧!)
+前天gnome天气插件不好使了,没法刷新数据,困扰了好几天,最后在国外gitlab论坛上看到了(还好俺会点英语)果然国外的技术论坛干货多啊,英语是程序员必须的一项技能
+废话不多说,今天的力扣暴力求解开始了哈哈哈哈&lt;/p&gt;
+&lt;p&gt;1431-拥有最多糖果的孩子&lt;!-- raw HTML omitted --&gt;
+437-路径总和 III&lt;!-- raw HTML omitted --&gt;
+234-回文链表&lt;!-- raw HTML omitted --&gt;
+581-最短无序连续子数组&lt;!-- raw HTML omitted --&gt;
+538-把二叉搜索树转换为累加树&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04修复openweather</title>
+      <link>/post/ubuntu-24/</link>
+      <pubDate>Mon, 01 Jun 2020 21:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-24/</guid>
+      <description>前天gnome的openweather插件突然无法更新 在gitlab找到了解决方案 在这里记录一下方法
+ Download SectigoRSADomainValidationSecureServerCA.crt from Sectigo RSA Domain Validation Secure Server CA Drop the file to /usr/local/share/ca-certificates Run sudo update-ca-certificates Restart shell Alt + F2, press r, press Enter.  下载网址: Sectigo RSA Domain Validation Secure Server CA
+ps: 文件在页面的下面 可以在页面中搜索&amp;quot;SectigoRSADomainValidationSecureServerCA&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-23</title>
+      <link>/post/leetcode-23/</link>
+      <pubDate>Sun, 31 May 2020 22:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-23/</guid>
+      <description>&lt;p&gt;今天论文整到2.1w字了,降降重就完事啦
+今天把apple music的 icloud研究明白了,上传了好多国区曲库没有的歌
+听到了我最喜欢的&amp;quot;Rolling Stone&amp;quot;!!!
+461-汉明距离&lt;!-- raw HTML omitted --&gt;
+位运算符&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode算法 Part-22</title>
+      <link>/post/leetcode-22/</link>
+      <pubDate>Fri, 29 May 2020 22:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-22/</guid>
+      <description>&lt;p&gt;动态规划&lt;!-- raw HTML omitted --&gt;
+滑动窗口&lt;!-- raw HTML omitted --&gt;
+单调栈&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-21</title>
+      <link>/post/leetcode-21/</link>
+      <pubDate>Fri, 29 May 2020 20:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-21/</guid>
+      <description>&lt;p&gt;198-打家劫舍&lt;!-- raw HTML omitted --&gt;
+121-买卖股票的最佳时机&lt;!-- raw HTML omitted --&gt;
+76-最小覆盖子串&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu压缩图片</title>
+      <link>/post/ubuntu-12/</link>
+      <pubDate>Thu, 28 May 2020 22:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-12/</guid>
+      <description>&lt;p&gt;强大的图片处理软件: imagemagick,optipng&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GH-Blog开启Https</title>
+      <link>/post/github-2/</link>
+      <pubDate>Thu, 28 May 2020 12:06:00 +0000</pubDate>
+      
+      <guid>/post/github-2/</guid>
+      <description>&lt;p&gt;好奇心的收获!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-20</title>
+      <link>/post/leetcode-20/</link>
+      <pubDate>Thu, 28 May 2020 10:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-20/</guid>
+      <description>&lt;p&gt;394-字符串解码&lt;!-- raw HTML omitted --&gt;
+1021-删除最外层的括号&lt;!-- raw HTML omitted --&gt;
+面试题17.12-BiNode&lt;!-- raw HTML omitted --&gt;
+700-二叉搜索树中的搜索&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-19</title>
+      <link>/post/leetcode-19/</link>
+      <pubDate>Wed, 27 May 2020 23:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-19/</guid>
+      <description>&lt;p&gt;今天降了一天的论文重复率,才降了10%多&amp;hellip;枯了,感觉语文水平有了很大的提高,明天继续改
+晚上来刷会快乐leetcode吧
+974-和可被 K 整除的子数组&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-18</title>
+      <link>/post/leetcode-18/</link>
+      <pubDate>Tue, 26 May 2020 23:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-18/</guid>
+      <description>&lt;p&gt;这两天整论文,写读书笔记,刷题有点慢,刷到100题去看&amp;quot;算法笔记&amp;quot;
+287-寻找重复数&lt;!-- raw HTML omitted --&gt;
+27-二叉树的镜像&lt;!-- raw HTML omitted --&gt;
+897-递增顺序查找树&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04软件管理命令</title>
+      <link>/post/ubuntu-23/</link>
+      <pubDate>Tue, 26 May 2020 21:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-23/</guid>
+      <description>软件管理命令汇总
+软件更新 升级安装包相关的命令,刷新可安装的软件列表(但是不做任何实际的安装动作)
+1  sudo apt-get update   进行安装包的更新(软件版本的升级)
+1  sudo apt-get upgrade   dist-upgrade会比upgrade更智能地处理需要更新的软件包的依赖关系(推荐)
+1  sudo apt-get dist-upgrade   进行系统版本的升级(Ubuntu版本的升级)，Ubuntu官方推荐的系统升级方式,若加参数-d还可以升级到开发版本,但会不稳定
+1  sudo do-release-upgrade   清理旧版本的软件缓存
+1  sudo apt-get autoclean   清理所有软件缓存
+1  sudo apt-get clean   删除系统不再使用的孤立软件
+1  sudo apt-get autoremove   删除软件 如果知道要删除软件的具体名称可以使用
+1 2  sudo apt-get remove --purge 软件名称 sudo apt-get autoremove --purge 软件名称   如果不知道要删除软件的具体名称可以使用</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04安装wine</title>
+      <link>/post/ubuntu-22/</link>
+      <pubDate>Tue, 26 May 2020 20:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-22/</guid>
+      <description>今天想在ubuntu上装一个cajviewer,去下了一个deepin-wine版本的,但是缺少字体库装不上 去晚上找了很多帖子,都推荐去装wine,一开始疑惑wine和deepin-wine会不会发生依赖库冲突 后来去deepin的官方帖子看到管理员说不冲突,我才放心去折腾,嘿嘿 这里以ubuntu20.04版本作为基准,以下版本不适用
+ 使用后发现,对于win的程序,deepin-wine体验会更好,wine可作为补充使用
+ 安装wine  如果系统是64位，请启用32位体系结构（如果尚未安装）：  sudo dpkg --add-architecture i386 下载并添加存储库密钥：  wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add - 添加存储库（按照ubuntu的版本执行相应的命令）： Ubuntu 20.04  sudo add-apt-repository &amp;#39;deb https://dl.winehq.org/wine-builds/ubuntu/ focus main&amp;#39; 更新软件源  sudo apt update 安装wine5.0稳定版（winehq-stable稳定版，wine–devel开发版）：  sudo apt install --install-recommends winehq-stable 打开终端，输入wine &amp;ndash;version，如果出现“wine-5.0”，说明安装成功了！！  安装winetricks 打开终端，先更新apt源
+sudo apt update 然后安装winetricks：
+sudo apt winetricks wine的使用 wine运行exe软件，实际上有两种方法 一种是在终端上打开软件(不推荐)
+wine name.exe 第二种方法是直接用归档管理器或文件系统直接打开exe文件。如打开软件根目录，找到主执行程序文件，右键选择以&amp;quot;Wine Windows Program Loader&amp;quot;方式打开软件
+解决软件乱码  下载以下链接文件，压缩包Fonts.</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-17</title>
+      <link>/post/leetcode-17/</link>
+      <pubDate>Mon, 25 May 2020 13:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-17/</guid>
+      <description>&lt;p&gt;20-有效的括号&lt;!-- raw HTML omitted --&gt;
+70-爬楼梯&lt;!-- raw HTML omitted --&gt;
+141-环形链表&lt;!-- raw HTML omitted --&gt;
+14-最长公共前缀&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-16</title>
+      <link>/post/leetcode-16/</link>
+      <pubDate>Sun, 24 May 2020 13:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-16/</guid>
+      <description>&lt;p&gt;114-二叉树展开为链表&lt;!-- raw HTML omitted --&gt;
+856-括号的分数&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C语言-qsort函数</title>
+      <link>/post/c-13/</link>
+      <pubDate>Sat, 23 May 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/c-13/</guid>
+      <description>&lt;p&gt;今天刷leetcode遇到一个神奇的函数,但是没看懂大佬怎么用的这个函数,查了一下发现大有用处!在此记录&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-15</title>
+      <link>/post/leetcode-15/</link>
+      <pubDate>Sat, 23 May 2020 00:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-15/</guid>
+      <description>&lt;p&gt;783-二叉搜索树节点最小距离&lt;!-- raw HTML omitted --&gt;
+169-多数元素&lt;!-- raw HTML omitted --&gt;
+283-移动零&lt;!-- raw HTML omitted --&gt;
+448-找到所有数组中消失的数字&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-14</title>
+      <link>/post/leetcode-14/</link>
+      <pubDate>Fri, 22 May 2020 18:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-14/</guid>
+      <description>&lt;p&gt;19-删除链表的倒数第N个节点&lt;!-- raw HTML omitted --&gt;
+3-无重复字符的最长子串&lt;!-- raw HTML omitted --&gt;
+19-删除链表的倒数第N个节点&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-13</title>
+      <link>/post/leetcode-13/</link>
+      <pubDate>Fri, 22 May 2020 00:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-13/</guid>
+      <description>&lt;p&gt;739-每日温度&lt;!-- raw HTML omitted --&gt;
+53-最大子序和&lt;!-- raw HTML omitted --&gt;
+104-二叉树的最大深度&lt;!-- raw HTML omitted --&gt;
+malloc的使用时机 &amp;amp; 指针数组&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-12</title>
+      <link>/post/leetcode-12/</link>
+      <pubDate>Thu, 21 May 2020 10:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-12/</guid>
+      <description>&lt;p&gt;203-移除链表元素&lt;!-- raw HTML omitted --&gt;
+160-相交链表&lt;!-- raw HTML omitted --&gt;
+1019-链表中的下一个更大节点&lt;!-- raw HTML omitted --&gt;
+malloc与calloc的区别&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-11</title>
+      <link>/post/leetcode-11/</link>
+      <pubDate>Wed, 20 May 2020 23:40:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-11/</guid>
+      <description>&lt;p&gt;83-删除排序链表中的重复元素&lt;!-- raw HTML omitted --&gt;
+257-二叉树的所有路径&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>单链表排序</title>
+      <link>/post/c-12/</link>
+      <pubDate>Wed, 20 May 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/c-12/</guid>
+      <description>&lt;p&gt;今天被单链表排序那题卡了大半天,我一直想写冒泡&amp;hellip;但是最后给我绕懵了,发现单链表的冒泡也太难写了(哭)
+最后我还写了构造单链表和打印单链表的一套函数用来debug&amp;hellip;
+失败的收获:排序过程中其实并不用去交换节点,交换节点的value完全可以啊
+过几天开始系统学查找排序算法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-10</title>
+      <link>/post/leetcode-10/</link>
+      <pubDate>Tue, 19 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-10/</guid>
+      <description>&lt;p&gt;今天忙了一天的论文,晚上开会老师还表扬我辣,拿我的目录做模板!
+晚上刷一会快乐leetcode
+1441-用栈操作构建数组&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-9</title>
+      <link>/post/leetcode-9/</link>
+      <pubDate>Mon, 18 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-9/</guid>
+      <description>&lt;p&gt;993-二叉树的堂兄弟节点&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C-打印层序遍历构造的二叉树</title>
+      <link>/post/c-11/</link>
+      <pubDate>Mon, 18 May 2020 21:40:00 +0000</pubDate>
+      
+      <guid>/post/c-11/</guid>
+      <description>&lt;p&gt;方便leetcode本地调试&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C-数组形参的长度</title>
+      <link>/post/c-10/</link>
+      <pubDate>Mon, 18 May 2020 20:40:00 +0000</pubDate>
+      
+      <guid>/post/c-10/</guid>
+      <description>&lt;p&gt;刷leetcode的时候,由于报错显示的很简单,想调试程序的话有些困难,所以就想在c环境下断点调试代码,今天做一道关于树的题的时候,遇到了这个问题,就是数组形参的长度永远都是8字节,就很离谱&amp;hellip;后来才发现了缘故
+原来在字符型的数组中我们可以使用 strlen() 来获取当前数组的长度，对于其他类型的数组，这个方法就不适用了.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VScode配置C环境</title>
+      <link>/post/vscode-3/</link>
+      <pubDate>Mon, 18 May 2020 20:30:00 +0000</pubDate>
+      
+      <guid>/post/vscode-3/</guid>
+      <description>建立Linux下的C环境
+ 2020.6.22更新
+ 关于math.h等头文件出现链接错误 修改task.json文件
+&amp;#34;args&amp;#34;: [ &amp;#34;-g&amp;#34;, &amp;#34;${file}&amp;#34;, &amp;#34;-lm&amp;#34;, //新增项 &amp;#34;-o&amp;#34;, &amp;#34;${fileDirname}/${fileBasenameNoExtension}&amp;#34; ], 安装环境 gcc/g++编译程序和gdb调试程序
+1 2 3  sudo apt-get install gcc sudo apt-get install g++ sudo apt-get install gdb   插件法 安装插件
+C++ Intellisense C/C++ Compile Run F6或F7即可编译运行
+配置法 在代码界面F5运行，vscode提示选择调试程序，选择gdb 然后选择模板,这里我选择的是&amp;quot;gcc-9&amp;quot; 此时自动生成 launch.json文件 之后继续F5,自动生成 task.json文件 至此配置完成</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-8</title>
+      <link>/post/leetcode-8/</link>
+      <pubDate>Sun, 17 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-8/</guid>
+      <description>&lt;p&gt;328-奇偶链表&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-7</title>
+      <link>/post/leetcode-7/</link>
+      <pubDate>Sat, 16 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-7/</guid>
+      <description>&lt;p&gt;2-两数相加&lt;!-- raw HTML omitted --&gt;
+7-整数反转&lt;!-- raw HTML omitted --&gt;
+用两个栈实现队列&lt;!-- raw HTML omitted --&gt;
+110-平衡二叉树&lt;!-- raw HTML omitted --&gt;
+543-二叉树的直径&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C常用库函数整理</title>
+      <link>/post/c-9/</link>
+      <pubDate>Fri, 15 May 2020 20:40:00 +0000</pubDate>
+      
+      <guid>/post/c-9/</guid>
+      <description>&lt;p&gt;史上最全&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C语言程序设计 Part-5</title>
+      <link>/post/c-8/</link>
+      <pubDate>Fri, 15 May 2020 18:40:00 +0000</pubDate>
+      
+      <guid>/post/c-8/</guid>
+      <description>&lt;p&gt;C内存管理,C命令行参数&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C语言程序设计 Part-4</title>
+      <link>/post/c-7/</link>
+      <pubDate>Fri, 15 May 2020 16:40:00 +0000</pubDate>
+      
+      <guid>/post/c-7/</guid>
+      <description>&lt;p&gt;C头文件,C强制类型转换,C错误处理,C可变参数&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu挂载Onedrive</title>
+      <link>/post/ubuntu-21/</link>
+      <pubDate>Fri, 15 May 2020 10:30:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-21/</guid>
+      <description>昨天折腾了一晚上,过程很是艰难,不过还好最后配置成功了,将onedrive挂载上了 使用到一个开源的软件&amp;quot;rclone&amp;quot;,英文文档好难读&amp;hellip;而且感觉写的还很复杂,最后在一些大佬写的blog帮助下终于配置成功
+rclone官网
+版本号: Ubuntu20.04 rclone v1.51.0 onedrive 个人版 命令行安装 官方安装文档
+1  sudo curl https://rclone.org/install.sh | sudo bash   也可以下载deb安装包
+配置 获得onedrive授权 1 2 3 4 5 6 7 8 9  weixusheng@weixusheng-ThinkPad-S5:~$ sudo rclone authorize &amp;#34;onedrive&amp;#34; 2020/05/14 19:55:04 NOTICE: Config file &amp;#34;/home/weixusheng/.config/rclone/rclone.conf&amp;#34; not found - using defaults If your browser doesn&amp;#39;t open automatically go to the following link: http://127.0.0.1:53682/auth?state=1PaeHX9ECA6DpqWDET_6Gw Log in and authorize rclone for access Waiting for code.</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-6</title>
+      <link>/post/leetcode-6/</link>
+      <pubDate>Thu, 14 May 2020 21:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-6/</guid>
+      <description>&lt;p&gt;136-只出现一次的数字&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VScode代码折叠</title>
+      <link>/post/vscode-2/</link>
+      <pubDate>Thu, 14 May 2020 14:30:00 +0000</pubDate>
+      
+      <guid>/post/vscode-2/</guid>
+      <description>今天学c的时候,看到预处理命令#pragma,想起来之前用的代码折叠 既然创建了vscode专区,就把之前的技巧放在这里,方便查找
+vscode构造折叠块 1 2 3 4 5  #pragma region &amp;#34;折叠块的名字&amp;#34;  //your code here  #pragma endregion   vscode 代码折叠 1. 折叠所有区域代码的快捷： ctrl + k ctrl + 0 ; 先按下 ctrl 和 K，再按下 ctrl 和 0 ; ( 注意这个是零，不是欧 )
+2. 展开所有折叠区域代码的快捷： ctrl +k ctrl + J ; 先按下 ctrl 和 K，再按下 ctrl 和 J</description>
+    </item>
+    
+    <item>
+      <title>C语言程序设计 Part-3</title>
+      <link>/post/c-6/</link>
+      <pubDate>Thu, 14 May 2020 12:40:00 +0000</pubDate>
+      
+      <guid>/post/c-6/</guid>
+      <description>&lt;p&gt;typedef与#define,C输入&amp;amp;输出,C文件读写,C预处理器&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C语言程序设计 Part-2</title>
+      <link>/post/c-5/</link>
+      <pubDate>Thu, 14 May 2020 09:40:00 +0000</pubDate>
+      
+      <guid>/post/c-5/</guid>
+      <description>&lt;p&gt;指针,字符串,结构体,位域,共用体&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C语言程序设计 Part-1</title>
+      <link>/post/c-4/</link>
+      <pubDate>Wed, 13 May 2020 20:40:00 +0000</pubDate>
+      
+      <guid>/post/c-4/</guid>
+      <description>&lt;p&gt;今天补习了一下c语言(重新再学习一遍c),毕竟基础要牢靠
+也为了下一步刷PAT做基础,这里记录新得
+今天心态又崩了&amp;hellip;感觉一直以来自己就是一个快乐与崩溃的结合体
+无尽的失落和失望,像是一个深渊,不过明天醒来又是新的一天&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-5</title>
+      <link>/post/leetcode-5/</link>
+      <pubDate>Tue, 12 May 2020 21:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-5/</guid>
+      <description>&lt;p&gt;链队列的实现方法&lt;!-- raw HTML omitted --&gt;
+102-二叉树的层序遍历&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VScode同步设置</title>
+      <link>/post/vscode-1/</link>
+      <pubDate>Mon, 11 May 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/vscode-1/</guid>
+      <description>VScode虽然很棒,但是配置文件无法同步,这点有些麻烦,还好有插件支持同步
+插件名字: Settings Sync 下面开始说配置过程
+上传设置 生成 Github gist Token 在Settings页面点击进入 Developer settings （开发者设置）进入Personal access tokens（个人授权令牌）页面生成一个令牌 点击 Generate new token 令牌的作用能帮助我们就在VSCode中使用自己的私有令牌访问自己的保存在Gist上的配置,勾选Gist，点击生成。
+创建Gist 创建一个新Gist,输入创建的Gist描述和片段内容(&amp;ldquo;vscode-setting-sync&amp;rdquo;)保存即可。 手动复制刚才创建的Gist仓库的ID：gist冒号后面的字符串,将其保存
+配置VScode 填写Gist Token 回到VSCode编辑器中 使用快捷键Ctrl+P 输入命令 &amp;gt;sync 点击 同步：高级选项 然后选择同步：&amp;ldquo;编辑配置设置&amp;rdquo; 输入你在github上创建的 gist token ,Ctrl+S保存更改
+填写Gist ID 进入Settings Sync扩展设置页面设置 输入创建的Gist仓库ID 输入自动保存设置
+上传 然后 ctrl shift p 调出快捷命令 sync upload
+新的环境下下载设置 填写Gist ID 在新的环境下直接填写 gist id 即可
+下载 然后调用 sync download 命令</description>
+    </item>
+    
+    <item>
+      <title>OS总结 Part-4</title>
+      <link>/post/os-4/</link>
+      <pubDate>Mon, 11 May 2020 23:00:00 +0000</pubDate>
+      
+      <guid>/post/os-4/</guid>
+      <description>&lt;p&gt;设备管理,文件系统&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OS总结 Part-3</title>
+      <link>/post/os-3/</link>
+      <pubDate>Mon, 11 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/os-3/</guid>
+      <description>&lt;p&gt;存储管理&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-4</title>
+      <link>/post/leetcode-4/</link>
+      <pubDate>Sun, 10 May 2020 21:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-4/</guid>
+      <description>&lt;p&gt;今天母亲节,做了锅包肉和蜜汁鸡排嘿嘿(没想到锅包肉做的还蛮好吃的),晚上家里的仙人球还开花了!今天还第一次通过了leetcode,好开心嗷,做题好像有感觉了!
+明天更操作系统,不拖了不拖了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;1047-删除字符串中的所有相邻重复项&lt;!-- raw HTML omitted --&gt;
+617-合并二叉树&lt;!-- raw HTML omitted --&gt;
+226-翻转二叉树&lt;!-- raw HTML omitted --&gt;
+101-对称二叉树&lt;!-- raw HTML omitted --&gt;
+236-二叉树的最近公共祖先&lt;!-- raw HTML omitted --&gt;
+1-两数之和(哈希散列法)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C语言的类型定义</title>
+      <link>/post/c-3/</link>
+      <pubDate>Sat, 09 May 2020 14:30:00 +0000</pubDate>
+      
+      <guid>/post/c-3/</guid>
+      <description>&lt;p&gt;typedef的用法,typedef与const&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C中的野指针</title>
+      <link>/post/c-2/</link>
+      <pubDate>Sat, 09 May 2020 13:30:00 +0000</pubDate>
+      
+      <guid>/post/c-2/</guid>
+      <description>&lt;p&gt;指针指南&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C语言-指针</title>
+      <link>/post/c-1/</link>
+      <pubDate>Sat, 09 May 2020 12:30:00 +0000</pubDate>
+      
+      <guid>/post/c-1/</guid>
+      <description>&lt;p&gt;这几天发现自己的指针学的有些糊涂,经常写懵,所以决定补习一下指针的概念和用法
+在这里记录一下知识点和心得&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-3</title>
+      <link>/post/leetcode-3/</link>
+      <pubDate>Fri, 08 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-3/</guid>
+      <description>&lt;p&gt;232-用栈实现队列&lt;!-- raw HTML omitted --&gt;
+662-二叉树最大宽度&lt;!-- raw HTML omitted --&gt;
+21-合并两个有序链表&lt;!-- raw HTML omitted --&gt;
+1-两数之和&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-12</title>
+      <link>/post/iot-12/</link>
+      <pubDate>Fri, 08 May 2020 20:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-12/</guid>
+      <description>&lt;p&gt;物联网数据检索&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-2</title>
+      <link>/post/leetcode-2/</link>
+      <pubDate>Thu, 07 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-2/</guid>
+      <description>&lt;p&gt;11-栈中保存最小值&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-11</title>
+      <link>/post/iot-11/</link>
+      <pubDate>Thu, 07 May 2020 20:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-11/</guid>
+      <description>&lt;p&gt;MapReduce,Spark框架&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-10</title>
+      <link>/post/iot-10/</link>
+      <pubDate>Thu, 07 May 2020 16:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-10/</guid>
+      <description>&lt;p&gt;物联网云计算和虚拟化,数据的预处理
+今天物联网撒花啦！开心
+但是最后部分知识点有些多,可能最后要分多个Blog来记录&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu优化总结</title>
+      <link>/post/ubuntu-20/</link>
+      <pubDate>Thu, 07 May 2020 11:30:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-20/</guid>
+      <description>在亲密接触Ubuntu这两个月中,一直在美化,安装各种插件来提升生产和学习效率,现在系统给我的体验就是,除了在一些专业软件(Adobe全家桶)的欠缺之外,ubunut已经完全超越了我的预期,并且效率和自由度比windows强了很多,让我完全沉浸于Ubuntu中,并且深深的爱上了她,所以在这里记录一下
+慢慢更,先挖个坑
+1.美化以及插件网站 1. Gnome美化 2. 插件安装网站
+这里不再多说gnome-tweek的安装过程,参考以下bolg即可 参考Blog
+2.插件推荐   Applications Menu topbar会显示一个快捷&amp;quot;应用程序&amp;quot;按钮
+  Clipboard Indicator 复制粘贴的历史记录
+  Dash to Dock 智能显示dock
+  Hide Activities Button 隐藏topbar上的鸡肋active
+  OpenWeather 天气插件,显示在topbar上
+  Recent Items 打开文件的历史记录
+  TopIcons Plus 将正在运行的程序图标移至topbar
+  User Themes 可以改变shell主题的插件
+  Add Username to Top Panel 在topbar中增加用户名
+  Bing Wallpaper Changer 每日更新bing壁纸
+  Bluetooth quick connect 蓝牙快速连接</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-9</title>
+      <link>/post/iot-9/</link>
+      <pubDate>Wed, 06 May 2020 20:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-9/</guid>
+      <description>&lt;p&gt;物联网与大数据&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-8</title>
+      <link>/post/iot-8/</link>
+      <pubDate>Tue, 05 May 2020 10:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-8/</guid>
+      <description>&lt;p&gt;网络体系结构&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-7</title>
+      <link>/post/iot-7/</link>
+      <pubDate>Mon, 04 May 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-7/</guid>
+      <description>&lt;p&gt;卫星通信技术,有线网络&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode Part-1</title>
+      <link>/post/leetcode-1/</link>
+      <pubDate>Mon, 04 May 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-1/</guid>
+      <description>&lt;p&gt;今天是blog记录leetcode刷题的第一天!努力做到每天打卡!加油!!!&lt;!-- raw HTML omitted --&gt;
+206-单链表反转&lt;!-- raw HTML omitted --&gt;
+225-队列实现栈&lt;!-- raw HTML omitted --&gt;
+100-判断两棵相同的树&lt;!-- raw HTML omitted --&gt;
+111-求树叶子节点所处在的最小深度&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux上的Apple生态圈</title>
+      <link>/post/ubuntu-19/</link>
+      <pubDate>Mon, 04 May 2020 11:30:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-19/</guid>
+      <description>Apple Music Web上线啦
+AppleMusic 今天是2020年5月4号 一个值得纪念的一天 因为意外的发现
+AppleMusic的网页端上线了！
+原来一直都处于测试状态，而且仅限美国地区 现在国区正式上线了，我的Linux生态完整啦！！！
+我好开心呜呜呜 我的运气也太好了呜呜呜 感谢命运女神一次次的眷顾我
+AppleMusic客户端 晚上逛github,发现有大佬做了一个snap-web打包出来的AM软件 好奇心!没错又是好奇心!让我下载了体验一下 在40kb下载速度的等待下,我安装好了! 体验尚可!流畅度提升了很多 github项目地址
+安装 1  sudo snap install apple-music-for-linux   iCloud 前几天买了iCloud的存储空间,好奇在linux上是否支持,因为之前还折腾了一下onedrive,但是失败了,所以就没抱太大希望,试着装了一个软件,发现使用体验满分!而且同步很快,支持拖拽上传文件,linux这回也有网盘了,感动到哭&amp;hellip; 这个软件是snap格式的,所以支持命令行安装,snap是ubuntu开发的一种运行在沙盒环境的软件格式,运行速度和安全性较好
+安装iCloud Notes Snap 1  sudo snap install icloud-notes-linux-client   安装应用程序后，打开应用程序菜单并搜索“icloud-notes-linux-client”，打开后，系统会立即提示你使用Apple ID登录Apple的iCloud系统。
+换图标 因为软件自身的图标很是一语难尽&amp;hellip;所以琢磨着换个图标 但是由于snap软件的文件无法进行修改,沙盒环境所限制 本来想放弃,但是尝试了最后一个方法,发现竟然好使了 修改本路径下的desktop文件
+1  /var/lib/snapd/desktop/applications   </description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-6</title>
+      <link>/post/iot-6/</link>
+      <pubDate>Sun, 03 May 2020 10:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-6/</guid>
+      <description>&lt;p&gt;定位技术,物联网通信体系&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OS总结 Part-2</title>
+      <link>/post/os-2/</link>
+      <pubDate>Sat, 02 May 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/os-2/</guid>
+      <description>&lt;p&gt;绪论,进程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-5</title>
+      <link>/post/iot-5/</link>
+      <pubDate>Sat, 02 May 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-5/</guid>
+      <description>&lt;p&gt;RFID信号干扰&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu管理已安装的包</title>
+      <link>/post/ubuntu-18/</link>
+      <pubDate>Sat, 02 May 2020 11:30:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-18/</guid>
+      <description>Synaptic Package Manager
+包管理软件 在Ubuntu中安装了很多包之后，很难管理，而且对于我这种强迫症&amp;hellip;实在忍不了 搜了一会发现一个好用的可视化管理工具
+ Synaptic Package Manager
+ 安装很简单，打开终端，输入以下命令：
+1  sudo apt-get install synaptic   中文系统安装之后显示“新立得软件包管理器”
+搜狗输入法配置文件 另外今天想设置搜狗输入法，但是之前把状态栏隐藏了，又因为安装的是优麒麟社区特供版，所以导致现在调不出搜狗的设置，一番重装之后发现还是不行，感觉应该是有配置文件，果然在 /home/username/.config/SogouShell/usr/PCPYDict 找到了 env.ini 配置文件
+1  StatusAppearance=1 #设置为1即可   </description>
+    </item>
+    
+    <item>
+      <title>Ubuntu输入法配置</title>
+      <link>/post/ubuntu-17/</link>
+      <pubDate>Thu, 30 Apr 2020 11:30:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-17/</guid>
+      <description>本来今天要去净月潭,不过外面阴天,只好窝在家里了&amp;hellip; 打开电脑改没写完的blog,感觉再继续用 ibus 我的眼睛就真的要废掉了 所以下定决心 再重新装fcitx!!!(我就不信了) 根据之前的失败经历，我想这次就装个fcitx-google-pinyin就好 经过n次重启之后，终于装上了，更让我意外的是，sogou竟然也好使了！ ubuntu下的ibus和fcitx有很大的坑，两个输入法共同存在，会引起冲突 而且ibus还不能完全卸载，只能通过开机配置文件去限制他的启动 填坑上方法
+1.安装fcitx 1  $ sudo apt install fcitx   输入命令
+1  $ im-config   im-config是Input Method Configuration的缩写
+运行如下命令之后，就会开启 Input Method Configuration 窗口。 在依次出现的窗口中，依次选择OK &amp;ndash;&amp;gt; Yes &amp;ndash;&amp;gt; fcitx &amp;ndash;&amp;gt; OK 然后重启电脑
+2.安装Google拼音 先安装googlepinyin
+1  $ sudo apt install fcitx-googlepinyin   然后，运行如下命令
+1  $ fcitx-config-gtk3   依次进行如下操作
+ 打开Input Method Confuguration窗口； 点击 + 号； 取消勾选「 Only Show Current Language 」这个选框； 在搜索栏中输入 google，就会找到我们刚才安装的Google Pinyin这个输入法，选中它，点击「 OK 」，就把谷歌拼音输入法添加到当前输入法列表中了；  3.</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-4</title>
+      <link>/post/iot-4/</link>
+      <pubDate>Wed, 29 Apr 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-4/</guid>
+      <description>&lt;p&gt;物联网标识技术&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux-bash对文件批量操作</title>
+      <link>/post/ubuntu-16/</link>
+      <pubDate>Wed, 29 Apr 2020 21:30:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-16/</guid>
+      <description>今天学到了一个超级超级好用的小技巧!!! linux每次截图之后,都是按照时间辍来命名截图文件的 但是我们在使用截图的时候就要挨个改名,很麻烦 bash 终端中提供了极好的命令控制
+ 首先在很多系统生成的文件中有空格,这些空格在之后的 mv 命令中会误导系统认为命令结束,所以要先去去掉空格  1  rename &amp;#39;s/ /_/g&amp;#39; * ##表示把当前目录下所有的文件中有空格的都用_表示   批量重命名(代码不用解释,沸腾就完事啦)  1  i=1; for x in *; do mv $x $i.png; let i=i+1; done   bash是无比强大的!!! 我爱Linux!!!
+ 2021-01-13更新
+ 发现Windows的cmd也可以做到(新的沙雕发现) 口号精简了一下: &amp;ldquo;bash是无敌的!&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu下的Steam中文支持</title>
+      <link>/post/ubuntu-15/</link>
+      <pubDate>Wed, 29 Apr 2020 12:30:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-15/</guid>
+      <description>今天在玩Besiege的时候,好多零件的英文都不认识&amp;hellip;在steam更新公告里,游戏是支持中文的,可是设置里中的没有中文选项,只有空白 然后我就开始强迫症折腾了&amp;hellip; 首先去网上找汉化教程,安装了MOD模块,以及中文mod包,不过没有用,因为linux的特殊性,就去MOD的github官方库去看看咋回事,发现&amp;hellip;早就不支持当前版本了 随后发现创意工坊里有繁体中文包,犹豫了好久装不装,突然想到按照它的安装思路,不如去看看他的包是装在哪里,跟着目录找到了steam语言包的位置,发现有chinese文件啊&amp;hellip; 这就有意思了&amp;hellip;有文件为什么游戏不显示呢? 莫非是&amp;hellip;字体不支持! 网上搜了搜发现果然是这样的!linux下的很多游戏中文都是乱码,因为steam游戏要求的字体没有下载 机智如我
+安装以下字体即可
+1 2 3 4 5  sudo apt-get install ttf-wqy-microhei #文泉驿-微米黑  sudo apt-get install ttf-wqy-zenhei #文泉驿-正黑  sudo apt-get install xfonts-wqy #文泉驿-点阵宋体   </description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-3</title>
+      <link>/post/iot-3/</link>
+      <pubDate>Tue, 28 Apr 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-3/</guid>
+      <description>&lt;p&gt;无线传感网络&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-2</title>
+      <link>/post/iot-2/</link>
+      <pubDate>Sun, 26 Apr 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-2/</guid>
+      <description>&lt;p&gt;传感器&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>物联网概论 PART-1</title>
+      <link>/post/iot-1/</link>
+      <pubDate>Sat, 25 Apr 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/iot-1/</guid>
+      <description>&lt;p&gt;物联网概述&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据库原理及应用 PART-6</title>
+      <link>/post/db-6/</link>
+      <pubDate>Fri, 24 Apr 2020 21:15:00 +0000</pubDate>
+      
+      <guid>/post/db-6/</guid>
+      <description>&lt;p&gt;依赖关系,范式定义&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu安装NVIDIA驱动</title>
+      <link>/post/ubuntu-14/</link>
+      <pubDate>Fri, 24 Apr 2020 12:30:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-14/</guid>
+      <description>一个月前我被N卡折磨的重装系统,一个月后的今天,本小辣鸡又来了! 跟上次雪崩不同的是,这次是成功的!记录一下过程
+早上看到知乎热搜,竟然有我之前玩的那个沙盒游戏因为之前之前那个游戏实在win环境下玩的,不由得想起来,似乎现在steam上支持Linux的游戏越来越多了,好奇心让我去steam官网看了一下,没想到竟然真的支持Linux!!! 随后一波操作下载steam,安装,启动 可是!为什么游戏只有&amp;hellip;30fps&amp;hellip;虽然画面流畅度还算凑活,但是&amp;hellip;这也太难受了吧,想到之前win环境下运行很流畅,心中不禁有很多问号,难道是游戏优化问题?不能啊,是不是显卡用的核显? emmmmm&amp;hellip;.好像是 到网上查了一下,发现确实,在系统详情里会显示当前使用的显卡,我点开一看,果然是intel核显&amp;hellip;吼! 看了很多教程,和blog,小心翼翼的一步步操作(真的害怕系统雪崩) 最后在这里记录一下过程,想必以后也会再装的,给未来的自己填个坑(我也太好了)
+1. 检查电脑有哪些显卡 执行Terminal命令
+1  lshw -c video   2. 查看可安装驱动 Ubuntu自带了为Nvidia显卡开发的开源Nouveau驱动,这个Nouveau驱动是包含在Linux内核中的。但是它不支持3D加速。为了获得最佳图形性能，这里用 software-properties-gtk 这个程序来安装专有的Nvidia显卡驱动。在 terminal 里输入下面的命令
+1  software-properties-gtk   该命令将打开软件与更新窗口。点击&amp;quot;额外驱动&amp;quot;标签。可以看见Ubuntu默认为Nvidia显卡启用了Nouveau开源驱动，并且列出了可以安装的专有显卡驱动。
+3. 查看推荐驱动并安装 在终端里输入下面的命令来查看哪一个专有驱动是推荐安装的。
+1   sudo ubuntu-drivers devices   可以看到nvidia-driver-435是推荐安装的驱动.在终端里输入下面的命令安装这个驱动。
+1  sudo apt-get install nvidia-driver-435   4. 安装过程中的设置密码 下载完成后,会显示需要输入一个密码,以确认驱动安装,并且重启开机时会让重新输入一次,值得注意的是,开机时会有四个选项,选择第二个enroll MOK 然后输入密码进入系统,这时打开设置,就会看到!安装完成啦
+5. 快乐切换显卡 打开程序列表,会发现N卡的软件,在软件中,可以切换当前显卡
+然后打开游戏,就会有发现&amp;hellip;真的有这么丝滑吗
+最高140fps的体验,这就是Linux下的游戏吗 i 了</description>
+    </item>
+    
+    <item>
+      <title>数据库原理及应用 PART-5</title>
+      <link>/post/db-5/</link>
+      <pubDate>Thu, 23 Apr 2020 23:11:00 +0000</pubDate>
+      
+      <guid>/post/db-5/</guid>
+      <description>&lt;p&gt;数据库范式定义,模式分解,函数依赖,正则覆盖,模式分解&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux与移动设备的文件互传</title>
+      <link>/post/ubuntu-13/</link>
+      <pubDate>Thu, 23 Apr 2020 20:30:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-13/</guid>
+      <description>昨天在微博上碰巧看到一个分享，讲的是一个电脑与移动设备的文件互传的工具 因为Linux上的im软件一直是wine套娃，所以体验不是很好，这也是我在使用过程中心中一直不舒服的一个点，现在生产环境都已经迁移到了ubuntu，不得不说ubuntu一直让我很是满意，没有win10臃肿的系统，高度的可定制化，便捷的库安装过程，庞大的开放社区，今天上午想着试一下这个工具，安装之后使用起来真的让我感到很惊艳，在这里记录一下安装过程
+项目地址 github
+安装GO环境 这个工具是go语言编写的,所以要安装一下go的环境
+1.官网下载go语言安装包 地址：https://studygolang.com/dl
+2.解压安装包 将下载下来的安装包解压到/usr/local下
+1  tar xf go1.12.1.linux-amd64.tar.gz -C /usr/local   3.配置全局变量 1  vim ~/.bashrc   最后一行加上下面配置
+1 2  export GOPATH=/usr/local/go export PATH=$GOPATH/bin:$PATH   4.验证配置是否成功 1 2 3  go version #warning: GOPATH set to GOROOT (/usr/local/go) has no effect #go version go1.12.1 linux/amd64   5.出现warning，配置PATH 1 2  export GOROOT=/usr/local/go export GOPATH=$PATH:$GOROOT/bin   6.测试安装 1 2  go version #go version go1.</description>
+    </item>
+    
+    <item>
+      <title>数据库原理及应用 PART-4</title>
+      <link>/post/db-4/</link>
+      <pubDate>Tue, 21 Apr 2020 23:11:00 +0000</pubDate>
+      
+      <guid>/post/db-4/</guid>
+      <description>&lt;p&gt;ER图&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据库原理及应用 PART-3</title>
+      <link>/post/db-3/</link>
+      <pubDate>Mon, 20 Apr 2020 23:10:00 +0000</pubDate>
+      
+      <guid>/post/db-3/</guid>
+      <description>&lt;p&gt;Trigger,数据库安全性&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>开机过程中的操作系统</title>
+      <link>/post/os-1/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/os-1/</guid>
+      <description>&lt;p&gt;今天听操作系统课的时候听到老师简单讲了几句计算机开机的过程,提到了GRUB,我一听,这不是我当初装双系统折腾过的嘛,就好奇去搜了一下开机过程OS的过程,在这里记录一下&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据库原理及应用 PART-2</title>
+      <link>/post/db-2/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/db-2/</guid>
+      <description>&lt;p&gt;事务,完整性约束&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据库原理及应用 PART-1</title>
+      <link>/post/db-1/</link>
+      <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/db-1/</guid>
+      <description>&lt;p&gt;绪论,关系模型,SQL语言&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu开机挂载Windows磁盘</title>
+      <link>/post/ubuntu-11/</link>
+      <pubDate>Fri, 17 Apr 2020 22:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-11/</guid>
+      <description>&lt;p&gt;挂载windows分区挂载到ubuntu的文件管理器中&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>图的最短路径</title>
+      <link>/post/ds-11/</link>
+      <pubDate>Fri, 17 Apr 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/ds-11/</guid>
+      <description>&lt;p&gt;单源多源最短路径&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu-CPU异常负荷</title>
+      <link>/post/ubuntu-10/</link>
+      <pubDate>Fri, 17 Apr 2020 20:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-10/</guid>
+      <description>&lt;p&gt;搜狗云输入法惹的祸!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>图的算法应用&amp;&amp;最小生成树</title>
+      <link>/post/ds-10/</link>
+      <pubDate>Thu, 16 Apr 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/ds-10/</guid>
+      <description>&lt;p&gt;简单路径,最短路径,最小生成树&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>图的DFS/BFS遍历</title>
+      <link>/post/ds-9/</link>
+      <pubDate>Wed, 15 Apr 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/ds-9/</guid>
+      <description>&lt;p&gt;图的重点!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CMU213_Part-2</title>
+      <link>/post/cmu213-2/</link>
+      <pubDate>Mon, 13 Apr 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/cmu213-2/</guid>
+      <description>&lt;p&gt;二进制运算&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>网易云导入Apple Music</title>
+      <link>/post/shortcut-1/</link>
+      <pubDate>Sun, 12 Apr 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/shortcut-1/</guid>
+      <description>&lt;p&gt;暴力猴脚本&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>树和哈夫曼树的算法整理</title>
+      <link>/post/ds-8/</link>
+      <pubDate>Sun, 12 Apr 2020 22:30:00 +0000</pubDate>
+      
+      <guid>/post/ds-8/</guid>
+      <description>&lt;p&gt;今天应该进入图的,但是感觉还是整理一下树和哈夫曼树吧,知识点挺多的&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>线索二叉树</title>
+      <link>/post/ds-7/</link>
+      <pubDate>Thu, 09 Apr 2020 21:30:00 +0000</pubDate>
+      
+      <guid>/post/ds-7/</guid>
+      <description>&lt;p&gt;二叉树的线索化&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>二叉树应用算法整理</title>
+      <link>/post/ds-6/</link>
+      <pubDate>Thu, 09 Apr 2020 14:30:00 +0000</pubDate>
+      
+      <guid>/post/ds-6/</guid>
+      <description>&lt;p&gt;今天线索二叉树还是没弄完,快给我脑壳绕晕了,开题报告和论文翻译昨晚肝到今天中午,最后可算完成了。
+上一篇总结了非递归遍历,这篇总结各种应用算法&amp;hellip;本来7号就应该写完的,结果拖了这么久&amp;hellip;(惭愧)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CMU213_Part-1</title>
+      <link>/post/cmu213-1/</link>
+      <pubDate>Sun, 05 Apr 2020 23:30:00 +0000</pubDate>
+      
+      <guid>/post/cmu213-1/</guid>
+      <description>&lt;p&gt;原码,反码,补码,有符号数,无符号数&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>链式存储中传入参数的类型</title>
+      <link>/post/ds-5/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ds-5/</guid>
+      <description>&lt;p&gt;今天本菜鸡开始学离散数学和CMU的213深入操作系统，虽然刚开始学，但收获很大，这几天还看了很多大佬的演讲，他们看世界的角度真的很不一样，高度更高，想得更深，思维更广，羡慕大佬
+今天敲基本数据结构的时候，发现一个之前没注意的知识点&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>二叉树的非递归遍历</title>
+      <link>/post/ds-4/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ds-4/</guid>
+      <description>&lt;p&gt;今天算是更加深刻地学习了一下二叉树的非递归遍历,学习期间们摸鱼去看了两集&amp;lt;伟大的卫国战争&amp;gt;不禁感叹纳粹德国的勇猛和苏联人的顽强,最开始闪电战的顺利进行以为可以四个月攻占苏联,就像德国将军所说,这样的战争局势放在任何一个别的国家都是注定的结局,敌人只会溃不成军,但是苏联军队却是如此的顽强。这么一看二战中苏联和中国的情况很是相似，不过中国似乎表现的更有些&amp;hellip;说不上来的迟钝吧
+又扯了这么多，好想写一篇最近感受的专题哈哈哈，回到主题
+之前学习树的非递归总是有些迷糊，先序和中序还好，后序压根在脑袋中像一锅粥一样。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu安装Deepin-Wine</title>
+      <link>/post/ubuntu-9/</link>
+      <pubDate>Mon, 30 Mar 2020 10:44:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-9/</guid>
+      <description>&lt;p&gt;套娃Windows&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>双系统的Ubuntu18.04扩充分区</title>
+      <link>/post/ubuntu-8/</link>
+      <pubDate>Sun, 29 Mar 2020 14:06:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-8/</guid>
+      <description>&lt;p&gt;使用工具: Gparted&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu安装Flashplayer插件</title>
+      <link>/post/ubuntu-7/</link>
+      <pubDate>Sat, 28 Mar 2020 12:08:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-7/</guid>
+      <description>&lt;p&gt;发现Firefox竟然看不了b站视频
+我人又傻了，之前找了好久的方法才装上flashplayer，这次记录一下，免得下次又要铺天盖地的找方法&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Github clone提速的方法</title>
+      <link>/post/github-1/</link>
+      <pubDate>Sat, 28 Mar 2020 12:06:00 +0000</pubDate>
+      
+      <guid>/post/github-1/</guid>
+      <description>&lt;p&gt;昨天clone别人的库的时候，发现下载速度才8k/s&amp;hellip;后来搜到了一个很奇妙的方法:将https网址改为ssh!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu带权限的文件管理器</title>
+      <link>/post/ubuntu-6/</link>
+      <pubDate>Sat, 28 Mar 2020 10:53:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-6/</guid>
+      <description>&lt;p&gt;神奇鹦鹉螺(nautilus)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>记一次Ubuntu雪崩</title>
+      <link>/post/ubuntu-5/</link>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-5/</guid>
+      <description>&lt;p&gt;日常踩坑&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu关机重启过慢</title>
+      <link>/post/ubuntu-4/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-4/</guid>
+      <description>&lt;p&gt;今天使用Ubuntu遇到了两个问题&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;重启关机速度过慢&lt;/li&gt;
+&lt;li&gt;开机后显示WiFi模块工作不正常
+最后通过修改系统配置文件和terminal命令解决&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>算法题 - 小知识点2</title>
+      <link>/post/ds-3/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ds-3/</guid>
+      <description>&lt;p&gt;今天在学习算法题的基础数据结构操作的时候,发现教材里在构造单向链表时有头结点，而在构造链栈时采用不带头结点的单向链表
+在此记录一下两种的差别&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>算法题 - 小知识点1</title>
+      <link>/post/ds-2/</link>
+      <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ds-2/</guid>
+      <description>&lt;p&gt;strcmp函数,getchar()&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>算法题 - typedef与struct</title>
+      <link>/post/ds-1/</link>
+      <pubDate>Tue, 24 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ds-1/</guid>
+      <description>&lt;p&gt;最近刷leedcode以及看数据结构的代码，发现一直弄不太清typedef的使用情况，百度之后才明白这其中的原理&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu搭建梯子</title>
+      <link>/post/ubuntu-3/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-3/</guid>
+      <description>&lt;p&gt;electron-ssr&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo迁移到ubuntu的坑</title>
+      <link>/post/ubuntu-2/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-2/</guid>
+      <description>&lt;p&gt;准备以后编程开发环境都转移到ubuntu上，这就涉及到以后blog的更新，想了想不如把hexo迁移到这里，原以为只是clone远程库就完事了，但没想到还是好多坑！吼！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>双系统安装Ubuntu18.04</title>
+      <link>/post/ubuntu-1/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ubuntu-1/</guid>
+      <description>&lt;p&gt;厌倦了在windows里的虚拟机ubuntu来体验套娃linux，索性去重新下载了一个ubuntu18.04版本，从双系统到后来的linux命令，再到最后迁移hexo，走了很多的坑&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FastAPI-3</title>
+      <link>/post/fastapi-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fastapi-3/</guid>
+      <description>&lt;p&gt;FastAPI-文档&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Selenium执行自动化操作</title>
+      <link>/post/python-8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/python-8/</guid>
+      <description>&lt;p&gt;Selenium Webdriver&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

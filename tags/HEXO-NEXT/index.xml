@@ -1,0 +1,53 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>HEXO-NEXT - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/HEXO-NEXT/</link>
+    <description>HEXO-NEXT - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Thu, 07 Jan 2021 22:30:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/HEXO-NEXT/" rel="self" type="application/rss+xml" /><item>
+  <title>Hexo-Mathjax渲染Bug</title>
+  <link>http://example.org/posts/hexo-6/</link>
+  <pubDate>Thu, 07 Jan 2021 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/hexo-6/</guid>
+  <description><![CDATA[<p>Hexo Mathjax大括号公式渲染问题</p>]]></description>
+</item><item>
+  <title>Hexo-百度谷歌收录</title>
+  <link>http://example.org/posts/hexo-5/</link>
+  <pubDate>Sun, 30 Aug 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/hexo-5/</guid>
+  <description><![CDATA[<p>将网站内容收录入百度谷歌的搜索引擎</p>]]></description>
+</item><item>
+  <title>部署-spawn failed错误的解决方法</title>
+  <link>http://example.org/posts/hexo-4/</link>
+  <pubDate>Tue, 25 Aug 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/hexo-4/</guid>
+  <description><![CDATA[删除 .deploy_git 文件夹 修改配置文件 1 git config --global core.autocrlf false 依次执行： 1 2 3 hexo clean hexo g hexo d 更改用户凭据 控制面板更改用户凭据,github账号密码]]></description>
+</item><item>
+  <title>NEXT Part-2</title>
+  <link>http://example.org/posts/hexo-3/</link>
+  <pubDate>Sun, 21 Jun 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/hexo-3/</guid>
+  <description><![CDATA[<p>今天大部分时间在搞数学,所以更的有点少(哭&hellip;)</p>]]></description>
+</item><item>
+  <title>NEXT Part-1</title>
+  <link>http://example.org/posts/hexo-2/</link>
+  <pubDate>Sat, 20 Jun 2020 22:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/hexo-2/</guid>
+  <description><![CDATA[<p>18号刷PAT,19号改NEXT的bug,鸽了两天,今天全都补上
+一直犹豫要不要换到NEXT,因为工作量很大,但是原来使用的主题拓展性实在太差了&hellip;我真的很想加个站内检索&hellip;因为经常需要找原来blog记录的某一个知识点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Version: NEXT-7.8 
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>CMU213 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/CMU213/</link>
+    <description>CMU213 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Mon, 13 Apr 2020 23:30:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/CMU213/" rel="self" type="application/rss+xml" /><item>
+  <title>CMU213_Part-2</title>
+  <link>http://example.org/posts/CMU213-2/</link>
+  <pubDate>Mon, 13 Apr 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/CMU213-2/</guid>
+  <description><![CDATA[<p>二进制运算</p>]]></description>
+</item><item>
+  <title>CMU213_Part-1</title>
+  <link>http://example.org/posts/CMU213-1/</link>
+  <pubDate>Sun, 05 Apr 2020 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/CMU213-1/</guid>
+  <description><![CDATA[<p>原码,反码,补码,有符号数,无符号数</p>]]></description>
+</item></channel>
+</rss>

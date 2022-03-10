@@ -1,0 +1,50 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>数据库原理及应用-课程 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8-%E8%AF%BE%E7%A8%8B/</link>
+    <description>数据库原理及应用-课程 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Fri, 24 Apr 2020 21:15:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8-%E8%AF%BE%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+  <title>数据库原理及应用 PART-6</title>
+  <link>http://example.org/posts/DB-6/</link>
+  <pubDate>Fri, 24 Apr 2020 21:15:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DB-6/</guid>
+  <description><![CDATA[<p>依赖关系,范式定义</p>]]></description>
+</item><item>
+  <title>数据库原理及应用 PART-5</title>
+  <link>http://example.org/posts/DB-5/</link>
+  <pubDate>Thu, 23 Apr 2020 23:11:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DB-5/</guid>
+  <description><![CDATA[<p>数据库范式定义,模式分解,函数依赖,正则覆盖,模式分解</p>]]></description>
+</item><item>
+  <title>数据库原理及应用 PART-4</title>
+  <link>http://example.org/posts/DB-4/</link>
+  <pubDate>Tue, 21 Apr 2020 23:11:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DB-4/</guid>
+  <description><![CDATA[<p>ER图</p>]]></description>
+</item><item>
+  <title>数据库原理及应用 PART-3</title>
+  <link>http://example.org/posts/DB-3/</link>
+  <pubDate>Mon, 20 Apr 2020 23:10:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DB-3/</guid>
+  <description><![CDATA[<p>Trigger,数据库安全性</p>]]></description>
+</item><item>
+  <title>数据库原理及应用 PART-2</title>
+  <link>http://example.org/posts/DB-2/</link>
+  <pubDate>Sun, 19 Apr 2020 00:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DB-2/</guid>
+  <description><![CDATA[<p>事务,完整性约束</p>]]></description>
+</item><item>
+  <title>数据库原理及应用 PART-1</title>
+  <link>http://example.org/posts/DB-1/</link>
+  <pubDate>Sat, 18 Apr 2020 00:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/DB-1/</guid>
+  <description><![CDATA[<p>绪论,关系模型,SQL语言</p>]]></description>
+</item></channel>
+</rss>

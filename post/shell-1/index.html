@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>Shell语法 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="Shell语法 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-01-27T22:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-01-27T22:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Shell语法">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/shell-1/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Shell语法</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年1月27日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>Shell教程</p>
+<h1 id="碎碎的知识点">碎碎的知识点</h1>
+<h2 id="批量重命名">批量重命名</h2>
+<p>之前在ubuntu的时候,能用bash直接批量处理图片命名
+(因为每次查资料截图都会产生大量的图片,之前手动一个个命名真是太顶了
+因为wsl的出现,所以现在还是回到了win的怀抱
+但是在cmd下,使用之前的Linux下的bash命令,会产生奇怪的错误,在Linux下,图片命名是按照时间产生的顺序排序,正好符合我的意思
+但是在windows下没有按照时间顺序命名,每次都是奇奇怪怪的顺序,导致命名后的文件都没有办法使用
+懒得每次都调用py文件之类的,想直接在控制台中写好,所以只好乖乖去学shell啦</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ <span style="color:#000;font-weight:bold">for</span> x in *; <span style="color:#000;font-weight:bold">do</span> mv <span style="color:#008080">$x</span> <span style="color:#d14">${</span><span style="color:#008080">x</span>:<span style="color:#008080">4</span><span style="color:#d14">}</span>; <span style="color:#000;font-weight:bold">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#d14">${</span><span style="color:#008080">x</span>:<span style="color:#008080">4</span><span style="color:#d14">}</span> <span style="color:#998;font-style:italic">#从x变量中的第4号位置开始截取字符串(第一个位置为0号)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="数据写入文件">数据写入文件</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;hello&#34;</span>&gt;&gt;text.txt <span style="color:#998;font-style:italic">#将hello写入text.txt文件中</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="tree命令">tree命令</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>tree /f video <span style="color:#998;font-style:italic">#/f命令为查看所有文件名字(video为文件名)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="打开windows-terminal">打开Windows terminal</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wt -d . <span style="color:#998;font-style:italic"># 当前目录打开Windows terminal</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="seq关键字">seq关键字</h2>
+<p>时间倒计时.sh</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> -n <span style="color:#d14">&#34;Time: &#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> i in <span style="color:#d14">`</span>seq <span style="color:#099">9</span> -2 1<span style="color:#d14">`</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#000;font-weight:bold">do</span> 
+</span></span><span style="display:flex;"><span>		<span style="color:#0086b3">echo</span> -n -e <span style="color:#d14">&#34;\b</span><span style="color:#008080">$i</span><span style="color:#d14">&#34;</span>
+</span></span><span style="display:flex;"><span>		sleep <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>seq基本用法
+seq &hellip; 尾数(一个变量)
+seq &hellip; 首数 尾数(两个变量)
+seq &hellip; 首数 增量 尾数(三个变量)
+<strong>以指定增量从首数开始打印数字到尾数</strong></p>
+<h1 id="shell教程">Shell教程</h1>
+<h2 id="脚本编写规范">脚本编写规范</h2>
+<p>一般在第一行填写基本信息</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#！/bin/bash </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Date：16:29 2018-10-20 </span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Author: Create by xiaoxie</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Description: This script function is …… </span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Version： 1.1 </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="变量">变量</h2>
+<ol>
+<li><strong>交互式读取</strong></li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">read</span> -p <span style="color:#d14">&#34;提示信息&#34;</span> 变量名
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><strong>赋值时使用引号的作用</strong></li>
+</ol>
+<ul>
+<li>双引号：允许通过$符号引用其他变量值</li>
+<li>单引号：禁止引用其他变量值，$视为普通字符</li>
+<li>反撇号：命令替换，提取命令执行后的输出结果</li>
+</ul>
+<p>全局变量的定义方法 export 变量名</p>
+<ol start="3">
+<li>预定义变量
+预定义变量和环境变量相类似，也是在Shell一开始就定义的变量，不同的是，用户只能根据shell的定义来使用这些变量，所有预定义变量都是由符号“$”和另一个符号组成。 常见的Shell预定义变量有以下几种。</li>
+</ol>
+<ul>
+<li>$# ：位置参数的数量</li>
+<li>$* ：所有位置参数的内容</li>
+<li>$? ：命令执行后返回的状态，0表示没有错误，非0表示有错误</li>
+<li>$$ ：当前进程的进程号</li>
+<li>$! ：后台运行的最后一个进程号</li>
+<li>$0 ：当前执行的进程名</li>
+</ul>
+<p>例如 example.sh 文件</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#008080">$1</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">${</span><span style="color:#008080">2</span><span style="color:#d14">}</span>+<span style="color:#d14">${</span><span style="color:#008080">3</span><span style="color:#d14">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 执行bash example.sh 10 11 12</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#输出两个参数</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#10</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#23</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="常见运算符">常见运算符</h2>
+<h3 id="heading">(())</h3>
+<p>用于整数运算的常见运算符,效率很高</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">((</span><span style="color:#008080">i</span><span style="color:#000;font-weight:bold">=</span> i+1<span style="color:#000;font-weight:bold">))</span> <span style="color:#998;font-style:italic">#i增加1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">i</span><span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">$((</span><span style="color:#008080">$a</span><span style="color:#000;font-weight:bold">+</span><span style="color:#099">5</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#998;font-style:italic">#i = a变量+5</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="let">let</h3>
+<p>用于整数运算</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">let</span> <span style="color:#008080">i</span> <span style="color:#000;font-weight:bold">=</span> i+8
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="expr">expr</h3>
+<p>expr直接可计算出结果
+配合变量计算</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#008080">i</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">`</span>expr <span style="color:#008080">$i</span>+5<span style="color:#d14">`</span> <span style="color:#998;font-style:italic">#将i变量+5 赋值给i</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="heading-1">[]</h3>
+<p>可用于整数的运算</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> $<span style="color:#000;font-weight:bold">[</span>2-5<span style="color:#000;font-weight:bold">]</span> <span style="color:#998;font-style:italic">#得到-3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="逻辑语句">逻辑语句</h2>
+<h3 id="if-then">if-then</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> condition
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">then</span> commands
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span> 
+</span></span><span style="display:flex;"><span>    commands
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">fi</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="if-elseif">if-elseif</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> conditon
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">then</span> commands
+</span></span><span style="display:flex;"><span>elseif condition
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">then</span> commands
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>    commands
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">fi</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="case">case</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">case</span> variable in
+</span></span><span style="display:flex;"><span>    v1<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        commands
+</span></span><span style="display:flex;"><span>    ;;
+</span></span><span style="display:flex;"><span>    v2<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        commands
+</span></span><span style="display:flex;"><span>    ;;
+</span></span><span style="display:flex;"><span>    v3<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        commands
+</span></span><span style="display:flex;"><span>    ;;
+</span></span><span style="display:flex;"><span>    *<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        commands
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">esac</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>举例</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">read</span> -p <span style="color:#d14">&#34;please input a num or str:&#34;</span> i
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">case</span> <span style="color:#008080">$i</span> in
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">[</span>1-9<span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;this is a number&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">[</span>a-z<span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;this is a letter&#34;</span>
+</span></span><span style="display:flex;"><span>    *<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;this is shit&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">esac</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="for">for</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> conditon
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">do</span> 
+</span></span><span style="display:flex;"><span>        commands
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="while">while</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">while</span> condition
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>        commands
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="函数">函数</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>function_name<span style="color:#000;font-weight:bold">(){</span>
+</span></span><span style="display:flex;"><span>    commands
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> N
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>函数调用直接使用名字即可(不需要加双括号)</p>
+<h1 id="linux三剑客">Linux三剑客</h1>
+<ul>
+<li>grep擅长查找功能</li>
+<li>sed擅长取行和替换</li>
+<li>awk擅长取列</li>
+</ul>
+<h2 id="正则表达式">正则表达式</h2>
+<p><a href="https://www.cnblogs.com/zimskyzeng/p/11630071.html">参考博客</a></p>
+<h3 id="元字符">元字符</h3>
+<p><strong>.</strong> <!-- raw HTML omitted -->匹配任意单个字符<!-- raw HTML omitted -->
+<strong>[]</strong> <!-- raw HTML omitted -->匹配指定范围内的任意单个字符<!-- raw HTML omitted -->
+<strong>[^]</strong> <!-- raw HTML omitted -->匹配指定范围外的任意单个字符<!-- raw HTML omitted --></p>
+<h3 id="字符集合">字符集合</h3>
+<p><strong>[[:digit:]]</strong> <!-- raw HTML omitted -->匹配单个数字<!-- raw HTML omitted -->
+<strong>[[:lower:]]</strong> <!-- raw HTML omitted -->匹配单个小写字母<!-- raw HTML omitted -->
+<strong>[[:upper:]]</strong> <!-- raw HTML omitted -->匹配单个大写字母<!-- raw HTML omitted -->
+<strong>[[:punct:]]</strong> <!-- raw HTML omitted -->匹配单个标点字符<!-- raw HTML omitted -->
+<strong>[[:space:]]</strong> <!-- raw HTML omitted -->匹配单个空白字符<!-- raw HTML omitted -->
+<strong>[[:alpha:]]</strong> <!-- raw HTML omitted -->匹配单个字母<!-- raw HTML omitted -->
+<strong>[[:alnum:]]</strong> <!-- raw HTML omitted -->匹配单个字母或数字<!-- raw HTML omitted --></p>
+<h3 id="匹配次数贪婪模式">匹配次数（贪婪模式）</h3>
+<p><strong>*</strong> <!-- raw HTML omitted -->匹配其前面的字符任意次<!-- raw HTML omitted -->
+<strong>?</strong> <!-- raw HTML omitted -->匹配其前面的字符0次或者1次<!-- raw HTML omitted -->
+<strong>+</strong> <!-- raw HTML omitted -->匹配其前面的字符至少1次<!-- raw HTML omitted -->
+<strong>.*</strong> <!-- raw HTML omitted -->任意长度的任意字符<!-- raw HTML omitted --></p>
+<h3 id="位置锚定">位置锚定</h3>
+<p><strong>^</strong> <!-- raw HTML omitted -->锚定行首，此字符后面的任意内容必须出现在行首<!-- raw HTML omitted -->
+<strong>$</strong> <!-- raw HTML omitted -->锚定行尾，此字符前面的任意内容必须出现在行尾<!-- raw HTML omitted -->
+<strong>^$</strong> <!-- raw HTML omitted -->空白行<!-- raw HTML omitted --></p>
+<h3 id="实际使用">实际使用</h3>
+<p>由于linux系统shell解释器的特殊处理，某些元字符在linux下具有展开式等特殊含义，在实际的使用过程中我们需要<strong>添加 \ 进行转义</strong></p>
+<p><strong>\?</strong> <!-- raw HTML omitted -->匹配其前面的字符1次或0次<!-- raw HTML omitted -->
+<strong>\+</strong> <!-- raw HTML omitted -->匹配至少一次<!-- raw HTML omitted -->
+<strong>\{m,n\}</strong> <!-- raw HTML omitted -->匹配其前面的字符至少m次，至多n次<!-- raw HTML omitted -->
+<strong>\{1,\}</strong> <!-- raw HTML omitted -->匹配前面的字符至少1次<!-- raw HTML omitted -->
+<strong>\{0,3\}</strong> <!-- raw HTML omitted -->匹配前面的字符0次至3次均可<!-- raw HTML omitted --></p>
+<blockquote>
+<p>备注：至少0次，必须要显式的写出来；</p>
+</blockquote>
+<p><strong>\&lt;</strong> <!-- raw HTML omitted -->锚定词首，其后面的任意字符必须作为单词首部出现<!-- raw HTML omitted -->
+<strong>\&gt;</strong> <!-- raw HTML omitted -->锚定词尾，其前面的任意字符必须作为单词的尾部出现<!-- raw HTML omitted --></p>
+<h3 id="分组与后向引用">分组与后向引用</h3>
+<p>\(\)
+\(ab\)*
+\1：<!-- raw HTML omitted -->引用第1个左括号以及与之对应的括号所包括的所有内容<!-- raw HTML omitted -->
+\2：<!-- raw HTML omitted -->引用第2个左括号以及与之对应的括号所包括的所有内容，以此类推<!-- raw HTML omitted --></p>
+<h2 id="拓展正则表达式">拓展正则表达式</h2>
+<p>可以看到标准正则表达的使用过程中，许多符号都需要转义，这在工作中带来了一定的不便，因此扩展的正则表达式便出现了。</p>
+<h3 id="字符匹配">字符匹配：</h3>
+<p><strong>.</strong> <!-- raw HTML omitted -->匹配单个字符<!-- raw HTML omitted -->
+<strong>[abc]</strong> <!-- raw HTML omitted -->包含abc任意一个字符<!-- raw HTML omitted -->
+<strong>[^abc]</strong> <!-- raw HTML omitted -->不包含abc任意一个字符<!-- raw HTML omitted --></p>
+<h3 id="次数匹配不用再转义">次数匹配（不用再转义）：</h3>
+<p><strong>*</strong> <!-- raw HTML omitted -->匹配前一个字符任意次<!-- raw HTML omitted -->
+<strong>?</strong> <!-- raw HTML omitted -->匹配其前面的字符1次或0次<!-- raw HTML omitted -->
+<strong>+</strong> <!-- raw HTML omitted -->匹配其前面的字符至少1次<!-- raw HTML omitted -->
+<strong>{m,n}</strong> <!-- raw HTML omitted -->匹配其前面的字符至少m次，至多n次<!-- raw HTML omitted --></p>
+<h3 id="位置锚定-1">位置锚定：</h3>
+<p>对比使用方式：<strong>^</strong> 和 <strong>$</strong>
+这里要注意的是对于词首定位和词尾定位，分别是 <strong>\&lt;</strong> 和 <strong>\&gt;</strong> ，依然需要加上反斜杠；</p>
+<h3 id="分组不用再转义">分组（不用再转义）：</h3>
+<p>()：分组
+\1, \2, \3：<!-- raw HTML omitted -->分别对应第n个括号所匹配的内容<!-- raw HTML omitted -->
+或运算</p>
+<p><strong>|</strong> <!-- raw HTML omitted -->可以同时取并集<!-- raw HTML omitted --></p>
+<blockquote>
+<p>注意：C|cat表示的是C或cat（表示的是整个部分）
+可以看到，<strong>使用扩展的正则表达式可以省略很多的转义符号</strong>，这尤其在写sed语句时极大的提高了代码的可读性。建议优先使用扩展的正则表达式</p>
+</blockquote>
+<h1 id="grep命令家族">grep命令家族</h1>
+<p>grep命令家族由grep, egrep, fgrep 三个子命令组成，适用于不同的场景。具体如下：</p>
+<ul>
+<li>grep 原生的grep命令，使用“标准正则表达式”作为匹配标准。</li>
+<li>egrep 扩展的grep命令，相当于$(grep -E)，使用“扩展正则表达式”作为匹配标准。</li>
+<li>fgrep 简化版的grep命令，不支持正则表达式，但搜索速度快，系统资源使用率低。</li>
+</ul>
+<h2 id="语法">语法</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>grep <span style="color:#000;font-weight:bold">[</span>options<span style="color:#000;font-weight:bold">]</span> PATTERN <span style="color:#000;font-weight:bold">[</span>FILE...<span style="color:#000;font-weight:bold">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="options部分">options部分</h3>
+<p><strong>-i</strong> 忽略大小写
+<strong>&ndash;color</strong> 高亮匹配上的字符串
+<strong>-v</strong> 显示没有被模式匹配到的行
+<strong>-o</strong> 只显示被模式匹配到的字符串
+<strong>-E</strong> 使用扩展的正则表达式，egrep=grep -E</p>
+<h3 id="pattern部分">PATTERN部分</h3>
+<p>以字符串的方式给定匹配模板，可以使用普通字符串以及正则表达式(标准&amp;扩展)</p>
+<h3 id="file部分">FILE部分</h3>
+<p>需要查找内容的文件</p>
+<h1 id="sed命令">sed命令</h1>
+<p>sed全称为Stream EDitor，sed是一个<strong>流编辑器</strong>，在处理行内容时功能十分强大</p>
+<h2 id="基本语法">基本语法</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sed <span style="color:#000;font-weight:bold">[</span>option<span style="color:#000;font-weight:bold">]</span> <span style="color:#d14">&#39;script&#39;</span> <span style="color:#000;font-weight:bold">[</span>input file<span style="color:#000;font-weight:bold">]</span>...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="option部分">option部分</h3>
+<p>-n：不输出模式空间中未匹配上的内容stdout，详情可以看4.3高级用法；
+-e：可以在sed命令中指定多个script脚本，多点编辑功能；
+-f：输入sed脚本，脚本中写着编辑命令；
+-r：支持使用扩展的正则；
+-i：直接编辑源文件；</p>
+<h3 id="script部分">script部分</h3>
+<p>script部分包含两个内容，其一是定界，即确定我们要操作的范围。另一个内容是操作，比如替换、插入当前行或在后面插入等操作。</p>
+<ol>
+<li>
+<p>定界-空地址
+即全文编辑；</p>
+</li>
+<li>
+<p>定界-单地址：
+n：指定第n行，对特定行进行编辑；举例：sed -n &lsquo;1p&rsquo; passwd 仅输出第一行；
+/pattern/：指定模式匹配到的那一行，注意这里的pattern不是扩展正则表达式，如果要用扩展的正则表达式，需要在option需要使用-r；举例：sed -n &lsquo;/sbin/p&rsquo; passwd 输出能够匹配上sbin的内容行；</p>
+</li>
+<li>
+<p>定界-范围：
+<strong>n,m</strong>：定位从第n行开始至第m行(都是闭区间)；
+<strong>n,+k</strong>：定位从第n行开始，包括往后的k行；
+<strong>n,/pattern/</strong>：定位从第n行开始，至指定模式匹配到的那一行；
+<strong>/pattern1/,/pattern2/</strong>：定位从pattern1模式匹配开始，直到pattern2模式匹配之间的范围；</p>
+</li>
+<li>
+<p>定界-步进方式：
+1~2：以1为起始行，然后步进2行向下匹配，即所有的奇数行；
+2~2：以2为起始行，然后步进2行向下匹配，即所有的偶数行；</p>
+</li>
+<li>
+<p>编辑操作：</p>
+</li>
+</ol>
+<ul>
+<li><strong>d</strong> 删除整行，d放在定界后面。举例：</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sed <span style="color:#d14">&#39;/sbin/d&#39;</span> passwd；
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><strong>p</strong> 显示模式空间中的内容, p放在定界后面。一般来说，p操作和-n选项配合使用，筛选出我们匹配的行。若不加-n的话，由于模式空间中未匹配上的行也会输出，我们会发现所有内容都输出并且匹配行会输出2次；</p>
+</li>
+<li>
+<p><strong>a</strong> 在匹配的行后面增加文本，使用\n支持多行追加，a放在定界后面。举例：</p>
+</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sed <span style="color:#d14">&#39;1a first_line\nsecond_line&#39;</span> passwd 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在第1行后面插入两行内容(first_line 和 second_line)；</p>
+<ul>
+<li><strong>i</strong> 在匹配的行前面增加文本，i放在定界后面。举例：</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sed <span style="color:#d14">&#39;3i hello&#39;</span> passwd；
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>c</strong> 替换匹配行为指定的文本。举例：</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sed <span style="color:#d14">&#39;/root/c text&#39;</span> passwd 把匹配到的行替换成text；
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>w</strong> 保存模式空间中匹配的内容到指定位置。举例：</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sed -n <span style="color:#d14">&#39;/^[^#]/w /tmp/demo&#39;</span> /etc/fstab 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>即将/etc/fstab中非#开头的行输出保存到/tmpdemo中。</p>
+<ul>
+<li><strong>r</strong> 读取指定文件的内容添加到当前文件匹配到的行后面，进行文件合并。举例：</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sed <span style="color:#d14">&#39;2r /etc/passwd&#39;</span> 1.txt 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>即将/etc/passwd文件的内容读取，并插入到1.txt文件的第二行处。</p>
+<ul>
+<li>
+<p><strong>!</strong> 条件取反 用法：地址定界!编辑命令。</p>
+</li>
+<li>
+<p><strong>s///</strong> 条件替换 这里的/可以用其他特殊符号，其替换分隔符的判定标准是s字符后的第一个特殊符号。这在替换文本中涉及特殊符号时特别好使，我们避开需要替换的特殊符号即可。即</p>
+</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sed <span style="color:#d14">&#39;s@root@me@g&#39;</span> /etc/passwd 等同于 sed <span style="color:#d14">&#39;s/root/me/g&#39;</span> /etc/passwd。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>替换标记备注：g(全局替换)，p(显示替换成功的行)
+替换举例：根据输入查找目录，下面输出的是/var/log/</p>
+</blockquote>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;/var/log/messages&#34;</span> | sed <span style="color:#d14">&#39;s@[^/]\+$/\?@@&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="sed高级用法">sed高级用法</h2>
+<!-- raw HTML omitted -->
+<h3 id="相关参数">相关参数</h3>
+<p>h：把模式空间中的内容覆盖至保持空间中；
+H：把模式空间中的内容追加至保持空间中；
+g：把保持空间中的内容覆盖至模式空间中；
+G：把保持空间中的内容追加至模式空间中；
+x：把模式空间中的内容与保持空间中的内容互换；
+n：覆盖读取匹配到的行的下一行(改变指向)至模式空间中；
+N：追加读取匹配到的行的下一行(改变指向)至模式空间中；
+d：删除模式空间中的行；
+D：删除多行模式空间中的所有行；</p>
+<h3 id="举例">举例</h3>
+<p><strong>sed -n &rsquo;n;p&rsquo; FILE</strong>：显示偶数行；
+<strong>sed &lsquo;1!G;h;$!d&rsquo; FILE</strong>：逆序显示文件的内容；
+<strong>sed &lsquo;$!d&rsquo; FILE</strong>：取出最后一行；
+<strong>sed &lsquo;$!N;$!D&rsquo; FILE</strong>：取出文件后两行；
+<strong>sed &lsquo;/^$/d;G&rsquo; FILE</strong>：删除原有的所有空白行，而后为所有的非空白行后添加一个空白行；
+<strong>sed &rsquo;n;d&rsquo; FILE</strong>：显示奇数行；
+<strong>sed &lsquo;G&rsquo; FILE</strong>：在原有的每行后方添加一个空白行；</p>
+<h3 id="基础面试题举例">基础面试题举例</h3>
+<p><strong>面试题1：提取字符串中的指定字符串</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/bin/bash
+</span></span><span style="display:flex;"><span><span style="color:#008080">info</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;hellozimskyshenzhen&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#008080">$info</span> | sed <span style="color:#d14">&#39;s/hello\(\w\+\)shenzhen/\1/g&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意事项：
+sed中不支持\d，如果要用数字用[0-9]，但是支持\w。
+在一般正则表达式中，sed中的()要转义，+要转义，&lt;&gt;要使用\转义。如果不想这么麻烦，那就加上-r选项使用扩展正则表达式吧！</p>
+</blockquote>
+<p><strong>面试题2：判断输入是否为整数</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic"></span><span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[</span> -n <span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$1</span> | sed -n <span style="color:#d14">&#39;/^[0-9]\+$/p&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">]</span> ; <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;yes&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;no&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">fi</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="awk命令">awk命令</h1>
+<p>awk是发明该工具三个作者姓名的首字母简称，awk是一个报表生成器，主要用于<strong>格式化输出</strong>,格式化文本输出器</p>
+<h1 id="参考文献">参考文献</h1>
+<ul>
+<li>[1]<a href="https://www.cnblogs.com/zimskyzeng/p/11630071.html">Linux三剑客及使用介绍</a></li>
+<li>[2]<a href="https://blog.csdn.net/sj349781478/article/details/82930982">Linux三剑客(grep、sed、awk)</a></li>
+<li>[3]<a href="https://www.cnblogs.com/flyor/p/6411140.html">linux中grep命令的用法</a></li>
+<li>[4]<a href="https://blog.csdn.net/u011641885/article/details/45066661">linux 命令之seq</a></li>
+</ul>
+        </div>
+
+        
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/shell'>Shell</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

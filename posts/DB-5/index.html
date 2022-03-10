@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>数据库原理及应用 PART-5 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="数据库范式定义,模式分解,函数依赖,正则覆盖,模式分解" />
+<meta name="keywords" content="数据库原理及应用-课程" /><meta itemprop="name" content="数据库原理及应用 PART-5">
+<meta itemprop="description" content="数据库范式定义,模式分解,函数依赖,正则覆盖,模式分解"><meta itemprop="datePublished" content="2020-04-23T23:11:00+00:00" />
+<meta itemprop="dateModified" content="2020-04-23T23:11:00+00:00" />
+<meta itemprop="wordCount" content="1378"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="数据库原理及应用-课程," /><meta property="og:title" content="数据库原理及应用 PART-5" />
+<meta property="og:description" content="数据库范式定义,模式分解,函数依赖,正则覆盖,模式分解" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/DB-5/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-04-23T23:11:00+00:00" />
+<meta property="article:modified_time" content="2020-04-23T23:11:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="数据库原理及应用 PART-5"/>
+<meta name="twitter:description" content="数据库范式定义,模式分解,函数依赖,正则覆盖,模式分解"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/DB-5/" /><link rel="prev" href="http://example.org/posts/ubuntu-13/" /><link rel="next" href="http://example.org/posts/ubuntu-14/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "数据库原理及应用 PART-5",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/DB-5\/"
+    },"genre": "posts","keywords": "数据库原理及应用-课程","wordcount":  1378 ,
+    "url": "http:\/\/example.org\/posts\/DB-5\/","datePublished": "2020-04-23T23:11:00+00:00","dateModified": "2020-04-23T23:11:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">数据库原理及应用 PART-5</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="far fa-folder fa-fw"></i>数据库</a></span></div>
+      <div class="post-meta-line"><span title=2020-04-23&#32;23:11:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-23" >2020-04-23</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1378 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据库范式定义">数据库范式定义</a></li>
+    <li><a href="#模式分解">模式分解</a>
+      <ul>
+        <li><a href="#定义">定义</a></li>
+        <li><a href="#目标">目标</a></li>
+      </ul>
+    </li>
+    <li><a href="#函数依赖">函数依赖</a>
+      <ul>
+        <li><a href="#定义-1">定义</a></li>
+        <li><a href="#函数依赖集的闭包">函数依赖集的闭包</a>
+          <ul>
+            <li><a href="#计算闭包">计算闭包</a></li>
+            <li><a href="#armstrong公理">Armstrong公理</a></li>
+            <li><a href="#公式计算过程">公式计算过程</a></li>
+          </ul>
+        </li>
+        <li><a href="#属性集的闭包">属性集的闭包</a>
+          <ul>
+            <li><a href="#定义-2">定义</a></li>
+            <li><a href="#公式计算过程-1">公式计算过程</a></li>
+            <li><a href="#例题">例题</a></li>
+            <li><a href="#属性闭包算法的用途">属性闭包算法的用途:</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#正则覆盖">正则覆盖</a>
+      <ul>
+        <li><a href="#定义-3">定义</a></li>
+        <li><a href="#计算过程">计算过程</a></li>
+        <li><a href="#无关属性">无关属性</a></li>
+        <li><a href="#公式计算过程-2">公式计算过程</a></li>
+        <li><a href="#例题-1">例题</a></li>
+      </ul>
+    </li>
+    <li><a href="#模式分解-1">模式分解</a>
+      <ul>
+        <li><a href="#定义-4">定义</a></li>
+        <li><a href="#分解要求">分解要求</a></li>
+        <li><a href="#例题-2">例题</a></li>
+        <li><a href="#公式判定是否保持依赖">公式判定是否保持依赖</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>数据库范式定义,模式分解,函数依赖,正则覆盖,模式分解</p>
+<p>昨天数据库还剩10节课,以为能看完,再来写总结,可没想到&hellip;最后两章这么难
+到现在还是有些迷糊,这两章可以说全是理论,集合之间的操作
+今天可算学完了,数据库原理撒花</p>
+<h1 id="数据库范式定义">数据库范式定义</h1>
+<p>  设计关系数据库时，遵从不同的<strong>规范要求</strong>，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范
+  <strong>越高的范式数据库冗余越小</strong>。</p>
+<h1 id="模式分解">模式分解</h1>
+<h2 id="定义">定义</h2>
+<ul>
+<li>例如可以将关系模式( A,B,C,D) 分解为:( A,B )和( B,C,D ),或( A,C,D )和
+( A,B,D ),或( A,B,C )和( C,D ),或( A,B )、( B,C )和( C,D ),或 ( A,D )和( B,C,D )</li>
+<li>原模式( R )的所有属性都必须出现在分解后的( R1 , R2 )中: R = R1 并R 2</li>
+<li>无损连接分解
+对关系模式 R 上的所有可能的关系 r
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/2.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/2.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/2.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/2.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/2.png"
+    title="无损分解" /></li>
+</ul>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/3.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/3.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/3.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/3.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/3.png"
+    title="无损分解2" /></p>
+<h2 id="目标">目标</h2>
+<p>目标:设计一个理论</p>
+<ul>
+<li>以判断关系模式 R 是否为“好的”形式(不冗余)</li>
+<li>当 R 不是“好的”形式时,将它分解成模式集合{ R 1 , R 2 , &hellip;, R n }使得
+<ul>
+<li>每个关系模式都是“好的”形式</li>
+<li>分解是无损连接分解</li>
+</ul>
+</li>
+<li>理论基于:
+<ul>
+<li><strong>函数依赖</strong>( functional dependencies )</li>
+<li><strong>多值依赖</strong>( multivalued dependencies )</li>
+</ul>
+</li>
+</ul>
+<h1 id="函数依赖">函数依赖</h1>
+<h2 id="定义-1">定义</h2>
+<p>设 R 是一个关系模式,且有属性集 α ⊆ R, β⊆ R</p>
+<ul>
+<li>β函数依赖于α, α函数决定β  (α -&gt; β)
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/4.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/4.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/4.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/4.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/4.png"
+    title="函数依赖" /></li>
+<li>函数依赖是码概念的推广</li>
+<li>被所有关系实例都满足的函数依赖称为平凡的</li>
+</ul>
+<h2 id="函数依赖集的闭包">函数依赖集的闭包</h2>
+<ul>
+<li>给定函数依赖集 F, 存在其他函数依赖被 F 逻辑蕴含
+例如如果 A -&gt; B 且 B -&gt; C ,则可推出 A -&gt; C
+被 F 逻辑蕴含的全体函数依赖的集合称为 F 的闭包,用 F<sup>+</sup>表示 F 的闭包
+例:  F = { A -&gt; B, B -&gt; C } ,F + = { A -&gt; B, B -&gt; C, A -&gt; C,A -&gt; A, AB -&gt; B, AC -&gt; C, A -&gt; BC, &hellip; }</li>
+</ul>
+<h3 id="计算闭包">计算闭包</h3>
+<p>例: R = ( A, B, C, G, H, I )
+F = { A -&gt; B, A-&gt; C, CG -&gt; H, CG -&gt; I, B -&gt; H }
+计算F<sup>+</sup> : 可用Armstrong公理计算</p>
+<h3 id="armstrong公理">Armstrong公理</h3>
+<ol>
+<li><strong>自反律</strong>
+若 β  ⊆ α ,则 α -&gt; β</li>
+<li><strong>增补律</strong>
+若 α -&gt; β ,则 γα -&gt; γβ</li>
+<li><strong>传递律</strong>
+若 α -&gt; β 且 β -&gt; γ ,则 α -&gt; γ</li>
+<li><strong>合并律</strong>
+若 α -&gt; β 与 α -&gt; γ 成立,则 α -&gt; βγ</li>
+<li><strong>分解律</strong>
+若 α -&gt; βγ 成立,则 α -&gt; β 与 α -&gt; γ</li>
+<li><strong>伪传递律</strong>
+若 α -&gt; β 与 βγ -&gt; g 成立,则 αγ -&gt; g</li>
+</ol>
+<p>Armstrong公理</p>
+<ul>
+<li>正确有效的(不会产生错误的函数依赖)</li>
+<li>完备的(产生所有成立的函数依赖即 F + )</li>
+</ul>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/5.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/5.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/5.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/5.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/5.png"
+    title="Armstrong公理" /></p>
+<h3 id="公式计算过程">公式计算过程</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/6.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/6.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/6.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/6.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/6.png"
+    title="函数依赖集的闭包" /></p>
+<h2 id="属性集的闭包">属性集的闭包</h2>
+<h3 id="定义-2">定义</h3>
+<p>给定一个属性集 α, 在函数依赖集 F 下由 α 函数确定的所有属性的集合为 F 下 α 的闭包(记做 α <sup>+</sup> )
+- 检查函数依赖 α -&gt; β 是否属于 F <sup>+</sup>  &lt;-&gt; β ⊆ α<sup>+</sup>
+- 判断 α 是否为超码: α -&gt; R 属于 F <sup>+</sup>  -&gt; R ⊆ α</p>
+<h3 id="公式计算过程-1">公式计算过程</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/7.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/7.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/7.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/7.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/7.png"
+    title="属性集的闭包" /></p>
+<h3 id="例题">例题</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/8.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/8.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/8.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/8.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/8.png"
+    title="属性集的闭包" /></p>
+<h3 id="属性闭包算法的用途">属性闭包算法的用途:</h3>
+<ul>
+<li>测试超码( α -&gt; R )
+<ul>
+<li>为检测 α 是否超码,可计算 α<sup>+</sup> 并检查 α<sup>+</sup> 是否包含 R 的所有属性</li>
+</ul>
+</li>
+<li>测试函数依赖( α -&gt; β )
+<ul>
+<li>为检测函数依赖 α -&gt; β 是否成立(即是否属于 F<sup>+</sup> ),只需检查是否β⊆ α 即,可计算 α<sup>+</sup>,并检查它是否包含β</li>
+</ul>
+</li>
+<li>计算 F 的闭包( F<sup>+</sup> = ? )
+<ul>
+<li>对每个 γ ⊆ R ,计算 γ<sup>+</sup>,再对每个 S ⊆ γ<sup>+</sup>,输出函数依赖 γ -&gt; S</li>
+</ul>
+</li>
+</ul>
+<h1 id="正则覆盖">正则覆盖</h1>
+<h2 id="定义-3">定义</h2>
+<p>F 的正则覆盖(记做 F<sub>c</sub> )是指与 F 等价的&quot;极小的&quot;函数依赖集合</p>
+<ul>
+<li>F<sub>c</sub> 中任何函数依赖都不包含无关属性</li>
+<li>F<sub>c</sub> 中函数依赖的左半部都是唯一的</li>
+</ul>
+<h2 id="计算过程">计算过程</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/9.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/9.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/9.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/9.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/9.png"
+    title="正则覆盖" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/10.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/10.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/10.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/10.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/10.png"
+    title="正则覆盖" /></p>
+<h2 id="无关属性">无关属性</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/11.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/11.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/11.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/11.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/11.png"
+    title="无关属性" /></p>
+<h2 id="公式计算过程-2">公式计算过程</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/12.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/12.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/12.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/12.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/12.png"
+    title="正则覆盖" /></p>
+<h2 id="例题-1">例题</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/13.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/13.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/13.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/13.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/13.png"
+    title="正则覆盖例题" /></p>
+<h1 id="模式分解-1">模式分解</h1>
+<h2 id="定义-4">定义</h2>
+<p>规范化的目标</p>
+<ul>
+<li>以判断关系模式 R 是否为“好的”形式(不冗余,无插入、删除、更新异常)</li>
+<li>当 R 不是“好的”形式时,将它分解成模式集合{ R 1 , R 2 , &hellip;, R n }使得
+<ul>
+<li>每个关系模式都是“好的”形式</li>
+<li>分解是无损连接分解</li>
+<li>分解是保持依赖</li>
+</ul>
+</li>
+</ul>
+<h2 id="分解要求">分解要求</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/14.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/14.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/14.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/14.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/14.png"
+    title="模式分解" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/15.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/15.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/15.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/15.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/15.png"
+    title="模式分解" /></p>
+<h2 id="例题-2">例题</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png"
+    title="模式分解" /></p>
+<h2 id="公式判定是否保持依赖">公式判定是否保持依赖</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/DB-5/16.png"
+    title="模式分解" /></p>
+<p><strong>由于最后两章东西太多了,所以第十章再开一个blog写,不得不说,数据库最后这两章真的让我有些头疼,感觉今天学了一天才差不多明白个大概</strong></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-04-23&#32;23:11:00>更新于 2020-04-23</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8-%E8%AF%BE%E7%A8%8B/">数据库原理及应用-课程</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/ubuntu-13/" class="prev" rel="prev" title="Linux与移动设备的文件互传"><i class="fas fa-angle-left fa-fw"></i>Linux与移动设备的文件互传</a>
+      <a href="/posts/ubuntu-14/" class="next" rel="next" title="Ubuntu安装NVIDIA驱动">Ubuntu安装NVIDIA驱动<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

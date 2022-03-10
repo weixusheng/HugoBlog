@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>Posts | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="Posts - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Posts">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="/post/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="小辣鸡的Hugo" />
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/ubuntu-16/" title="Linux-bash对文件批量操作">Linux-bash对文件批量操作</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月29日
+        </date>
+        
+        <div class="post-content">
+            今天学到了一个超级超级好用的小技巧!!! linux每次截图之后,都是按照时间辍来命名截图文件的 但是我们在使用截图的时候就要挨个改名,很麻烦 bash 终端中提供了极好的命令控制
+ 首先在很多系统生成的文件中有空格,这些空格在之后的 mv 命令中会误导系统认为命令结束,所以要先去去掉空格  1  rename &#39;s/ /_/g&#39; * ##表示把当前目录下所有的文件中有空格的都用_表示   批量重命名(代码不用解释,沸腾就完事啦)  1  i=1; for x in *; do mv $x $i.png; let i=i+1; done   bash是无比强大的!!! 我爱Linux!!!
+ 2021-01-13更新
+ 发现Windows的cmd也可以做到(新的沙雕发现) 口号精简了一下: &ldquo;bash是无敌的!&rdquo;……
+        </div>
+        <p class="readmore"><a href="/post/ubuntu-16/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/ubuntu-15/" title="Ubuntu下的Steam中文支持">Ubuntu下的Steam中文支持</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月29日
+        </date>
+        
+        <div class="post-content">
+            今天在玩Besiege的时候,好多零件的英文都不认识&hellip;在steam更新公告里,游戏是支持中文的,可是设置里中的没有中文选项,只有空白 然后我就开始强迫症折腾了&hellip; 首先去网上找汉化教程,安装了MOD模块,以及中文mod包,不过没有用,因为linux的特殊性,就去MOD的github官方库去看看咋回事,发现&hellip;早就不支持当前版本了 随后发现创意工坊里有繁体中文包,犹豫了好久装不装,突然想到按照它的安装思路,不如去看看他的包是装在哪里,跟着目录找到了steam语言包的位置,发现有chinese文件啊&hellip; 这就有意思了&hellip;有文件为什么游戏不显示呢? 莫非是&hellip;字体不支持! 网上搜了搜发现果然是这样的!linux下的很多游戏中文都是乱码,因为steam游戏要求的字体没有下载 机智如我
+安装以下字体即可
+1 2 3 4 5  sudo apt-get install ttf-wqy-microhei #文泉驿-微米黑  sudo apt-get install ttf-wqy-zenhei #文泉驿-正黑  sudo apt-get install xfonts-wqy #文泉驿-点阵宋体   ……
+        </div>
+        <p class="readmore"><a href="/post/ubuntu-15/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/iot-3/" title="物联网概论 PART-3">物联网概论 PART-3</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月28日
+        </date>
+        
+        <div class="post-content">
+            <p>无线传感网络</p>……
+        </div>
+        <p class="readmore"><a href="/post/iot-3/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/iot-2/" title="物联网概论 PART-2">物联网概论 PART-2</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月26日
+        </date>
+        
+        <div class="post-content">
+            <p>传感器</p>……
+        </div>
+        <p class="readmore"><a href="/post/iot-2/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/iot-1/" title="物联网概论 PART-1">物联网概论 PART-1</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月25日
+        </date>
+        
+        <div class="post-content">
+            <p>物联网概述</p>……
+        </div>
+        <p class="readmore"><a href="/post/iot-1/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/db-6/" title="数据库原理及应用 PART-6">数据库原理及应用 PART-6</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月24日
+        </date>
+        
+        <div class="post-content">
+            <p>依赖关系,范式定义</p>……
+        </div>
+        <p class="readmore"><a href="/post/db-6/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/ubuntu-14/" title="Ubuntu安装NVIDIA驱动">Ubuntu安装NVIDIA驱动</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月24日
+        </date>
+        
+        <div class="post-content">
+            一个月前我被N卡折磨的重装系统,一个月后的今天,本小辣鸡又来了! 跟上次雪崩不同的是,这次是成功的!记录一下过程
+早上看到知乎热搜,竟然有我之前玩的那个沙盒游戏因为之前之前那个游戏实在win环境下玩的,不由得想起来,似乎现在steam上支持Linux的游戏越来越多了,好奇心让我去steam官网看了一下,没想到竟然真的支持Linux!!! 随后一波操作下载steam,安装,启动 可是!为什么游戏只有&hellip;30fps&hellip;虽然画面流畅度还算凑活,但是&hellip;这也太难受了吧,想到之前win环境下运行很流畅,心中不禁有很多问号,难道是游戏优化问题?不能啊,是不是显卡用的核显? emmmmm&hellip;.好像是 到网上查了一下,发现确实,在系统详情里会显示当前使用的显卡,我点开一看,果然是intel核显&hellip;吼! 看了很多教程,和blog,小心翼翼的一步步操作(真的害怕系统雪崩) 最后在这里记录一下过程,想必以后也会再装的,给未来的自己填个坑(我也太好了)
+1. 检查电脑有哪些显卡 执行Terminal命令
+1  lshw -c video   2. 查看可安装驱动 Ubuntu自带了为Nvidia显卡开发的开源Nouveau驱动,这个Nouveau驱动是包含在Linux内核中的。但是它不支持3D加速。为了获得最佳图形性能，这里用 software-properties-gtk 这个程序来安装专有的Nvidia显卡驱动。在 terminal 里输入下面的命令
+1  software-properties-gtk   该命令将打开软件与更新窗口。点击&quot;额外驱动&quot;标签。可以看见Ubuntu默认为Nvidia显卡启用了Nouveau开源驱动，并且列出了可以安装的专有显卡驱动。
+3. 查看推荐驱动并安装 在终端里输入下面的命令来查看哪一个专有驱动是推荐安装的。
+1   sudo ubuntu-drivers devices   可以看到nvidia-driver-435是推荐安装的驱动.在终端里输入下面的命令安装这个驱动。
+1  sudo apt-get install nvidia-driver-435   4. 安装过程中的设置密码 下载完成后,会显示需要输入一个密码,以确认驱动安装,并且重启开机时会让重新输入一次,值得注意的是,开机时会有四个选项,选择第二个enroll MOK 然后输入密码进入系统,这时打开设置,就会看到!安装完成啦
+5. 快乐切换显卡 打开程序列表,会发现N卡的软件,在软件中,可以切换当前显卡
+然后打开游戏,就会有发现&hellip;真的有这么丝滑吗
+最高140fps的体验,这就是Linux下的游戏吗 i 了……
+        </div>
+        <p class="readmore"><a href="/post/ubuntu-14/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/db-5/" title="数据库原理及应用 PART-5">数据库原理及应用 PART-5</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月23日
+        </date>
+        
+        <div class="post-content">
+            <p>数据库范式定义,模式分解,函数依赖,正则覆盖,模式分解</p>……
+        </div>
+        <p class="readmore"><a href="/post/db-5/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/ubuntu-13/" title="Linux与移动设备的文件互传">Linux与移动设备的文件互传</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月23日
+        </date>
+        
+        <div class="post-content">
+            昨天在微博上碰巧看到一个分享，讲的是一个电脑与移动设备的文件互传的工具 因为Linux上的im软件一直是wine套娃，所以体验不是很好，这也是我在使用过程中心中一直不舒服的一个点，现在生产环境都已经迁移到了ubuntu，不得不说ubuntu一直让我很是满意，没有win10臃肿的系统，高度的可定制化，便捷的库安装过程，庞大的开放社区，今天上午想着试一下这个工具，安装之后使用起来真的让我感到很惊艳，在这里记录一下安装过程
+项目地址 github
+安装GO环境 这个工具是go语言编写的,所以要安装一下go的环境
+1.官网下载go语言安装包 地址：https://studygolang.com/dl
+2.解压安装包 将下载下来的安装包解压到/usr/local下
+1  tar xf go1.12.1.linux-amd64.tar.gz -C /usr/local   3.配置全局变量 1  vim ~/.bashrc   最后一行加上下面配置
+1 2  export GOPATH=/usr/local/go export PATH=$GOPATH/bin:$PATH   4.验证配置是否成功 1 2 3  go version #warning: GOPATH set to GOROOT (/usr/local/go) has no effect #go version go1.12.1 linux/amd64   5.出现warning，配置PATH 1 2  export GOROOT=/usr/local/go export GOPATH=$PATH:$GOROOT/bin   6.测试安装 1 2  go version #go version go1.……
+        </div>
+        <p class="readmore"><a href="/post/ubuntu-13/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="/post/db-4/" title="数据库原理及应用 PART-4">数据库原理及应用 PART-4</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月21日
+        </date>
+        
+        <div class="post-content">
+            <p>ER图</p>……
+        </div>
+        <p class="readmore"><a href="/post/db-4/">阅读全文</a></p>
+    </article>
+    
+    
+    
+
+
+
+<ol class="page-navigator">
+    
+    <li class="prev">
+        <a href="/post/page/28/">上一页</a>
+    </li>
+    
+
+    
+
+    
+        
+        
+    
+    
+
+    
+        
+        
+        <li >
+            <a href="/post/">1</a>
+        </li>
+        
+    
+        
+        <li>
+            <span>...</span>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="/post/page/27/">27</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="/post/page/28/">28</a>
+        </li>
+        
+    
+        
+        
+        <li  class="current">
+            <a href="/post/page/29/">29</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="/post/page/30/">30</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="/post/page/31/">31</a>
+        </li>
+        
+    
+        
+        <li>
+            <span>...</span>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="/post/page/33/">33</a>
+        </li>
+        
+    
+
+    
+    
+
+    <li class="next">
+        <a href="/post/page/30/">下一页</a>
+    </li>
+    
+</ol>
+
+
+
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

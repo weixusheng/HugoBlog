@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Python-Email - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Python-Email/</link>
+    <description>Python-Email - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Sat, 16 Oct 2021 20:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Python-Email/" rel="self" type="application/rss+xml" /><item>
+  <title>Python发送邮件</title>
+  <link>http://example.org/posts/python-5/</link>
+  <pubDate>Sat, 16 Oct 2021 20:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python-5/</guid>
+  <description><![CDATA[<p>使用第三方SMTP发送HTML邮件</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>物联网概论 PART-5 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="RFID信号干扰" />
+<meta name="keywords" content="物联网概论-课程" /><meta itemprop="name" content="物联网概论 PART-5">
+<meta itemprop="description" content="RFID信号干扰"><meta itemprop="datePublished" content="2020-05-02T23:30:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-02T23:30:00+00:00" />
+<meta itemprop="wordCount" content="1762"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="物联网概论-课程," /><meta property="og:title" content="物联网概论 PART-5" />
+<meta property="og:description" content="RFID信号干扰" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/IOT-5/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-02T23:30:00+00:00" />
+<meta property="article:modified_time" content="2020-05-02T23:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="物联网概论 PART-5"/>
+<meta name="twitter:description" content="RFID信号干扰"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/IOT-5/" /><link rel="prev" href="http://example.org/posts/ubuntu-18/" /><link rel="next" href="http://example.org/posts/OS-2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "物联网概论 PART-5",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/IOT-5\/"
+    },"genre": "posts","keywords": "物联网概论-课程","wordcount":  1762 ,
+    "url": "http:\/\/example.org\/posts\/IOT-5\/","datePublished": "2020-05-02T23:30:00+00:00","dateModified": "2020-05-02T23:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">物联网概论 PART-5</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/"><i class="far fa-folder fa-fw"></i>物联网</a></span></div>
+      <div class="post-meta-line"><span title=2020-05-02&#32;23:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-02" >2020-05-02</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1762 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#rfid信号干扰">RFID信号干扰</a>
+      <ul>
+        <li><a href="#阅读器之间的冲突">阅读器之间的冲突</a></li>
+        <li><a href="#基于aloha的防冲突算法">基于ALOHA的防冲突算法</a>
+          <ul>
+            <li><a href="#纯aloha算法">纯ALOHA算法</a></li>
+            <li><a href="#时隙aloha算法">时隙ALOHA算法</a></li>
+            <li><a href="#基于帧的时隙aloha算法">基于帧的时隙ALOHA算法</a></li>
+          </ul>
+        </li>
+        <li><a href="#基于二进制树的防冲突算法">基于二进制树的防冲突算法</a>
+          <ul>
+            <li><a href="#分类">分类</a></li>
+            <li><a href="#随机二进制树算法">随机二进制树算法</a></li>
+            <li><a href="#查询二进制树算法">查询二进制树算法</a></li>
+          </ul>
+        </li>
+        <li><a href="#三种算法的比较">三种算法的比较</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>RFID信号干扰</p>
+<h1 id="rfid信号干扰">RFID信号干扰</h1>
+<p>与其他无线传输系统一样,RFID系统也存在信号干扰问题。
+RFID系统中,主要存在以下两种类型的信号干扰:</p>
+<ol>
+<li>阅读器之间的冲突干扰(多个阅读器同时发送信号)</li>
+<li>标签之间的冲突干扰(多个阅读器同时响应阅读器)
+因此,需要降低阅读器之间以及标签之间的冲突来提高对标签的识别效率。</li>
+</ol>
+<h2 id="阅读器之间的冲突">阅读器之间的冲突</h2>
+<p>三种解决方法</p>
+<ol>
+<li>基于时分多址(TDMA)</li>
+<li>基于频分多址(FDMA)</li>
+<li>基于载波侦听多路访问(CSMA)</li>
+</ol>
+<p><strong>以下方法是基于TDMA的标签之间的防冲突算法</strong></p>
+<h2 id="基于aloha的防冲突算法">基于ALOHA的防冲突算法</h2>
+<p>基于ALOHA的防冲突算法采用了<strong>回退</strong>的机制,标签以概率的方法参与识别过程。
+ALOHA的协议的特点: 简单且公平
+三种基于ALOHA的防冲突算法:</p>
+<ul>
+<li>纯ALOHA算法</li>
+<li>时隙ALOHA算法</li>
+<li>基于帧的时隙ALOHA算法</li>
+</ul>
+<h3 id="纯aloha算法">纯ALOHA算法</h3>
+<ol>
+<li>定义：若标签收到成功识别确认信息,则不再继续发送标识符。否则其等待一段时间后将重新发送直至发送成功为止。</li>
+<li>特点：算法简单 ,易于实现,但信道利用率仅为18.4%,性能差。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/2.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/2.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/2.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/2.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/2.png"
+    title="img" /></li>
+</ol>
+<h3 id="时隙aloha算法">时隙ALOHA算法</h3>
+<p>定义：S-ALOHA算法将纯ALOHA算法的时间分为若干 时隙 ,每个时隙大于或等于标签标识符发送的时间长度,并且每个标签只能在时隙开始时刻发送标识符。由于系统进行了时间同步,S‐ALOHA协议的信道利用率达到36.8%,是纯ALOHA的两倍。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/3.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/3.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/3.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/3.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/3.png"
+    title="img" /></p>
+<h3 id="基于帧的时隙aloha算法">基于帧的时隙ALOHA算法</h3>
+<ol>
+<li>
+<p><strong>定义</strong>：在S-ALOHA基础上,将<strong>若干个时隙</strong>组织为一帧 ,阅读器按照帧为单元进行识别。若标识符发送成功,则标签休眠,否则等待在下一帧中重新选择时隙发送标识符。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/4.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/4.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/4.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/4.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/4.png"
+    title="img" /></p>
+</li>
+<li>
+<p><strong>FSA算法优点：</strong>
+FSA算法的优点在于逻辑简单,电路设计简单,所需内存少,且在帧内只随机发送一次能够更进一步降低了冲突的概率。FSA成为RFID系统中最 常用 的一种基于ALOHA的防冲突算法</p>
+</li>
+<li>
+<p><strong>FSA算法局限性:帧的长度固定</strong></p>
+</li>
+</ol>
+<ul>
+<li>当标签数远大于帧长度标签冲突概率增大,识别标签的时间会极大地增加</li>
+<li>当标签数远小于帧长度时隙会巨大浪费,识别时间也会增加</li>
+<li>当帧的长度等于阅读器场内标签的数目时,FSA才能获得最佳的识别性能,信道利用率最大为36.8%。</li>
+</ul>
+<ol start="4">
+<li><strong>帧动态调整</strong>
+实际应用中,标签数量往往是动态变化的。
+动态自适应设置帧长度的算法可以解决FSA的局限性。
+常见的帧长调整方法:</li>
+</ol>
+<ul>
+<li>
+<p>根据前一帧通信获取的空的时隙数目,发生碰撞的时隙数目和成功识别标签的时隙数目的数量估计当前的标签数并设置下一帧的最优的长度 ;</p>
+</li>
+<li>
+<p>根据前一时隙的反馈动态调整帧长为 2 的 整数倍 ,这种方法最具代表性的是EPCglobalGen2标准中设计的Q算法</p>
+</li>
+<li>
+<p>Q算法：当一帧出现过多的冲突时隙时,阅读器会提前结束该帧并重新发送一个更大的帧;当一个帧出现过多的空闲时隙时,阅读器也会提前结束该帧,重新启动一个更小的帧，Q算法能够自适应地调整帧长,识别效率高,在超高频识别系统中得到了广泛的应用。</p>
+</li>
+</ul>
+<p>基于ALOHA的防冲突算法简单,并且兼顾了公平性。但是,标签存在“饿死”的问题。当一个标签选择的时隙总是冲突时隙,则该标签可能永远无法被识别。</p>
+<h2 id="基于二进制树的防冲突算法">基于二进制树的防冲突算法</h2>
+<h3 id="分类">分类</h3>
+<ul>
+<li>基于二进制树的防冲突算法的基本思想:按照递归的方式将冲突的标签集合划分为两个子集,直到集合中只剩下一个标签为止。</li>
+<li>划分子集的算法:
+<ul>
+<li>随机二进制树算法:让标签随机选择所属的集合</li>
+<li>查询二进制树算法:按照标签的标示符划分子集</li>
+</ul>
+</li>
+</ul>
+<h3 id="随机二进制树算法">随机二进制树算法</h3>
+<p>定义：
+随机二进制树算法需要每个标签维持一个计数器(初始值为0)。在每一个间隙开始时,如果标签的计数器为0则立即发送自己的标识符号,否则该时隙不响应。一般,标签被成功识别后将进入沉默状态,对以后时隙的阅读器命令均不响应。每次识别成功，其他标签的计数器数值减一</p>
+<ul>
+<li>场内标签调整计数器规则:若该时隙为冲突时隙,参与相应的标签会从0或1中随机选择一个,将其加到自己的计数器上。</li>
+<li>整个识别过程就像对二叉树进行中序遍历。</li>
+<li>不存在标签饿死的问题,但需要维护计数器。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/5.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/5.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/5.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/5.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/5.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/6.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/6.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/6.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/6.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/6.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/7.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/7.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/7.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/7.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/7.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/8.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/8.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/8.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/8.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/8.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/9.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/9.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/9.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/9.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/9.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/10.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/10.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/10.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/10.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/10.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/11.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/11.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/11.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/11.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/11.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/12.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/12.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/12.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/12.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/12.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/13.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/13.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/13.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/13.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/13.png"
+    title="img" />
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/14.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/14.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/14.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/14.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/14.png"
+    title="img" /></li>
+</ul>
+<h3 id="查询二进制树算法">查询二进制树算法</h3>
+<p>定义：
+是一个无状态协议,标签只需要根据阅读器广播的标示符前缀作比较。</p>
+<ul>
+<li>阅读器维持一个二进制前缀(初始值为0)。每个间隙开始时,阅读器广播该二进制前缀,标签将自己的标签标识符前几位与此二进制前缀进行比较,若相同则该标签发送标识符号。</li>
+<li>整个识别过程就像根据标签的表示符号建立一棵查询二叉树。</li>
+<li>可用于无可写存储区的标签,不存在标签饿死。受ID长度以及分布的影响。
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/15.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/15.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/15.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/15.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/15.png"
+    title="img" /></li>
+</ul>
+<h2 id="三种算法的比较">三种算法的比较</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/16.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/16.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/16.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/16.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/16.png"
+    title="img" /></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-05-02&#32;23:30:00>更新于 2020-05-02</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91%E6%A6%82%E8%AE%BA-%E8%AF%BE%E7%A8%8B/">物联网概论-课程</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/ubuntu-18/" class="prev" rel="prev" title="Ubuntu管理已安装的包"><i class="fas fa-angle-left fa-fw"></i>Ubuntu管理已安装的包</a>
+      <a href="/posts/OS-2/" class="next" rel="next" title="OS总结 Part-2">OS总结 Part-2<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

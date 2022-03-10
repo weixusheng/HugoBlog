@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Centos部署Fastapi - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="Centos &#43; gunicorn &#43; Supervisor 部署 Fastapi" />
+<meta name="keywords" content="FastAPI服务器部署" /><meta itemprop="name" content="Centos部署Fastapi">
+<meta itemprop="description" content="Centos &#43; gunicorn &#43; Supervisor 部署 Fastapi"><meta itemprop="datePublished" content="2022-02-08T23:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-02-08T23:00:00+00:00" />
+<meta itemprop="wordCount" content="4280"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="FastAPI服务器部署," /><meta property="og:title" content="Centos部署Fastapi" />
+<meta property="og:description" content="Centos &#43; gunicorn &#43; Supervisor 部署 Fastapi" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/fastapi-4/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-08T23:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-08T23:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Centos部署Fastapi"/>
+<meta name="twitter:description" content="Centos &#43; gunicorn &#43; Supervisor 部署 Fastapi"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/fastapi-4/" /><link rel="prev" href="http://example.org/posts/python-tqdm/" /><link rel="next" href="http://example.org/posts/python-proxy/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Centos部署Fastapi",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/fastapi-4\/"
+    },"genre": "posts","keywords": "FastAPI服务器部署","wordcount":  4280 ,
+    "url": "http:\/\/example.org\/posts\/fastapi-4\/","datePublished": "2022-02-08T23:00:00+00:00","dateModified": "2022-02-08T23:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">Centos部署Fastapi</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/FastAPI/"><i class="far fa-folder fa-fw"></i>FastAPI</a></span></div>
+      <div class="post-meta-line"><span title=2022-02-08&#32;23:00:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-08" >2022-02-08</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4280 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#gunicorn">gunicorn</a></li>
+    <li><a href="#centos7安装nginx老版本">centos7安装nginx(老版本)</a>
+      <ul>
+        <li><a href="#启动停止nginx"><strong>启动、停止nginx</strong></a></li>
+        <li><a href="#添加nginx访问过滤">添加Nginx访问过滤</a></li>
+      </ul>
+    </li>
+    <li><a href="#端口检查">端口检查</a>
+      <ul>
+        <li><a href="#fuser">fuser</a></li>
+        <li><a href="#netstat">netstat</a></li>
+      </ul>
+    </li>
+    <li><a href="#centos安装python3">centos安装python3</a>
+      <ul>
+        <li><a href="#查看python版本">查看python版本</a></li>
+        <li><a href="#安装依赖">安装依赖</a></li>
+        <li><a href="#下载稳定版本38版">下载稳定版本3.8版</a></li>
+        <li><a href="#解压安装python源码包">解压安装python源码包</a></li>
+        <li><a href="#建立命令软链接">建立命令软链接</a></li>
+        <li><a href="#配置yum">配置yum</a></li>
+      </ul>
+    </li>
+    <li><a href="#测试数据库远程连接">测试数据库远程连接</a></li>
+    <li><a href="#nginx部署fastapi">nginx部署fastapi</a>
+      <ul>
+        <li><a href="#conf编辑文件">conf编辑文件</a></li>
+        <li><a href="#安装gunicorn">安装gunicorn</a></li>
+        <li><a href="#运行gunicorn">运行gunicorn</a></li>
+        <li><a href="#查看nginx日志">查看Nginx日志</a></li>
+        <li><a href="#查看nginx配置文件">查看Nginx配置文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#新版nginx部署fastapi">新版nginx部署fastapi</a>
+      <ul>
+        <li><a href="#supervisor管理-gunicorn-进程">Supervisor管理 Gunicorn 进程</a>
+          <ul>
+            <li><a href="#安装">安装</a></li>
+            <li><a href="#配置">配置</a></li>
+            <li><a href="#gunicorn参数解释">gunicorn参数解释</a></li>
+            <li><a href="#配置文件">配置文件</a></li>
+            <li><a href="#配置文件启动supervisor">配置文件启动supervisor</a></li>
+            <li><a href="#启动应用">启动应用</a></li>
+            <li><a href="#常用命令">常用命令</a></li>
+            <li><a href="#查看日志">查看日志</a></li>
+          </ul>
+        </li>
+        <li><a href="#查看程序启动的具体报错">查看程序启动的具体报错</a></li>
+        <li><a href="#关闭supervisor进程">关闭supervisor进程</a></li>
+      </ul>
+    </li>
+    <li><a href="#python-requirementtxt-文件">Python-requirement.txt 文件</a>
+      <ul>
+        <li><a href="#使用freeze">使用freeze</a></li>
+        <li><a href="#使用pipreqs">使用pipreqs</a></li>
+      </ul>
+    </li>
+    <li><a href="#报错解决">报错解决</a>
+      <ul>
+        <li><a href="#oserror-errno-98-address-already-in-use">OSError: [Errno 98] Address already in use</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>Centos + gunicorn + Supervisor 部署 Fastapi</p>
+<h1 id="gunicorn">gunicorn</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 查看进程树</span>
+</span></span><span class="line"><span class="cl">pstree -ap<span class="p">|</span>grep gunicorn
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#重启Gunicorn任务</span>
+</span></span><span class="line"><span class="cl"><span class="nb">kill</span> -HUP <span class="m">14226</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#退出Gunicorn任务</span>
+</span></span><span class="line"><span class="cl"><span class="nb">kill</span> -9 <span class="m">28097</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="centos7安装nginx老版本">centos7安装nginx(老版本)</h1>
+<p><strong>一. gcc 安装</strong>
+安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install gcc-c++
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>二. PCRE pcre-devel 安装</strong>
+PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install -y pcre pcre-devel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>三. zlib 安装</strong>
+zlib 库提供了很多种压缩和解压缩的方式， nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 Centos 上安装 zlib 库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install -y zlib zlib-devel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>四. OpenSSL 安装</strong>
+OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。
+nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install -y openssl openssl-devel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>五. nginx安装</strong></p>
+<p>使用<code>wget</code>命令下载（推荐）。确保系统已经安装了wget，如果没有安装，执行 yum install wget 安装。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget -c https://nginx.org/download/nginx-1.12.0.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>解压</strong></p>
+<p>依然是直接命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tar -zxvf nginx-1.12.0.tar.gz
+</span></span><span class="line"><span class="cl">cd nginx-1.12.0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>配置</strong></p>
+<p>其实在 nginx-1.12.0 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。
+1.使用默认配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">./configure
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2.自定义配置（不推荐）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">./configure \
+</span></span><span class="line"><span class="cl">--prefix=/usr/local/nginx \
+</span></span><span class="line"><span class="cl">--conf-path=/usr/local/nginx/conf/nginx.conf \
+</span></span><span class="line"><span class="cl">--pid-path=/usr/local/nginx/conf/nginx.pid \
+</span></span><span class="line"><span class="cl">--lock-path=/var/lock/nginx.lock \
+</span></span><span class="line"><span class="cl">--error-log-path=/var/log/nginx/error.log \
+</span></span><span class="line"><span class="cl">--http-log-path=/var/log/nginx/access.log \
+</span></span><span class="line"><span class="cl">--with-http_gzip_static_module \
+</span></span><span class="line"><span class="cl">--http-client-body-temp-path=/var/temp/nginx/client \
+</span></span><span class="line"><span class="cl">--http-proxy-temp-path=/var/temp/nginx/proxy \
+</span></span><span class="line"><span class="cl">--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
+</span></span><span class="line"><span class="cl">--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
+</span></span><span class="line"><span class="cl">--http-scgi-temp-path=/var/temp/nginx/scgi
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注：将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录</p>
+</blockquote>
+<p><strong>编译安装</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查找安装路径：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">whereis nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="启动停止nginx"><strong>启动、停止nginx</strong></h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cd /usr/local/nginx/sbin/
+</span></span><span class="line"><span class="cl">./nginx 
+</span></span><span class="line"><span class="cl">./nginx -s stop
+</span></span><span class="line"><span class="cl">./nginx -s quit
+</span></span><span class="line"><span class="cl">./nginx -s reload
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>./nginx -s quit</code>:此方式停止步骤是待nginx进程处理任务完毕进行停止。
+<code>./nginx -s stop</code>:此方式相当于先查出nginx进程id再使用kill命令强制杀掉进程。</p>
+<p>参考: <a
+  href="https://www.cnblogs.com/boonya/p/7907999.html"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>CentOS7安装Nginx - boonya - 博客园 (cnblogs.com)</a></p>
+<p>参考2: <a
+  href="https://blog.csdn.net/qq_37345604/article/details/90034424"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>centOS7安装nginx及nginx配置_Snow、杨-CSDN博客_centos7安装nginx</a></p>
+<h2 id="添加nginx访问过滤">添加Nginx访问过滤</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vim /usr/local/nginx/conf/nginx.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在 server内 location的上方添加</span>
+</span></span><span class="line"><span class="cl">allow IP<span class="p">;</span>
+</span></span><span class="line"><span class="cl">allow 127.0.0.1<span class="p">;</span>
+</span></span><span class="line"><span class="cl">deny all<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 即可使得接口服务只有 IP 和 localhost能访问, 其他IP访问都是403, 保证了服务器的安全性</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="端口检查">端口检查</h1>
+<h2 id="fuser">fuser</h2>
+<p>关闭占用80端口的进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fuser -k 80/tcp
+</span></span><span class="line"><span class="cl">sudo fuser -k -n tcp <span class="m">80</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 关闭占用8080端口的进程</span>
+</span></span><span class="line"><span class="cl">sudo fuser -k 8080/tcp
+</span></span><span class="line"><span class="cl">sudo fuser -k -n tcp <span class="m">8080</span>
+</span></span><span class="line"><span class="cl">sudo fuser -k --namespace tcp <span class="m">8080</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>-k, &ndash;kill kill processes accessing the named file
+-n, &ndash;namespace 接 命名空间(tcp | udp | file) 接 (端口号 | 文件名)，
+如果不会引起歧义的话, 可用：name/space (80/tcp)之类的表示 , 省略 -n。</p>
+<p>参考: <a
+  href="https://blog.csdn.net/kfepiza/article/details/114959999"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>CentOS7 关闭占用指定端口的进程_kfepiza的博客-CSDN博客_centos关闭指定端口进程</a></p>
+<h2 id="netstat">netstat</h2>
+<p>1、查看服务器所有被占用端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">netstat -ant
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2、验证某个端口号是否被占用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">netstat -tunlp <span class="p">|</span> grep 端口号
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3、查看所有监听端口号</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">netstat -lntp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="centos安装python3">centos安装python3</h1>
+<h2 id="查看python版本">查看python版本</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># python -V</span>
+</span></span><span class="line"><span class="cl">Python 2.7.5
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>系统默认安装了Python 2.7.5</p>
+<h2 id="安装依赖">安装依赖</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果有提示一路选择Y就可以。</p>
+<p>安装libffi-devel依赖。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install libffi-devel -y 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：如果不安装这个包，python3可以装成功，但是后面装flask、uwsgi等依赖python3中有个内置模块叫ctypes时会报错。报错ModuleNotFoundError: No module named ‘_ctypes‘。需要安装依赖包和重新编译安装python3。 参看：https://blog.csdn.net/qq_36416904/article/details/79316972</p>
+<h2 id="下载稳定版本38版">下载稳定版本3.8版</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="解压安装python源码包">解压安装python源码包</h2>
+<p>1、解压</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -zxvf Python-3.8.12.tgz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2、安装</p>
+<p>进入解压后的目录进行编译和安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> Python-3.8.12/
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># ./configure</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># make&amp;&amp;make install</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="建立命令软链接">建立命令软链接</h2>
+<p>虽然python3.8.12安装成功了，但默认输入python还是显示是2.7版本的。如果要用python3.8.12需要输入python3即可，有时候不太方便。可以通过修改软链接的方式将默认的python指向python3.8.12。
+先看一下默认的python及新安装的python3都安装在哪里</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># which python</span>
+</span></span><span class="line"><span class="cl">/usr/bin/python
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># which python3</span>
+</span></span><span class="line"><span class="cl">/usr/local/bin/python3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到默认的python路径为/usr/bin/python，python3的路径为/usr/local/bin/python3
+将python3的软链接加到python上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># mv /usr/bin/python /usr/bin/python.bak</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># ln -s /usr/local/bin/python3 /usr/bin/python</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过python -V命令查看python版号，这时python的版本已经是3.8.12了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># python -V</span>
+</span></span><span class="line"><span class="cl">Python 3.8.12
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>pip命令也可以修改，python3.8.12默认的pip是pip3，CentOS7的python2.7默认没有安装pip.
+输入pip命令的时候提示命令没有找到</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># pip</span>
+</span></span><span class="line"><span class="cl">bash: pip: <span class="nb">command</span> not found...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这时也可以通过建立软链接的方式将pip命令链接到pip3上。首先看pip3命令在哪?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># which pip3</span>
+</span></span><span class="line"><span class="cl">/usr/local/bin/pip3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后建立pip到pip3的软链接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># ln -s /usr/local/bin/pip3 /usr/bin/pip</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># pip -V</span>
+</span></span><span class="line"><span class="cl">pip 21.1.1 from /usr/local/lib/python3.8/site-packages/pip <span class="o">(</span>python 3.8<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置yum">配置yum</h2>
+<p>安装python3改完软链接以后发现yum命令报错了，yum是依赖python2.7的，你把python改成了3.8了，所以报错了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost Python-3.8.12<span class="o">]</span><span class="c1"># yum</span>
+</span></span><span class="line"><span class="cl">  File <span class="s2">&#34;/usr/bin/yum&#34;</span>, line <span class="m">30</span>
+</span></span><span class="line"><span class="cl">    except KeyboardInterrupt, e:
+</span></span><span class="line"><span class="cl">                            ^
+</span></span><span class="line"><span class="cl">SyntaxError: invalid syntax
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以修改yum里对python2的依赖即可。虽然安装了python3但是系统里python2依旧还在系统里，可以通过python2来指定用python2.7的命令，首先来看下python2的命令在哪里</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># which python2</span>
+</span></span><span class="line"><span class="cl">/usr/bin/python2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以cd到/usr/bin目录下 通过ls -alh|grep python查看python命令的详细情况。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@localhost bin<span class="o">]</span><span class="c1"># ls -alh|grep python</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /usr/libexec/urlgrabber-ext-down 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改对python的依赖，修改成python2或python2.7都可以。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /usr/bin/yum
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改完这两个文件后，再敲yum命令就不会报错了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /usr/bin/yum 
+</span></span><span class="line"><span class="cl">把 <span class="c1">#! /usr/bin/python 修改为 #! /usr/bin/python2 </span>
+</span></span><span class="line"><span class="cl">vi /usr/libexec/urlgrabber-ext-down 
+</span></span><span class="line"><span class="cl">把 <span class="c1">#! /usr/bin/python 修改为 #! /usr/bin/python2</span>
+</span></span><span class="line"><span class="cl">vi /usr/bin/yum-config-manager
+</span></span><span class="line"><span class="cl"><span class="c1">#!/usr/bin/python 改为 #!/usr/bin/python2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>至此CentOS7环境下python3.8.12已经成功安装！</strong></p>
+<p>参考博客: <a
+  href="https://www.cnblogs.com/xiejava/p/15541899.html"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>CentOS7下安装python3.8 - xiejava - 博客园 (cnblogs.com)</a></p>
+<h1 id="测试数据库远程连接">测试数据库远程连接</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">inspect</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;mysql+pymysql://username:password@ip/db_name&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">pool_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">pool_timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">inspector</span> <span class="o">=</span> <span class="n">inspect</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 获取全部的schema模式</span>
+</span></span><span class="line"><span class="cl"><span class="n">schemas</span> <span class="o">=</span> <span class="n">inspector</span><span class="o">.</span><span class="n">get_schema_names</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">schemas</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># for schema in schemas:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     print(&#34;schema: %s&#34; % schema)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     for table_name in inspector.get_table_names(schema=schema):</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#         for column in inspector.get_columns(table_name, schema=schema):</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#             print(&#34;Column: %s&#34; % column)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="nginx部署fastapi">nginx部署fastapi</h1>
+<p>在fastapi的main文件中(该步骤请跳过)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="s1">&#39;main:app&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&#34;127.0.0.1&#34;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">reload</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>切换到nginx目录配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/nginx/conf.d
+</span></span><span class="line"><span class="cl"><span class="c1"># 其中nginx.conf为配置文件</span>
+</span></span><span class="line"><span class="cl">vim default.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="conf编辑文件">conf编辑文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> <span class="c1"># 配置转发</span>
+</span></span><span class="line"><span class="cl"> ...
+</span></span><span class="line"><span class="cl"> location / <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	proxy_pass http://127.0.0.1:8000/<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl"><span class="c1"># 转发文档 接口文档使用默认时，还需添加如下配置</span>
+</span></span><span class="line"><span class="cl">location /openapi.json <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	proxy_pass http://fastapi_host/openapi.json<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="安装gunicorn">安装gunicorn</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install gunicorn
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="运行gunicorn">运行gunicorn</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gunicorn main:app -w <span class="m">4</span> -k uvicorn.workers.UvicornWorker <span class="c1"># -D 守护启动 -c 配置文件</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>参考博客 <a
+  href="https://blog.csdn.net/weixin_42078760/article/details/104872328"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>Nginx配置转发FastAPI接口和文档_愤怒的小兵-CSDN博客_fastapi nginx</a></p>
+<h2 id="查看nginx日志">查看Nginx日志</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /usr/local/nginx/logs/error.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看nginx配置文件">查看Nginx配置文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /usr/local/nginx/conf/nginx.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="新版nginx部署fastapi">新版nginx部署fastapi</h1>
+<p><a
+  href="https://www.cnblogs.com/gofun/p/14486216.html"
+  
+  
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>Nginx+Gunicorn+Supervisor 部署 FastApi 项目 - 年不迈的小清新 - 博客园 (cnblogs.com)</a></p>
+<h2 id="supervisor管理-gunicorn-进程">Supervisor管理 Gunicorn 进程</h2>
+<h3 id="安装">安装</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install supervisor
+</span></span><span class="line"><span class="cl">sudo easy_install supervisor
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置">配置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch supervisor_app.conf
+</span></span><span class="line"><span class="cl">vim supervisor_app.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">##### 填写如下内容</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>include<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">files</span><span class="o">=</span>/etc/supervisord.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>program:app_name<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">directory</span><span class="o">=</span> /home/filename/
+</span></span><span class="line"><span class="cl"><span class="nv">command</span><span class="o">=</span> gunicorn main:app -k uvicorn.workers.UvicornWorker -c gunicorn.conf
+</span></span><span class="line"><span class="cl"><span class="c1">#####</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="gunicorn参数解释">gunicorn参数解释</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">-c CONFIG    : CONFIG,配置文件的路径，通过配置文件启动；生产环境使用；
+</span></span><span class="line"><span class="cl">-b ADDRESS   : ADDRESS，ip加端口，绑定运行的主机；
+</span></span><span class="line"><span class="cl">-w INT, --workers INT：用于处理工作进程的数量，为正整数，默认为1；
+</span></span><span class="line"><span class="cl">-k STRTING, --worker-class STRTING：要使用的工作模式，默认为sync异步，可以下载eventlet和gevent并指定
+</span></span><span class="line"><span class="cl">--threads INT：处理请求的工作线程数，使用指定数量的线程运行每个worker。为正整数，默认为1。
+</span></span><span class="line"><span class="cl">--worker-connections INT：最大客户端并发数量，默认情况下这个值为1000。
+</span></span><span class="line"><span class="cl">--backlog int：未决连接的最大数量，即等待服务的客户的数量。默认2048个，一般不修改；
+</span></span><span class="line"><span class="cl">-p FILE, --pid FILE：设置pid文件的文件名，如果不设置将不会创建pid文件
+</span></span><span class="line"><span class="cl">--access-logfile FILE   ：  要写入的访问日志目录
+</span></span><span class="line"><span class="cl">--access-logformat STRING：要写入的访问日志格式
+</span></span><span class="line"><span class="cl">--error-logfile FILE, --log-file FILE  ：  要写入错误日志的文件目录。
+</span></span><span class="line"><span class="cl">--log-level LEVEL   ：   错误日志输出等级。
+</span></span><span class="line"><span class="cl">--limit-request-line INT   ：  HTTP请求头的行数的最大大小，此参数用于限制HTTP请求行的允许大小，默认情况下，这个值为4094。值是0~8190的数字。
+</span></span><span class="line"><span class="cl">--limit-request-fields INT   ：  限制HTTP请求中请求头字段的数量。此字段用于限制请求头字段的数量以防止DDOS攻击，默认情况下，这个值为100，这个值不能超过32768
+</span></span><span class="line"><span class="cl">--limit-request-field-size INT  ：  限制HTTP请求中请求头的大小，默认情况下这个值为8190字节。值是一个整数或者0，当该值为0时，表示将对请求头大小不做限制
+</span></span><span class="line"><span class="cl">-t INT, --timeout INT：超过这么多秒后工作将被杀掉，并重新启动。一般设定为30秒；
+</span></span><span class="line"><span class="cl">--daemon： 是否以守护进程启动，默认false；
+</span></span><span class="line"><span class="cl">--chdir： 在加载应用程序之前切换目录；
+</span></span><span class="line"><span class="cl">--graceful-timeout INT：默认情况下，这个值为30，在超时<span class="o">(</span>从接收到重启信号开始<span class="o">)</span>之后仍然活着的工作将被强行杀死；一般使用默认；
+</span></span><span class="line"><span class="cl">--keep-alive INT：在keep-alive连接上等待请求的秒数，默认情况下值为2。一般设定在1~5秒之间。
+</span></span><span class="line"><span class="cl">--reload：默认为False。此设置用于开发，每当应用程序发生更改时，都会导致工作重新启动。
+</span></span><span class="line"><span class="cl">--spew：打印服务器执行过的每一条语句，默认False。此选择为原子性的，即要么全部打印，要么全部不打印；
+</span></span><span class="line"><span class="cl">--check-config   ：显示现在的配置，默认值为False，即显示。
+</span></span><span class="line"><span class="cl">-e ENV, --env ENV： 设置环境变量；
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置文件">配置文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># gunicorn.conf
+</span></span><span class="line"><span class="cl"># 并行工作进程数
+</span></span><span class="line"><span class="cl">workers = 4
+</span></span><span class="line"><span class="cl"># 指定每个工作者的线程数
+</span></span><span class="line"><span class="cl">threads = 2
+</span></span><span class="line"><span class="cl"># 监听内网端口5000
+</span></span><span class="line"><span class="cl">bind = &#39;127.0.0.1:5000&#39;
+</span></span><span class="line"><span class="cl"># 设置守护进程,将进程交给supervisor管理
+</span></span><span class="line"><span class="cl">daemon = &#39;false&#39;
+</span></span><span class="line"><span class="cl"># 工作模式协程
+</span></span><span class="line"><span class="cl"># worker_class = &#39;gevent&#39;
+</span></span><span class="line"><span class="cl"># 设置最大并发量
+</span></span><span class="line"><span class="cl">worker_connections = 2000
+</span></span><span class="line"><span class="cl"># 设置进程文件目录
+</span></span><span class="line"><span class="cl">pidfile = &#39;/var/run/gunicorn.pid&#39;
+</span></span><span class="line"><span class="cl"># 设置访问日志和错误信息日志路径
+</span></span><span class="line"><span class="cl">accesslog = &#39;/var/log/gunicorn_acess.log&#39;
+</span></span><span class="line"><span class="cl">errorlog = &#39;/var/log/gunicorn_error.log&#39;
+</span></span><span class="line"><span class="cl"># 设置日志记录水平
+</span></span><span class="line"><span class="cl">loglevel = &#39;warning&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置文件启动supervisor">配置文件启动supervisor</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">supervisord -c supervisor_app.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="启动应用">启动应用</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo supervisorctl start app_name
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="常用命令">常用命令</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">supervisorctl start <span class="o">[</span>program_name<span class="o">]</span>
+</span></span><span class="line"><span class="cl">supervisorctl stop <span class="o">[</span>program_name<span class="o">]</span>
+</span></span><span class="line"><span class="cl">supervisorctl restart <span class="o">[</span>program_name<span class="o">]</span> <span class="c1"># 重启服务，注意这里不会重新加载配置文件</span>
+</span></span><span class="line"><span class="cl">supervisorctl status <span class="c1"># 查看当前程序运行状态</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重新加载配置文件，重新启动正在运行的服务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo supervisorctl reload
+</span></span><span class="line"><span class="cl">sudo supervisorctl update
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="查看日志">查看日志</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /var/log/supervisor/supervisord.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看程序启动的具体报错">查看程序启动的具体报错</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">supervisorctl tail program_name stdout 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="关闭supervisor进程">关闭supervisor进程</h2>
+<p>寻找进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ps -ef <span class="p">|</span> grep supervisord
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>杀掉进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">kill</span> -s SIGTERM <span class="m">29646</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="python-requirementtxt-文件">Python-requirement.txt 文件</h1>
+<h2 id="使用freeze">使用freeze</h2>
+<p>生成 requirements.txt</p>
+<p>进入项目根目录，执行以下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip freeze &gt; requirements.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 requirement.txt 安装第三方库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install -r requirement.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="使用pipreqs">使用pipreqs</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安装</span>
+</span></span><span class="line"><span class="cl">pip install pipreqs
+</span></span><span class="line"><span class="cl"><span class="c1"># 在当前目录生成</span>
+</span></span><span class="line"><span class="cl">pipreqs . --encoding<span class="o">=</span>utf8 --force
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装</span>
+</span></span><span class="line"><span class="cl">pip install -r requirements.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="报错解决">报错解决</h1>
+<h2 id="oserror-errno-98-address-already-in-use">OSError: [Errno 98] Address already in use</h2>
+<p>指端口被占用，未释放或者程序没有正常结束
+查询端口占用进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">lsof -i:8080 <span class="c1"># 查找8080端口进程</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>杀死进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">kill</span> -9 pidnumber
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-02-08&#32;23:00:00>更新于 2022-02-08</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/FastAPI%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/">FastAPI服务器部署</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/python-tqdm/" class="prev" rel="prev" title="进度条显示tqdm"><i class="fas fa-angle-left fa-fw"></i>进度条显示tqdm</a>
+      <a href="/posts/python-proxy/" class="next" rel="next" title="爬虫代理池的使用">爬虫代理池的使用<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

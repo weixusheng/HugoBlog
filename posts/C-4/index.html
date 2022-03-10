@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>C语言程序设计 Part-1 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="今天补习了一下c语言(重新再学习一遍c),毕竟基础要牢靠
+也为了下一步刷PAT做基础,这里记录新得
+今天心态又崩了&hellip;感觉一直以来自己就是一个快乐与崩溃的结合体
+无尽的失落和失望,像是一个深渊,不过明天醒来又是新的一天" />
+<meta name="keywords" content="C-语言程序设计" /><meta itemprop="name" content="C语言程序设计 Part-1">
+<meta itemprop="description" content="今天补习了一下c语言(重新再学习一遍c),毕竟基础要牢靠
+也为了下一步刷PAT做基础,这里记录新得
+今天心态又崩了&hellip;感觉一直以来自己就是一个快乐与崩溃的结合体
+无尽的失落和失望,像是一个深渊,不过明天醒来又是新的一天"><meta itemprop="datePublished" content="2020-05-13T20:40:00+00:00" />
+<meta itemprop="dateModified" content="2020-05-13T20:40:00+00:00" />
+<meta itemprop="wordCount" content="3869"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="C-语言程序设计," /><meta property="og:title" content="C语言程序设计 Part-1" />
+<meta property="og:description" content="今天补习了一下c语言(重新再学习一遍c),毕竟基础要牢靠
+也为了下一步刷PAT做基础,这里记录新得
+今天心态又崩了&hellip;感觉一直以来自己就是一个快乐与崩溃的结合体
+无尽的失落和失望,像是一个深渊,不过明天醒来又是新的一天" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/C-4/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-13T20:40:00+00:00" />
+<meta property="article:modified_time" content="2020-05-13T20:40:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="C语言程序设计 Part-1"/>
+<meta name="twitter:description" content="今天补习了一下c语言(重新再学习一遍c),毕竟基础要牢靠
+也为了下一步刷PAT做基础,这里记录新得
+今天心态又崩了&hellip;感觉一直以来自己就是一个快乐与崩溃的结合体
+无尽的失落和失望,像是一个深渊,不过明天醒来又是新的一天"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/C-4/" /><link rel="prev" href="http://example.org/posts/leetcode-5/" /><link rel="next" href="http://example.org/posts/C-5/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "C语言程序设计 Part-1",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/C-4\/"
+    },"genre": "posts","keywords": "C-语言程序设计","wordcount":  3869 ,
+    "url": "http:\/\/example.org\/posts\/C-4\/","datePublished": "2020-05-13T20:40:00+00:00","dateModified": "2020-05-13T20:40:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">C语言程序设计 Part-1</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/C%E8%AF%AD%E8%A8%80/"><i class="far fa-folder fa-fw"></i>C语言</a></span></div>
+      <div class="post-meta-line"><span title=2020-05-13&#32;20:40:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-13" >2020-05-13</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3869 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#void-类型">void 类型</a></li>
+    <li><a href="#小数类型">小数类型</a>
+      <ul>
+        <li><a href="#float类型">float类型</a></li>
+        <li><a href="#double类型">double类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#c-中的变量声明-extern声明">C 中的变量声明-extern声明</a></li>
+    <li><a href="#c-常量">C 常量</a>
+      <ul>
+        <li><a href="#整数常量">整数常量</a></li>
+        <li><a href="#浮点常量">浮点常量</a></li>
+      </ul>
+    </li>
+    <li><a href="#c-存储类">C 存储类</a>
+      <ul>
+        <li><a href="#auto-存储类">auto 存储类</a></li>
+        <li><a href="#static-存储类">static 存储类</a></li>
+        <li><a href="#extern-存储类">extern 存储类</a></li>
+      </ul>
+    </li>
+    <li><a href="#位运算符">位运算符</a>
+      <ul>
+        <li><a href="#举例说明">举例说明</a>
+          <ul>
+            <li><a href="#运算符-按位与">运算符-按位与&amp;</a></li>
+            <li><a href="#运算符-按位或">运算符-按位或|</a></li>
+            <li><a href="#运算符-异或">运算符-异或^</a></li>
+            <li><a href="#运算符-取反">运算符-取反~</a></li>
+            <li><a href="#运算符-二进制左移">运算符-二进制左移&laquo;</a></li>
+            <li><a href="#运算符-二进制右移">运算符-二进制右移&raquo;</a></li>
+          </ul>
+        </li>
+        <li><a href="#实例">实例</a></li>
+      </ul>
+    </li>
+    <li><a href="#switch-case">switch case</a></li>
+    <li><a href="#变量作用域">变量作用域</a></li>
+    <li><a href="#c-enum枚举">C enum(枚举)</a>
+      <ul>
+        <li><a href="#枚举变量的定义">枚举变量的定义</a>
+          <ul>
+            <li><a href="#先定义枚举类型再定义枚举变量">先定义枚举类型，再定义枚举变量</a></li>
+            <li><a href="#定义枚举类型的同时定义枚举变量">定义枚举类型的同时定义枚举变量</a></li>
+            <li><a href="#省略枚举名称直接定义枚举变量">省略枚举名称，直接定义枚举变量</a></li>
+            <li><a href="#实例-1">实例:</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>今天补习了一下c语言(重新再学习一遍c),毕竟基础要牢靠
+也为了下一步刷PAT做基础,这里记录新得
+今天心态又崩了&hellip;感觉一直以来自己就是一个快乐与崩溃的结合体
+无尽的失落和失望,像是一个深渊,不过明天醒来又是新的一天</p>
+<h1 id="void-类型">void 类型</h1>
+<ul>
+<li>函数返回为空
+C 中有各种函数都不返回值，或者您可以说它们返回空。不返回值的函数的返回类型为空。例如 void exit (int status);</li>
+<li>函数参数为空
+C 中有各种函数不接受任何参数。不带参数的函数可以接受一个 void。例如 int rand(void);</li>
+<li>指针指向 void
+类型为 void * 的指针代表对象的地址，而不是类型。例如，内存分配函数 void *malloc( size_t size ); 返回指向 void 的指针，可以转换为任何数据类型。</li>
+</ul>
+<h1 id="小数类型">小数类型</h1>
+<h2 id="float类型">float类型</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/1.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/1.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/1.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/1.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/1.png"
+    title="img" /></p>
+<h2 id="double类型">double类型</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/2.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/2.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/2.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/2.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/2.png"
+    title="img" /></p>
+<h1 id="c-中的变量声明-extern声明">C 中的变量声明-extern声明</h1>
+<p>变量声明向编译器保证变量以指定的类型和名称存在，这样编译器在不需要知道变量完整细节的情况下也能继续进一步的编译。变量声明只在编译时有它的意义，在程序连接时编译器需要实际的变量声明。
+变量的声明有两种情况：</p>
+<ol>
+<li>一种是需要建立存储空间的。例如：int a 在声明的时候就已经建立了存储空间。</li>
+<li>另一种是不需要建立存储空间的，通过使用extern关键字声明变量名而不定义它。</li>
+<li>例如：extern int a 其中变量 a 可以在别的文件中定义的。
+除非有extern关键字，否则都是变量的定义。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span> <span class="c1">//声明，不是定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">i</span><span class="p">;</span> <span class="c1">//声明，也是定义
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>实例
+尝试下面的实例，其中，变量在头部就已经被声明，但是定义与初始化在主函数内：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">// 函数外定义变量 x 和 y
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">addtwonum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 函数内声明变量 x 和 y 为外部变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">extern</span> <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">extern</span> <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 给外部变量（全局变量）x 和 y 赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 调用函数 addtwonum
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">result</span> <span class="o">=</span> <span class="n">addtwonum</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;result 为: %d&#34;</span><span class="p">,</span><span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">result</span> <span class="err">为</span><span class="o">:</span> <span class="mi">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果需要在一个源文件中引用另外一个源文件中定义的变量，我们只需在引用的文件中将变量加上 extern 关键字的声明即可。
+addtwonum.c 文件代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="cm">/*外部变量声明*/</span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">int</span> <span class="n">x</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">int</span> <span class="n">y</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">addtwonum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>test.c 文件代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="cm">/*定义两个全局变量*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">addtwonum</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">addtwonum</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;result 为: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="err">$</span> <span class="n">gcc</span> <span class="n">addtwonum</span><span class="p">.</span><span class="n">c</span> <span class="n">test</span><span class="p">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">main</span>
+</span></span><span class="line"><span class="cl"><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">main</span>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="err">为</span><span class="o">:</span> <span class="mi">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="c-常量">C 常量</h1>
+<h2 id="整数常量">整数常量</h2>
+<p>整数常量可以是十进制、八进制或十六进制的常量。
+前缀指定基数：</p>
+<ul>
+<li>0x 或 0X 表示十六进制</li>
+<li>0表示八进制</li>
+<li>不带前缀则默认表示十进制。</li>
+</ul>
+<p>整数常量也可以带一个后缀，后缀是 U 和 L 的组合，U 表示无符号整数（unsigned），L 表示长整数（long）。后缀可以是大写，也可以是小写，U 和 L 的顺序任意。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="mi">85</span>         <span class="cm">/* 十进制 */</span>
+</span></span><span class="line"><span class="cl"><span class="mo">0213</span>       <span class="cm">/* 八进制 */</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x4b</span>       <span class="cm">/* 十六进制 */</span>
+</span></span><span class="line"><span class="cl"><span class="mi">30</span>         <span class="cm">/* 整数 */</span>
+</span></span><span class="line"><span class="cl"><span class="mi">30u</span>        <span class="cm">/* 无符号整数 */</span>
+</span></span><span class="line"><span class="cl"><span class="mi">30l</span>        <span class="cm">/* 长整数 */</span>
+</span></span><span class="line"><span class="cl"><span class="mi">30ul</span>       <span class="cm">/* 无符号长整数 */</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="浮点常量">浮点常量</h2>
+<p>浮点常量由整数部分、小数点、小数部分和指数部分组成。您可以使用小数形式或者指数形式来表示浮点常量。
+当使用小数形式表示时，必须包含整数部分、小数部分，或同时包含两者。当使用指数形式表示时， 必须包含小数点、指数，或同时包含两者。带符号的指数是用 e 或 E 引入的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="mf">3.14159</span>       <span class="cm">/* 合法的 */</span>
+</span></span><span class="line"><span class="cl"><span class="mf">314159E-5L</span>    <span class="cm">/* 合法的 */</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="c-存储类">C 存储类</h1>
+<p>存储类定义 C 程序中变量/函数的范围（可见性）和生命周期。这些说明符放置在它们所修饰的类型之前。下面列出 C 程序中可用的存储类：</p>
+<ul>
+<li>auto</li>
+<li>register</li>
+<li>static</li>
+<li>extern</li>
+</ul>
+<h2 id="auto-存储类">auto 存储类</h2>
+<p>auto 存储类是所有局部变量<strong>默认</strong>的存储类。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">mount</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">auto</span> <span class="kt">int</span> <span class="n">month</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的实例定义了两个带有<strong>相同存储类</strong>的变量，auto 只能用在函数内，即 auto 只能修饰局部变量。</p>
+<h2 id="static-存储类">static 存储类</h2>
+<p>static 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。因此，使用 static 修饰局部变量可以在函数调用之间保持局部变量的值。
+static 修饰符也可以应用于全局变量。当 static 修饰全局变量时，会使变量的作用域限制在声明它的文件内。
+全局声明的一个 static 变量或方法可以被任何函数或方法调用，只要这些方法出现在跟 static 变量或方法同一个文件中。
+以下实例演示了 static 修饰全局变量和局部变量的应用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="cm">/* 函数声明 */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">func1</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">int</span> <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>        <span class="cm">/* 全局变量 - static 是默认的 */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span> <span class="p">(</span><span class="n">count</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">func1</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">func1</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* &#39;thingy&#39; 是 &#39;func1&#39; 的局部变量 - 只初始化一次
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 每次调用函数 &#39;func1&#39; &#39;thingy&#39; 值不会被重置。
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>                
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="kt">int</span> <span class="n">thingy</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">thingy</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34; thingy 为 %d ， count 为 %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">thingy</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>实例中 count 作为全局变量可以在函数内使用，thingy 使用 static 修饰后，<strong>不会在每次调用时重置</strong>。产生结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> thingy 为 6 ， count 为 9
+</span></span><span class="line"><span class="cl"> thingy 为 7 ， count 为 8
+</span></span><span class="line"><span class="cl"> thingy 为 8 ， count 为 7
+</span></span><span class="line"><span class="cl"> thingy 为 9 ， count 为 6
+</span></span><span class="line"><span class="cl"> thingy 为 10 ， count 为 5
+</span></span><span class="line"><span class="cl"> thingy 为 11 ， count 为 4
+</span></span><span class="line"><span class="cl"> thingy 为 12 ， count 为 3
+</span></span><span class="line"><span class="cl"> thingy 为 13 ， count 为 2
+</span></span><span class="line"><span class="cl"> thingy 为 14 ， count 为 1
+</span></span><span class="line"><span class="cl"> thingy 为 15 ， count 为 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="extern-存储类">extern 存储类</h2>
+<p>extern 存储类用于提供<strong>一个全局变量的引用</strong>，全局变量对<strong>所有的程序文件</strong>都是可见的。当您使用 extern 时，对于无法初始化的变量，会把<strong>变量名指向一个之前定义过的存储位置</strong>。
+当您有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 extern 来得到已定义的变量或函数的引用。可以这么理解，<strong>extern 是用来在另一个文件中声明一个全局变量或函数</strong>。
+extern 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候，如下所示：
+第一个文件：main.c
+实例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="n">count</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">void</span> <span class="nf">write_extern</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="n">count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="n">write_extern</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第二个文件：support.c</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">extern</span> <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">write_extern</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="n">printf</span><span class="p">(</span><span class="s">&#34;count is %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这里，第二个文件中的 extern 关键字用于声明已经在第一个文件 main.c 中定义的 count。现在 ，编译这两个文件，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"> <span class="err">$</span> <span class="n">gcc</span> <span class="n">main</span><span class="p">.</span><span class="n">c</span> <span class="n">support</span><span class="p">.</span><span class="n">c</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这会产生 a.out 可执行程序，当程序被执行时，它会产生下列结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">count</span> <span class="n">is</span> <span class="mi">5</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="位运算符">位运算符</h1>
+<p>位运算符作用于位，并逐位执行操作。&amp;、 | 和 ^ 的真值表如下所示：
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/3.png"
+    data-srcset="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/3.png, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/3.png 1.5x, https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/3.png 2x"
+    data-sizes="auto"
+    alt="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/C-4/3.png"
+    title="img" />
+假设如果 A = 60，且 B = 13，现在以二进制格式表示，它们如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">A = 0011 1100
+</span></span><span class="line"><span class="cl">B = 0000 1101
+</span></span><span class="line"><span class="cl">-----------------
+</span></span><span class="line"><span class="cl">A&amp;B = 0000 1100
+</span></span><span class="line"><span class="cl">A|B = 0011 1101
+</span></span><span class="line"><span class="cl">A^B = 0011 0001
+</span></span><span class="line"><span class="cl">~A  = 1100 0011
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="举例说明">举例说明</h2>
+<p>假设变量 A 的值为 60，变量 B 的值为 13</p>
+<h3 id="运算符-按位与">运算符-按位与&amp;</h3>
+<p>运算规则</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0&amp;0=0;   
+</span></span><span class="line"><span class="cl">0&amp;1=0;    
+</span></span><span class="line"><span class="cl">1&amp;0=0;     
+</span></span><span class="line"><span class="cl">1&amp;1=1;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>(A &amp; B) 将得到 12，即为 0000 1100</p>
+<h3 id="运算符-按位或">运算符-按位或|</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0|0=0;   
+</span></span><span class="line"><span class="cl">0|1=1;   
+</span></span><span class="line"><span class="cl">1|0=1;    
+</span></span><span class="line"><span class="cl">1|1=1;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>(A | B) 将得到 61，即为 0011 1101</p>
+<h3 id="运算符-异或">运算符-异或^</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0^0=0;   
+</span></span><span class="line"><span class="cl">0^1=1;   
+</span></span><span class="line"><span class="cl">1^0=1;  
+</span></span><span class="line"><span class="cl">1^1=0;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>(A ^ B) 将得到 49，即为 0011 0001</p>
+<h3 id="运算符-取反">运算符-取反~</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">~1=0;   
+</span></span><span class="line"><span class="cl">~0=1;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>(~A ) 将得到 -61，即为 1100 0011，一个有符号二进制数的补码形式。</p>
+<h3 id="运算符-二进制左移">运算符-二进制左移&laquo;</h3>
+<p>A &laquo; 2 将得到 240，即为 1111 0000</p>
+<h3 id="运算符-二进制右移">运算符-二进制右移&raquo;</h3>
+<p>A &raquo; 2 将得到 15，即为 0000 1111</p>
+<h2 id="实例">实例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span> 
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">   <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>    <span class="cm">/* 60 = 0011 1100 */</span>  
+</span></span><span class="line"><span class="cl">   <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>    <span class="cm">/* 13 = 0000 1101 */</span>
+</span></span><span class="line"><span class="cl">   <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>           
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">   <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span>       <span class="cm">/* 12 = 0000 1100 */</span> 
+</span></span><span class="line"><span class="cl">   <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Line 1 - c 的值是 %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">c</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">   <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">;</span>       <span class="cm">/* 61 = 0011 1101 */</span>
+</span></span><span class="line"><span class="cl">   <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Line 2 - c 的值是 %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">c</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">   <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>       <span class="cm">/* 49 = 0011 0001 */</span>
+</span></span><span class="line"><span class="cl">   <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Line 3 - c 的值是 %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">c</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">   <span class="n">c</span> <span class="o">=</span> <span class="o">~</span><span class="n">a</span><span class="p">;</span>          <span class="cm">/*-61 = 1100 0011 */</span>
+</span></span><span class="line"><span class="cl">   <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Line 4 - c 的值是 %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">c</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">   <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">;</span>     <span class="cm">/* 240 = 1111 0000 */</span>
+</span></span><span class="line"><span class="cl">   <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Line 5 - c 的值是 %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">c</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">   <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">;</span>     <span class="cm">/* 15 = 0000 1111 */</span>
+</span></span><span class="line"><span class="cl">   <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Line 6 - c 的值是 %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">c</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">Line</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">c</span> <span class="err">的值是</span> <span class="mi">12</span>
+</span></span><span class="line"><span class="cl"><span class="n">Line</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">c</span> <span class="err">的值是</span> <span class="mi">61</span>
+</span></span><span class="line"><span class="cl"><span class="n">Line</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">c</span> <span class="err">的值是</span> <span class="mi">49</span>
+</span></span><span class="line"><span class="cl"><span class="n">Line</span> <span class="mi">4</span> <span class="o">-</span> <span class="n">c</span> <span class="err">的值是</span> <span class="o">-</span><span class="mi">61</span>
+</span></span><span class="line"><span class="cl"><span class="n">Line</span> <span class="mi">5</span> <span class="o">-</span> <span class="n">c</span> <span class="err">的值是</span> <span class="mi">240</span>
+</span></span><span class="line"><span class="cl"><span class="n">Line</span> <span class="mi">6</span> <span class="o">-</span> <span class="n">c</span> <span class="err">的值是</span> <span class="mi">15</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="switch-case">switch case</h1>
+<p>如果在case语句中没有break;
+会一直执行到下条语句,直到遇到break;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">switch(int value){
+</span></span><span class="line"><span class="cl">    case 1:
+</span></span><span class="line"><span class="cl">        表达式1;
+</span></span><span class="line"><span class="cl">    case 2:
+</span></span><span class="line"><span class="cl">        表达式2;
+</span></span><span class="line"><span class="cl">        break;
+</span></span><span class="line"><span class="cl">    case 3:
+</span></span><span class="line"><span class="cl">        表达式3;
+</span></span><span class="line"><span class="cl">        break;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时如果value=1,则会一直执行到表达式2,遇到break跳出</p>
+<h1 id="变量作用域">变量作用域</h1>
+<ol>
+<li>全局变量与局部变量
+在程序中，局部变量和全局变量的名称可以相同，但是在函数内，如果两个名字相同，<strong>会使用局部变量值，全局变量不会被使用</strong></li>
+<li>形式参数
+函数的参数，形式参数，被当作该函数内的局部变量，如果与全局变量同名它们会优先使用局部变量。下面是一个实例：</li>
+</ol>
+<p>全局变量与局部变量在内存中的区别：</p>
+<ul>
+<li>全局变量保存在内存的全局存储区中，占用静态的存储单元；</li>
+<li>局部变量保存在栈中，只有在所在函数被调用时才动态地为变量分配存储单元。</li>
+</ul>
+<h1 id="c-enum枚举">C enum(枚举)</h1>
+<p>枚举是 C 语言中的一种基本数据类型，它可以让数据更简洁，更易读。
+枚举语法定义格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">enum</span>　<span class="err">枚举名</span>　<span class="p">{</span><span class="err">枚举元素</span><span class="mi">1</span><span class="p">,</span><span class="err">枚举元素</span><span class="mi">2</span><span class="p">,</span><span class="err">……</span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>比如：一星期有 7 天，如果不用枚举，我们需要使用 #define 来为每个整数定义一个别名：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define MON  1
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define TUE  2
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define WED  3
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define THU  4
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define FRI  5
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define SAT  6
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define SUN  7
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个看起来代码量就比较多，接下来我们看看使用枚举的方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">enum</span> <span class="n">DAY</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">MON</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">TUE</span><span class="p">,</span> <span class="n">WED</span><span class="p">,</span> <span class="n">THU</span><span class="p">,</span> <span class="n">FRI</span><span class="p">,</span> <span class="n">SAT</span><span class="p">,</span> <span class="n">SUN</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：<strong>第一个枚举成员的默认值为整型的 0，后续枚举成员的值在前一个成员上加 1</strong>。我们在这个实例中把第一个枚举成员的值定义为 1，第二个就为 2，以此类推。
+可以在定义枚举类型时改变枚举元素的值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">enum</span> <span class="n">season</span> <span class="p">{</span><span class="n">spring</span><span class="p">,</span> <span class="n">summer</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">autumn</span><span class="p">,</span> <span class="n">winter</span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>没有指定值的枚举元素，其值为前一元素加 1。也就说 <strong>spring 的值为 0，summer 的值为 3，autumn 的值为 4，winter 的值为 5</strong></p>
+<h2 id="枚举变量的定义">枚举变量的定义</h2>
+<p>我们可以通过以下三种方式来定义枚举变量</p>
+<h3 id="先定义枚举类型再定义枚举变量">先定义枚举类型，再定义枚举变量</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">enum</span> <span class="n">DAY</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">MON</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">TUE</span><span class="p">,</span> <span class="n">WED</span><span class="p">,</span> <span class="n">THU</span><span class="p">,</span> <span class="n">FRI</span><span class="p">,</span> <span class="n">SAT</span><span class="p">,</span> <span class="n">SUN</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="n">DAY</span> <span class="n">day</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="定义枚举类型的同时定义枚举变量">定义枚举类型的同时定义枚举变量</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">enum DAY
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">      MON=1, TUE, WED, THU, FRI, SAT, SUN
+</span></span><span class="line"><span class="cl">} day;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="省略枚举名称直接定义枚举变量">省略枚举名称，直接定义枚举变量</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">enum</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">MON</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">TUE</span><span class="p">,</span> <span class="n">WED</span><span class="p">,</span> <span class="n">THU</span><span class="p">,</span> <span class="n">FRI</span><span class="p">,</span> <span class="n">SAT</span><span class="p">,</span> <span class="n">SUN</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">day</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="实例-1">实例:</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span> 
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="n">DAY</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">MON</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">TUE</span><span class="p">,</span> <span class="n">WED</span><span class="p">,</span> <span class="n">THU</span><span class="p">,</span> <span class="n">FRI</span><span class="p">,</span> <span class="n">SAT</span><span class="p">,</span> <span class="n">SUN</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">enum</span> <span class="n">DAY</span> <span class="n">day</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">day</span> <span class="o">=</span> <span class="n">WED</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span><span class="n">day</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上实例输出结果为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在C 语言中，枚举类型是被当做 int 或者 unsigned int 类型来处理的，所以按照 C 语言规范是没有办法遍历枚举类型的。
+不过在一些特殊的情况下，枚举类型必须连续是可以实现有条件的遍历。
+以下实例使用 for 来遍历枚举的元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">enum</span> <span class="n">DAY</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">MON</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">TUE</span><span class="p">,</span> <span class="n">WED</span><span class="p">,</span> <span class="n">THU</span><span class="p">,</span> <span class="n">FRI</span><span class="p">,</span> <span class="n">SAT</span><span class="p">,</span> <span class="n">SUN</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">day</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 遍历枚举元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="n">day</span> <span class="o">=</span> <span class="n">MON</span><span class="p">;</span> <span class="n">day</span> <span class="o">&lt;=</span> <span class="n">SUN</span><span class="p">;</span> <span class="n">day</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;枚举元素：%d </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">day</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上实例输出结果为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">枚举元素：1 
+</span></span><span class="line"><span class="cl">枚举元素：2 
+</span></span><span class="line"><span class="cl">枚举元素：3 
+</span></span><span class="line"><span class="cl">枚举元素：4 
+</span></span><span class="line"><span class="cl">枚举元素：5 
+</span></span><span class="line"><span class="cl">枚举元素：6 
+</span></span><span class="line"><span class="cl">枚举元素：7
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2020-05-13&#32;20:40:00>更新于 2020-05-13</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/C-%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">C-语言程序设计</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/leetcode-5/" class="prev" rel="prev" title="Leetcode Part-5"><i class="fas fa-angle-left fa-fw"></i>Leetcode Part-5</a>
+      <a href="/posts/C-5/" class="next" rel="next" title="C语言程序设计 Part-2">C语言程序设计 Part-2<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

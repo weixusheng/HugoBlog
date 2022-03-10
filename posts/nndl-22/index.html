@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>NNDL-序列模型 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="循环神经网络(Andrew Ng)" />
+<meta name="keywords" content="Andrew NNDL" /><meta itemprop="name" content="NNDL-序列模型">
+<meta itemprop="description" content="循环神经网络(Andrew Ng)"><meta itemprop="datePublished" content="2021-02-25T21:30:00+00:00" />
+<meta itemprop="dateModified" content="2021-02-25T21:30:00+00:00" />
+<meta itemprop="wordCount" content="119"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="Andrew NNDL," /><meta property="og:title" content="NNDL-序列模型" />
+<meta property="og:description" content="循环神经网络(Andrew Ng)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/nndl-22/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-25T21:30:00+00:00" />
+<meta property="article:modified_time" content="2021-02-25T21:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="NNDL-序列模型"/>
+<meta name="twitter:description" content="循环神经网络(Andrew Ng)"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/nndl-22/" /><link rel="prev" href="http://example.org/posts/shell-2/" /><link rel="next" href="http://example.org/posts/python-1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "NNDL-序列模型",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/nndl-22\/"
+    },"genre": "posts","keywords": "Andrew NNDL","wordcount":  119 ,
+    "url": "http:\/\/example.org\/posts\/nndl-22\/","datePublished": "2021-02-25T21:30:00+00:00","dateModified": "2021-02-25T21:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">NNDL-序列模型</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>神经网络与深度学习</a></span></div>
+      <div class="post-meta-line"><span title=2021-02-25&#32;21:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-25" >2021-02-25</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 119 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么选择序列模型">为什么选择序列模型</a></li>
+    <li><a href="#数学符号">数学符号</a></li>
+    <li><a href="#循环神经网络">循环神经网络</a></li>
+    <li><a href="#通过时间的反向传播">通过时间的反向传播</a></li>
+    <li><a href="#不同类型的循环神经网络">不同类型的循环神经网络</a></li>
+    <li><a href="#语言模型和序列生成">语言模型和序列生成</a></li>
+    <li><a href="#对新序列采样">对新序列采样</a></li>
+    <li><a href="#循环神经网络的梯度消失">循环神经网络的梯度消失</a></li>
+    <li><a href="#gru单元">GRU单元</a></li>
+    <li><a href="#长短期记忆">长短期记忆</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>循环神经网络(Andrew Ng)</p>
+<h1 id="为什么选择序列模型">为什么选择序列模型</h1>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/1_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/2_.png">
+<h1 id="数学符号">数学符号</h1>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/3_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/4_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/6_.png">
+<h1 id="循环神经网络">循环神经网络</h1>
+<p><strong>Recurrent Neural Network Model</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/7_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/8_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/9_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/10_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/11_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/12_.png"></p>
+<h1 id="通过时间的反向传播">通过时间的反向传播</h1>
+<p><strong>Backpropagation through time</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/13_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/14_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/15_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/16_.png"></p>
+<h1 id="不同类型的循环神经网络">不同类型的循环神经网络</h1>
+<p><strong>Different types of RNNs</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/17_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/18_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/19_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/20_.png"></p>
+<h1 id="语言模型和序列生成">语言模型和序列生成</h1>
+<p><strong>Language model and sequence generation</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/21_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/22_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/23_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/24_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/25_.png"></p>
+<h1 id="对新序列采样">对新序列采样</h1>
+<p><strong>Sampling noval sequences</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/26_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/27_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/28_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/29_.png"></p>
+<h1 id="循环神经网络的梯度消失">循环神经网络的梯度消失</h1>
+<p><strong>Vanishing grdients with RNNs</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/30_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/31_.png"></p>
+<h1 id="gru单元">GRU单元</h1>
+<p><strong>Gated Recurrent Unit(GRU)</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/32_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/33_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/34_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/35_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/36_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/37_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/38_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/39_.png"></p>
+<h1 id="长短期记忆">长短期记忆</h1>
+<p><strong>LSTM(long short-term memory) unit</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/40_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/41_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/42_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/22/43_.png"></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2021-02-25&#32;21:30:00>更新于 2021-02-25</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Andrew-NNDL/">Andrew NNDL</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/shell-2/" class="prev" rel="prev" title="Shell-字符串正则提取"><i class="fas fa-angle-left fa-fw"></i>Shell-字符串正则提取</a>
+      <a href="/posts/python-1/" class="next" rel="next" title="Python(NCRE)">Python(NCRE)<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

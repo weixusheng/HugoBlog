@@ -1,0 +1,39 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>C-语言程序设计 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/C-%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</link>
+    <description>C-语言程序设计 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Fri, 15 May 2020 18:40:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/C-%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="self" type="application/rss+xml" /><item>
+  <title>C语言程序设计 Part-5</title>
+  <link>http://example.org/posts/C-8/</link>
+  <pubDate>Fri, 15 May 2020 18:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-8/</guid>
+  <description><![CDATA[<p>C内存管理,C命令行参数</p>]]></description>
+</item><item>
+  <title>C语言程序设计 Part-4</title>
+  <link>http://example.org/posts/C-7/</link>
+  <pubDate>Fri, 15 May 2020 16:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-7/</guid>
+  <description><![CDATA[<p>C头文件,C强制类型转换,C错误处理,C可变参数</p>]]></description>
+</item><item>
+  <title>C语言程序设计 Part-2</title>
+  <link>http://example.org/posts/C-5/</link>
+  <pubDate>Thu, 14 May 2020 09:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-5/</guid>
+  <description><![CDATA[<p>指针,字符串,结构体,位域,共用体</p>]]></description>
+</item><item>
+  <title>C语言程序设计 Part-1</title>
+  <link>http://example.org/posts/C-4/</link>
+  <pubDate>Wed, 13 May 2020 20:40:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/C-4/</guid>
+  <description><![CDATA[<p>今天补习了一下c语言(重新再学习一遍c),毕竟基础要牢靠
+也为了下一步刷PAT做基础,这里记录新得
+今天心态又崩了&hellip;感觉一直以来自己就是一个快乐与崩溃的结合体
+无尽的失落和失望,像是一个深渊,不过明天醒来又是新的一天</p>]]></description>
+</item></channel>
+</rss>

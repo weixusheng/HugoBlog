@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Git命令-3 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="Git常用命令" />
+<meta name="keywords" content="Git" /><meta itemprop="name" content="Git命令-3">
+<meta itemprop="description" content="Git常用命令"><meta itemprop="datePublished" content="2021-09-05T10:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-09-05T10:00:00+00:00" />
+<meta itemprop="wordCount" content="1939"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="Git," /><meta property="og:title" content="Git命令-3" />
+<meta property="og:description" content="Git常用命令" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/git3/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-05T10:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-05T10:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Git命令-3"/>
+<meta name="twitter:description" content="Git常用命令"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/git3/" /><link rel="prev" href="http://example.org/posts/junit-1/" /><link rel="next" href="http://example.org/posts/bid/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Git命令-3",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/git3\/"
+    },"genre": "posts","keywords": "Git","wordcount":  1939 ,
+    "url": "http:\/\/example.org\/posts\/git3\/","datePublished": "2021-09-05T10:00:00+00:00","dateModified": "2021-09-05T10:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="normal" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content always-active" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">Git命令-3</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span></div>
+      <div class="post-meta-line"><span title=2021-09-05&#32;10:00:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-05" >2021-09-05</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1939 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#初始化git">初始化git</a></li>
+        <li><a href="#set-default-editor">set default editor</a></li>
+        <li><a href="#edit-config">edit config</a></li>
+        <li><a href="#设置结尾符号">设置结尾符号</a></li>
+        <li><a href="#get-help">get help</a></li>
+        <li><a href="#take-the-snapshot">take the snapshot</a></li>
+        <li><a href="#写入文件">写入文件</a></li>
+        <li><a href="#addcommit">add+commit</a></li>
+        <li><a href="#查看staging-area">查看staging area</a></li>
+        <li><a href="#rename-file">rename file</a></li>
+        <li><a href="#echo--和-">echo &gt; 和 &raquo;</a></li>
+        <li><a href="#添加gitignore文件">添加gitignore文件</a></li>
+        <li><a href="#删除staging-area的文件">删除staging area的文件</a></li>
+        <li><a href="#可视化查看更改">可视化查看更改</a></li>
+        <li><a href="#查看历史">查看历史</a></li>
+        <li><a href="#查看具体commit内容">查看具体commit内容</a></li>
+        <li><a href="#撤回更改">撤回更改</a></li>
+        <li><a href="#还原删除文件">还原删除文件</a></li>
+        <li><a href="#查看历史-1">查看历史</a></li>
+        <li><a href="#查找bug">查找bug</a></li>
+        <li><a href="#查看contributor的commit">查看contributor的commit</a></li>
+        <li><a href="#查看单个文件的修改记录">查看单个文件的修改记录</a></li>
+        <li><a href="#恢复删除的文件">恢复删除的文件</a></li>
+        <li><a href="#标签">标签</a></li>
+        <li><a href="#分支">分支</a></li>
+        <li><a href="#merge">Merge</a>
+          <ul>
+            <li><a href="#fast-forward-merges">fast-forward merges</a></li>
+            <li><a href="#no-fase-forward-merges">no-fase-forward merges</a></li>
+          </ul>
+        </li>
+        <li><a href="#查看分支图像">查看分支图像</a></li>
+        <li><a href="#查看分支">查看分支</a></li>
+        <li><a href="#分支冲突">分支冲突</a></li>
+        <li><a href="#可视化合并分支">可视化合并分支</a></li>
+        <li><a href="#终止merge">终止merge</a></li>
+        <li><a href="#撤销merge">撤销merge</a></li>
+        <li><a href="#squash-merging">squash merging</a></li>
+        <li><a href="#rebasing">rebasing</a></li>
+        <li><a href="#cherry-picking">cherry picking</a></li>
+        <li><a href="#branch-file-add-master">branch file add master</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>Git常用命令</p>
+<h2 id="初始化git">初始化git</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global user.name <span class="s2">&#34;name&#34;</span>
+</span></span><span class="line"><span class="cl">git config --global user.email tronwei@163.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="set-default-editor">set default editor</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global core.editor <span class="s2">&#34;code --wait&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="edit-config">edit config</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global -e
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="设置结尾符号">设置结尾符号</h2>
+<p>兼容windows和linux文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global core.autocrlf <span class="nb">true</span> <span class="c1"># windows</span>
+</span></span><span class="line"><span class="cl">git config --global core.autocrlf input <span class="c1"># macos/linux</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="get-help">get help</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --help
+</span></span><span class="line"><span class="cl">git config --h <span class="c1"># get the short help</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="take-the-snapshot">take the snapshot</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir moon_file
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> moob_file
+</span></span><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl">ls -a <span class="c1"># 显示所有文件(隐藏文件)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="写入文件">写入文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> hello &gt;&gt; file1.txt
+</span></span><span class="line"><span class="cl">git status
+</span></span><span class="line"><span class="cl">git add file1.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="addcommit">add+commit</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git commit -am <span class="s2">&#34;initial commit&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看staging-area">查看staging area</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git ls-files
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="rename-file">rename file</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mv file1.txt main.js
+</span></span><span class="line"><span class="cl">git add file1.txt <span class="c1"># track the deleted file1.txt</span>
+</span></span><span class="line"><span class="cl">git add main.js <span class="c1"># track the new file main.js</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 简单的方式,直接用git命令rename</span>
+</span></span><span class="line"><span class="cl">git mv file1.txt main.js
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="echo--和-">echo &gt; 和 &raquo;</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;xxx&#34;</span> &gt;&gt; file.txt <span class="c1"># 重写文件为&#34;xxx&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;xxx&#34;</span> &gt; file.txt <span class="c1"># 追加到文件最后&#34;xxx&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="添加gitignore文件">添加gitignore文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> logs/ &gt; .gitigore <span class="c1"># logs文件夹下的文件都忽略</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="删除staging-area的文件">删除staging area的文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git rm -h <span class="c1"># 查看help</span>
+</span></span><span class="line"><span class="cl">git rm --cached -r bin/ <span class="c1"># -r 参数 recursive 递归删除目录</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="可视化查看更改">可视化查看更改</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global diff.tool vscode
+</span></span><span class="line"><span class="cl">git config --global difftool.vscode.cmd <span class="s2">&#34;code --wait --diff </span><span class="nv">$LOCAL</span><span class="s2"> </span><span class="nv">$REMOTE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">git config --global -e
+</span></span><span class="line"><span class="cl"><span class="c1"># 在最后的参数中添加 &#34;$LOCAL $REMOTE&#34;</span>
+</span></span><span class="line"><span class="cl">git difftool <span class="c1"># 查看当前文件的更改</span>
+</span></span><span class="line"><span class="cl">git difftool --staged <span class="c1"># 查看stage中与上次commit的对比</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看历史">查看历史</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git log
+</span></span><span class="line"><span class="cl">git log --oneline <span class="c1"># 简洁模式</span>
+</span></span><span class="line"><span class="cl">git log --oneline --reverse <span class="c1"># 按照时间轴(反向)顺序显示</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看具体commit内容">查看具体commit内容</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git show id <span class="c1"># id 为commmit的id</span>
+</span></span><span class="line"><span class="cl">git show id:.gitignore <span class="c1"># 查看具体文件.gitignore</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="撤回更改">撤回更改</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git restore --staged . <span class="c1"># 撤回到上一次的commit</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="还原删除文件">还原删除文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git rm file1.txt
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;delete the file&#34;</span>
+</span></span><span class="line"><span class="cl">git restore --sourse<span class="o">=</span>HEAD~1 file1.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看历史-1">查看历史</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git log --stat
+</span></span><span class="line"><span class="cl">git log --oneline -3 <span class="c1">#last three command</span>
+</span></span><span class="line"><span class="cl">git log --oneline --author<span class="o">=</span><span class="s2">&#34;name&#34;</span>   <span class="c1"># 根据提交作者查询</span>
+</span></span><span class="line"><span class="cl">git log --oneline --before<span class="o">=</span><span class="s2">&#34;2021-4-4&#34;</span>   <span class="c1"># 根据时间查询</span>
+</span></span><span class="line"><span class="cl">git log --oneline --after<span class="o">=</span><span class="s2">&#34;2021-4-1&#34;</span>
+</span></span><span class="line"><span class="cl">git log --oneline --after<span class="o">=</span><span class="s2">&#34;yesterday&#34;</span>
+</span></span><span class="line"><span class="cl">git log --oneline --after<span class="o">=</span><span class="s2">&#34;one week ago&#34;</span>
+</span></span><span class="line"><span class="cl">git log --oneline --grep<span class="o">=</span><span class="s2">&#34;search_thing&#34;</span> <span class="c1"># grep: 正则表达式</span>
+</span></span><span class="line"><span class="cl">git log --oneline -S<span class="s2">&#34;hello world&#34;</span> <span class="c1"># 查看&#34;hello world&#34;什么时候添加到代码中的&#39;</span>
+</span></span><span class="line"><span class="cl">git log --oneline toc.txt <span class="c1"># 查看toc.txt文件被修改过的记录</span>
+</span></span><span class="line"><span class="cl">git log --oneline --patch toc.txt <span class="c1"># 查看补丁详情</span>
+</span></span><span class="line"><span class="cl">git show HEAD~2 --name-only <span class="c1"># 查看更改的文件</span>
+</span></span><span class="line"><span class="cl">git show HEAD~2 --name-status <span class="c1"># 查看被修改文件的状态</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git log --oneline --all <span class="c1"># 查看所有结点</span>
+</span></span><span class="line"><span class="cl">git checkout master <span class="c1"># 将head转移到master</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查找bug">查找bug</h2>
+<p>bisect(二分法查询bug)
+一端标记good, 一端标记bad,之后HEAD指向中间结点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git bisect start
+</span></span><span class="line"><span class="cl">git bisect bad
+</span></span><span class="line"><span class="cl">git bisect good commit_id <span class="c1">#此时HEAD指向中间结点</span>
+</span></span><span class="line"><span class="cl">git log --oneline --all <span class="c1"># 查看所有结点</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看contributor的commit">查看contributor的commit</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git shortlog <span class="c1">#查看完整信息</span>
+</span></span><span class="line"><span class="cl">git shortlog -n -s -e <span class="c1"># -n查看提交次数 -s省略详细信息 -e显示email</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看单个文件的修改记录">查看单个文件的修改记录</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git log --oneline --stat toc.txt <span class="c1"># stat显示修改状态</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="恢复删除的文件">恢复删除的文件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git checkout commit_id toc.txt <span class="c1"># checkout检出(撤销)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="标签">标签</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git tag v1.0 commit_id <span class="c1"># 增加标签</span>
+</span></span><span class="line"><span class="cl">git tag -n <span class="c1"># 查看标签历史 </span>
+</span></span><span class="line"><span class="cl">git tag -d v1.1 <span class="c1"># 删除标签</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="分支">分支</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch bugfix <span class="c1">#创建分支</span>
+</span></span><span class="line"><span class="cl">git branch <span class="c1">#显示所有分支</span>
+</span></span><span class="line"><span class="cl">git switch bugfix <span class="c1">#切换分支</span>
+</span></span><span class="line"><span class="cl">git branch -m bugfix bugfix/signup-bug <span class="c1">#重命名</span>
+</span></span><span class="line"><span class="cl">git branch -d bugfix <span class="c1"># 删除分支</span>
+</span></span><span class="line"><span class="cl">git branch -D bugfix <span class="c1"># 强制删除分支</span>
+</span></span><span class="line"><span class="cl">git log master..bugfix <span class="c1"># 查看分支之间的区别(commit)</span>
+</span></span><span class="line"><span class="cl">git diff master..bugfix <span class="c1">#查看分支之间的详细区别</span>
+</span></span><span class="line"><span class="cl">git diff --name-only master..bugfix <span class="c1">#查看分支之间的区别(受影响的文件名)</span>
+</span></span><span class="line"><span class="cl">git diff --name-stat master..bugfix <span class="c1">#查看分支之间的区别(文件状态)</span>
+</span></span><span class="line"><span class="cl">git stash push -m <span class="s2">&#34;new stash push&#34;</span> <span class="c1"># 提交缓存</span>
+</span></span><span class="line"><span class="cl">git stash -a -m <span class="s2">&#34;push all stash&#34;</span> <span class="c1"># 提交所有文件进入缓存</span>
+</span></span><span class="line"><span class="cl">git stash list <span class="c1"># 查看所有缓存</span>
+</span></span><span class="line"><span class="cl">git stash drop <span class="m">1</span> <span class="c1"># 删除缓存</span>
+</span></span><span class="line"><span class="cl">git stash clear <span class="c1"># 清空缓存</span>
+</span></span><span class="line"><span class="cl">git stash pop <span class="c1"># 恢复缓存</span>
+</span></span><span class="line"><span class="cl">git stash apply <span class="c1"># 恢复缓存</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="merge">Merge</h2>
+<h3 id="fast-forward-merges">fast-forward merges</h3>
+<p>fast-forward是直接将HEAD指向分支</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git merge bugfix <span class="c1"># 合并分支到master</span>
+</span></span><span class="line"><span class="cl">git switch -C bugfix <span class="c1"># 创建分支并切换到分支</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="no-fase-forward-merges">no-fase-forward merges</h3>
+<p>将master和分支,作为一个新的commit进行合并</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git merge --no-ff bugfix <span class="c1"># 合并分支(no fast forward)</span>
+</span></span><span class="line"><span class="cl">git config ff no <span class="c1"># 关闭fast forward</span>
+</span></span><span class="line"><span class="cl">git config --global ff no
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看分支图像">查看分支图像</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git log --oneline --all --graph
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看分支">查看分支</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch --merged <span class="c1"># 查看已并入master的分支</span>
+</span></span><span class="line"><span class="cl">git branch --no-merged <span class="c1"># 查看没有并入master的分支</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="分支冲突">分支冲突</h2>
+<p>如果在合并时,存在文件被分支和master同时修改,那么就会发生冲突
+手动解决方式: 在vscode中,将分支修改或master修改删除,再commit</p>
+<h2 id="可视化合并分支">可视化合并分支</h2>
+<p>使用工具<code>p4merge</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global merge.tool p4merge <span class="c1"># 设置p4merge为默认工具</span>
+</span></span><span class="line"><span class="cl">git config --global mergetool.p4merge.path <span class="s2">&#34;D:/p4merge/&#34;</span> <span class="c1"># 设定p4merge程序路径</span>
+</span></span><span class="line"><span class="cl">git mergetool
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="终止merge">终止merge</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git merge --abort
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="撤销merge">撤销merge</h2>
+<p><strong>git reset</strong> –-soft：回退到某个版本，只回退了commit的信息，不会恢复到index file一级。如果还要提交，直接commit即可；
+<strong>git reset</strong> -–hard：彻底回退到某个版本，本地的源码也会变为上一个版本的内容，撤销的commit中所包含的更改被冲掉；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git reset --hard HEAD~1 <span class="c1"># 撤回到上一个master结点</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="squash-merging">squash merging</h2>
+<p>将分支节点进行合并,合并出的新节点,作为新的master结点
+此时新节点只有一个parent&mdash;&gt;master</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git merge --squash bugfix
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="rebasing">rebasing</h2>
+<p>将分支节点连接到当前的master结点(linear)
+之后执行fast-forward,即可将分支结点与master连接,成为linear</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git rebase master
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果产生冲突,则在mergetool中解决</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git mergetool
+</span></span><span class="line"><span class="cl">git rebase --continue
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>终止rebase</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git reabse --abort
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="cherry-picking">cherry picking</h2>
+<p>从分支中,拿出一个结点,作为master上的新节点(过程中没有合并)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git cherry-pick commit_id
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="branch-file-add-master">branch file add master</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git restore --sourse<span class="o">=</span>fixbug toc.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2021-09-05&#32;10:00:00>更新于 2021-09-05</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Git/">Git</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/junit-1/" class="prev" rel="prev" title="初识Junit"><i class="fas fa-angle-left fa-fw"></i>初识Junit</a>
+      <a href="/posts/bid/" class="next" rel="next" title="招标流程图">招标流程图<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer" title="Hugo 0.93.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreffer" title="FixIt 0.2.13"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+  
+>小辣鸡</a></span></div><div class="footer-line ibruce">
+          <span id="busuanzi_container_site_uv" title=总访客数
+            ><i class="far fa-user"></i>
+            <span id="busuanzi_value_site_uv"
+              ><i class="fa fa-spinner fa-spin"></i
+            ></span
+          ></span><span class="site-time footer-divider" title=网站运行中&#32;...
+              ><i class="fas fa-heartbeat animate-icon"></i>
+              <span class="run-times">Loading...</span
+            ></span><span id="busuanzi_container_site_pv" class="footer-divider" title=总访问量
+            ><i class="far fa-eye"></i>
+            <span id="busuanzi_value_site_pv"
+              ><i class="fa fa-spinner fa-spin"></i
+            ></span
+          ></span>
+        </div></div>
+  </footer></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/typeit/typeit.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"data":{"typeit-header-desktop":"小辣鸡的Hugo","typeit-header-title-mobile":"小辣鸡的Hugo"},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":null,"speed":null}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

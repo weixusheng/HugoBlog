@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>计算机组成原理 Part-4 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="计算机组成原理 Part-4 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-06-06T23:40:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-06-06T23:40:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="计算机组成原理 Part-4">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/co-4/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">计算机组成原理 Part-4</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月6日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>存储器<!-- raw HTML omitted -->
+汉明码</p>
+<h1 id="只读存储器rom">只读存储器(ROM)</h1>
+<ol>
+<li>
+<p>掩模 ROM ( MROM )
+行列选择线交叉处有 MOS 管为“1”
+行列选择线交叉处无 MOS 管为“0”</p>
+</li>
+<li>
+<p>PROM (一次性编程)
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/1.png" />   
+    </p>
+</li>
+<li>
+<p>EPROM (多次性编程 )
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/2.png" />   
+    
+通过紫外线来去除其中产生的浮动栅,以此来进行数据重置</p>
+</li>
+<li>
+<p>EEPROM (多次性编程 )</p>
+</li>
+</ol>
+<ul>
+<li>电可擦写</li>
+<li>局部擦写</li>
+<li>全部擦写</li>
+</ul>
+<ol start="5">
+<li>Flash Memory (闪速型存储器)
+EPROM: 价格便宜 集成度高
+EEPROM: 电可擦洗重写
+Flash 比 EEPROM快 具备 RAM 功能</li>
+</ol>
+<h1 id="存储器与-cpu-的连接">存储器与 CPU 的连接</h1>
+<h2 id="存储器容量的扩展">存储器容量的扩展</h2>
+<h3 id="位扩展-增加存储字长">位扩展 (增加存储字长)</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/3.png" />   
+    </p>
+<h3 id="字扩展">字扩展</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/4.png" />   
+    
+在0-9位存在第一个存储器块中,当数据达到第10位时,需要第二个存储块来进行拓展空间
+此时10号地址线通过信号处理器产生对第二个存储块的信号</p>
+<h3 id="字位扩展">字、位扩展</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/5.png" />   
+    
+10,11号线为拓展信号线,通过片选译码器来判断此时应该拓展到第几个存储块</p>
+<h2 id="存储器与-cpu-的连接-1">存储器与 CPU 的连接</h2>
+<ul>
+<li>地址线的连接</li>
+<li>数据线的连接</li>
+<li>读/写命令线的连接</li>
+<li>片选线的连接</li>
+<li>合理选择存储芯片</li>
+</ul>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/6.png" />   
+    </p>
+<h3 id="例题">例题</h3>
+<p>要求最小4K为系统程序区,相邻8K为用户程序区</p>
+<ol>
+<li>写出对应的二进制地址码</li>
+<li>确定芯片的数量及类型</li>
+<li>分配地址线</li>
+<li>确定片选信号</li>
+<li>确定片选逻辑</li>
+</ol>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/7.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/8.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/9.png" />   
+    </p>
+<p>由ABC三个位,来确定数据存储的位置</p>
+<h1 id="存储器的校验">存储器的校验</h1>
+<h2 id="合法代码集合">合法代码集合</h2>
+<ol>
+<li>{000,001,010,011,100,101,110,111} 检0位错、纠0位错</li>
+<li>{000, 011,101,110} 检1位错,纠0位错</li>
+<li>{000,111} 检1位错,纠1位错</li>
+<li>{0000,1111} 检2位错,纠1位错</li>
+<li>{00000,11111} 检2位错,纠2位错</li>
+</ol>
+<h2 id="编码的最小距离">编码的最小距离</h2>
+<p>任意两组合法代码之间 二进制位数 的 最少差异
+编码的纠错 、检错能力与编码的最小距离有关
+L - 1 = D + C ( D &gt;= C )</p>
+<ul>
+<li>L: 编码的最小距离 L = 3</li>
+<li>D: 检测错误的位数 具有 一位 纠错能力</li>
+<li>C: 纠正错误的位数</li>
+</ul>
+<p>汉明码是具有一位纠错能力的编码</p>
+<h1 id="汉明码">汉明码</h1>
+<h2 id="基本思想">基本思想</h2>
+<ul>
+<li>汉明码采用奇偶检验</li>
+<li>汉明码采用分组校验</li>
+</ul>
+<p>For Example：</p>
+<pre tabindex="0"><code>我们想传输10010这串码，那么在传输的时候，就传010010，其中在开头的0就是校验位
+我们想传输10000这串码，那么在传输的时候，就传110000，其中在开头的1就是校验位
+两个例子的1的个数都是**偶数**(凑奇数或偶数)
+</code></pre><p><strong>汉明码默认一串数据只错一位</strong>
+假设想传这一列数据1234567，先把他分个组
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/10.png" />   
+    </p>
+<pre tabindex="0"><code>P1组：1,2,3,4
+P2组：2,4,5,7
+P3组：3,4,6,7
+</code></pre><p>接收方接到数据,对其中的分组数据进行奇偶判定,就可以得到出错的位,并进行纠错
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/11.png" />   
+    </p>
+<p>汉明码的组成需增添?位检测位
+2<!-- raw HTML omitted -->k<!-- raw HTML omitted --> &gt;= n + k + 1
+检测位的位置
+2<!-- raw HTML omitted -->i<!-- raw HTML omitted --> ( i = 0 , 1 , 2 , 3 , &hellip; )</p>
+<h2 id="校验码的位置">校验码的位置</h2>
+<p>汉明码的一串数据中，校验码放在2<!-- raw HTML omitted -->i<!-- raw HTML omitted -->的位置上，</p>
+<h2 id="数据分组">数据分组</h2>
+<p>把表示位置的这个数，转化成二进制数。</p>
+<pre tabindex="0"><code>第1个位置，变成第0001个位置；
+第2个位置，变成第0010个位置；
+第3个位置，变成第0011个位置；
+第4个位置，变成第0100个位置；
+第5个位置，变成第0101个位置；
+第6个位置，变成第0110个位置；
+</code></pre><p>位置符合这种形式的，XXX1，归到P1；
+位置符合这种形式的，XX1X，归到P2；
+位置符合这种形式的，X1XX，归到P3；
+位置符合这种形式的，1XXX，归到P4；</p>
+<p><strong>例如</strong></p>
+<pre tabindex="0"><code>我们想传这一组码：XX1X101X011
+一共11位。
+标X的是校验码的位置，我们暂时不知道它的值是多少。
+位置在1,3,5,7,9,11的数据进到P1组。
+位置在2,3,6,7,10,11的数据进到P2组。（位置符合XX1X）
+位置在4,5,6,7的数据进到P3组。（位置符合X1XX）
+位置在8,9,10,11的数据进到P4组。（位置符合1XXX）
+那么确定了分组，校验码的值也就顺便确定下来了。
+这样整个串的码就确定下来了。
+</code></pre><h2 id="检验汉明码">检验汉明码</h2>
+<ol>
+<li>分组，分好P1，P2，P3……</li>
+<li>分别对每个组校验，没有错的给它0，有错的给0.
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/14.png" />   
+    
+<strong>把P从大到小排列起来，得到一串1010</strong>
+For Example:</li>
+</ol>
+<pre tabindex="0"><code>组别：   P5   P4   P3   P2   P1
+标志：   1    0    1    0    1
+</code></pre><p>从大到小排列起来，标志排成了一串一零串。这个数就是出错的数据的位置。
+本例中，10101位置上的位错了，换成十进制是第21个位置上的数错了。</p>
+<h2 id="例题-1">例题</h2>
+<ol>
+<li>
+<p>求 0101 按 “偶校验” 配置的汉明码
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/12.png" />   
+    </p>
+</li>
+<li>
+<p>已知接收到的汉明码为 0100111
+(按配偶原则配置)试问要求传送的信息是什么?
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/13.png" />   
+    </p>
+</li>
+</ol>
+<h1 id="提高访存速度的措施">提高访存速度的措施</h1>
+<ul>
+<li>采用高速器件</li>
+<li>采用层次结构 Cache –主存</li>
+<li>调整主存结构</li>
+</ul>
+<h2 id="单体多字系统">单体多字系统</h2>
+<p>增加存储器的带宽
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/15.png" />   
+    </p>
+<h2 id="多体并行系统">多体并行系统</h2>
+<h3 id="高位交叉-顺序编址">高位交叉-顺序编址</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/16.png" />   
+    </p>
+<h3 id="高位交叉-各个体并行工作">高位交叉-各个体并行工作</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/17.png" />   
+    </p>
+<h3 id="低位交叉-各个体轮流编址">低位交叉-各个体轮流编址</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/18.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/19.png" />   
+    </p>
+<h3 id="低位交叉的特点">低位交叉的特点</h3>
+<p>在不改变存取周期的前提下,增加存储器的带宽
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/21.png" />   
+    </p>
+<p>设四体低位交叉存储器,存取周期为T,总线传输周期
+为 τ ,为实现流水线方式存取,应满足 T = 4 τ
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/CO-4/22.png" />   
+    </p>
+<h1 id="高性能存储芯片">高性能存储芯片</h1>
+<ol>
+<li>SDRAM (同步 DRAM)
+在系统时钟的控制下进行读出和写入
+CPU无须等待</li>
+<li>RDRAM
+由Rambus开发,主要解决存储器带宽问题</li>
+<li>带 Cache 的 DRAM
+在DRAM的芯片内集成了一个由 SRAM 组成的
+Cache ,有利于猝发式读取</li>
+</ol>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/co-3/">计算机组成原理 Part-3</a></li>
+        
+        <li><a href="/post/co-2/">计算机组成原理 Part-2</a></li>
+        
+        <li><a href="/post/co-1/">计算机组成原理 Part-1</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86'>计算机组成原理</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Berkeley CS-188 - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Berkeley-CS-188/</link>
+    <description>Berkeley CS-188 - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Tue, 05 Jan 2021 23:10:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Berkeley-CS-188/" rel="self" type="application/rss+xml" /><item>
+  <title>AI-CSP</title>
+  <link>http://example.org/posts/ai-5/</link>
+  <pubDate>Tue, 05 Jan 2021 23:10:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ai-5/</guid>
+  <description><![CDATA[<p>Constraint Satisfaction Problems</p>]]></description>
+</item><item>
+  <title>AI-Heuristic Algorithm</title>
+  <link>http://example.org/posts/ai-4/</link>
+  <pubDate>Tue, 05 Jan 2021 23:10:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ai-4/</guid>
+  <description><![CDATA[<p>heuristic algorithm</p>]]></description>
+</item><item>
+  <title>AI-A* Algorithm</title>
+  <link>http://example.org/posts/ai-3/</link>
+  <pubDate>Tue, 05 Jan 2021 20:10:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ai-3/</guid>
+  <description><![CDATA[<p>Berkeley CS-188</p>]]></description>
+</item><item>
+  <title>AI-Informed Search</title>
+  <link>http://example.org/posts/ai-2/</link>
+  <pubDate>Mon, 04 Jan 2021 23:10:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ai-2/</guid>
+  <description><![CDATA[<p>Berkeley CS-188</p>]]></description>
+</item><item>
+  <title>AI-Uninformed Search</title>
+  <link>http://example.org/posts/ai-1/</link>
+  <pubDate>Sun, 03 Jan 2021 23:10:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/ai-1/</guid>
+  <description><![CDATA[<p>Berkeley CS-188</p>]]></description>
+</item></channel>
+</rss>

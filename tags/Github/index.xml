@@ -1,0 +1,51 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Github - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Github/</link>
+    <description>Github - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Sat, 25 Dec 2021 23:00:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Github/" rel="self" type="application/rss+xml" /><item>
+  <title>gitignore配置</title>
+  <link>http://example.org/posts/gitignore/</link>
+  <pubDate>Sat, 25 Dec 2021 23:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/gitignore/</guid>
+  <description><![CDATA[<p>gitignore文件的使用</p>]]></description>
+</item><item>
+  <title>Git master转为main</title>
+  <link>http://example.org/posts/github-5/</link>
+  <pubDate>Mon, 08 Feb 2021 23:06:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/github-5/</guid>
+  <description><![CDATA[因为前段时间的BLM运动,Github就把master改名成了main,因为master有奴隶主的意思&hellip; 这就导致本地分支和ma]]></description>
+</item><item>
+  <title>Git 强制拉取覆盖本地</title>
+  <link>http://example.org/posts/github-4/</link>
+  <pubDate>Fri, 28 Aug 2020 12:06:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/github-4/</guid>
+  <description><![CDATA[<p>强制拉取覆盖本地<br>
+remote Incorrect username or password 报错</p>]]></description>
+</item><item>
+  <title>Git创建SSH公钥</title>
+  <link>http://example.org/posts/github-3/</link>
+  <pubDate>Mon, 03 Aug 2020 12:06:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/github-3/</guid>
+  <description><![CDATA[填写git信息 1 2 git config --global user.name 你的英文名 #此英文名不需要跟GitHub账号保持一致 git config --global user.email 你的邮箱 #此邮箱不需要跟GitHub账号保持一致 生成本]]></description>
+</item><item>
+  <title>GH-Blog开启Https</title>
+  <link>http://example.org/posts/github-2/</link>
+  <pubDate>Thu, 28 May 2020 12:06:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/github-2/</guid>
+  <description><![CDATA[<p>好奇心的收获!</p>]]></description>
+</item><item>
+  <title>Github clone提速的方法</title>
+  <link>http://example.org/posts/github-1/</link>
+  <pubDate>Sat, 28 Mar 2020 12:06:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/github-1/</guid>
+  <description><![CDATA[<p>昨天clone别人的库的时候，发现下载速度才8k/s&hellip;后来搜到了一个很奇妙的方法:将https网址改为ssh!</p>]]></description>
+</item></channel>
+</rss>

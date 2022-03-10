@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>物联网概论 PART-5 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="物联网概论 PART-5 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-05-02T23:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-05-02T23:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="物联网概论 PART-5">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/iot-5/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">物联网概论 PART-5</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月2日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>RFID信号干扰</p>
+<h1 id="rfid信号干扰">RFID信号干扰</h1>
+<p>与其他无线传输系统一样,RFID系统也存在信号干扰问题。
+RFID系统中,主要存在以下两种类型的信号干扰:</p>
+<ol>
+<li>阅读器之间的冲突干扰(多个阅读器同时发送信号)</li>
+<li>标签之间的冲突干扰(多个阅读器同时响应阅读器)
+因此,需要降低阅读器之间以及标签之间的冲突来提高对标签的识别效率。</li>
+</ol>
+<h2 id="阅读器之间的冲突">阅读器之间的冲突</h2>
+<p>三种解决方法</p>
+<ol>
+<li>基于时分多址(TDMA)</li>
+<li>基于频分多址(FDMA)</li>
+<li>基于载波侦听多路访问(CSMA)</li>
+</ol>
+<p><strong>以下方法是基于TDMA的标签之间的防冲突算法</strong></p>
+<h2 id="基于aloha的防冲突算法">基于ALOHA的防冲突算法</h2>
+<p>基于ALOHA的防冲突算法采用了<strong>回退</strong>的机制,标签以概率的方法参与识别过程。
+ALOHA的协议的特点: 简单且公平
+三种基于ALOHA的防冲突算法:</p>
+<ul>
+<li>纯ALOHA算法</li>
+<li>时隙ALOHA算法</li>
+<li>基于帧的时隙ALOHA算法</li>
+</ul>
+<h3 id="纯aloha算法">纯ALOHA算法</h3>
+<ol>
+<li>定义：若标签收到成功识别确认信息,则不再继续发送标识符。否则其等待一段时间后将重新发送直至发送成功为止。</li>
+<li>特点：算法简单 ,易于实现,但信道利用率仅为18.4%,性能差。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/2.png" />   
+    </li>
+</ol>
+<h3 id="时隙aloha算法">时隙ALOHA算法</h3>
+<p>定义：S-ALOHA算法将纯ALOHA算法的时间分为若干 时隙 ,每个时隙大于或等于标签标识符发送的时间长度,并且每个标签只能在时隙开始时刻发送标识符。由于系统进行了时间同步,S‐ALOHA协议的信道利用率达到36.8%,是纯ALOHA的两倍。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/3.png" />   
+    </p>
+<h3 id="基于帧的时隙aloha算法">基于帧的时隙ALOHA算法</h3>
+<ol>
+<li>
+<p><strong>定义</strong>：在S-ALOHA基础上,将<strong>若干个时隙</strong>组织为一帧 ,阅读器按照帧为单元进行识别。若标识符发送成功,则标签休眠,否则等待在下一帧中重新选择时隙发送标识符。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/4.png" />   
+    </p>
+</li>
+<li>
+<p><strong>FSA算法优点：</strong>
+FSA算法的优点在于逻辑简单,电路设计简单,所需内存少,且在帧内只随机发送一次能够更进一步降低了冲突的概率。FSA成为RFID系统中最 常用 的一种基于ALOHA的防冲突算法</p>
+</li>
+<li>
+<p><strong>FSA算法局限性:帧的长度固定</strong></p>
+</li>
+</ol>
+<ul>
+<li>当标签数远大于帧长度标签冲突概率增大,识别标签的时间会极大地增加</li>
+<li>当标签数远小于帧长度时隙会巨大浪费,识别时间也会增加</li>
+<li>当帧的长度等于阅读器场内标签的数目时,FSA才能获得最佳的识别性能,信道利用率最大为36.8%。</li>
+</ul>
+<ol start="4">
+<li><strong>帧动态调整</strong>
+实际应用中,标签数量往往是动态变化的。
+动态自适应设置帧长度的算法可以解决FSA的局限性。
+常见的帧长调整方法:</li>
+</ol>
+<ul>
+<li>
+<p>根据前一帧通信获取的空的时隙数目,发生碰撞的时隙数目和成功识别标签的时隙数目的数量估计当前的标签数并设置下一帧的最优的长度 ;</p>
+</li>
+<li>
+<p>根据前一时隙的反馈动态调整帧长为 2 的 整数倍 ,这种方法最具代表性的是EPCglobalGen2标准中设计的Q算法</p>
+</li>
+<li>
+<p>Q算法：当一帧出现过多的冲突时隙时,阅读器会提前结束该帧并重新发送一个更大的帧;当一个帧出现过多的空闲时隙时,阅读器也会提前结束该帧,重新启动一个更小的帧，Q算法能够自适应地调整帧长,识别效率高,在超高频识别系统中得到了广泛的应用。</p>
+</li>
+</ul>
+<p>基于ALOHA的防冲突算法简单,并且兼顾了公平性。但是,标签存在“饿死”的问题。当一个标签选择的时隙总是冲突时隙,则该标签可能永远无法被识别。</p>
+<h2 id="基于二进制树的防冲突算法">基于二进制树的防冲突算法</h2>
+<h3 id="分类">分类</h3>
+<ul>
+<li>基于二进制树的防冲突算法的基本思想:按照递归的方式将冲突的标签集合划分为两个子集,直到集合中只剩下一个标签为止。</li>
+<li>划分子集的算法:
+<ul>
+<li>随机二进制树算法:让标签随机选择所属的集合</li>
+<li>查询二进制树算法:按照标签的标示符划分子集</li>
+</ul>
+</li>
+</ul>
+<h3 id="随机二进制树算法">随机二进制树算法</h3>
+<p>定义：
+随机二进制树算法需要每个标签维持一个计数器(初始值为0)。在每一个间隙开始时,如果标签的计数器为0则立即发送自己的标识符号,否则该时隙不响应。一般,标签被成功识别后将进入沉默状态,对以后时隙的阅读器命令均不响应。每次识别成功，其他标签的计数器数值减一</p>
+<ul>
+<li>场内标签调整计数器规则:若该时隙为冲突时隙,参与相应的标签会从0或1中随机选择一个,将其加到自己的计数器上。</li>
+<li>整个识别过程就像对二叉树进行中序遍历。</li>
+<li>不存在标签饿死的问题,但需要维护计数器。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/5.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/6.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/7.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/8.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/9.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/10.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/11.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/12.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/13.png" />   
+    
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/14.png" />   
+    </li>
+</ul>
+<h3 id="查询二进制树算法">查询二进制树算法</h3>
+<p>定义：
+是一个无状态协议,标签只需要根据阅读器广播的标示符前缀作比较。</p>
+<ul>
+<li>阅读器维持一个二进制前缀(初始值为0)。每个间隙开始时,阅读器广播该二进制前缀,标签将自己的标签标识符前几位与此二进制前缀进行比较,若相同则该标签发送标识符号。</li>
+<li>整个识别过程就像根据标签的表示符号建立一棵查询二叉树。</li>
+<li>可用于无可写存储区的标签,不存在标签饿死。受ID长度以及分布的影响。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/15.png" />   
+    </li>
+</ul>
+<h2 id="三种算法的比较">三种算法的比较</h2>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-5/16.png" />   
+    </p>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/iot-4/">物联网概论 PART-4</a></li>
+        
+        <li><a href="/post/iot-3/">物联网概论 PART-3</a></li>
+        
+        <li><a href="/post/iot-2/">物联网概论 PART-2</a></li>
+        
+        <li><a href="/post/iot-1/">物联网概论 PART-1</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E7%89%A9%E8%81%94%E7%BD%91'>物联网</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

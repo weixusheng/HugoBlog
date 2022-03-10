@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>NNDL-神经网络模型实例 - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
+<meta name="description" content="Case Studies" />
+<meta name="keywords" content="Andrew NNDL" /><meta itemprop="name" content="NNDL-神经网络模型实例">
+<meta itemprop="description" content="Case Studies"><meta itemprop="datePublished" content="2021-01-21T21:30:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-21T21:30:00+00:00" />
+<meta itemprop="wordCount" content="133"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="Andrew NNDL," /><meta property="og:title" content="NNDL-神经网络模型实例" />
+<meta property="og:description" content="Case Studies" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/nndl-15/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-21T21:30:00+00:00" />
+<meta property="article:modified_time" content="2021-01-21T21:30:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="NNDL-神经网络模型实例"/>
+<meta name="twitter:description" content="Case Studies"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/nndl-15/" /><link rel="prev" href="http://example.org/posts/nndl-14/" /><link rel="next" href="http://example.org/posts/nndl-16/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "NNDL-神经网络模型实例",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/nndl-15\/"
+    },"genre": "posts","keywords": "Andrew NNDL","wordcount":  133 ,
+    "url": "http:\/\/example.org\/posts\/nndl-15\/","datePublished": "2021-01-21T21:30:00+00:00","dateModified": "2021-01-21T21:30:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": "小辣鸡"},"author": {
+        "@type": "Person",
+        "name": "小辣鸡"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+    <div class="menu">
+      <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+          <i class="fas fa-adjust fa-fw"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="小辣鸡的Hugo"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/python.png"
+    data-srcset="/python.png, /python.png 1.5x, /python.png 2x"
+    data-sizes="auto"
+    alt="/python.png"
+    title="/python.png" /><span class="header-title-text">小辣鸡的Hugo</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu-mobile"><div class="search-wrapper">
+          <div class="search mobile" id="search-mobile">
+            <input type="text" placeholder="Search" id="search-input-mobile">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-mobile">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </div>
+          <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+            取消
+          </a>
+        </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <i class="fas fa-adjust fa-fw"></i>
+      </a></div>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animated flipInX">NNDL-神经网络模型实例</h1><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a
+  href="/"
+  
+    title="Author"
+  
+  
+  
+    rel=" author"
+  
+  
+  
+    class=" author"
+  
+  
+><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>神经网络与深度学习</a></span></div>
+      <div class="post-meta-line"><span title=2021-01-21&#32;21:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21" >2021-01-21</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 133 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-look-at-case-studies">Why look at case studies?</a></li>
+    <li><a href="#classic-networks">Classic networks</a></li>
+    <li><a href="#residual-networks-resnets">Residual Networks (ResNets)</a></li>
+    <li><a href="#why-resnets-work">Why ResNets work?</a></li>
+    <li><a href="#network-in-network-and-11-convolutions">Network in Network and 1×1 convolutions</a></li>
+    <li><a href="#inception-network-motivation">Inception network motivation</a></li>
+    <li><a href="#inception-network">Inception network</a></li>
+    <li><a href="#using-open-source-implementations">Using open-source implementations</a></li>
+    <li><a href="#transform-learning">Transform Learning</a></li>
+    <li><a href="#data-augmentation">Data augmentation</a></li>
+    <li><a href="#the-state-of-computer-vision">The state of computer vision</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>Case Studies</p>
+<h1 id="why-look-at-case-studies">Why look at case studies?</h1>
+<p><strong>为什么要进行实力探究</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/1_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/2_.png"></p>
+<h1 id="classic-networks">Classic networks</h1>
+<p><strong>经典网络</strong></p>
+<ul>
+<li>LeNet-5</li>
+<li>AlexNet</li>
+<li>VGGNet</li>
+</ul>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/3_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/4_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/5_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/6_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/7_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/8_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/8_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/9_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/10_.png">
+<h1 id="residual-networks-resnets">Residual Networks (ResNets)</h1>
+<p><strong>残差网络</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/11_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/12_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/13_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/14_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/15_.png"></p>
+<h1 id="why-resnets-work">Why ResNets work?</h1>
+<p><strong>为什么残差网络有用</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/16_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/17_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/18_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/19_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/20_.png"></p>
+<h1 id="network-in-network-and-11-convolutions">Network in Network and 1×1 convolutions</h1>
+<p><strong>网络中的网络以及1×1卷积</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/21_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/22_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/23_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/24_.png"></p>
+<h1 id="inception-network-motivation">Inception network motivation</h1>
+<p><strong>谷歌Inception网络简介</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/25_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/26_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/27_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/28_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/29_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/30_.png"></p>
+<h1 id="inception-network">Inception network</h1>
+<p><strong>Inception网络</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/31_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/32_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/33_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/34_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/35_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/36_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/37_.png"></p>
+<h1 id="using-open-source-implementations">Using open-source implementations</h1>
+<p><strong>使用开源的实现方案</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/38_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/39_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/40_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/41_.png"></p>
+<h1 id="transform-learning">Transform Learning</h1>
+<p><strong>迁移学习</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/42_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/43_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/44_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/45_.png"></p>
+<h1 id="data-augmentation">Data augmentation</h1>
+<p><strong>数据增强</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/46_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/47_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/48_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/49_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/50_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/51_.png"></p>
+<h1 id="the-state-of-computer-vision">The state of computer vision</h1>
+<p><strong>计算机视觉现状</strong>
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/52_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/53_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/54_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/55_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/56_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/57_.png">
+<img loading="lazy" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/NNDL/15/58_.png"></p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2021-01-21&#32;21:30:00>更新于 2021-01-21</span>
+      </div>
+      <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/Andrew-NNDL/">Andrew NNDL</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/nndl-14/" class="prev" rel="prev" title="NNDL-CNN实例"><i class="fas fa-angle-left fa-fw"></i>NNDL-CNN实例</a>
+      <a href="/posts/nndl-16/" class="next" rel="next" title="ResNet--人脸识别Demo">ResNet--人脸识别Demo<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></main></div>
+
+    <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <i class="fas fa-arrow-up fa-fw"></i>
+      </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+        <i class="fas fa-comment fa-fw"></i>
+      </a>
+    </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js" defer></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{},"enablePWA":true,"ibruce":{"enable":true,"siteTime":"1998-02-15T19:30:34+08:00"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"7DXHMB0UGB","algoliaIndex":"hugo","algoliaSearchKey":"4b2bd330d3d2bf31472459d06ecc385f","highlightTag":"em","maxResultLength":50,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

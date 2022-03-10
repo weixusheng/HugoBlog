@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>Matplotlib 绘制基本图表 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="Matplotlib 绘制基本图表 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-02-21T20:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-02-21T20:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Matplotlib 绘制基本图表">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/matplotlib-1/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Matplotlib 绘制基本图表</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年2月21日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>Python数据可视化</p>
+<p>这两天杂事有点多&hellip;学的东西也比较杂,所以最后笔记几天都没更新
+这两天慢慢把笔记补全,今天来补一下matplotlib笔记
+一开始是在看tensorflow,后来看上了pytorch,再后来发现数据可视化表示很重要
+因此想了想还是先学一下最基本的matplotlib吧
+其实没有想象中的那么难,他本身已经封装的很傻瓜了,因此只要有数据,几步就能把数据图画出来
+笔记的内容不是很系统,都是东拼西凑学来的</p>
+<h1 id="基本概念">基本概念</h1>
+<!-- raw HTML omitted -->
+<p>x = np.linspace(-1, 3, 50)
+y1 = 2*x + 1
+y2 = x**2
+plt.figure()
+plt.plot(x, y1, label=&ldquo;line-1&rdquo;)
+plt.plot(x, y2, color=&lsquo;red&rsquo;, linewidth=1.0, linestyle=&rsquo;:&rsquo;, label=&ldquo;line-2&rdquo;)</p>
+<h1 id="pltxlim-1-3---设定x轴的坐标范围">plt.xlim((-1, 3))  # 设定X轴的坐标范围</h1>
+<h1 id="pltylim-2-7---设定y轴的坐标范围">plt.ylim((-2, 7))  # 设定Y轴的坐标范围</h1>
+<h1 id="创建坐标轴刻度数据">创建坐标轴刻度数据</h1>
+<p>x_ticks = np.linspace(-1, 3, 5)
+y_ticks = np.linspace(-2, 7, 10)
+plt.xticks(x_ticks)
+plt.yticks(y_ticks)
+&rsquo;&rsquo;'</p>
+<h1 id="设定y坐标轴为特定符号">设定Y坐标轴为特定符号</h1>
+<p>plt.yticks([-1, 0, 1, 2],
+[r&rsquo;$\alpha$&rsquo;, r&rsquo;$\beta$&rsquo;, r&rsquo;$c$&rsquo;, r&rsquo;$d$&rsquo;])
+&rsquo;''</p>
+<h1 id="获取当前的坐标系">获取当前的坐标系</h1>
+<p>ax = plt.gca()</p>
+<h1 id="设置刻度线显示位置">设置刻度线显示位置</h1>
+<p>ax.xaxis.set_ticks_position(&rsquo;top')</p>
+<h1 id="设定坐标轴的文字">设定坐标轴的文字</h1>
+<p>plt.xlabel(&lsquo;I am x&rsquo;)  # X轴的名称
+plt.ylabel(&lsquo;I am y&rsquo;)  # Y轴的名称</p>
+<h1 id="设定坐标轴为指定颜色">设定坐标轴为指定颜色</h1>
+<p>ax.spines[&lsquo;right&rsquo;].set_color(&lsquo;red&rsquo;)
+ax.spines[&rsquo;top&rsquo;].set_color(&lsquo;red&rsquo;)</p>
+<h1 id="设定坐标轴位置">设定坐标轴位置</h1>
+<p>ax.spines[&lsquo;bottom&rsquo;].set_position((&lsquo;data&rsquo;, -2))</p>
+<h1 id="垂直坐标轴指示点-虚线">垂直坐标轴指示点-虚线</h1>
+<p>x0 = 1
+y0 = 2*x0 + 1
+plt.plot([x0, x0, ], [-2, y0, ], &lsquo;k&ndash;&rsquo;, linewidth=2.5)</p>
+<h1 id="垂直坐标轴指示点-绘制点">垂直坐标轴指示点-绘制点</h1>
+<p>plt.scatter([x0, ], [y0, ], s=50, color=&lsquo;b&rsquo;)</p>
+<h1 id="曲线注释">曲线注释</h1>
+<p>plt.annotate(r&rsquo;$2x+1=%s$&rsquo; % y0, xy=(x0, y0), xycoords=&lsquo;data&rsquo;, xytext=(+30, -30),
+textcoords=&lsquo;offset points&rsquo;, fontsize=16,
+arrowprops=dict(arrowstyle=&rsquo;-&gt;&rsquo;, connectionstyle=&ldquo;arc3,rad=.2&rdquo;))</p>
+<h1 id="标注文字">标注文字</h1>
+<p>plt.text(-1, 5, r&rsquo;$This\ is\ the\ some\ text. \mu\ \sigma_i\ \alpha_t$&rsquo;,
+fontdict={&lsquo;size&rsquo;: 16, &lsquo;color&rsquo;: &lsquo;r&rsquo;})</p>
+<h1 id="显示指示框">显示指示框</h1>
+<p>plt.legend(loc=&ldquo;best&rdquo;)
+plt.show()</p>
+<pre tabindex="0"><code>
+## numpy.linspace 
+numpy.linspace(1,20,20)&#34;表示-&gt; 在[1,20]范围内选取20个点
+```python
+test_trick = np.linspace(1, 20, 20)
+print(test_trick)
+# [ 1.  2.  3.  4.  5.  6.  7.  8.  9. 10. 11. 12. 13. 14. 15. 16. 17. 18.19. 20.]
+</code></pre><h2 id="pltfigure">plt.figure</h2>
+<p>表示创建一个画布,图表中的元素都是向画布中添加</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">用处</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">num</td>
+<td style="text-align:center">表示图形的编号或名称，数字代表编号，字符串表示名称</td>
+</tr>
+<tr>
+<td style="text-align:center">figsize</td>
+<td style="text-align:center">用于设置画布的尺寸，宽度、高度以英寸为单位</td>
+</tr>
+<tr>
+<td style="text-align:center">dpi</td>
+<td style="text-align:center">用于设置图形的分辨率</td>
+</tr>
+<tr>
+<td style="text-align:center">facecolor</td>
+<td style="text-align:center">用于设置画板的背景颜色</td>
+</tr>
+<tr>
+<td style="text-align:center">edgecolor</td>
+<td style="text-align:center">用于显示边框的颜色</td>
+</tr>
+<tr>
+<td style="text-align:center">frameon</td>
+<td style="text-align:center">表示是否显示边框</td>
+</tr>
+<tr>
+<td style="text-align:center">FigureClass</td>
+<td style="text-align:center">派生自matplotlib.figure.Figure的类，可以选择用自定义的图形对象</td>
+</tr>
+<tr>
+<td style="text-align:center">clear</td>
+<td style="text-align:center">若设为True且改图形已经存在，则它会被清除</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://blog.csdn.net/missyougoon/article/details/90399938">参考文献</a></p>
+<h2 id="pltplot">plt.plot</h2>
+<p>绘制曲线</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">用处</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">alpha</td>
+<td style="text-align:center">曲线透明度</td>
+</tr>
+<tr>
+<td style="text-align:center">color</td>
+<td style="text-align:center">曲线颜色</td>
+</tr>
+<tr>
+<td style="text-align:center">label</td>
+<td style="text-align:center">曲线的命名</td>
+</tr>
+<tr>
+<td style="text-align:center">linestyle</td>
+<td style="text-align:center">曲线的样式</td>
+</tr>
+<tr>
+<td style="text-align:center">linewidth</td>
+<td style="text-align:center">曲线粗细</td>
+</tr>
+</tbody>
+</table>
+<h3 id="linestyle">linestyle:</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">样式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">:</td>
+<td style="text-align:center">点线</td>
+</tr>
+<tr>
+<td style="text-align:center">-.</td>
+<td style="text-align:center">点画线</td>
+</tr>
+<tr>
+<td style="text-align:center">&ndash;</td>
+<td style="text-align:center">短划线</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">实线</td>
+</tr>
+</tbody>
+</table>
+<h3 id="color">color</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">cyan青色</td>
+</tr>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:center">red红色</td>
+</tr>
+<tr>
+<td style="text-align:center">g</td>
+<td style="text-align:center">green绿色</td>
+</tr>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:center">blue蓝色</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">white白色</td>
+</tr>
+<tr>
+<td style="text-align:center">k</td>
+<td style="text-align:center">black黑色</td>
+</tr>
+<tr>
+<td style="text-align:center">y</td>
+<td style="text-align:center">yellow黄色</td>
+</tr>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">magenta洋红色</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://zhuanlan.zhihu.com/p/258106097">参考文献</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="设置刻度">设置刻度</h2>
+<p>刻度的尺度</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x_tricks <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>linspace(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>, <span style="color:#099">3</span>, <span style="color:#099">5</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>xtricks(x_tricks)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将x轴设定为数组&quot;linspace(-1,3,5)&quot;</p>
+<p>设定刻度为指定显示</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>yticks([<span style="color:#099">60</span>,<span style="color:#099">70</span>,<span style="color:#099">80</span>,<span style="color:#099">90</span>], 
+</span></span><span style="display:flex;"><span>            [<span style="color:#d14">r</span><span style="color:#d14">&#39;$及格$&#39;</span>, <span style="color:#d14">r</span><span style="color:#d14">&#39;$良好$&#39;</span>, <span style="color:#d14">r</span><span style="color:#d14">&#39;$不错$&#39;</span>, <span style="color:#d14">r</span><span style="color:#d14">&#39;$优秀$&#39;</span>])
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中在&rsquo;$$&lsquo;中,支持,mathjax符号</p>
+<h2 id="边框坐标轴颜色">边框(坐标轴)颜色</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ax <span style="color:#000;font-weight:bold">=</span> plt<span style="color:#000;font-weight:bold">.</span>gca() <span style="color:#998;font-style:italic"># 获取当前的坐标轴</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>spines[<span style="color:#d14">&#39;right&#39;</span>]<span style="color:#000;font-weight:bold">.</span>set_color(<span style="color:#d14">&#39;red&#39;</span>) <span style="color:#998;font-style:italic"># 设置右侧坐标轴为红色</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>spines[<span style="color:#d14">&#39;top&#39;</span>]<span style="color:#000;font-weight:bold">.</span>set_color(<span style="color:#d14">&#39;red&#39;</span>) <span style="color:#998;font-style:italic"># 设置顶部坐标轴为红色</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># ax.spines[&#39;top&#39;].set_color(&#39;none&#39;)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="设置刻度显示的位置">设置刻度显示的位置</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>xaxis<span style="color:#000;font-weight:bold">.</span>set_ticks_position(<span style="color:#d14">&#39;bottom&#39;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>参数: bottom, top, both, default, none</p>
+<h2 id="设置坐标轴的位置">设置坐标轴的位置</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>spines[<span style="color:#d14">&#39;bottom&#39;</span>]<span style="color:#000;font-weight:bold">.</span>set_position((<span style="color:#d14">&#39;data&#39;</span>, <span style="color:#099">0</span>))
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 设置底部的坐标轴(X轴)位置为刻度0点处</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>spines[<span style="color:#d14">&#39;left&#39;</span>]<span style="color:#000;font-weight:bold">.</span>set_position((<span style="color:#d14">&#39;data&#39;</span>, <span style="color:#099">0</span>))
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 设置左侧的坐标轴(Y轴)位置为刻度0点处</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="legend图例解释">Legend图例解释</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>legend(loc<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;upper right&#39;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>loc参数:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">best</th>
+<th style="text-align:center">upper right</th>
+<th style="text-align:center">right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">upper left</td>
+<td style="text-align:center">lower left</td>
+<td style="text-align:center">center left</td>
+</tr>
+<tr>
+<td style="text-align:center">lower right</td>
+<td style="text-align:center">right</td>
+<td style="text-align:center">center right</td>
+</tr>
+<tr>
+<td style="text-align:center">lower center</td>
+<td style="text-align:center">upper center</td>
+<td style="text-align:center">center</td>
+</tr>
+</tbody>
+</table>
+<h2 id="标注点的直线">标注点的直线</h2>
+<p>画出一条垂直于x轴的虚线</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 绘制虚线</span>
+</span></span><span style="display:flex;"><span>x0 <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>y0 <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">2</span><span style="color:#000;font-weight:bold">*</span>x0 <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>plot([x0, x0,], [<span style="color:#099">0</span>, y0,], <span style="color:#d14">&#39;k--&#39;</span>, linewidth<span style="color:#000;font-weight:bold">=</span><span style="color:#099">2.5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 绘制点</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>scatter([x0, ], [y0, ], s<span style="color:#000;font-weight:bold">=</span><span style="color:#099">50</span>, color<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;b&#39;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="添加曲线的注释">添加曲线的注释</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>annotate(<span style="color:#d14">r</span><span style="color:#d14">&#39;$2x+1=</span><span style="color:#d14">%s</span><span style="color:#d14">$&#39;</span> <span style="color:#000;font-weight:bold">%</span> y0, xy<span style="color:#000;font-weight:bold">=</span>(x0, y0), xycoords<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;data&#39;</span>, xytext<span style="color:#000;font-weight:bold">=</span>(<span style="color:#000;font-weight:bold">+</span><span style="color:#099">30</span>, <span style="color:#000;font-weight:bold">-</span><span style="color:#099">30</span>),
+</span></span><span style="display:flex;"><span>             textcoords<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;offset points&#39;</span>, fontsize<span style="color:#000;font-weight:bold">=</span><span style="color:#099">16</span>,
+</span></span><span style="display:flex;"><span>             arrowprops<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">dict</span>(arrowstyle<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;-&gt;&#39;</span>, connectionstyle<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;arc3,rad=.2&#34;</span>))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">xycoords=&lsquo;data&rsquo;</td>
+<td style="text-align:center">基于数据的值来选位置</td>
+</tr>
+<tr>
+<td style="text-align:center">xytext=(+30, -30)</td>
+<td style="text-align:center">标注位置</td>
+</tr>
+<tr>
+<td style="text-align:center">textcoords=&lsquo;offset points&rsquo;</td>
+<td style="text-align:center">xy偏差值</td>
+</tr>
+<tr>
+<td style="text-align:center">arrowprops</td>
+<td style="text-align:center">图中箭头类型的一些设置</td>
+</tr>
+</tbody>
+</table>
+<h2 id="标注文字-1">标注文字</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>text(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>, <span style="color:#099">5</span>, <span style="color:#d14">r</span><span style="color:#d14">&#39;$This\ is\ the\ some\ text. \mu\ \sigma_i\ \alpha_t$&#39;</span>,
+</span></span><span style="display:flex;"><span>         fontdict<span style="color:#000;font-weight:bold">=</span>{<span style="color:#d14">&#39;size&#39;</span>: <span style="color:#099">16</span>, <span style="color:#d14">&#39;color&#39;</span>: <span style="color:#d14">&#39;r&#39;</span>})
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中&quot;-1,5&quot;表示text显示的位置</p>
+<h2 id="刻度透明度">刻度透明度</h2>
+<p>如果坐标轴的刻度被曲线遮盖,可以通过调整透明度来显示</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> label <span style="color:#000;font-weight:bold">in</span> ax<span style="color:#000;font-weight:bold">.</span>get_xticklabels() <span style="color:#000;font-weight:bold">+</span> ax<span style="color:#000;font-weight:bold">.</span>get_yticklabels():
+</span></span><span style="display:flex;"><span>    label<span style="color:#000;font-weight:bold">.</span>set_fontsize(<span style="color:#099">12</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># 在 plt 2.0.2 或更高的版本中, 设置 zorder 给 plot 在 z 轴方向排序</span>
+</span></span><span style="display:flex;"><span>    label<span style="color:#000;font-weight:bold">.</span>set_bbox(<span style="color:#0086b3">dict</span>(facecolor<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;white&#39;</span>, edgecolor<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;None&#39;</span>, alpha<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0.7</span>, zorder<span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">label.set_fontsize(12)</td>
+<td style="text-align:center">重新调节字体大小</td>
+</tr>
+<tr>
+<td style="text-align:center">set_bbox</td>
+<td style="text-align:center">设置目的内容的透明度相关参数</td>
+</tr>
+<tr>
+<td style="text-align:center">facecolor</td>
+<td style="text-align:center">调节box前景色</td>
+</tr>
+<tr>
+<td style="text-align:center">edgecolor</td>
+<td style="text-align:center">设置边框( 本处设置边框为无)</td>
+</tr>
+<tr>
+<td style="text-align:center">alpha</td>
+<td style="text-align:center">设置透明度</td>
+</tr>
+</tbody>
+</table>
+<h2 id="numpyarange">numpy.arange</h2>
+<p>函数返回一个有终点和起点的固定步长的排列
+如[1,2,3,4,5]，起点是1，终点是6，步长为1。
+<strong>参数个数情况：</strong>
+np.arange()函数分为一个参数，两个参数，三个参数三种情况</p>
+<ol>
+<li>一个参数时:参数值为终点，起点取默认值0，步长取默认值1。</li>
+<li>两个参数时:第一个参数为起点，第二个参数为终点，步长取默认值1。</li>
+<li>三个参数时:第一个参数为起点，第二个参数为终点，第三个参数为步长。其中步长支持小数</li>
+</ol>
+<h1 id="图表类型">图表类型</h1>
+<h2 id="散点图">散点图</h2>
+<!-- raw HTML omitted -->
+<p>n = 1024    # data size
+X = np.random.normal(0, 1, n)  # 每一个点的X值
+Y = np.random.normal(0, 1, n)  # 每一个点的Y值
+T = np.arctan2(Y, X)  # for color value
+plt.scatter(X, Y, s=75, c=T, alpha=.5)
+plt.xlim(-1.5, 1.5)
+x_ticks = np.linspace(-1.5, 1.5, 10)
+plt.xticks(x_ticks)
+y_ticks = np.linspace(-1.5, 1.5, 10)
+plt.ylim(-1.5, 1.5)
+plt.yticks(y_ticks)
+plt.show()</p>
+<pre tabindex="0"><code>
+|     参数      |                  作用                  |
+| :-----------: | :------------------------------------: |
+| random.normal | 生成服从标准正态分布的数据(EX=0, DX=1) |
+|     s=75      |                size尺寸                |
+|      c=T      |           color map颜色状态            |
+|     alpha     |                 透明度                 |
+
+## 柱状图
+&lt;img loading=&#34;lazy&#34; src=&#34;https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/Matplotlib/1/2_.png&#34;&gt;
+```python
+n = 12
+X = np.arange(n) # X为数组
+# 均匀分布
+Y1 = (1 - X / float(n)) * np.random.uniform(0.5, 1.0, n)
+Y2 = (1 - X / float(n)) * np.random.uniform(0.5, 1.0, n)
+
+plt.bar(X, +Y1, facecolor=&#39;#9999ff&#39;, edgecolor=&#39;white&#39;)
+plt.bar(X, -Y2, facecolor=&#39;#ff9999&#39;, edgecolor=&#39;white&#39;)
+# facecolor为柱条颜色
+plt.xlim(-.5, n)
+plt.xticks(())
+plt.ylim(-1.25, 1.25)
+plt.yticks(())
+# 添加数值标识
+for x, y in zip(X, Y1):
+    # ha: horizontal alignment
+    # va: vertical alignment
+    plt.text(x + 0.4, y + 0.05, &#39;%.2f&#39; % y, ha=&#39;center&#39;, va=&#39;bottom&#39;)
+for x, y in zip(X, Y2):
+    # ha: horizontal alignment
+    # va: vertical alignment
+    plt.text(x + 0.4, -y - 0.05, &#39;%.2f&#39; % y, ha=&#39;center&#39;, va=&#39;top&#39;)
+plt.show()
+</code></pre><p><strong>plt.text 分别在柱体上方和下方添加数值</strong></p>
+<ul>
+<li><strong>%.2f</strong> 保留两位小数</li>
+<li><strong>ha=&lsquo;center&rsquo;</strong> 横向居中对齐</li>
+<li><strong>va=&lsquo;bottom&rsquo;</strong> 纵向底部（顶部）对齐</li>
+</ul>
+<h2 id="contours-等高线图">Contours 等高线图</h2>
+<!-- raw HTML omitted -->
+<p><strong>颜色填充函数 plt.contourf</strong></p>
+<ul>
+<li>位置参数分别为：X, Y, f(X,Y)</li>
+<li>透明度0.75</li>
+<li>将 f(X,Y) 的值对应到color map的暖色组中寻找对应颜色</li>
+</ul>
+<p><strong>等高线画线函数 plt.contour</strong></p>
+<ul>
+<li>位置参数为：X, Y, f(X,Y)</li>
+<li>颜色为黑色</li>
+<li>线条宽度为0.5</li>
+</ul>
+<p><strong>添加高度数字函数 plt.clabel</strong></p>
+<ul>
+<li>inline控制是否将Label画在线里面</li>
+<li>字体大小为10</li>
+</ul>
+<h2 id="colorbar">colorbar</h2>
+<p>显示数值参考颜色条</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># shrink:透明度</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>colorbar(shrink<span style="color:#000;font-weight:bold">=</span><span style="color:#099">.92</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.jianshu.com/p/d97c1d2e274f">参考文献-1</a>
+<a href="https://blog.csdn.net/sinat_32570141/article/details/105345725">参考文献-2</a></p>
+<h2 id="3d函数图像">3D函数图像</h2>
+<!-- raw HTML omitted -->
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">plot_surface</td>
+<td style="text-align:center">绘制表面</td>
+</tr>
+<tr>
+<td style="text-align:center">rstride</td>
+<td style="text-align:center">表面纵向稀疏度</td>
+</tr>
+<tr>
+<td style="text-align:center">cstride</td>
+<td style="text-align:center">表面横向稀疏度</td>
+</tr>
+<tr>
+<td style="text-align:center">cmap</td>
+<td style="text-align:center">颜色样式</td>
+</tr>
+<tr>
+<td style="text-align:center">contourf</td>
+<td style="text-align:center">投影</td>
+</tr>
+<tr>
+<td style="text-align:center">zdir</td>
+<td style="text-align:center">投影面选择</td>
+</tr>
+<tr>
+<td style="text-align:center">offset</td>
+<td style="text-align:center">投影坐标</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://blog.csdn.net/lllxxq141592654/article/details/81532855">numpy.meshgrid 函数解释</a></p>
+<h1 id="code">code</h1>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">numpy</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">np</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">matplotlib.pyplot</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">plt</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">mpl_toolkits.mplot3d</span> <span style="color:#000;font-weight:bold">import</span> Axes3D
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>linspace(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>, <span style="color:#099">3</span>, <span style="color:#099">50</span>)
+</span></span><span style="display:flex;"><span>y1 <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">2</span><span style="color:#000;font-weight:bold">*</span>x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>y2 <span style="color:#000;font-weight:bold">=</span> x<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>figure()
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>plot(x, y1, label<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;line-1&#34;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>plot(x, y2, color<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;red&#39;</span>, linewidth<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1.0</span>, linestyle<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;:&#39;</span>, label<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;line-2&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># plt.xlim((-1, 3))  # 设定X轴的坐标范围</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># plt.ylim((-2, 7))  # 设定Y轴的坐标范围</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 创建坐标轴刻度数据</span>
+</span></span><span style="display:flex;"><span>x_ticks <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>linspace(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>, <span style="color:#099">3</span>, <span style="color:#099">5</span>)
+</span></span><span style="display:flex;"><span>y_ticks <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>linspace(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>, <span style="color:#099">7</span>, <span style="color:#099">10</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>xticks(x_ticks)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>yticks(y_ticks)
+</span></span><span style="display:flex;"><span><span style="color:#d14">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"># 设定Y坐标轴为特定符号
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">plt.yticks([-1, 0, 1, 2],
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">           [r&#39;$</span><span style="color:#d14">\a</span><span style="color:#d14">lpha$&#39;, r&#39;$</span><span style="color:#d14">\b</span><span style="color:#d14">eta$&#39;, r&#39;$c$&#39;, r&#39;$d$&#39;])
+</span></span></span><span style="display:flex;"><span><span style="color:#d14">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 获取当前的坐标系</span>
+</span></span><span style="display:flex;"><span>ax <span style="color:#000;font-weight:bold">=</span> plt<span style="color:#000;font-weight:bold">.</span>gca()
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 设置刻度线显示位置</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>xaxis<span style="color:#000;font-weight:bold">.</span>set_ticks_position(<span style="color:#d14">&#39;top&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 设定坐标轴的文字</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>xlabel(<span style="color:#d14">&#39;I am x&#39;</span>)  <span style="color:#998;font-style:italic"># X轴的名称</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>ylabel(<span style="color:#d14">&#39;I am y&#39;</span>)  <span style="color:#998;font-style:italic"># Y轴的名称</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 设定坐标轴为指定颜色</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>spines[<span style="color:#d14">&#39;right&#39;</span>]<span style="color:#000;font-weight:bold">.</span>set_color(<span style="color:#d14">&#39;red&#39;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>spines[<span style="color:#d14">&#39;top&#39;</span>]<span style="color:#000;font-weight:bold">.</span>set_color(<span style="color:#d14">&#39;red&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 设定坐标轴位置</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>spines[<span style="color:#d14">&#39;bottom&#39;</span>]<span style="color:#000;font-weight:bold">.</span>set_position((<span style="color:#d14">&#39;data&#39;</span>, <span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>))
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 垂直坐标轴指示点-虚线</span>
+</span></span><span style="display:flex;"><span>x0 <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>y0 <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">2</span><span style="color:#000;font-weight:bold">*</span>x0 <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>plot([x0, x0, ], [<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>, y0, ], <span style="color:#d14">&#39;k--&#39;</span>, linewidth<span style="color:#000;font-weight:bold">=</span><span style="color:#099">2.5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 垂直坐标轴指示点-绘制点</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>scatter([x0, ], [y0, ], s<span style="color:#000;font-weight:bold">=</span><span style="color:#099">50</span>, color<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;b&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 曲线注释</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>annotate(<span style="color:#d14">r</span><span style="color:#d14">&#39;$2x+1=</span><span style="color:#d14">%s</span><span style="color:#d14">$&#39;</span> <span style="color:#000;font-weight:bold">%</span> y0, xy<span style="color:#000;font-weight:bold">=</span>(x0, y0), xycoords<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;data&#39;</span>, xytext<span style="color:#000;font-weight:bold">=</span>(<span style="color:#000;font-weight:bold">+</span><span style="color:#099">30</span>, <span style="color:#000;font-weight:bold">-</span><span style="color:#099">30</span>),
+</span></span><span style="display:flex;"><span>             textcoords<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;offset points&#39;</span>, fontsize<span style="color:#000;font-weight:bold">=</span><span style="color:#099">16</span>,
+</span></span><span style="display:flex;"><span>             arrowprops<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">dict</span>(arrowstyle<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;-&gt;&#39;</span>, connectionstyle<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;arc3,rad=.2&#34;</span>))
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 标注文字</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>text(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>, <span style="color:#099">5</span>, <span style="color:#d14">r</span><span style="color:#d14">&#39;$This\ is\ the\ some\ text. \mu\ \sigma_i\ \alpha_t$&#39;</span>,
+</span></span><span style="display:flex;"><span>         fontdict<span style="color:#000;font-weight:bold">=</span>{<span style="color:#d14">&#39;size&#39;</span>: <span style="color:#099">16</span>, <span style="color:#d14">&#39;color&#39;</span>: <span style="color:#d14">&#39;r&#39;</span>})
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 显示指示框</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>legend(loc<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;best&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 创建散点图</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>figure()
+</span></span><span style="display:flex;"><span>n <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1024</span>    <span style="color:#998;font-style:italic"># data size</span>
+</span></span><span style="display:flex;"><span>X <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#000;font-weight:bold">.</span>normal(<span style="color:#099">0</span>, <span style="color:#099">1</span>, n)  <span style="color:#998;font-style:italic"># 每一个点的X值</span>
+</span></span><span style="display:flex;"><span>Y <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#000;font-weight:bold">.</span>normal(<span style="color:#099">0</span>, <span style="color:#099">1</span>, n)  <span style="color:#998;font-style:italic"># 每一个点的Y值</span>
+</span></span><span style="display:flex;"><span>T <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>arctan2(Y, X)  <span style="color:#998;font-style:italic"># for color value</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>scatter(X, Y, s<span style="color:#000;font-weight:bold">=</span><span style="color:#099">75</span>, c<span style="color:#000;font-weight:bold">=</span>T, alpha<span style="color:#000;font-weight:bold">=</span><span style="color:#099">.5</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>xlim(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1.5</span>, <span style="color:#099">1.5</span>)
+</span></span><span style="display:flex;"><span>x_ticks <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>linspace(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1.5</span>, <span style="color:#099">1.5</span>, <span style="color:#099">10</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>xticks(x_ticks)
+</span></span><span style="display:flex;"><span>y_ticks <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>linspace(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1.5</span>, <span style="color:#099">1.5</span>, <span style="color:#099">10</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>ylim(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1.5</span>, <span style="color:#099">1.5</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>yticks(y_ticks)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 创建柱状图</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>figure()
+</span></span><span style="display:flex;"><span>n <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">12</span>
+</span></span><span style="display:flex;"><span>X <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>arange(n)  <span style="color:#998;font-style:italic"># X为数组</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 均匀分布</span>
+</span></span><span style="display:flex;"><span>Y1 <span style="color:#000;font-weight:bold">=</span> (<span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> X <span style="color:#000;font-weight:bold">/</span> <span style="color:#0086b3">float</span>(n)) <span style="color:#000;font-weight:bold">*</span> np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#000;font-weight:bold">.</span>uniform(<span style="color:#099">0.5</span>, <span style="color:#099">1.0</span>, n)
+</span></span><span style="display:flex;"><span>Y2 <span style="color:#000;font-weight:bold">=</span> (<span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> X <span style="color:#000;font-weight:bold">/</span> <span style="color:#0086b3">float</span>(n)) <span style="color:#000;font-weight:bold">*</span> np<span style="color:#000;font-weight:bold">.</span>random<span style="color:#000;font-weight:bold">.</span>uniform(<span style="color:#099">0.5</span>, <span style="color:#099">1.0</span>, n)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>bar(X, <span style="color:#000;font-weight:bold">+</span>Y1, facecolor<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;#9999ff&#39;</span>, edgecolor<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;white&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>bar(X, <span style="color:#000;font-weight:bold">-</span>Y2, facecolor<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;#ff9999&#39;</span>, edgecolor<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;white&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># facecolor为柱条颜色</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>xlim(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">.5</span>, n)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>xticks(())
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>ylim(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1.25</span>, <span style="color:#099">1.25</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>yticks(())
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 添加数值标识</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> x, y <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">zip</span>(X, Y1):
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># ha: horizontal alignment</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># va: vertical alignment</span>
+</span></span><span style="display:flex;"><span>    plt<span style="color:#000;font-weight:bold">.</span>text(x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">0.4</span>, y <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">0.05</span>, <span style="color:#d14">&#39;</span><span style="color:#d14">%.2f</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> y, ha<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;center&#39;</span>, va<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;bottom&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> x, y <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">zip</span>(X, Y2):
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># ha: horizontal alignment</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># va: vertical alignment</span>
+</span></span><span style="display:flex;"><span>    plt<span style="color:#000;font-weight:bold">.</span>text(x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">0.4</span>, <span style="color:#000;font-weight:bold">-</span>y <span style="color:#000;font-weight:bold">-</span> <span style="color:#099">0.05</span>, <span style="color:#d14">&#39;</span><span style="color:#d14">%.2f</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> y, ha<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;center&#39;</span>, va<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;top&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 绘制等高线</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>figure()
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">f</span>(x, y):
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># the height function</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> (<span style="color:#099">1</span> <span style="color:#000;font-weight:bold">-</span> x <span style="color:#000;font-weight:bold">/</span> <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">+</span> x<span style="color:#000;font-weight:bold">**</span><span style="color:#099">5</span> <span style="color:#000;font-weight:bold">+</span> y<span style="color:#000;font-weight:bold">**</span><span style="color:#099">3</span>) <span style="color:#000;font-weight:bold">*</span> np<span style="color:#000;font-weight:bold">.</span>exp(<span style="color:#000;font-weight:bold">-</span>x<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span> <span style="color:#000;font-weight:bold">-</span> y<span style="color:#000;font-weight:bold">**</span><span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">256</span>
+</span></span><span style="display:flex;"><span>x3 <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>linspace(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">3</span>, <span style="color:#099">3</span>, n)
+</span></span><span style="display:flex;"><span>y3 <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>linspace(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">3</span>, <span style="color:#099">3</span>, n)
+</span></span><span style="display:flex;"><span>X3, Y3 <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>meshgrid(x3, y3)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># use plt.contourf to filling contours</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># X, Y and value for (X,Y) point</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>contourf(X3, Y3, f(X3, Y3), <span style="color:#099">8</span>, alpha<span style="color:#000;font-weight:bold">=</span><span style="color:#099">.75</span>, cmap<span style="color:#000;font-weight:bold">=</span>plt<span style="color:#000;font-weight:bold">.</span>cm<span style="color:#000;font-weight:bold">.</span>hot)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>colorbar(shrink<span style="color:#000;font-weight:bold">=</span><span style="color:#099">.92</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># use plt.contour to add contour lines</span>
+</span></span><span style="display:flex;"><span>C <span style="color:#000;font-weight:bold">=</span> plt<span style="color:#000;font-weight:bold">.</span>contour(X3, Y3, f(X3, Y3), <span style="color:#099">8</span>, colors<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;black&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>clabel(C, inline<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">True</span>, fontsize<span style="color:#000;font-weight:bold">=</span><span style="color:#099">10</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>xticks(())
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>yticks(())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 绘制3D图像</span>
+</span></span><span style="display:flex;"><span>fig <span style="color:#000;font-weight:bold">=</span> plt<span style="color:#000;font-weight:bold">.</span>figure()
+</span></span><span style="display:flex;"><span>ax <span style="color:#000;font-weight:bold">=</span> Axes3D(fig)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># X, Y value</span>
+</span></span><span style="display:flex;"><span>X <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>arange(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">4</span>, <span style="color:#099">4</span>, <span style="color:#099">0.25</span>)
+</span></span><span style="display:flex;"><span>Y <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>arange(<span style="color:#000;font-weight:bold">-</span><span style="color:#099">4</span>, <span style="color:#099">4</span>, <span style="color:#099">0.25</span>)
+</span></span><span style="display:flex;"><span>X, Y <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>meshgrid(X, Y)    <span style="color:#998;font-style:italic"># x-y 平面的网格</span>
+</span></span><span style="display:flex;"><span>R <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>sqrt(X <span style="color:#000;font-weight:bold">**</span> <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">+</span> Y <span style="color:#000;font-weight:bold">**</span> <span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># height value</span>
+</span></span><span style="display:flex;"><span>Z <span style="color:#000;font-weight:bold">=</span> np<span style="color:#000;font-weight:bold">.</span>sin(R)
+</span></span><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>plot_surface(X, Y, Z, rstride<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, cstride<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, cmap<span style="color:#000;font-weight:bold">=</span>plt<span style="color:#000;font-weight:bold">.</span>get_cmap(<span style="color:#d14">&#39;rainbow&#39;</span>))
+</span></span><span style="display:flex;"><span>ax<span style="color:#000;font-weight:bold">.</span>contourf(X, Y, Z, zdir<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;y&#39;</span>, offset<span style="color:#000;font-weight:bold">=-</span><span style="color:#099">4</span>, cmap<span style="color:#000;font-weight:bold">=</span>plt<span style="color:#000;font-weight:bold">.</span>get_cmap(<span style="color:#d14">&#39;rainbow&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#000;font-weight:bold">.</span>show()
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/matplotlib'>Matplotlib</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

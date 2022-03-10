@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <title>物联网概论 PART-8 | 小辣鸡的Hugo</title>
+    <meta property="og:title" content="物联网概论 PART-8 - 小辣鸡的Hugo">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-05-05T10:30:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-05-05T10:30:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="物联网概论 PART-8">
+        <meta name="author" content="小辣鸡">
+        
+    <meta property="og:url" content="/post/iot-8/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="">
+                        小辣鸡的Hugo
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="">首页</a>
+                    
+                    <a  href="/archives/" title="归档">归档</a>
+                    
+                    <a  href="/tag/" title="分类">分类</a>
+                    
+                    <a  href="/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">物联网概论 PART-8</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月5日
+        </date>
+        
+        
+        
+        <div class="post-content">
+            <p>网络体系结构</p>
+<h1 id="网络体系结构">网络体系结构</h1>
+<h2 id="osi七层参考模型">OSI七层参考模型</h2>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-8/1.png" />   
+    </p>
+<h2 id="接口与协议">接口与协议</h2>
+<ul>
+<li>每个分层负责为自己的上一层提供特定的服务,上下层之间进行交互所遵循的约定叫做“接口”</li>
+<li>同一层之间的交互所遵循的约定叫做“协议”</li>
+</ul>
+<h2 id="网络分层的形象类比">网络分层的形象类比</h2>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-8/2.png" />   
+    </p>
+<h1 id="网络协议">网络协议</h1>
+<ul>
+<li>协议是为进行网络中的数据交换(通信)而建立的规则、标准或约定。</li>
+<li>两个通信对象对等层之间使用同样的协议才能互相交流。网络体系结构的每个层次都有各自的协议。例如:
+<ul>
+<li>应用层协议有http(万维网)、ftp(文件传输)、smtp(邮件)等;</li>
+<li>物理层协议有IEEE 802.3(以太网)、IEEE 802.11(WIFI)、IEEE 802.15.4 (Zigbee) 等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="tcpip">TCP/IP</h2>
+<p>在实际应用中,由于OSI七层结构过于复杂,人们一般都使用TCP/IP的四层结构。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-8/3.png" />   
+    </p>
+<ul>
+<li>应用层:为用户的应用进程提供服务。制定了各种软件应用的协议。</li>
+<li>传输层:为两台主机之间提供端到端的通信。它是一个逻辑通道,负责传输的可靠性。</li>
+<li>网络层:处理分组交换网上的不同节点间的数据传输工作。主要是提供了地址管理、路由选择服务。</li>
+<li>网络接口层:提供物理层面上不同节点间的连接和数据传送服务。制定了各种网络设备的传输协议。</li>
+</ul>
+<h2 id="数据封装与解封">数据封装与解封</h2>
+<p>主机A中数据包向下传递时逐层封装,达到主机B后,向上传递时逐层解封。通信双方对等层要遵循同样协议。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-8/4.png" />   
+    </p>
+<h2 id="分层网络体系的优点">分层网络体系的优点</h2>
+<ul>
+<li>各层之间是独立的。某一层并不需要知道它的下一层是怎样实现的,仅需要知道该层通过层间的接口所提供的服务。</li>
+<li>灵活性好。当某一层发生变化时,只要层间接口关系保持不变,则在这层以上或者以下各层均不受影响。</li>
+<li>易于实现和维护。这种结构使得实现和调试一个庞大而又复杂的系统变得易于处理,因为整个系统已被分解为若干个相对独立的子系统。</li>
+</ul>
+<h1 id="传输层和网络层重要协议">传输层和网络层重要协议</h1>
+<h2 id="tcpip-协议族">TCP/IP 协议族</h2>
+<ul>
+<li>TCP/IP是一个协议族,它是ARP,IP,ICMP,IGMP,UDP,TCP等多个协议的集合。</li>
+<li>传输层的TCP和UDP协议,网络层的IP协议最具有代表性。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-8/5.png" />   
+    </li>
+</ul>
+<h2 id="tcp---传输控制协议">TCP - 传输控制协议</h2>
+<ul>
+<li>用于面向连接的服务</li>
+<li>传输前需建立连接</li>
+<li>可靠的,有序的字节流传输</li>
+<li>支持流量控制与拥塞控制</li>
+<li>连接只是一种逻辑形式,它关心的是端点。</li>
+<li>与在网络上寻求一条实际的物理路径相比,这条信道更关心的是保持两个端点的联系。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-8/6.png" />   
+    </li>
+<li>每个数据包的传递都需要对方确认,无确认就认为失败。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-8/7.png" />   
+    </li>
+</ul>
+<h2 id="udp---用户数据报协议">UDP - 用户数据报协议</h2>
+<ul>
+<li>用于无连接的服务</li>
+<li>是不可靠的数据传输</li>
+<li>无流量控制</li>
+<li>无拥塞控制</li>
+<li>源端和终端不建立连接,当传送时就简单地去抓取数据,并尽可能快地把它扔到网络上。</li>
+<li>UDP传送数据的速度仅仅受应用程序生成数据的速度、计算机的能力和传输带宽的限制</li>
+</ul>
+<h2 id="tcp-和-udp-的应用范围">TCP 和 UDP 的应用范围</h2>
+<ol>
+<li>使用TCP服务的应用 :</li>
+</ol>
+<ul>
+<li>HTTP(WWW)</li>
+<li>FTP (file transfer)</li>
+<li>Telnet (remote login)</li>
+<li>SMTP (email)</li>
+</ul>
+<ol start="2">
+<li>使用UDP服务的应用 :</li>
+</ol>
+<ul>
+<li>流媒体,视频会议,因特网电话</li>
+</ul>
+<h1 id="ip-协议">IP 协议</h1>
+<h2 id="概念">概念</h2>
+<ul>
+<li>IP协议的作用是将数据包从源传送到目的地。</li>
+<li>实现了在互联网络间进行寻址和分组转发 。</li>
+<li>IP数据包中含有发送它的主机的地址(源地址)和接收它的主机的地址(目的地址),这些地址就是IP地址。</li>
+<li>它不提供可靠的传输服务,它不提供端到端的确认,对数据没有差错控制,不提供重发和流量控制。</li>
+</ul>
+<h2 id="ipv4">IPv4</h2>
+<ul>
+<li>网络中每台主机都必须有一个惟一的IP地址;</li>
+<li>因特网上的IP地址具有全球唯一性;</li>
+<li>IP地址是一个逻辑地址;</li>
+<li>IP是层次性地址:网络号+主机号</li>
+<li>32位,4个字节,常用点分的十进制标记法:
+如 00001010 00000010 00000000 00000001记为 10.2.0.1</li>
+</ul>
+<h3 id="ipv4-地址分类">IPv4 地址分类</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-8/8.png" />   
+    </p>
+<h3 id="ipv4-存在的问题">IPv4 存在的问题</h3>
+<ul>
+<li>地址空间使用效率较低,IPv4 资源即将耗尽
+<ul>
+<li>Internet迅速发展,越来越多的设备需要IP地址:手机、家电、&hellip;</li>
+<li>IPv4地址大约有40多亿个,即将被分配完毕</li>
+<li>资源分配不均</li>
+</ul>
+</li>
+<li>IPv4对于移动特性并没有很好的支持</li>
+<li>对于某些因特网应用,需要能够对数据进行加密和鉴别,但IPv4不提供数据的加密和鉴别</li>
+</ul>
+<h2 id="ipv6">IPv6</h2>
+<ul>
+<li>更大的地址空间,地址扩大到128bit;</li>
+<li>减少路由选择表的长度;</li>
+<li>简化协议,使路由器处理分组更迅速;</li>
+<li>提供比当前IP更好的安全性(含鉴别和保密)</li>
+</ul>
+<h3 id="ipv6-地址格式">IPv6 地址格式</h3>
+<ul>
+<li>IPv6地址 = 前缀 + 接口标识
+<ul>
+<li>前缀:相当于v4地址中的网络ID</li>
+<li>接口标识:相当于v4地址中的主机ID</li>
+</ul>
+</li>
+<li>128位长,用冒号将128比特分割成8个16比特的部分,每个部分是一个4位的16进制数字。</li>
+<li>地址前缀长度用“/xx”来表示</li>
+<li>举例:
+3ffe:3700:1100:0001:d9e6:0b9d:14c6:45ee/64</li>
+</ul>
+<h2 id="ip-路由选择">IP 路由选择</h2>
+<ul>
+<li>IP数据包在Internet上传递时,由路由器决定其传递路线。</li>
+<li>路由器构成了Internet的主体脉络。它们会为数据包选择一条合适的数据传递路径。
+
+        <img class="mx-auto" alt="img" src="https://tronwei-1254020584.cos.ap-beijing.myqcloud.com/IOT-8/9.png" />   
+    </li>
+</ul>
+<h1 id="路由">路由</h1>
+<h2 id="路由种类">路由种类</h2>
+<ol>
+<li>静态路由</li>
+</ol>
+<ul>
+<li>由网络管理员在路由器上手工添加的路由信息</li>
+<li>不随网络拓扑变化而自动变化</li>
+<li>适合于端网络等小型网络</li>
+</ul>
+<ol start="2">
+<li>动态路由</li>
+</ol>
+<ul>
+<li>路由器运行路由协议与邻居路由器相互动态学习得到</li>
+<li>路由信息自动更新</li>
+<li>优点:自动适应网络拓扑变化</li>
+</ul>
+<h2 id="各类路由的特点">各类路由的特点</h2>
+<ol>
+<li>静态路由</li>
+</ol>
+<ul>
+<li>无论代价如何都固定路径</li>
+<li>发生故障网络即中断</li>
+</ul>
+<ol start="2">
+<li>动态路由</li>
+</ol>
+<ul>
+<li>自动选择最低代价的路径</li>
+<li>当前路径发生故障可自动转到其他可用路径</li>
+</ul>
+<h2 id="典型路由算法">典型路由算法</h2>
+<ul>
+<li>最短路由选择算法
+这种技术的主要思想是建立一个子网图,图中的每个节点代表一个路由器,每条弧线表示一条通信线路。本算法要在图中找出源节点到目标节点间的最短路径。</li>
+<li>扩散法
+把收到的每一个分组信息,从除了分组到来的线路外的所有输出线路上发出。最终信息可以从源节点到达目标节点。显然扩散要产生大量的重复分组,事实上有可能是无穷多个分组,除非采用一些措施抑制这种过程。</li>
+<li>选择性扩散法
+与扩散法不同的是各个节点仅向少量预先设定的邻接点发出信息。从而降低数据冗余,减少网络拥塞。</li>
+</ul>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/iot-7/">物联网概论 PART-7</a></li>
+        
+        <li><a href="/post/iot-6/">物联网概论 PART-6</a></li>
+        
+        <li><a href="/post/iot-5/">物联网概论 PART-5</a></li>
+        
+        <li><a href="/post/iot-4/">物联网概论 PART-4</a></li>
+        
+        <li><a href="/post/iot-3/">物联网概论 PART-3</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/%E7%89%A9%E8%81%94%E7%BD%91'>物联网</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="">小辣鸡的Hugo By </a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='//www.google.com/search' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="/post/hugo/" title="搭建Hugo">搭建Hugo</a>
+    </li>
+    
+    <li>
+        <a href="/post/curl%E5%B8%B8%E7%94%A8/" title="curl常用命令">curl常用命令</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-9/" title="crond">crond</a>
+    </li>
+    
+    <li>
+        <a href="/post/docker-8/" title="构建前后端服务组">构建前后端服务组</a>
+    </li>
+    
+    <li>
+        <a href="/post/centos%E5%AE%89%E8%A3%85conda/" title="centos安装conda">centos安装conda</a>
+    </li>
+    
+    <li>
+        <a href="/post/jenkins/" title="Jenkins入门">Jenkins入门</a>
+    </li>
+    
+    <li>
+        <a href="/post/sqlalchemy%E7%9A%84session%E6%9C%BA%E5%88%B6/" title="SQLAlchemy断连">SQLAlchemy断连</a>
+    </li>
+    
+    <li>
+        <a href="/post/apschedule/" title="APScheduler的使用">APScheduler的使用</a>
+    </li>
+    
+    <li>
+        <a href="/post/yield/" title="yield的用法">yield的用法</a>
+    </li>
+    
+    <li>
+        <a href="/post/vue-ts/" title="Vue-TS入门">Vue-TS入门</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+    
+    <a href="/tags/centos/">Centos</a>
+    
+    <a href="/tags/c%E8%AF%AD%E8%A8%80/">C语言</a>
+    
+    <a href="/tags/docker/">Docker</a>
+    
+    <a href="/tags/dtec/">DTEC</a>
+    
+    <a href="/tags/fastapi/">FastAPI</a>
+    
+    <a href="/tags/git/">Git</a>
+    
+    <a href="/tags/hexo/">HEXO</a>
+    
+    <a href="/tags/hugo/">Hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/javascript/">Javascript</a>
+    
+    <a href="/tags/jenkins/">Jenkins</a>
+    
+    <a href="/tags/leetcode/">Leetcode</a>
+    
+    <a href="/tags/matplotlib/">Matplotlib</a>
+    
+    <a href="/tags/ncepu/">NCEPU</a>
+    
+    <a href="/tags/node.js/">Node.js</a>
+    
+    <a href="/tags/nodejs/">nodejs</a>
+    
+    <a href="/tags/pat/">PAT</a>
+    
+    <a href="/tags/python/">Python</a>
+    
+    <a href="/tags/qt-python/">Qt-Python</a>
+    
+    <a href="/tags/shell/">Shell</a>
+    
+    <a href="/tags/shortcut/">ShortCut</a>
+    
+    <a href="/tags/sqlalchemy/">SQLAlchemy</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/vue/">Vue</a>
+    
+    <a href="/tags/win/">win</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/">人工智能导论</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="/tags/%E6%9C%AC%E7%A7%91%E8%AE%BA%E6%96%87/">本科论文</a>
+    
+    <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    
+    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
