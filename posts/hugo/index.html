@@ -8,15 +8,15 @@
     <title>搭建Hugo - 小辣鸡的Hugo</title><meta name="author" content="小辣鸡: ">
 <meta name="description" content="搭建Hugo" />
 <meta name="keywords" content="Hugo-FixIt" /><meta itemprop="name" content="搭建Hugo">
-<meta itemprop="description" content="搭建Hugo"><meta itemprop="datePublished" content="2022-03-04T22:30:00+00:00" />
-<meta itemprop="dateModified" content="2022-03-04T22:30:00+00:00" />
-<meta itemprop="wordCount" content="32"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="description" content="搭建Hugo"><meta itemprop="datePublished" content="2022-03-09T22:30:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-09T22:30:00+00:00" />
+<meta itemprop="wordCount" content="1139"><meta itemprop="image" content="http://example.org/logo.png"/>
 <meta itemprop="keywords" content="Hugo-FixIt," /><meta property="og:title" content="搭建Hugo" />
 <meta property="og:description" content="搭建Hugo" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/posts/hugo/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-03-04T22:30:00+00:00" />
-<meta property="article:modified_time" content="2022-03-04T22:30:00+00:00" />
+<meta property="article:published_time" content="2022-03-09T22:30:00+00:00" />
+<meta property="article:modified_time" content="2022-03-09T22:30:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://example.org/logo.png"/>
@@ -33,8 +33,8 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/example.org\/posts\/hugo\/"
-    },"genre": "posts","keywords": "Hugo-FixIt","wordcount":  32 ,
-    "url": "http:\/\/example.org\/posts\/hugo\/","datePublished": "2022-03-04T22:30:00+00:00","dateModified": "2022-03-04T22:30:00+00:00","publisher": {
+    },"genre": "posts","keywords": "Hugo-FixIt","wordcount":  1139 ,
+    "url": "http:\/\/example.org\/posts\/hugo\/","datePublished": "2022-03-09T22:30:00+00:00","dateModified": "2022-03-09T22:30:00+00:00","publisher": {
       "@type": "Organization",
       "name": "小辣鸡"},"author": {
         "@type": "Person",
@@ -116,7 +116,8 @@
 <div class="search-dropdown mobile">
   <div id="search-dropdown-mobile"></div>
 </div>
-<main class="container" page-style="normal"><aside class="toc" id="toc-auto"></aside>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
 
   <aside class="aside-custom">
     
@@ -138,19 +139,490 @@
   
   
 ><i class="fas fa-user-circle fa-fw"></i>小辣鸡</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/Hugo/"><i class="far fa-folder fa-fw"></i>Hugo</a></span></div>
-      <div class="post-meta-line"><span title=2022-03-04&#32;22:30:00>
-            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-04" >2022-03-04</time>
-          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 32 字&nbsp;
-        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
-    </div><div class="content" id="content"><p>搭建Hugo</p>
-<p>下载go</p>
-<p>设置环境变量</p>
+      <div class="post-meta-line"><span title=2022-03-09&#32;22:30:00>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-09" >2022-03-09</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1139 字&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#配置环境">配置环境</a>
+      <ul>
+        <li><a href="#安装go">安装Go</a></li>
+        <li><a href="#设置两个环境变量">设置两个环境变量</a></li>
+        <li><a href="#安装hugo">安装hugo</a></li>
+        <li><a href="#新增站点">新增站点</a></li>
+        <li><a href="#安装主题">安装主题</a></li>
+        <li><a href="#配置博客">配置博客</a></li>
+        <li><a href="#部署">部署</a></li>
+      </ul>
+    </li>
+    <li><a href="#webhook自动化部署">webhook自动化部署</a>
+      <ul>
+        <li><a href="#创建github仓库">创建github仓库</a></li>
+        <li><a href="#客户端">客户端</a>
+          <ul>
+            <li><a href="#配置git">配置git</a></li>
+            <li><a href="#配置deploy脚本">配置deploy脚本</a></li>
+            <li><a href="#配置github-webhook">配置github webhook</a></li>
+          </ul>
+        </li>
+        <li><a href="#服务器端">服务器端</a>
+          <ul>
+            <li><a href="#安装node">安装node</a></li>
+            <li><a href="#安装pm2">安装pm2</a></li>
+            <li><a href="#连接github仓库">连接github仓库</a></li>
+            <li><a href="#配置webhook脚本">配置webhook脚本</a></li>
+            <li><a href="#配置ssh">配置ssh</a></li>
+            <li><a href="#安装webhook脚本">安装webhook脚本</a></li>
+          </ul>
+        </li>
+        <li><a href="#执行部署">执行部署</a></li>
+      </ul>
+    </li>
+    <li><a href="#配置algolia搜索">配置algolia搜索</a>
+      <ul>
+        <li><a href="#algolia流程">algolia流程</a></li>
+        <li><a href="#自动化上传">自动化上传</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>搭建Hugo</p>
+<h1 id="配置环境">配置环境</h1>
+<h2 id="安装go">安装Go</h2>
+<p>去官网下载go</p>
+<h2 id="设置两个环境变量">设置两个环境变量</h2>
 <p><code>GOROOT</code> : 安装的文件夹<code>D:\Go</code></p>
-<p><code>Path</code> : <code>D:\Go\bin</code></p></div><div class="post-footer" id="post-footer">
+<p><code>Path</code> : <code>D:\Go\bin</code></p>
+<h2 id="安装hugo">安装hugo</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">scoop install hugo-extended
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="新增站点">新增站点</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo new site tronwei.top
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="安装主题">安装主题</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> tronwei.top
+</span></span><span class="line"><span class="cl">git clone https://github.com/Lruihao/FixIt.git themes/FixIt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置博客">配置博客</h2>
+<p>配置文件为<code>config.toml</code></p>
+<p>文章目录为<code>posts</code></p>
+<h2 id="部署">部署</h2>
+<p>调试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>生成部署文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="webhook自动化部署">webhook自动化部署</h1>
+<h2 id="创建github仓库">创建github仓库</h2>
+<h2 id="客户端">客户端</h2>
+<h3 id="配置git">配置git</h3>
+<p><code>public</code>文件夹下连接<code>github</code>仓库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote add origin ...
+</span></span><span class="line"><span class="cl">git commit
+</span></span><span class="line"><span class="cl">git push
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置deploy脚本">配置deploy脚本</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Build the project.</span>
+</span></span><span class="line"><span class="cl">hugo <span class="c1"># if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Go To Public folder</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> public
+</span></span><span class="line"><span class="cl"><span class="c1"># Add changes to git.</span>
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Commit changes.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;rebuilding site `date`&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -eq <span class="m">1</span> <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">then</span> <span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;</span><span class="nv">$msg</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Push source and build repos.</span>
+</span></span><span class="line"><span class="cl">git push origin master
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Come Back up to the Project Root</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ..
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置github-webhook">配置github webhook</h3>
+<p>在仓库的<code>setting</code>中增加<code>webhook</code>配置</p>
+<p>打开托管仓库<code>github.com/K1ngram4/myblog</code>点击右上角<code>Settings</code>按钮，选择<code>Webhooks</code>，点击右上角<code>Add wehook</code></p>
+<p>Payload URL 填服务器端创建好的<code>http://kingram.top:7777/webhook</code></p>
+<p>Content type选择<code>application/json</code></p>
+<p>Secret填入<code>mysecret</code>(该参数在服务器端的<code>github-deploy.sh</code>中配置)</p>
+<h2 id="服务器端">服务器端</h2>
+<h3 id="安装node">安装node</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~
+</span></span><span class="line"><span class="cl">wget https://nodejs.org/dist/v14.17.3/node-v14.17.3-linux-x64.tar.xz
+</span></span><span class="line"><span class="cl">tar -xvf node-v14.17.3-linux-x64.tar.xz
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> node-v14.17.3-linux-x64/bin
+</span></span><span class="line"><span class="cl">ln -s /root/node-v14.17.3-linux-x64/bin/node /usr/bin/
+</span></span><span class="line"><span class="cl">ln -s /root/node-v14.17.3-linux-x64/bin/npm /usr/bin/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 验证安装</span>
+</span></span><span class="line"><span class="cl">node -v
+</span></span><span class="line"><span class="cl">npm -v
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="安装pm2">安装pm2</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install pm2@latest -g
+</span></span><span class="line"><span class="cl">ln -s /root/node-v14.17.3-linux-x64/bin/pm2 /usr/bin/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 验证安装</span>
+</span></span><span class="line"><span class="cl">pm2 -v
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="连接github仓库">连接github仓库</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote add origin ...
+</span></span><span class="line"><span class="cl">git pull
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置webhook脚本">配置webhook脚本</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~
+</span></span><span class="line"><span class="cl">mkdir webhook
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> webhook
+</span></span><span class="line"><span class="cl">touch hugo-deploy.sh
+</span></span><span class="line"><span class="cl">vi hugo-deloy.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>hugo-deloy.sh</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~/myblog
+</span></span><span class="line"><span class="cl">git pull origin main
+</span></span><span class="line"><span class="cl">hugo 
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;deploy success!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span> <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>增加执行权限</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x hugo-deploy.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置ssh">配置ssh</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~/.ssh
+</span></span><span class="line"><span class="cl">ls
+</span></span><span class="line"><span class="cl"><span class="c1"># 看是否存在 id_rsa 和 id_rsa.pub文件，如果存在，说明已经有SSH Key</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 否则生成ssh文件</span>
+</span></span><span class="line"><span class="cl">ssh-keygen
+</span></span><span class="line"><span class="cl">cat ~/.ssh/id_rsa.pub
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加到github中</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="安装webhook脚本">安装webhook脚本</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安装</span>
+</span></span><span class="line"><span class="cl">npm install github-webhook-handler --save
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建<code>github-webhook.js</code>文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">createHandler</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;github-webhook-handler&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">exec</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;child_process&#39;</span><span class="p">).</span><span class="nx">exec</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">createHandler</span><span class="p">({</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/webhook&#39;</span><span class="p">,</span> <span class="nx">secret</span><span class="o">:</span> <span class="s1">&#39;mysecret&#39;</span> <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">handler</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;no such location&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">7777</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;github Hook Server running at http://0.0.0.0:7777/webhook&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">handler</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">handler</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;push&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Received a push event for %s to %s&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">event</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">event</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">ref</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">exec</span><span class="p">(</span><span class="s1">&#39;sh ./hugo-deploy.sh&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">stdout</span><span class="p">,</span> <span class="nx">stderr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;error:\n&#39;</span> <span class="o">+</span> <span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;stdout:\n&#39;</span> <span class="o">+</span> <span class="nx">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;stderr:\n&#39;</span> <span class="o">+</span> <span class="nx">stderr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>启动脚本</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">node github-webhook.js <span class="c1"># 调试模式</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># pm2 管理进程启动</span>
+</span></span><span class="line"><span class="cl">pm2 start github-webhook.js
+</span></span><span class="line"><span class="cl">pm2 startup
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="执行部署">执行部署</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 在客户端的tronwei.top文件下执行</span>
+</span></span><span class="line"><span class="cl">./deploy.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="配置algolia搜索">配置algolia搜索</h1>
+<h2 id="algolia流程">algolia流程</h2>
+<ol>
+<li>创建<code>application</code></li>
+<li>在<code>application</code>中创建索引<code>Indices</code></li>
+<li>配置搜索属性: <code>searchable attribute</code></li>
+<li>配置自定义排行: <code>title</code></li>
+</ol>
+<p>将<code>public</code>下的<code>index.json</code>上传</p>
+<h2 id="自动化上传">自动化上传</h2>
+<p>安装 atomic-algolia 包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install atomic-algolia --save
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改根目录下的 <code>package.json</code> 文件，在 <code>scripts</code> 下添加 <code>&quot;algolia&quot;: &quot;atomic-algolia&quot;</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;algolia&#34;</span><span class="p">:</span> <span class="s2">&#34;atomic-algolia&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>根目录下新建 <code>.env</code> 文件，内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">ALGOLIA_APP_ID</span><span class="o">=</span> Application ID
+</span></span><span class="line"><span class="cl"><span class="nv">ALGOLIA_INDEX_NAME</span><span class="o">=</span> 索引<span class="o">(</span>Indices<span class="o">)</span>名字
+</span></span><span class="line"><span class="cl"><span class="nv">ALGOLIA_INDEX_FILE</span><span class="o">=</span> public/index.json
+</span></span><span class="line"><span class="cl"><span class="nv">ALGOLIA_ADMIN_KEY</span><span class="o">=</span> Admin API Key
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上传命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm run algolia
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title=2022-03-04&#32;22:30:00>更新于 2022-03-04</span>
+        <span title=2022-03-09&#32;22:30:00>更新于 2022-03-09</span>
       </div>
       <div class="post-info-license"><span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
     </div>
