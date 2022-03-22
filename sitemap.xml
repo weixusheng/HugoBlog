@@ -25,7 +25,7 @@
       <loc>http://example.org/categories/Python/</loc><lastmod>2022-03-02T18:40:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/tags/Selenium/</loc><lastmod>2022-03-02T18:40:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/posts/python-selenium/</loc><lastmod>2022-03-02T18:40:00&#43;00:00</lastmod></url><url>
-      <loc>http://example.org/tags/SQLAlchemy/</loc><lastmod>2022-03-01T23:30:00&#43;00:00</lastmod></url><url>
+      <loc>http://example.org/tags/Python-SQLAlchemy/</loc><lastmod>2022-03-01T23:30:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/posts/python_SQL-3/</loc><lastmod>2022-03-01T23:30:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/tags/APScheduler/</loc><lastmod>2022-02-11T23:00:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/posts/apschedule/</loc><lastmod>2022-02-11T23:00:00&#43;00:00</lastmod></url><url>
@@ -445,8 +445,4 @@
       <loc>http://example.org/posts/ubuntu-2/</loc><lastmod>2020-03-22T00:00:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/posts/ubuntu-1/</loc><lastmod>2020-03-22T00:00:00&#43;00:00</lastmod></url><url>
       <loc>http://example.org/about/</loc><lastmod>2020-03-02T22:26:32&#43;00:00</lastmod></url><url>
-      <loc>http://example.org/archives/</loc><priority>0</priority></url><url>
-      <loc>http://example.org/categorie/</loc><priority>0</priority></url><url>
-      <loc>http://example.org/posts/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B%E8%AE%BA%E6%96%87/</loc></url><url>
-      <loc>http://example.org/search/</loc></url><url>
-      <loc>http://example.org/tag/</loc><priority>0</priority></url></urlset>
+      <loc>http://example.org/posts/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B%E8%AE%BA%E6%96%87/</loc></url></urlset>

@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Python-SQLAlchemy - 标签 - 小辣鸡的Hugo</title>
+    <link>http://example.org/tags/Python-SQLAlchemy/</link>
+    <description>Python-SQLAlchemy - 标签 - 小辣鸡的Hugo</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>weixusheng@cweme.com (小辣鸡)</managingEditor>
+      <webMaster>weixusheng@cweme.com (小辣鸡)</webMaster><lastBuildDate>Tue, 01 Mar 2022 23:30:00 &#43;0000</lastBuildDate><atom:link href="http://example.org/tags/Python-SQLAlchemy/" rel="self" type="application/rss+xml" /><item>
+  <title>SQLAlchemy断连</title>
+  <link>http://example.org/posts/python_SQL-3/</link>
+  <pubDate>Tue, 01 Mar 2022 23:30:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python_SQL-3/</guid>
+  <description><![CDATA[<p>SQLAlchemy持续性断连</p>]]></description>
+</item><item>
+  <title>SQLAlchemy</title>
+  <link>http://example.org/posts/python_SQL-1/</link>
+  <pubDate>Wed, 15 Sep 2021 20:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python_SQL-1/</guid>
+  <description><![CDATA[<p>ORM sqlalchemy</p>]]></description>
+</item><item>
+  <title>SQLAlchemy-2</title>
+  <link>http://example.org/posts/python_SQL-2/</link>
+  <pubDate>Wed, 15 Sep 2021 20:00:00 &#43;0000</pubDate>
+  <author>小辣鸡</author>
+  <guid>http://example.org/posts/python_SQL-2/</guid>
+  <description><![CDATA[<p>ORM sqlalchemy</p>]]></description>
+</item></channel>
+</rss>
